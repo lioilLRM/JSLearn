@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function cat() {}
+			
+			cat.prototype = {
+				food: 'fish',
+				say: function() {
+					console.log('I love '+ this.food);
+				}
+			}
+			
+			let blackCat = new cat;
+			let whiteDog ={food: 'bone'}
+			blackCat.say.call(whiteDog)
+			console.log(whiteDog);
+			
+			// function cat() { }
+			// cat.prototype = {
+			// food: "fish",
+			// say: function () {
+			// alert("I love " + this.food);
+			// }
+			// };
+			// var blackCat = new cat;
+			// //blackCat.say();
+			// var whiteDog = { food: "bone" };
+			// blackCat.say.call(whiteDog);
+			// console.log(whiteDog);
+
+			
+		</script>
+	</body>
+</html>

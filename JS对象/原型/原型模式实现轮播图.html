@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding:0;border: 0;list-style: none;}
+			.sliderDiv{
+				position: relative;
+				width: 500px;height: 300px; 
+				background-color: aliceblue;
+				border:1px solid #f00;
+				margin: 10px auto;
+				overflow: hidden;
+				}
+			.sliderDiv2,.sliderDiv3{
+				position: relative;
+				width: 500px;height: 300px; 
+				background-color: #fffff;
+				border:1px solid #f00;
+				margin: 10px;
+				/* overflow: hidden; */
+				}
+			
+			.sliderDiv ul{
+				position: absolute;
+				width: 2500px;height: 200px;
+				/* left: 20px; top: 20px; */
+				background-color: #00FFFF;
+			}
+			.sliderDiv ul li {
+				width:500px; height: 200px;
+				float: left;
+			}
+			
+			li.sliderImg1{background-color: aqua;text-align: center;font-size: 50px;color: #FF0000;}
+			li.sliderImg2{background-color: aquamarine;text-align: center;font-size: 50px;color: #FF0000;}
+			li.sliderImg3{background-color: darkcyan;text-align: center;font-size: 50px;color: #FF0000;}
+			li.sliderImg4{background-color: darkmagenta;text-align: center;font-size: 50px;color: #FF0000;}
+			li.sliderImg5{background-color: blue;text-align: center;font-size: 50px;color: #FF0000;}
+			
+			.sliderDiv label,.sliderDiv span{
+				position: absolute;
+				top:70px;
+				width:50px;height: 50px;
+				background-color: black;
+				border:1px solid #fff;
+				border-radius: 10px;
+				color: #FFFFFF;
+				z-index: 10;
+			}
+			.sliderDiv label{
+				left:10px;
+			}
+			.sliderDiv span{
+				right:10px;
+			}
+			
+		
+		</style>
+	</head>
+	<body>
+		<div class="sliderDiv">
+			<label id="leftBtn">左</label>
+			<span id="rightBtn">右</span>
+			<ul id='ulWrapId'>
+				<li class='sliderImg1'>1</li>
+				<li class='sliderImg2'>2</li>
+				<li class='sliderImg3'>3</li>
+				<li class='sliderImg4'>4</li>
+				<li class='sliderImg5'>5</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			// 最基本的让图片动起来
+// 			var _rigthBtn = document.getElementById('rightBtn');
+// 			var _leftBtn = document.getElementById('leftBtn');
+// 			var _ulWrapId = document.getElementById("ulWrapId");
+// // 			console.log(_leftBtn);
+// // 			console.log(_ulWrapId);
+// 			_rigthBtn.onclick = function() {
+// 				console.log(typeof _ulWrapId.style.left);
+// 				_ulWrapId.style.left="-500px";
+// 			}
+// 			_leftBtn.onclick = function() {
+// 				console.log('_rigthBtn')
+// 				_ulWrapId.style.left="0px";
+// 			}
+			
+			// 使用原型模式
+			// 创建一个构造器
+			function SliderObj(configObj) {
+				
+				// console.log(configObj)
+				for(var i in configObj) {
+					console.log(configObj[i])
+					// 数组的对象字面量,方括号表示法，，i 是传递过来的属性
+					this[i] = configObj[i]
+				}
+				this.imgIndex = 0;
+				this.init();
+				
+			}
+			
+			SliderObj.prototype = {
+				init:function() {
+					console.log('初始化');
+					var that = this;
+					that.rightBtnFn();
+					that.leftBtnFn();
+				},
+				rightBtnFn:function(){
+					var that = this;
+					that.rightBtnId.onclick = function(){
+						if(that.imgIndex<4) {
+							that.imgIndex++;
+						}else {
+							that.imgIndex = 0;
+							that.ulWrapId.style.left = 0;
+						}
+// 						var moveNum = ;
+// 						console.log(that.imgIndex+":"+moveNum);	
+						that.ulWrapId.style.left = -(that.imgIndex*500)+'px'
+					}
+				},
+				leftBtnFn:function() {
+					var that = this;
+					that.leftBtnId.onclick = function(){
+						if(that.imgIndex>0) {
+							that.imgIndex--;
+							
+						} else {
+							that.imgIndex = 4
+							that.ulWrapId.style.left = '0px'
+// 							var moveNum = -(that.imgIndex*500);
+// 							console.log(that.imgIndex+":"+moveNum);	
+// 							that.ulWrapId.style.left = moveNum+'px'
+						}
+						var moveNum = -(that.imgIndex*500);
+						console.log(that.imgIndex+":"+moveNum);	
+						that.ulWrapId.style.left = moveNum+'px'
+						
+					}
+				}
+			}
+			function getDomId(domId) {
+				return document.getElementById(domId)
+			}
+			
+			new SliderObj({
+				leftBtnId:getDomId('leftBtn'),
+				rightBtnId:getDomId('rightBtn'),
+				ulWrapId:getDomId('ulWrapId')
+			});
+			
+			
+			
+		</script>
+	</body>
+</html>

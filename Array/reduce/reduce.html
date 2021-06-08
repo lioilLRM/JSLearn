@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			const arr = [3,9,4,3,6,0,9,-1, -0.011,0]
+			/**
+			 * initialValue可选
+			 * 作为第一次调用 callback函数时的第一个参数的值。 
+			 * 如果没有提供初始值，则将使用数组中的第一个元素。 
+			 * 在没有初始值的空数组上调用 reduce 将报错。
+			 */
+		
+		// 简单用法：================
+			// 数组累加：
+			const sum =  arr.reduce((pre,item, index,array)=> {
+				// console.log(pre, item);
+				return pre+item;
+			})
+			console.log(sum);
+			
+			// 取数组最大最小值
+			const max = arr.reduce((pre, item)=> {
+				let max = Math.min(pre, item)
+				// console.log(max);
+				return max
+			})
+			console.log('max:', max);
+			
+			// 数组去重：
+			// 数组中：indexOf和includes的区别
+			// 使用includes来简化代码：
+			let newArr = arr.reduce((pre, cur)=> {
+				// console.log(pre, cur);
+				// pre.indexOf(cur) === -1 && pre.push(cur)
+				pre.includes(cur)==false && pre.push(cur)
+				// console.log(pre);
+				return pre
+			},[])
+			
+			//==================
+			// 扁平一个二维数组
+			console.log('// 扁平一个二维数组');
+			var doubleArr = [[1, 2, 8], [3, 4, 9], [5, 6, 10]];
+			let  flatResArr = doubleArr.flat()
+			// console.log('扁平二维数组', flatResArr);
+			
+			doubleArr.reduce((pre, cur)=> {
+				// console.log(pre,cur);
+				return pre.concat(cur);
+			},[])
+			
+			// 高级用法：
+			
+			// 使用reduce方法可以完成多维度的数据叠加：
+			//计算总成绩，且学科的占比不同
+			const scores = [
+				{ subject: 'math', score: 88 },
+				{ subject: 'chinese', score: 95 },
+				{ subject: 'english', score: 80 }
+			];
+			const dis = {
+				math: 0.5,
+				chinese: 0.3,
+				english: 0.2
+			}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

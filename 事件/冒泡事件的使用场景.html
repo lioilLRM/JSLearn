@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">
+			<a href="#">a1</a>
+			<a href="#">a3</a>
+			<a href="#">a2</a>
+			<a href="#">a4</a>
+		</div>
+		<script type="text/javascript">
+			var div1 = document.querySelector('#div1')
+			// div1.addEventListener('click',function(e) {
+			// 	console.log(e.target);
+			// 	if(e.target.nodeName === 'A'){
+			// 		console.log(e.target.innerHTML);
+			// 	}
+			// 	// console.log(e.target.nodeName);
+			// })
+			
+			// 通用的绑定事件函数
+			function bindEvent(elem,type,selector,fn) {
+				if(fn == null) {
+					fn = selector
+					selector = null
+				}
+				elem.addEventListener(type,function(e) {
+					var target;	
+					if(selector){
+						target = e.target;
+						console.log(e);
+						console.log(selector);
+						console.log(target.matches(selector));
+						if(target.matches(selector)){
+							fn.call(target,e)
+						}
+					}else{
+						fn(e);
+					}
+					
+				})
+			}
+			bindEvent(div1,'click','a',function(e){
+				console.log(this.innerHTML)
+			})
+			
+			// bindEvent(div1,'click',function(e){
+			// 	console.log(a.innerHTML)
+			// })
+			
+		</script>
+	</body>
+</html>

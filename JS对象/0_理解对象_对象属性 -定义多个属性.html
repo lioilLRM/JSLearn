@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// let person = {};
+			// Object.defineProperties(person,{
+			// 	name:{
+			// 		value: '小E'
+			// 	},
+			// 	_age:{
+			// 		value: 16,
+			// 		wriable: true
+			// 	},
+			// 	_say:{
+			// 		value: '',
+			// 	},
+			// 	age:{
+			// 		get(){
+			// 			return this._age;
+			// 		},
+			// 		set(newValue) {
+			// 			if(newValue>18) {
+			// 				this._say = '小E满18岁了';
+			// 				this._age = newValue
+			// 			}
+			// 		}
+			// 	}
+			// })
+			// person.age=19
+			// console.log(person);
+
+			var book = {};
+			Object.defineProperties(book, {
+				_year: {
+					value: 2004,
+					writable: true,
+					enumerable: true,
+					configurable: true
+				},
+				edition: {
+					value: 1,
+					writable: true,
+					enumerable: true,
+					configurable: true
+				},
+				year: {
+					get: function() {
+						console.log('year被访问');
+						return this._year;
+					},
+					set: function(newValue) {
+						if (newValue > 2004) {
+							console.log('year被修改');
+							this._year = newValue;
+							this.edition += newValue - 2004;
+						}
+					},
+					enumerable: true,
+					configurable: true
+				}
+			});
+			
+			book.year = 2007
+			// let bookPro = Object.getOwnPropertyDescriptors(book);
+			
+			// console.log(bookPro);
+			for(let i in book) {
+				console.log(`${i}: ${book[i]}`);
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function createCache() {
+			let data = {}
+			return {
+				set:function(key,value) {
+					data[key] = value
+				},
+				get:function(key) {
+					return data[key]
+				}
+			}
+		}
+		const cache = createCache()
+		cache.set('name', '天宝')
+		console.log(cache.get('name'))
+		
+	</script>
+</html>

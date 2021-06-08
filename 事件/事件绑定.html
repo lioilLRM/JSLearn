@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	
+	<body>
+		<button type="button" id="btn1">按钮</button>
+		<div id="div1">
+			<p class='p1'>激活</p>
+			<p class='p2'>取消</p>
+			<p class='p3'>取消</p>
+			<p class='p4'>取消</p>
+			<p class='p5'>取消</p>
+		</div>
+		<div class="div2">
+			<p>激活</p>
+			<p>取消</p>
+			<p>取消</p>
+			<p>取消</p>
+			<p>取消</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function bindEvent(element,type,fn){
+			element.addEventListener(type,fn)
+		}
+		
+		let btn = document.getElementById('btn1')
+		let div1 = document.getElementById('div1')
+		let body = document.body
+		let p1 = document.getElementsByClassName('p1')
+		bindEvent(btn, 'click', e=> {
+			console.log(e.target);
+			e.stopPropagation();
+			e.preventDefault();
+		})
+		bindEvent(div1,'click', e=> {
+			console.log('div1 click');
+		})
+		
+		bindEvent(body,'click', e=> {
+			console.log('body click');
+		})
+		
+		bindEvent(p1[0],'click', e=> {
+			e.stopPropagation();
+			console.log('p1 click');
+		})
+		
+		
+		
+		
+	</script>
+</html>

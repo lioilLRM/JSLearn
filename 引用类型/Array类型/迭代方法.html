@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var numbers = [1,2,3,4,5,4,3,2,1];
+		let res = numbers.every(function(item,index,array){
+			// console.log(index);
+			return (item>3)
+		})
+		console.log(res);
+		
+		let res2 = numbers.some(function(item,index,array){
+			// console.log(index);
+			return (item>3)
+		})
+		console.log(res2);
+		
+		let res3 = numbers.filter(function(item,index,array){
+			// console.log(index);
+			return (item>3)
+		})
+		console.log(res3);
+		
+		let res4 = numbers.map(function(item,index,array){
+			// console.log(index);
+			return (item*3)
+		})
+		console.log(res4);
+		
+		let res5 = numbers.forEach(function(item,index,array){
+			console.log(array);
+			// return (item*3)
+		})
+		console.log(res5);
+	</script>
+</html>

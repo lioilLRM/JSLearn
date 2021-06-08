@@ -1,0 +1,35 @@
+<script type="text/javascript">
+/**解决的问题：解决了创建多个相似对象的问题
+存在的问题：没有解决对象识别的问题（即怎样知道一个对象的类型）
+ * @param {Object} name
+ * @param {Object} age
+ */
+	// function  createPersion(name,age) {
+	// 	var obj = new Object();
+	// 	obj.name = name;
+	// 	obj.age = age;
+	// 	obj.say = function() {
+	// 		console.log('my name is:', obj.name)
+	// 	}
+	// 	return obj;
+	// }
+	
+	// var person = createPersion('GG', 12)
+	// var person2 = createPersion('MM', 13)
+	// person.say();
+	
+	function createPerson(name,age) {
+		var obj = new Object()
+		obj.name = name;
+		obj.age = age;
+		obj.sayName = function(){
+			console.log(`我的名字：${name}`);
+		}
+		return obj;
+	}
+	let xiaomin = createPerson('小敏',23)
+	xiaomin.sayName();
+</script>
+
+
+

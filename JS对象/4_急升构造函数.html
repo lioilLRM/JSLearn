@@ -1,0 +1,18 @@
+<script type="text/javascript">
+/**
+ * 
+ */
+	function  createPersion(name,age) {
+		var obj = new Object();
+		obj.name = name;
+		obj.age = age;
+		obj.say = function() {
+			console.log('my name is:', obj.name)
+		}
+		return obj;
+	}
+	
+	var person = createPersion('GG', 12)
+	var person2 = createPersion('MM', 13)
+	person.say();
+</script>

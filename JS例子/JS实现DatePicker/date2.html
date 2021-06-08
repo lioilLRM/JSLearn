@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<style type="text/css">
+			.datepicker {
+				height: 24px;
+				width: 300px;
+				line-height: 24px;
+				padding: 4px;
+				border-radius: 4px;
+				border: 1px solid #ccc;
+			}
+			.datepicker:focus {
+				outline: 0 none;
+				border: 1px solid #1abc9c;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" class="datepicker">
+		<!-- <div class="ui_datepicker_wrapper"> -->
+			
+		<!-- </div> -->
+		<div style="position:absolute;top: 300px; left: 330px;">
+			<input type="text" class="datepicker2">
+		</div>
+		<script src="date.js" type="text/javascript" charset="utf-8"></script>
+		<script src="main.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// console.log(datepicker.getMonthData());
+			// datepicker.init(document.querySelector('.ui_datepicker_wrapper'));
+			debugger
+			datepicker.init('.datepicker')
+			
+			// datepicker.init('.datepicker2')
+			
+		</script>
+	</body>
+</html>

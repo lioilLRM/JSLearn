@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+
+			// 设置对象的属性值不可以改变
+			// Object.defineProperty(person,"name",{
+			// 	value: '小A',
+			// 	writable: true,
+			// 	configurable: true,
+			// 	Enumerable: true
+			// })
+			// person.name = '啊啊啊'
+			// delete person.name
+			// console.log(person.name);
+
+			// let newNameDesc = Object.getOwnPropertyDescriptor(person,'name');
+			// console.log(newNameDesc);
+			var person = {
+				_age: 12,
+				doing: '上学'
+			}
+			Object.defineProperty(person, 'age',{
+				get:function() {
+					return this._age
+				},
+				set:function(newValue){
+					if(newValue>18){
+						this.doing = '上网吧',
+						this._age = newValue
+					} 
+				}
+
+			})
+			person.age = 19
+			console.log(person.doing);
+			
+			var book = {
+				_year: 2004,
+				edition: 1
+			};
+			Object.defineProperty(book, "year", {
+				get: function() {
+					return this._year;
+				},
+				set: function(newValue) {
+					if (newValue > 2004) {
+						this._year = newValue;
+						this.edition += newValue - 2004;
+					}
+				}
+			});
+			book.year = 2005;
+			console.log(book.edition); //2
+		</script>
+	</body>
+</html>

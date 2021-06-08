@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 阶乘的实现：n!=n*(n-1)*(n-2).....*2*1;
+			// 5！= 5*4*3*2*1  
+			function factorial(n) {
+				// if(n!=0) {
+				// 	jiecheng(n)
+				// 	return n-1
+					
+				// } else {
+				// 	return 0
+				// }
+				if(n<=1){
+					return 1
+				}
+				// return n*factorial(n-1)
+				console.log(factorial === arguments.callee());
+				return n*arguments.callee(n-1)
+			}
+			
+			let res = factorial(5);
+			console.log(res);
+			
+		</script>
+	</body>
+</html>

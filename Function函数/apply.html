@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			function sum(num1, num2){
+				return num1+num2;
+			}
+			
+			function callSum(num1, num2) {
+				console.log(this);
+				console.log(arguments);
+				return sum.apply(this,arguments);
+			}
+			
+			console.log(callSum(10,10));
+			// call() 方法
+			window.color = "red";
+			var o = { color: "blue" };
+			function sayColor(){
+				console.log(this.color);
+			}
+			sayColor(); //red
+			sayColor.call(this); //red
+			sayColor.call(window); //red
+			sayColor.call(o); //blue
+			//
+			function fn1(name) {
+				console.log(name);
+				console.log(this)
+			}
+			fn1.call({x:111},'帅！')
+			
+		</script>
+	</body>
+</html>

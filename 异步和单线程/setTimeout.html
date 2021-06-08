@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			console.log(1);
+			setTimeout(function(){
+				console.log(2);
+			})
+			console.log(3);
+			setTimeout(function(){
+				console.log(4);
+			},1000)
+			console.log(5);
+			
+			let wait = function() {
+				let task = function() {
+					console.log('task finished');
+				}
+				setTimeout(task,2000)
+			}
+			wait()
+			
+		</script>
+	</body>
+</html>

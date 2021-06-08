@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/zepto/1.2.0/zepto.js"></script>
+	</head>
+	<style type="text/css">
+		.blue{
+			color: blue;
+		}
+	</style>
+	<body>
+		<p>zepto例子理解原型和原型链</p>
+		<ul>
+			<li>蓝色</li>
+			<li>蓝色</li>
+			<li>蓝色</li>
+		</ul>
+		<script type="text/javascript">
+			let $li = $('li')
+			console.log($li);
+			
+			let arr = [1,2,3]
+			console.log(arr);
+			arr.push(4); // 之所以有这个方法，是因为他的原型上有这个方法。继承来的。
+			
+			arr.__proto__ = {
+				addClass: function(){
+					console.log('addClass')
+				},
+				push: Array.prototype.push
+			}
+			console.log(`arr.__proto__:`,arr.__proto__);
+			
+			// console.log(typeof p);
+			// console.log(p instanceof Array); // false
+			// console.log(`p.__proto__:`,p.__proto__);
+			
+			// console.log(typeof arr); 
+			// console.log(arr instanceof Array); // true
+			// console.log(`arr.__proto__:`,arr.__proto__);
+		</script>
+	</body>
+</html>

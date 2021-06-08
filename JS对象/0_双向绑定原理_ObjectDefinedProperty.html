@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p class="name">测试</p>
+		</div>
+		<script src="KVue.js"></script>
+		<script type="text/javascript">
+			const app = new KVue({
+				data: {
+					test: 'hello world',
+					foo: {
+						bar: 'bar'
+					}
+				}
+			})
+			
+			app.$data.test = 'Hello,xiao E';
+			app.$data.foo.bar = 'OMG my God'
+			
+		</script>
+	</body>
+</html>

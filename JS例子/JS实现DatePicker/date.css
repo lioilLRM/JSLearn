@@ -1,0 +1,40 @@
+html,body{
+	margin: 0;
+	padding: 0;
+}
+
+.date_container{
+	height: 500px;
+	width:450px;
+	background-color: gray;
+}
+
+.date_header{
+	height: 80px;
+	width:100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f1eff1;
+}
+.flex_center{
+	height: 100%;
+	flex:1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	line-height: 30px;
+}
+.date_pre{}
+.date_date{}
+.date_next{}
+
+.date_content{
+	height: 380px;
+	width: 100%;
+	background-color: blue;
+}
+
+
+

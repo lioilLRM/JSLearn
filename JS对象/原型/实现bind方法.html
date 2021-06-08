@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function f1(a,b) {
+				console.log(this);
+				console.log(`${a} ${b}`);
+				return `this is f1`
+			}
+			
+			// let f2 = f1.bind(this,11,22,33)
+			// let res = f2()
+			// console.log(res);
+			
+			//不知道用到到底传递多少个参数，用argUments可以获取函数的参数
+			Function.prototype.newBind = function() {
+				console.log(arguments);
+				let arg = Array.prototype.slice.call(arguments)
+				// let arg2 = 
+				let t = arg.shift()
+				// console.log(t);
+				// console.log(arg);
+				let self = this
+				// console.log(self);
+				return function() {
+					return self.apply(t, arg)
+				}
+				
+			}
+			let f2 = f1.newBind(this, 123,123,322)
+			console.log(f2());
+			
+		</script>
+	</body>
+</html>

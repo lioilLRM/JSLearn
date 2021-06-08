@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		// contact()操作方法
+		var colors = ["red", "green", "blue"];
+		let color3 = colors.concat();
+		let color2 = colors.concat('p','aa','abc')
+		let color4 = colors.concat(["green2", "blue2"])
+		console.log(colors);
+		console.log(color2);
+		console.log(color3);
+		console.log(color4);
+		
+		// slice()操作方法
+		let color5 = colors.slice(1)
+		console.log(color5);
+		
+		// splice()操作方法
+		let newColor = ["red", "green", "blue", "green2", "blue2"];
+		console.log('newCOlor:',newColor.splice(1,2));
+		
+	</script>
+</html>

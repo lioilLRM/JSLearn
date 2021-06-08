@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 定义Generator时，需要使用function*
+			 * 内部使用yield
+			 */
+			function* Hello() {
+				yield 100
+				yield (function() {
+					return 200
+				})()
+				return 300
+			}
+			
+			let h = Hello() // 生成一个Generator对象
+			console.log(typeof h);
+			console.log(h.next());
+			console.log(h.next());
+			console.log(h.next());
+			console.log(h.next());
+			console.log('=====================================');
+			// 定义一个数组，然后生成数组的Iterator对象
+			let arr = [100,200,399]
+			// // 通过执行 [Symbol.iterator] 的属性值（函数）来返回一个 iterator 对象
+			let iterator = arr[Symbol.iterator]()
+			console.log(iterator.next());
+			console.log(iterator.next());
+			console.log(iterator.next());
+			console.log(iterator.next());
+			console.log(iterator.next());
+			
+		</script>
+	</body>
+</html>

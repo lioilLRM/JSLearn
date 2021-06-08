@@ -1,0 +1,20 @@
+<script type="text/javascript">
+	/**创建对象--更简单的原型模式；
+	 * 改进了：需要写多个prototype的问题。：
+	
+	 */
+	// 原型模式
+	function Person() {
+		
+	}
+	Person.prototype = {
+		constructor: Person,
+		name: '天宝',
+		age: 18,
+		sayName: function () {
+			console.log(`我的名字:${this.name}`);
+		}
+	}
+	//
+	console.log(Person.prototype)
+</script>

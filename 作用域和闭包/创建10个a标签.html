@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var i,a;
+			for(i=0;i<10;i++) {
+				a = document.createElement('a');
+				a.innerHTML = i+ "<br/>";
+				a.addEventListener('click',function(){
+					console.log(i);
+				})
+				document.body.appendChild(a);
+			}
+			// document.body.appendChild('<br>');
+			a.innerHTML = '闭包====================================<br/>';
+			document.body.appendChild(a);
+			
+			var j,b;
+			for(j=11;j<20;j++) {
+				(function(j){
+					
+					b = document.createElement('a');
+					b.innerHTML = j+ "<br/>";
+					b.addEventListener('click',function(){
+						console.log(j);
+					})
+					document.body.appendChild(b);
+					
+				}
+				)(j);
+				
+			}
+			let doc;
+			for(let i = 22;i<33;i++) {
+				doc = document.createElement('a')
+				doc.innerHTML = i+'<br/>'
+				doc.addEventListener('click',function(){
+					console.log(i);
+				})
+				document.body.appendChild(doc)
+			}
+			
+		</script>
+	</body>
+</html>

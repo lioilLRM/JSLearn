@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1 style="text-align: center;">事件冒泡</h1>
+		<p>需求：1.点击激活，打印激活。</p>
+		<p>2.点击取消，打印取消</p>
+		<div id='div1'>
+			<p id='p1'>active</p>
+			<p id='p2'>unactive</p>
+			<p id='p3'>unactive</p>
+			<p id='p4'>unactive</p>
+		</div>
+		<div id='div2' style="background-color: #8B008B;color: #F0F8FF;">
+			<p id='p5'>unactive</p>
+			<p id='p6'>unactive</p>
+		</div>
+		<script type="text/javascript">
+			
+			// 通用的绑定事件
+			function bindEvent(elem,eventType,fn){
+				elem.addEventListener(eventType,fn);
+			};
+			
+			var p1 = document.querySelector('#p1');
+			console.log(p1);
+			bindEvent(p1,'click', function(e){
+				// console.log(e);
+				// e.cancelBubble();
+				e.stopPropagation(); // 阻止事件冒泡
+				console.log(e.target);
+				// e.stopPropatation();
+				console.log('p1 active');
+			})
+			
+			var body = document.body;
+			bindEvent(body,'click',function(e){
+				console.log(e.target);
+				console.log('p2-p5 unactive');
+			})
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

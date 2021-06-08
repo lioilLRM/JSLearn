@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	let url = 'https://cdn.nlark.com/yuque/0/2019/png/87555/1575882754189-781488ce-b345-45cf-a3b7-cb5309e9caa6.png#align=left&display=inline&height=399&name=2.png&originHeight=600&originWidth=600&size=158647&status=done&style=none&width=399?x-oss-process=image/resize,w_301'
+	// function loadImg(url) {
+	// 	return new Promise((resolve,reject)=> {
+	// 		const img = document.createElement('img')
+	// 		img.onload = ()=>{
+	// 			resolve(img)
+	// 		}
+	// 		img.onerror = ()=> {
+	// 			reject(new Error('图片加载失败'))
+	// 		}
+	// 		img.src = url
+	// 	})
+	// }	
+	// loadImg(url).then(img=> {
+	// 	console.log(img.width);
+	// })
+	/**
+	 * 日期：2020年7月13日16点07分
+	 */
+	const wait = function() {
+		const promise = new Promise((resolve,reject)=> {
+			let task = function() {
+				console.log('task finished');
+				resolve()
+			}
+			setTimeout(task,2000)
+		})
+		
+		return promise
+	}
+	
+	let w = wait()
+	// console.log(typeof w);
+	w.then(()=>{
+		console.log(`ok 1`);
+	},()=>{
+		console.log('error 1');
+	}).then(()=> {
+		console.log(`ok 2`);
+	},()=> {
+		console.log(`error 2 `);
+	})
+	
+	
+	
+	</script>
+</html>

@@ -1,0 +1,53 @@
+<script type="text/javascript">
+	/**函数说明：
+		1.通过构造函数创建对象
+		2.构造函数的使用方式。
+		
+		存在问题：每个方法都要在每个实例上重新创建一遍
+		以这种方式创建函数，会导致不同的作用域链和标识符解析，但
+		创建 Function 新实例的机制仍然是相同的。因此，不同实例上的同名函数是不相等的
+	 * @param {Object} name
+	 * @param {Object} age
+	 */
+	function Person(name,age) {
+		this.name = name
+		this.age = age
+		// this.say = function() {
+		// 	console.log('NAME:', name)
+		// }
+		// 修改:两个实现的功能都一样,那么就把方法抽离出来,单独作为方法赋予给Person对象.
+		this.say = sayName
+	}
+	
+	// 这种只能被某个对象调用..
+	function sayName() {
+		console.log(this.name)
+	}
+	
+	var person = new Person('GG', 12)
+	var person2 = new Person('MM', 13)
+	person.say()
+	person2.say()
+	// 两个 say()方法虽然名字相同,但是实例不相等.
+	//console.log('person.say equal person2.say?',person.say === person2.say);
+	
+	// 两个实现的功能都一样,那么就把方法抽离出来,单独作为方法赋予给Person对象.
+	console.log('person.say equal person2.say?',person.say === person2.say);
+	sayName();
+	console.log(`person.constructor:`,person.constructor);
+	console.log(`person.constructor === Person?`,person.constructor === Person);
+	// 将构造函数当做普通函数调用
+	// Person('天天',18)
+	// window.say();
+	
+	// 在另一个对象的作用域中调用
+	// call方法用自己的话来说的话就是借用别人的东西来完成自己的事情。
+	// 
+	var obj = new Object()
+	Person.call(obj,'X先生', 12)
+	obj.say()
+	
+</script>
+
+
+

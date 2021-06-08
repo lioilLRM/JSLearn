@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 来源：Javascript面向对象编程（二）：构造函数的继承
+			 * url: http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html
+			 */
+			function Animal() {
+				this.species = '动物'
+			}
+			
+			function Cat() {
+				this.name = name;
+				this.color = color;
+			}
+			
+			// 一：构造函数绑定:
+			/**第一种方法也是最简单的方法，使用call或apply方法，
+			将父对象的构造函数绑定在子对象上，
+			即在子对象构造函数中加一行：
+			 * @param {Object} name
+			 * @param {Object} color
+			 */
+			function Dog(name,color) {
+				Animal.apply(this,arguments)
+				this.name = name;
+				this.color = color;
+			}
+			
+			let dog = new Dog('大黄','黄色')
+			console.log(dog.species);
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

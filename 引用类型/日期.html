@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// var date = new Date(Date.parse("6/13/2004"));
+			var date2 = Date.now();
+			// var date2 = new Date
+			// console.log(date);
+			console.log(date2);
+			var start = Date.now();
+			console.log(start);
+			var date3 = new Date(Date.now());
+			console.log(date3);
+			
+			var date4 = new Date();
+			console.log(date4.getTime());
+			console.log(date4.getFullYear());
+			console.log(date4.getMonth()+1);
+			console.log(date4.getDate());
+			console.log(date4.getTime());
+			console.log(getCurrentDate());
+			function getCurrentDate(){
+				var currentDate = new Date();
+				var year = currentDate.getFullYear();
+				var month = currentDate.getMonth()+1;
+				month = month > 9 ? month : ("0"+month);
+				var days = currentDate.getDate();
+				
+				return year+"-"+month+'-'+days;
+				
+			}
+			
+			for(var i in date4) {
+				console.log(i);
+			}
+			
+		</script>
+	</body>
+</html>

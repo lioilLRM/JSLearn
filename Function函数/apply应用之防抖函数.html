@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	
+	<body>
+		
+		<button>click</button>
+		
+		<script type="text/javascript">
+			/*函数防抖*/
+			function debounce (fn, delay) {
+				delay = delay || 600
+				let timer
+				return function () {
+					let ctx = this
+					console.log(ctx);
+					let args = arguments //保存此处的arguments，因为setTimeout是全局的，arguments不是防抖函数需要的。
+					console.log(args);
+					if (timer) {
+						clearTimeout(timer)
+					}
+					timer = setTimeout(() => {
+						timer = null
+						fn.apply(ctx, args)
+					}, delay)
+				}
+			}
+			
+			let btn = document.getElementsByTagName('button')
+			console.log(btn);
+			btn[0].addEventListener('click',debounce(function() {
+				console.log('111111111');
+			}),1000)
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

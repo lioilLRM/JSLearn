@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			function debounce(fn, delay=600){
+				console.log(delay)
+				let timer = null;
+				return function(){
+					console.log(111111111111);
+					let ctr = this;
+					console.log(this);
+					let args = arguments;
+					if(timer) {
+						clearTimeout(timer)
+					}
+					timer = setTimeout(()=> {
+						timer = null;
+						fn.apply(ctr, args)
+					}, delay)
+				}
+			}
+		 let fn= debounce()
+			fn();
+			function throttle(fn, interval) {
+				var enterTime = 0; //触发的时间
+				var gapTime = interval || 300; //间隔时间，如果interval不传，则默认300ms
+				return function() {
+					var context = this;
+					var backTime = new Date(); //第一次函数return即触发的时间
+					if (backTime - enterTime > gapTime) {
+						fn.call(context, arguments);
+						enterTime = backTime; //赋值给第一次触发的时间，这样就保存了第二次触发的时间
+					}
+				};
+			}
+		</script>
+	</body>
+</html>

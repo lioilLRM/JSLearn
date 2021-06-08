@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id='list'>
+			
+		</ul>
+	</body>
+	<script type="text/javascript">
+		let list = document.getElementById('list')
+		// 创建文件片段，此时还没有插入到dom树中。
+		
+		let fragment = document.createDocumentFragment()
+		for(let i = 1;i<=10;i++) {
+			let li = document.createElement('li')
+			li.innerHTML = `li is ${i}`
+			fragment.appendChild(li)
+			// list.appendChild(li)
+		}
+		list.appendChild(fragment)
+	</script>
+</html>

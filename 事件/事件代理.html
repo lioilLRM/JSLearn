@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">
+			<a href="#">a1</a></br>
+			<a href="#">a2</a></br>
+			<a href="#">a3</a></br>
+			<a href="#">a4</a></br>
+			<a href="#">a5</a></br>
+			<button id="loadMore">加载更多</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function bindEvent(elem, type, fn) {
+			elem.addEventListener(type,fn)
+		}
+		
+		let div1 = document.getElementById('div1')
+		let loadMoreBtn = document.getElementById('loadMore')
+		bindEvent(div1,'click', e=> {
+			console.log(e);
+			e.preventDefault()
+			if(e.target.nodeName === 'A'){
+				console.log(e.target.innerHTML);
+			}
+		})
+		bindEvent(loadMoreBtn, 'click',e =>{
+			e.preventDefault()
+			console.log(e.target.innerHTML);
+			let aList = document.getElementsByTagName('a');
+			let aLength = aList.length;
+			let a = document.createElement('a');
+			let br = document.createElement('br')
+			console.log(aLength);
+			a.innerHTML = 'a'+(aLength+1);
+			a.setAttribute('href','#')
+			// div1.appendChild(a);
+			div1.insertBefore(a,loadMoreBtn)
+			div1.insertBefore(br,loadMoreBtn);
+		})
+		
+	</script>
+</html>

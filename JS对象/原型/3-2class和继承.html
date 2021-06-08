@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			class Person{
+				constructor(name) {
+					this.name = name
+				}
+				eat() {
+					console.log(`${this.name}, 要吃点什么呢？`);
+				}
+			}
+			
+			
+			class Student extends Person {
+				constructor(name, number) {
+						super(name)
+						this.number = number
+				}
+				sayHi() {
+					console.log(`你好，我叫${this.name},今年${this.number}`);
+				}
+			}
+			
+			class Teacher extends Person{
+				constructor(name, major) {
+					super(name)
+					this.major = major
+				}
+				
+				teach(){
+					console.log(`你好，我叫${this.name},我教${this.major}科目`);
+				}
+			}
+			
+			let tianbao = new Student('天宝', 12)
+			console.log(tianbao.name);
+			console.log(tianbao.number);
+			tianbao.sayHi();
+			tianbao.eat()
+			
+			let tianbaoTeacher = new Teacher('天宝老师', '语文')
+			console.log(tianbaoTeacher.name);
+			console.log(tianbaoTeacher.major);
+			tianbaoTeacher.teach()
+			tianbaoTeacher.eat()
+			
+			console.log(tianbao instanceof Student);
+			console.log(tianbao instanceof Teacher);
+			console.log(tianbao instanceof Person);
+			console.log(tianbao instanceof Object);
+			console.log(`[] instanceof of Array :${[] instanceof Array}`);
+			console.log(`[] instanceof of Object :${[] instanceof Object}`);
+		</script>
+	</body>
+</html>

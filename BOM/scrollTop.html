@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,
+		 minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		 <style>
+			 body {
+				 margin: 0;
+				 padding: 0;
+			 }
+			 header, footer{
+				 position: absolute;
+				 left: 0;
+				 height: 45px;
+				 /* width: 100%; */
+				 line-height: 45px;
+				 text-align: center;
+				 color: #FFFFFF;
+				 background-color: #1ABC9C;
+			 }
+			 header {
+				 top: 0;
+			 }
+			 footer {
+				 bottom: 0;
+			 }
+			 .content{
+				 position: absolute;
+				 top: 45px;
+				 bottom: 45px;
+				 left: 0;
+				 right: 0;
+				 overflow: auto;
+				 border: 1px solid red;
+			 }
+			 .content1{
+				 height: 200px;
+				 width: 100%;
+				 background-color: #8B008B;
+			 }
+			  .content2{
+				 height: 200px;
+				 width: 100%;
+				 background-color:red;
+			 }
+		 </style>
+	</head>
+	<body>
+		<!-- <header>头部</header> -->
+		<div class="content">		
+			<!--<h1>浏览器</h1>-->
+			<div class="content1">浏览器</div>
+			<div class="content2">浏览器</div>
+			<div class="content1">浏览器</div>
+			
+			<div class="content2">浏览器</div>
+			<div class="content1">浏览器</div>
+			<div class="content2">浏览器</div>
+		</div>
+		<!-- <footer>尾部</footer> -->
+		
+		
+		<script>
+			let $content = document.querySelector('.content');
+			$content.addEventListener('scroll', function(e) {
+				// console.log('offsetParent:', $content.offsetParent)
+				console.log('offsetTop：',$content.offsetTop);
+				console.log('offsetHeight：',$content.offsetHeight);
+				console.log('scrollTop:', $content.scrollTop);
+				console.log('scrollHeight:', $content.scrollHeight);
+				
+				console.log('clientHeight:', $content.clientHeight);
+				// console.log('clientHeight:', $content.clientHeight);
+				if($content.scrollHeight<=$content.scrollTop+$content.clientHeight+10) {
+					console.log('到底了');
+				}
+
+			})
+		</script>
+	</body>
+</html>

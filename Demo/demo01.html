@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function test() {
+				console.log(a)
+				console.log(foo())
+				var a = 1;
+
+				function foo() {
+					return 2
+				}
+			}
+			// debugger
+			test()
+			console.log('loction.host', location.host);
+
+		</script>
+		<script>
+			// document.write(`<script>`+`<\\script>`)
+			document.write('hello, work!')
+			// document.write('<script'+'console.log(1111)'+'></'+'script>')
+			document.write('<script> console.log(1111111111);	<\/script>');
+
+		</script>
+		<!-- <script>
+			document.write('<script src="//' + (location.host || 'localhost').split(':')[0] +
+				':35929/livereload.js?snipver=1"></' + 'script>')
+
+		</script> -->
+		<!-- <script>
+			document.addEventListener('LiveReloadDisconnect', function() {
+				setTimeout(function() {
+					window.location.reload();
+				}, 500);
+			})
+
+		</script> -->
+	</body>
+</html>

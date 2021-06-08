@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [1,2,3,4,5];
+			for(var i in arr) {
+					console.log(arr[i]);
+			}
+			var result = arr.every(function(item, index) {
+				console.log(item);
+				if(item>3) {
+					return true
+				}
+			})
+			console.log(result);
+			
+			var arr2 = [1,2,4,52,14];
+			var arrSortResult = arr2.sort(function(a,b){
+				// 从小到大排序
+				// return a-b
+				// 从大到小排序
+				return b-a
+			})
+			console.log(arrSortResult);
+			
+			var filterArr = arr2.filter(function(item,index){
+				if(item>2) {
+					return true
+				}
+			})
+			console.log(filterArr);
+			
+		</script>
+	</body>
+</html>

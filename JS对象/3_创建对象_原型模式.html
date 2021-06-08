@@ -1,0 +1,70 @@
+<script type="text/javascript">
+	/**构造函数创建对象中使用函数存在的问题：
+	 * 在全局作用域中定义的函数实际上只能被某个对象调用，
+	 * 这让全局作用域有点名不副实。而更让人无法接受的是：如果对象需要定义很多方
+		法，那么就要定义很多个全局函数，于是我们这个自定义的引用类型就丝毫没有封装性可言了
+	 */
+	// 原型模式
+	function Person() {
+		
+	}
+	
+	Person.prototype.name = '天宝'
+	Person.prototype.age = 18
+	Person.prototype.sayName = function() {
+		console.log(`我的名字:${this.name}`)
+	}
+	
+	var person1 = new Person()
+	person1.sayName()
+	var person2 = new Person()
+	person2.sayName()
+	
+	// console.log(`person1.say === person2.say? ${person1.say=== person2.say}`);
+	console.log(`Person.prototype:`,Person.prototype)
+	console.log(Person)
+	console.log(person1)
+	console.log(person2)
+	// console.log(Object.getPrototypeOf(person1));
+	
+ //hasOwnProperty() 方法可以检测一个属性是存在于实例中，还是存在于原型中。
+	// console.log(`person1.name的属性存在在实例中么？${person1.hasOwnProperty('name')}`);
+	// person1.name = 'new 天宝'
+	// console.log(`person1.name的属性存在在实例中么？${person1.hasOwnProperty('name')}`);
+	
+	// 原型与 in 操作符
+	// console.log(`===================================================================`);
+	// console.log(`原型与 in 操作符`);
+	// console.log(`name 是否 person1的属性？${'name' in person1}`);
+	// console.log(`name 是否 person2的属性？${'name' in person2}`);
+	
+	function hasPrototypeProperty(object,name) {
+		return !object.hasOwnProperty(name) && (name in object)
+	}
+	
+	console.log(`person1.name:${hasPrototypeProperty(person1, 'name')}`);
+	person1.name = 'new 天宝'
+	console.log(`person1.name:${hasPrototypeProperty(person1, 'name')}`);
+	
+	// var o = {
+	// 	toString: function () {
+	// 		return 'my Object'
+	// 	}
+	// }
+	// for (var prop in o) {
+	// 	console.log(prop);
+	// }
+	
+	
+	// Object.keys() 方法: 取得对象上所有可枚举的实例属性
+	// 接收一个对象作为参数，返回一个包含所有可枚举属性的字符串数组
+	
+	console.log(`Object.keys:${Object.keys(Person.prototype)}`); // Object.keys:name,age,sayName
+	console.log(`Object.keys:${Object.keys(person1)}`); // Object.keys:name
+	
+	//  Object.getOwnPropertyNames()方法:
+	// 得到所有实例属性，无论它是否可枚举
+	console.log(`Object.getOwnPropertyNames:${Object.getOwnPropertyNames(Person.prototype)}`)
+	
+	
+</script>
