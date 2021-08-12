@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [1,2,3,4,5]
+			for(var i = 0;i<arr.length;i++) {
+				console.log(i,arr[i]);
+			}
+			// 没有块级作用域，在i变量使用完成后仍然可以调用
+			console.log("i: ",i);
+			
+			// 模拟块级作用域
+			(function(){
+				for(var j = 0;j<arr.length;j++) {
+					console.log("j, arr[jj]: ",j, arr[j]);
+				}
+			})();
+			console.log("j: ",j);
+			
+		</script>
+	</body>
+</html>

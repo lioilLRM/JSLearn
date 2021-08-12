@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var name = 'window'
+			
+			var p = {
+				name: 'pName',
+				getName:function(){
+					var that = this;
+					return function(){
+						return that.name
+					}
+				}
+			}
+			
+			// var getName = p.getName()  // this-》window
+			var getName = p.getName() 
+			// var _name = getName.call(p) //  // this-》p
+			var _name = getName()
+			console.log("_name: ",_name);
+			
+		</script>
+	</body>
+</html>

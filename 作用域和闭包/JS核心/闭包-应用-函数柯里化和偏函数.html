@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function generateName(prefix, type, name) {
+				return prefix+type+name
+			}
+			
+			function generateNameV2(prefix) {
+				return function(type) {
+					return function(name) {
+						return prefix+type+name
+					}
+				}
+			}
+			
+			var bigSellSiteName = generateNameV2('大卖网')
+			var bisSellBabyName = bigSellSiteName('母婴')
+			
+			var itemFullName = generateNameV2('买菜网')('生鲜')('鲈鱼')
+			console.log("itemFullName: ",itemFullName);
+		
+			console.log("bisSellBabyName: ",bisSellBabyName('奶瓶'));
+			
+			function generateNameV3(prefix) {
+				return function(type, name) {
+					return `${prefix}-${type}-${name}`
+				}
+			}
+			
+			let res = generateNameV3('买菜网')('蔬菜','西红柿')
+			console.log("res: ",res);
+			
+		</script>
+	</body>
+</html>

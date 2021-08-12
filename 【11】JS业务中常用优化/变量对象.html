@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			function test(){
+				console.log("a: ",a);
+				console.log(foo());
+				var a = 1;
+				function foo(){
+					return 2
+				}
+			}
+			
+			// test()
+			function foo(b){
+			var a=20+b
+			function bar(){
+				a=30;
+				console.log(a)
+			} 
+				bar()
+			}
+			var arg = 10;
+			foo(arg)
+			
+		</script>
+	</body>
+</html>

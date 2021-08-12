@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = 20
+
+			function test() {
+				var b = a + 10
+				console.log('b: ', b)
+
+				function innerTest() {
+					var c = 10
+					return b + c
+				}
+				return innerTest()
+			}
+			test()
+
+		</script>
+	</body>
+</html>

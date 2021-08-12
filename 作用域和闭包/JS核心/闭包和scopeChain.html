@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function foo(){
+				var x = 20;
+				var y = 19;
+				function child(){
+					var m = 5;
+					return function add(){
+						var z = 'this is add'
+						return x+y
+					}
+				}
+				return child()
+			}
+			
+			let a = foo()()
+			console.log("a : ",a );
+			
+		</script>
+	</body>
+</html>

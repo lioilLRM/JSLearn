@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+	
+		// 2021年8月8日 00点09分
+			// var person = (function(){
+			// 	var name = 'Json'
+			// 	var age = 20;
+			// 	console.log("init name: ",name);
+			// 	return {
+			// 		getName: function(){
+			// 			return name
+			// 		},
+			// 		getAge: function(){
+			// 			return age
+			// 		},
+			// 		setName: function(name){
+			// 			this.name = name
+			// 		},
+			// 		setAge: function(age) {
+			// 			this.age = age
+			// 		}
+			// 	}
+			// })();
+			
+				
+				// let name = person.getName()
+				// person.setName('Java')
+				// let bname = person.getName()
+				// console.log(name, bname);
+				
+				
+				/**
+				 * demo2: 由于上面的存在不足的地方是没有调用person,person的实例已经返回了。
+				 * 
+				 */
+				var dog = (function(){
+					var instance = null
+					var name = 'duoge'
+					var age = 12
+					console.log("name: ",name);
+					
+					function init(){
+						
+						return {
+							getName: function(){
+								return name
+							},
+							getAge: function(){
+								return age
+							}
+						}	
+						
+					}
+					
+					return {
+						getInstance: function(){
+							if(!instance) {
+								instance = init()
+							}
+							return instance
+						}
+					}
+				})();
+				
+		</script>
+	</body>
+</html>

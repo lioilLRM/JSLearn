@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// function Dog(name){
+			// 	this.name = name
+			// 	var b = 12
+			// }
+			
+			// Dog.prototype.showName = function(){
+			// 	console.log("this.name: ",this.name);
+			// }
+			// {
+			// 	let a = 11;
+			// }
+			
+			// var dog = new Dog('哈斯奇')
+			// // dog.name = '哈韩'
+			// console.log("name: ",name, a);
+			// dog.showName()
+			
+			// 利用闭包生成IIFE，返回 User 类
+			const User = (function(){
+				let _pwd; // 定义私有变量_password
+
+				
+				class User {
+				
+					constructor(username, pwd) {
+						this.username = username
+						_pwd = pwd //  // 初始化私有变量_password
+					}
+					
+					login(){
+						console.log("username, pwd: ", this.username, _pwd);
+					}
+					
+				}
+				return User
+				
+			})();
+			
+			
+			
+			let user = new User('xiaoAi', '123455')
+			console.log("user.pwd: ",user.pwd);
+			console.log("user.pwd: ",user._pwd);
+			console.log("user.pwd: ",user.username);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// function fn(){
+			// 	'use strict'
+			// 	console.log(this);
+			// }
+			
+			// fn()
+			
+			// window.fn()
+			
+			// var obj = {
+			// 	a: 40
+			// }
+			
+			// function fn1(){
+			// 	console.log("fn this: ",this);
+				
+				
+			// 	function foo(){ console.log('fooï¼,this.a);}
+			// 	foo()
+				
+			// }
+			
+			// fn1.call(obj)
+			// fn1()
+			
+			// 'use strict'
+			// var a = 20;
+			// function foo(){
+			// 	var a = 1;
+			// 	var obj = {a: 10, c: this.a + 20}
+			// 	console.log("this: ",this);
+			// 	return obj.c
+			// }
+			
+			// console.log("window.foor(): ",window.foo());
+			// console.log("foo(): ",foo());
+			
+			// demo4
+			function test1(){
+				console.log("this.a: ",this.a);
+			}
+			
+			function test2(fn){
+				fn()
+			}
+			
+			var a = 20
+			var obj = {
+				a: 10,
+				getTest1: test1,
+				getTest2: test2
+			}
+			
+			test2(obj.getTest1)
+			obj.getTest2(obj.getTest1)
+			
+			var n = 'window'
+			var object = {
+				n: 'object',
+				getN: function(){
+					return function(){
+						return this.n
+					}
+				}
+			}
+			
+			console.log(object.getN()());
+			
+			
+		</script>
+	</body>
+</html>
