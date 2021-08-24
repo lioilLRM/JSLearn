@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function delay(){
+				console.log('5000ms 后执行该函数');
+			}
+			
+			// let timer = setTimeout(()=> {
+			// 	delay()
+			// }, 5000)
+			
+			let timer = setTimeout(delay, 5000)
+			
+			function add(x) {
+				let y = 20;
+				return function(){
+					return x+y
+				}
+			}
+			
+			let _add = add(10)
+			// _add()
+			console.log(_add());
+			
+		</script>
+	</body>
+</html>

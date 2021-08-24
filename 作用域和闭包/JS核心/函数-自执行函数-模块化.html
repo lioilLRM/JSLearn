@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		let a = 10;
+			(function(){
+				var states = {}
+				function type(elem) {
+					if(elem == null) {
+						return elem+ ''
+					}
+					return toString.call(elem).replace(/[\[\]]/g, '').split(' ')[1].toLowerCase()
+				}
+				/**
+				 * @param {Object} name属性名
+				 * @description 通过属性名获取保存在steates中的值
+				 */
+				function get(name) {
+					return states[name]?states[name]: ''
+				}
+				
+				
+				function getStates(){
+					return states
+				}
+				
+				function set(options, target) {
+					let keys = Object.keys(options)
+					var o = target?target: states
+					keys.map(function(item) {
+						if(typeof o[item] == 'undefined') {
+							o[item] = options[item]
+						} else {
+							type(o[item]) == 'object'?set(options[item], o[item]):o[item] = options[item]
+						}
+						return item
+					})
+				}
+				
+				window.get = get;
+				window.set = set;
+				window.getStates = getStates
+				
+				
+			})();
+			
+			set({a: 20})
+			let res = getStates()
+			console.log(res);
+			
+		</script>
+	</body>
+</html>
