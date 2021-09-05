@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			(function(){
+				console.log("getLogin: ");
+				var getLogin = function(){
+					var a = parseInt(Math.random()*10).toFixed(0)
+					if(a%2 === 0) {
+						return {login: false}
+					}
+					
+					return {
+						login: true,
+						userInfo: {
+							nickName: 'jake',
+							vip: 11,
+							userId: '6666'
+						}
+					}
+				}
+				
+				var withLogin = function(baseFn) {
+					var loginInfo = getLogin()
+					return baseFn.bind(null, loginInfo)
+				}
+				
+				window.withLogin = withLogin
+				
+			})();
+			
+			(function(){
+				console.log("renderIndex: ");
+				var withLogin = window.withLogin;
+				var renderIndex = function(loginInfo) {
+					console.log('这是首页');
+					if(loginInfo.login) {
+						console.log('这是已经登陆的页面');
+					} else {
+						console.log('这是未登陆的页面');
+					}
+				}
+				
+				window.renderIndex = withLogin(renderIndex)
+				console.log("执行了renderIndex: ");
+			})();
+			
+			(function(){
+				console.log("renderPersonal: ");
+				var withLogin = window.withLogin;
+				var renderPersonal = function(loginInfo) {
+					console.log('这是我的Personal页面');
+					if(loginInfo.login) {
+						console.log('这是Personal已经登陆的页面');
+					} else {
+						console.log('这是Personal未登陆的页面');
+					}
+				}
+				
+				window.renderPersonal = withLogin(renderPersonal)
+				console.log("执行了renderPersonal: ");
+			})();
+			
+			
+			(function(){
+				console.log("window: ",window);
+				window.renderIndex();
+				window.renderPersonal();
+			})();
+			
+			
+			
+		</script>
+	</body>
+</html>

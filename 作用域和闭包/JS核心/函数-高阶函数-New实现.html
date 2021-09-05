@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+				
+			function Person(name, age) {
+				console.log("arguments: ",arguments);
+				this.name = name;
+				this.age = age
+			}
+			
+			Person.prototype.getName = function() {
+				return this.name
+			}
+			
+			// var p1 = new Person('Jake', 18)
+			// p1.getName()
+			// console.log("p1.getName(): ",p1.getName());
+			
+			function New(func){
+				let res = {}
+				if(func.prototype !== null) {
+					res.__proto__ = func.prototype
+				}
+				// call方法里面的除了第一个的剩余参数都是slice函数的参数。
+				// Array.prototype.slice.call(arguments)能将具有length属性的对象转成数组
+				let args = Array.prototype.slice.call(arguments, 0, 2)
+				console.log("args: ",args);
+				// let args2 = Array.prototype.slice(arguments)
+				
+				var ret = func.apply(res, Array.prototype.slice.call(arguments, 1)) // 执行了Person函数。但是没有返回结果。
+				console.log("ret: ",ret);
+				if((typeof ret === 'object' || typeof ret === 'function') && ret !== null) {
+					return ret
+				}
+				
+				return res
+				
+				
+			}
+			
+			var p1 = New(Person, 'Jeke', 18)
+			p1.getName()
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

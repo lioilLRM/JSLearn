@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		/**
+		 * @param {Object} func
+		 * @param {Object} arity 标记剩余参数个数
+		 * @param {Object} args 用来收集参数
+		 */
+		
+			function createCurry(func, arity, args){
+				var arity = arity || func.length
+				var args = args || []
+				var wrapper = function(){
+					var _args = [].slice.call(arguments);
+					[].push.apply(args, _args);
+					
+					if(_args.length < arity) {
+						arity -= _args.length;
+						return createCurry(func, arity, args);
+					}
+					return func.apply(func, args)
+					
+				}
+				return wrapper;
+			}
+			
+			function _add(a,b,c) {
+				return function(b) {
+					return function(c) {
+						return a+b+c
+					}
+				}
+			}
+			_add(1)(2)(3);
+			
+			function check(reg, targetString) {
+				return reg.test(targetString)
+			}
+			
+			var _check = createCurry(check)
+			var checkPhone = _check(/^1[23456789]\d{9}$/)
+			console.log("checkPhone(''): ",checkPhone('15723703546'));
+			
+			console.log(check(/^1[23456789]\d{9}$/, '15723703546'));
+			
+			
+		</script>
+	</body>
+</html>
