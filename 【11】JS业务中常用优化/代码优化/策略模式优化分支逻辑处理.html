@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			const TYPE = {
+				JUICE: 'juice',
+				SALAD: 'salad',
+				JAM: 'jam'
+			}
+			
+			const strategies = {
+				[TYPE.JUICE](fruits) {
+					console.log('榨果汁中...');
+					return '果汁'
+				},
+				[TYPE.SALAD](fruits) {
+					console.log('榨沙拉中...');
+					return '沙拉'
+				},
+				[TYPE.JAM](fruits) {
+					console.log('榨果酱中...');
+					return '果酱'
+				}
+			}
+			let fruits = ['苹果', '香蕉']
+			
+			function enjoy({type = TYPE.JUICE, fruits}) {
+				if(!fruits || !fruits.length){
+					console.log('请先采购水果');
+					return
+				}
+				return strategies[type](fruits)
+				
+			}
+			enjoy({type: 'jam', fruits})
+			
+			function getStatusColor (status) {
+			  if (status === 'success') {
+			    return 'green'
+			  }
+			  if (status === 'warning') {
+			    return 'yellow'
+			  }
+			  if (status === 'info') {
+			    return 'blue'
+			  }
+			  if (status === 'error') {
+			    return 'red'
+			  }
+			}
+			
+			// const statusMap = 
+			
+			function getStatusColorV2(status) {
+			  return {
+			    success: 'green',
+			    warning: 'yellow',
+			    info: 'blue',
+			    error: 'red'
+			  }[status]
+			}
+			console.log(getStatusColorV2('success'));
+			
+			
+		</script>
+	</body>
+</html>

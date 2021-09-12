@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+      function pick(color) {
+        // 根据颜色选择水果
+        if (color === 'red') {
+          return ['apple', 'strawberry']
+        } else if (color === 'yellow') {
+          return ['banana', 'pineapple']
+        } else if (color === 'purple') {
+          return ['grape', 'plum']
+        } else {
+          return []
+        }
+      }
+      // switch case 更适合于具体枚举值的分支判断
+      function pickV2(color) {
+        switch(color) {
+          case 'red': return ['apple', 'strawberry']
+          case 'yellow': return ['banana', 'pineapple']
+          case 'purple': return ['grape', 'plum']
+          default: return []
+        }
+      }
+      // switch case 优化之后的代码看上去格式整齐，思路很清晰，但还是很冗长。继续优化：
+
+      // 借助 Object 的 { key: value } 结构，我们可以在 Object 中枚举所有的情况，然后将 key 作为索引，直接通过 Object.key 或者 Object[key] 来获取内容
+      const fruitColorsObj = {
+        red: ['apple', 'strawberry'],
+        yellow: ['banana', 'pineapple'],
+        purple: ['grape', 'plum'],
+      };
+
+      function pickV3(color) {
+        return fruitColorsObj[color] || []
+      }
+
+      const fruitColorsMap = new Map()
+      .set('red', ['apple', 'strawberry'])
+      .set('yellow', ['banana', 'pineapple'])
+      .set('purple', ['grape', 'plum']);
+
+      function pickV4(color) {
+        return fruitColorsMap.get(color) || [];
+      }
+
+
+      console.log(pickV4('red'));
+      
+
+
+    </script>
+  </body>
+</html>
