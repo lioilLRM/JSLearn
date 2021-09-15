@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<body>
-		<script type="text/javascript">
+// module.exports = {Province, Producer, sampleProvinceData}
+export {Province, Producer, sampleProvinceData}
 			
 			
-			
-			class Province {
+class Province {
 				constructor(doc) {
 				    this._name = doc.name;
-						this._productor = []
+						this._producers = []
 						this._totalProduction = 0;
 						this._demand = doc.demand;
 						this._price = doc.price;
-						doc.productors.forEach(p => this.addProducer(new Producer(this, p)))
+						doc.producers.forEach(p => this.addProducer(new Producer(this, p)))
 				}
 				addProducer(arg) {
-					this._productor.push(arg)
+					this._producers.push(arg)
 					this._totalProduction +=arg.production
 				}
 				
@@ -60,7 +53,7 @@
 				
 			}
 			
-			class Producer{
+class Producer{
 				constructor(aProvince, data) {
 				    this._province = aProvince;
 					　this._cost = data.cost;
@@ -80,7 +73,7 @@
 				
 			}
 			
-			function sampleProvinceData() {
+function sampleProvinceData() {
 			　return {
 			　　name: "亚洲",
 			　　producers: [
@@ -93,6 +86,6 @@
 			　};
 			}
 			
-		</script>
-	</body>
-</html>
+			// export default {
+			// 	Province, Producer, sampleProvinceData
+			// }
