@@ -1,5 +1,7 @@
 
-const { assert } = require('chai')
+// const { assert } = require('chai')
+import { assert } from 'chai'
+
 export { Book }
 // 添加参数
 class Book {

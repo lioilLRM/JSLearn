@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { circumference } from '../../../refacting2/chapter06/01-extract-function/changeFunctionDeclaration.js'
+import { circumference } from '../../../refacting2/chapter06/changeFunctionDeclaration.js'
 
 describe('circumference', function() {
   it('should calculate circumfrence given a radius', function() {

@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { afterPrintOwing } from '../../../refacting2/chapter06/01-extract-function/example.js'
+import { afterPrintOwing } from '../../../refacting2/chapter06/example.js'
 
 const Clock = {
   today: {
