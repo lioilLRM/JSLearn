@@ -37,7 +37,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/refacting2/chapter06/introduceParameterObject.js"
+      "program": "${workspaceFolder}/Array/timeSerise.js"
     }
   ]
 }
