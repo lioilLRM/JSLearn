@@ -1,9 +1,10 @@
 const temp = 'git demo'
 
-<<<<<<< HEAD
 const gitTest = 'temp'
 
 const git = 'git reset HEAD^'
-=======
 const master = 'master bug fix'
->>>>>>> master
+
+const masterFix = 'matster bug fix2'
+const masterFix3 = 'matster bug fix3'
+
