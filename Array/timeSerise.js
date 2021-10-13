@@ -43,6 +43,8 @@ const bills = [
 
 // 分组整合
 function createTimeSeries(timeSeriesArray) {
+  const caches = []
+
   const timeSeriesObj = {
     array: timeSeriesArray.map(item => {
       item.moment = moment(item.timestamp)
@@ -52,23 +54,22 @@ function createTimeSeries(timeSeriesArray) {
     }),
 
     groupByFormat(formatPattern) {
-      return _.groupBy(timeSeriesObj.array, item => {
+      // return _.groupBy(timeSeriesObj.array, item => {
+      //   return item.moment.format(formatPattern)
+      // })
+      if (caches[formatPattern]) {
+        return caches[formatPattern]
+      }
+
+      const result = _.groupBy(timeSeriesObj.array, item => {
         return item.moment.format(formatPattern)
       })
+
+      caches[formatPattern] = result
+
+      return result
     },
 
-    dates() {
-      return timeSeriesObj.groupByDate().dates()
-    },
-    weeks() {
-      return timeSeriesObj.groupByWeek().weeks()
-    },
-    months() {
-      return timeSeriesObj.groupByMonth().months()
-    },
-    years() {
-      return timeSeriesObj.groupByYear().years()
-    },
     groupByDate() {
       const groupedResult = {
         map: timeSeriesObj.groupByFormat('YYYY-MM-DD'),
@@ -163,6 +164,33 @@ function createTimeSeries(timeSeriesArray) {
         }
       }
       return groupedResult
+    },
+    dates() {
+      return timeSeriesObj.groupByDate().dates()
+    },
+    weeks() {
+      return timeSeriesObj.groupByWeek().weeks()
+    },
+    months() {
+      return timeSeriesObj.groupByMonth().months()
+    },
+    years() {
+      return timeSeriesObj.groupByYear().years()
+    },
+    sum(unit, point) {
+      switch (unit) {
+        case 'date':
+          return timeSeriesObj.groupByDate().sum(point)
+
+        case 'week':
+          return timeSeriesObj.groupByWeek().sum(point)
+
+        case 'month':
+          return timeSeriesObj.groupByMonth().sum(point)
+
+        case 'year':
+          return timeSeriesObj.groupByYear().sum(point)
+      }
     }
 
   }
@@ -183,3 +211,10 @@ const timeSeries = createTimeSeries(bills)
 
 console.log(timeSeries.months())
 
+function add(a, b) {
+  return a + b
+}
+
+export {
+  add
+}

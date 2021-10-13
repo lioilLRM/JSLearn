@@ -37,7 +37,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/Array/timeSerise.js"
+      "program": "${file}"
     }
   ]
 }
