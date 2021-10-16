@@ -8,3 +8,4 @@ const master = 'master bug fix'
 const masterFix = 'matster bug fix2'
 const masterFix3 = 'matster bug fix3'
 
+const gitTempSave = 'git temp save 3'
