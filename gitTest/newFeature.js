@@ -6,4 +6,3 @@ const newFeature3 = 'git 分支 添加的第三个功能；开发中，未完成
 const newFeature3 = 'git 分支 添加的第三个功能；开发完成，commit'
 
 const newFeature4 = 'git 分支，第四个功能开发中，commit 一次'
-const newFeature4End = 'git 分支，第四个功能开发完成，commit 一次'
