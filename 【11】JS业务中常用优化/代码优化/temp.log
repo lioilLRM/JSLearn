@@ -1,0 +1,287 @@
+{
+  "dataTitle": "orderNo",
+  "formField": [
+    {
+      "icon": "card",
+      "name": "卡片分组",
+      "type": "card",
+      "label": "基础信息",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "fieldId": "input_1592637908122",
+      "noListed": true,
+      "fieldType": 0
+    },
+    {
+      "type": "code-number",
+      "label": "订单编码",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "fieldId": "orderNo",
+      "codeType": "customCode",
+      "required": true,
+      "fieldType": 0,
+      "placeholder": "请输入订单编码"
+    },
+    {
+      "type": "relation",
+      "label": "客户信息",
+      "table": "custom_form_contactcompany",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "params": {
+        "companyAttribute": "客户"
+      },
+      "fieldId": "customId",
+      "sysFlag": true,
+      "required": true,
+      "eventname": "saleorder_contactcompany",
+      "fieldType": 0
+    },
+    {
+      "type": "relation",
+      "label": "业务人员",
+      "table": "custom_form_user",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "fieldId": "salesId",
+      "sysFlag": true,
+      "eventname": "saleorder_user",
+      "fieldType": 0,
+      "paramsFields": "department"
+    },
+    {
+      "tip": "（系统字段-业务部门）",
+      "type": "tree",
+      "label": "业务部门",
+      "table": "department",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "fieldId": "department",
+      "fieldType": 0,
+      "placeholder": "请选择业务部门"
+    },
+    {
+      "type": "select",
+      "label": "订单状态",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "fieldId": "status",
+      "options": [
+        {
+          "itemName": "未开始",
+          "itemValue": "0"
+        },
+        {
+          "itemName": "执行中",
+          "itemValue": "2"
+        },
+        {
+          "itemName": "已完成",
+          "itemValue": "1"
+        }
+      ],
+      "required": true,
+      "fieldType": 0,
+      "defaultValue": "0",
+      "hideCondition": "onlyList"
+    },
+    {
+      "tip": "(系统字段-创建人员)",
+      "icon": "timeIcon",
+      "name": "创建人员",
+      "type": "relation",
+      "label": "创建人员",
+      "table": "custom_form_user",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "fieldId": "creator",
+      "fieldType": 2,
+      "validates": [
+        "required"
+      ],
+      "hideCondition": "isDetail"
+    },
+    {
+      "tip": "(系统字段-创建时间)",
+      "icon": "timeIcon",
+      "name": "创建时间",
+      "type": "datetime",
+      "label": "创建时间",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "fieldId": "createTime",
+      "fieldType": 2,
+      "validates": [
+        "required"
+      ],
+      "hideCondition": "isDetail"
+    },
+    {
+      "type": "table",
+      "label": "订单信息",
+      "noSeq": true,
+      "fieldId": "orderItemList",
+      "sysFlag": true,
+      "children": [
+        {
+          "type": "input",
+          "label": "行号",
+          "width": "80px",
+          "fieldId": "hanghao",
+          "required": true,
+          "fieldType": 0,
+          "inputtype": "number"
+        },
+        {
+          "icon": true,
+          "type": "select",
+          "label": "行状态",
+          "fields": [
+            {
+              "type": "input",
+              "title": "标题",
+              "value": "label"
+            }
+          ],
+          "fieldId": "status",
+          "options": [
+            {
+              "itemName": "未开始",
+              "itemValue": "0"
+            },
+            {
+              "itemName": "执行中",
+              "itemValue": "2"
+            },
+            {
+              "itemName": "已完成",
+              "itemValue": "1"
+            }
+          ],
+          "fieldType": 0,
+          "defaultValue": "0",
+          "hideCondition": "isDetail"
+        },
+        {
+          "type": "relation-production",
+          "label": "选择产品",
+          "table": "custom_form_inventoryfile",
+          "width": "400px",
+          "fieldId": "materialId",
+          "required": true,
+          "eventname": "orderInfo_inventoryfile",
+          "fieldType": 0
+        },
+        {
+          "type": "input-prefix",
+          "label": "订单数量",
+          "width": "190px",
+          "fieldId": "needCount",
+          "required": true,
+          "fieldType": 0,
+          "inputtype": "number"
+        },
+        {
+          "name": "交付日期",
+          "type": "production-cycle",
+          "label": "交付日期",
+          "width": "150px",
+          "format": "yyyy-MM-dd",
+          "fieldId": "needTime",
+          "required": true,
+          "fieldType": 0
+        },
+        {
+          "type": "input-prefix",
+          "label": "已发数量",
+          "width": "120px",
+          "fieldId": "sentCount",
+          "required": true,
+          "fieldType": 0,
+          "hideCondition": "isDetail"
+        },
+        {
+          "type": "input",
+          "label": "发货进度",
+          "fieldId": "sentPercent",
+          "required": true,
+          "fieldType": 0,
+          "hideCondition": "isDetail"
+        },
+        {
+          "type": "input",
+          "label": "备注信息",
+          "fieldId": "remarks",
+          "fieldType": 0
+        },
+        {
+          "type": "singlefile",
+          "label": "附件信息",
+          "fieldId": "salesAccessories",
+          "fieldType": 0
+        },
+        {
+          "type": "input-popover",
+          "label": "助记码",
+          "table": "customCode",
+          "pprops": {
+            "value": "inventoryIdNames",
+            "customId": "",
+            "paramKey": "inventoryId",
+            "searchValue": "customCode"
+          },
+          "fieldId": "customCode",
+          "disabled": true,
+          "eventname": "orderInfo_customCode",
+          "fieldType": 0
+        }
+      ],
+      "noListed": true,
+      "required": true,
+      "fieldType": 0
+    }
+  ],
+  "showFields": "orderNo,customId,status,salesId,department,creator,createTime",
+  "queryCriteria": "orderNo,customId,status,salesId,department,creator,createTime"
+}

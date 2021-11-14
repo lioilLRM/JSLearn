@@ -98,3 +98,4 @@ for(let i = 0; i < stockList.length; i++) {
 
 }
 console.log(arr)
+

@@ -1,0 +1,22 @@
+{
+    "submitDetails": [
+        {
+            "materialLabel": "20210429000085", //被转移标签的标签编码
+            "storeNumber":500  //转移数量，若没有新增标签，该参数不传
+        }
+    ],
+    "addMaterialLabels": [ //生成标签的数组，若没有生成标签，该参数为空数组
+        {
+            "materialLabel": "20210429000088", //生成标签的标签编码
+            "storeNumber":200, //数量
+            "labelType":1 //物料标签类型 1 系统自动生成 2 关联容器 3 关联外部条码
+        },
+        {
+            "materialLabel": "20210429000099",
+            "storeNumber":300,
+            "labelType":1
+        }
+    ],
+    "resourceId": "6627", //位置id
+    "resourceType": 1  //位置类型
+}

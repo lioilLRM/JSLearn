@@ -1,0 +1,92 @@
+
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+  
+  
+  图片地址：<input type="text" size="100" id="fileInput" name="fileInput" value="https://www.yeeach.com/bitcoinjpg"/>
+  <br><br>
+  <button onclick="getImageFromServer()">获取图片信息</button>
+  <br><br>
+  <div id="imgType"></div>
+  <div id="imgExt"></div>
+  <div id="imgSize"></div>
+  <br><br>
+  
+  
+  
+  <script>
+  
+      function getImageFromServer(){
+      var path=document.getElementById("fileInput").value;
+          var xhr = new XMLHttpRequest();
+          xhr.path = path;
+          xhr.open("GET",path,true);
+          xhr.responseType = "arraybuffer";
+          xhr.onload = function(e){
+  
+              if(xhr.status == 200){
+                  var info = getImageType(xhr.response);
+                  document.getElementById("imgType").innerHTML = "图片MIME类型: " + info.mime;
+                  document.getElementById("imgExt").innerHTML = "图片MIME扩展名: " + info.ext;				
+                  document.getElementById("imgSize").innerHTML = "图片大小: " + xhr.response.byteLength;
+              }
+              else{
+                  console.log("Problem retrieving image " + JSON.stringify(e))
+              }
+          }
+          xhr.send();
+      }
+  
+  
+    function getImageType(arrayBuffer) {
+      if (!arrayBuffer.byteLength)
+        return {
+          mime: null,
+          ext: null,
+        };
+  
+      var ext = '',
+        mime = '',
+        dv = new DataView(arrayBuffer, 0, 5),
+        nume1 = dv.getUint8(0, true),
+        nume2 = dv.getUint8(1, true),
+        hex = nume1.toString(16) + nume2.toString(16);
+  
+      switch (hex) {
+        case '8950':
+          ext = 'png';
+          mime = 'image/png';
+          break;
+        case '4749':
+          ext = 'gif';
+          mime = 'image/gif';
+          break;
+        case 'ffd8':
+          ext = 'jpg';
+          mime = 'image/jpeg';
+          break;
+        case '424d':
+          ext = 'bmp';
+          mime = 'image/bmp';
+          break;
+        case '5249':
+          ext = 'webp';
+          mime = 'image/webp';
+          break;
+        default:
+          ext = null;
+          mime = null;
+          break;
+      }
+  
+      return {
+        mime: mime,
+        ext: ext,
+      };
+    }	
+  </script>
+  </body>
+  </html>

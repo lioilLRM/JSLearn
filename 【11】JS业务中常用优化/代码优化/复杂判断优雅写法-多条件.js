@@ -164,3 +164,15 @@ function sendLog(log) {
 function jumpTo(page) {
   console.log('to page：', page)
 }
+
+const actionsTest = new Map([
+  ['guest_1', () => {
+    console.log(`guest_1`)
+  }]
+])
+
+const onActionClickTest = (type, status) => {
+  const action = actionsTest.get(`${type}_${status}`)
+  action()
+}
+onActionClickTest('guest', 1)

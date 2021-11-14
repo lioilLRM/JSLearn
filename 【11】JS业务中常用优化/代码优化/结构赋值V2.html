@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script src="">
+  // => 先给份数据当作请求接口返回的数据
+const res = {
+  data: {
+    name: '前端自学驿站',
+    weChat: 'itBeige',
+    public: '前端自学驿站',
+    slogan: '驿路向北 白折不回',
+    obj1: { id: '01', a: 1, b: 2, children: [{ a: 'c1' }, { b: 'c2' }] },
+    journalizing: [
+      { id: '01', type: '1' },
+      { id: '02', type: '2' },
+      { id: '03', type: '3' },
+      { id: '03', type: '1' }
+    ]
+  }
+}
+
+// const { obj1: { id, a, b, children: c }, obj1: obj2 } = res.data
+// console.log(`obj1`, obj1, obj2)
+const {
+  obj1:{id,a}
+} = res.data
+console.log(obj1)
+</script>
+</html>
+

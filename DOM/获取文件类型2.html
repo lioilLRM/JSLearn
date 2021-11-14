@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+<script src="">
+  // 创建、上传、下载文件，处理数据、文件格式转换
+  // ArrayBuffer，二进制数组
+  function getFileType() {
+  var oReq = new XMLHttpRequest();
+  console.log(`oReq`, oReq)
+  oReq.open("GET", "../imgs/heart.jpg", true);
+  oReq.responseType = "arraybuffer";
+  
+  oReq.onload = function (oEvent) {
+    console.log(`onload`)
+    console.log(`oReq.response`, oReq.response)
+    var arrayBuffer = oReq.response; // 注意:不是oReq.responseText
+    if (arrayBuffer) {
+      // var byteArray = new Uint8Array(arrayBuffer);
+      // for (var i = 0; i < byteArray.byteLength; i++) {
+      //   // 对数组中的每个字节进行操作
+      // }
+      let imgType = getImageType(arrayBuffer)
+      console.log(`imgType`, imgType)
+    }
+  };
+  
+  oReq.send(null);
+  }
+  
+  getFileType()
+  function getImageType(arrayBuffer) {
+      if (!arrayBuffer.byteLength)
+        return {
+          mime: null,
+          ext: null,
+        };
+  
+      var ext = '',
+        mime = '',
+        dv = new DataView(arrayBuffer, 0, 5),
+        // // 在偏移量为 0 处获取 8 位数字
+        nume1 = dv.getUint8(0, true),
+        // 在偏移量为 1 处获取 8 位数字
+        nume2 = dv.getUint8(1, true),
+        hex = nume1.toString(16) + nume2.toString(16);
+        console.log(`nume1, nume2, hex`, nume1, nume2, hex, nume1.toString(16), nume2.toString(16))
+      switch (hex) {
+        case '8950':
+          ext = 'png';
+          mime = 'image/png';
+          break;
+        case '4749':
+          ext = 'gif';
+          mime = 'image/gif';
+          break;
+        case 'ffd8':
+          ext = 'jpg';
+          mime = 'image/jpeg';
+          break;
+        case '424d':
+          ext = 'bmp';
+          mime = 'image/bmp';
+          break;
+        case '5249':
+          ext = 'webp';
+          mime = 'image/webp';
+          break;
+        default:
+          ext = null;
+          mime = null;
+          break;
+      }
+  
+      return {
+        mime: mime,
+        ext: ext,
+      };
+    }	
+  // let buffer = new ArrayBuffer(1)
+  // console.log(`buffer`, buffer)
+  
+  
+    </script>
+</html>
