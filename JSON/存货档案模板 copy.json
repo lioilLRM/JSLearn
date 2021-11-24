@@ -1,0 +1,101 @@
+{
+  "queryCriteria": "locationCode,locationName,modeTypes",
+  "dataTitle": "locationCode",
+  "showFields": "id,rfId,locationCode,locationName,modeTypes",
+  "formField": [
+    {
+      "label": "数据标题",
+      "hideCondition": "onlyList",
+      "type": "dataTitle",
+      "fieldId": "id"
+    },
+    {
+      "icon": "card",
+      "name": "卡片分组",
+      "label": "基础信息",
+      "type": "card",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "noListed": true,
+      "fieldType": 0,
+      "fieldId": "input_1592637908122"
+    },
+    {
+      "label": "电子标签",
+      "hideCondition": "listDetail",
+      "type": "code",
+      "fieldId": "rfId"
+    },
+    {
+      "validates": [
+        "required",
+        "norepeat"
+      ],
+      "icon": "singleTxt",
+      "label": "库位编码",
+      "type": "input",
+      "required": true,
+      "name": "单行文本",
+      "placeholder": "请输入库位编码",
+      "hideCondition": "",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "norepeat": false,
+      "fieldType": 0,
+      "fieldId": "locationCode",
+      "validate": "{\"required\":true,\"norepeat\":false}"
+    },
+    {
+      "validates": [
+        "required",
+        "norepeat"
+      ],
+      "icon": "singleTxt",
+      "label": "库位名称",
+      "type": "input",
+      "required": true,
+      "name": "单行文本",
+      "placeholder": "请输入库位名称",
+      "hideCondition": "",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "norepeat": false,
+      "fieldType": 0,
+      "fieldId": "locationName",
+      "validate": "{\"required\":true,\"norepeat\":false}"
+    },
+    {
+      "label": "所属仓库",
+      "type": "tree",
+      "fields": [
+        {
+          "type": "input",
+          "title": "标题",
+          "value": "label"
+        }
+      ],
+      "fieldType": 0,
+      "table": "warehouse",
+      "required": true,
+      "props": {
+        "label": "typeName"
+      },
+      "fieldId": "modeTypes"
+    }
+  ]
+}

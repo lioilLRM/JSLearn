@@ -1,0 +1,181 @@
+{
+  "companyId": "1307239989805453314",
+  "mouldCode": "custom_form_contactcompany",
+  "sortOrder": "desc",
+  "sortField": "createTime",
+  "id": "1344110281772544001",
+  "title": "往来单位",
+  "content": {
+    "queryCriteria": "companyCode,companyName,companyAttribute",
+    "dataTitle": "companyName",
+    "showFields": "id,rfId,companyCode,companyName,companyAttribute,contactName,phoneNumber,address",
+    "formField": [
+      {
+        "label": "数据标题",
+        "hideCondition": "onlyList",
+        "type": "dataTitle",
+        "fieldId": "id"
+      },
+      {
+        "icon": "card",
+        "name": "卡片分组",
+        "label": "基础信息",
+        "type": "card",
+        "fields": [
+          {
+            "type": "input",
+            "title": "标题",
+            "value": "label"
+          }
+        ],
+        "noListed": true,
+        "fieldType": 0,
+        "fieldId": "input_1592297578234"
+      },
+      {
+        "label": "电子标签",
+        "hideCondition": "listDetail",
+        "type": "input",
+        "fieldId": "rfId"
+      },
+      {
+        "validates": [
+          "required",
+          "norepeat"
+        ],
+        "icon": "singleTxt",
+        "label": "单位编码",
+        "type": "input",
+        "required": true,
+        "name": "单行文本",
+        "placeholder": "请输入单位编码",
+        "hideCondition": "",
+        "fields": [
+          {
+            "type": "input",
+            "title": "标题",
+            "value": "label"
+          }
+        ],
+        "norepeat": false,
+        "fieldType": 0,
+        "fieldId": "companyCode",
+        "validate": "{\"required\":true,\"norepeat\":false}"
+      },
+      {
+        "validates": [
+          "required",
+          "norepeat"
+        ],
+        "icon": "singleTxt",
+        "label": "单位名称",
+        "type": "input",
+        "required": true,
+        "name": "单行文本",
+        "placeholder": "请输入单位名称",
+        "hideCondition": "",
+        "fields": [
+          {
+            "type": "input",
+            "title": "标题",
+            "value": "label"
+          }
+        ],
+        "norepeat": false,
+        "fieldType": 0,
+        "fieldId": "companyName",
+        "validate": "{\"required\":true,\"norepeat\":false}"
+      },
+      {
+        "validates": [
+          "required"
+        ],
+        "icon": "fxk",
+        "name": "复选框",
+        "options": [
+          "客户",
+          "外购供方",
+          "外协供方"
+        ],
+        "label": "单位属性",
+        "hideCondition": "",
+        "type": "checkbox",
+        "fields": [
+          {
+            "type": "input",
+            "title": "标题",
+            "value": "label"
+          }
+        ],
+        "fieldType": 0,
+        "required": true,
+        "fieldId": "companyAttribute",
+        "validate": "{\"required\":true}"
+      },
+      {
+        "validates": [
+          "required",
+          "norepeat"
+        ],
+        "icon": "singleTxt",
+        "name": "单行文本",
+        "label": "联系人员",
+        "placeholder": "请输入联系人员",
+        "hideCondition": "",
+        "type": "input",
+        "fields": [
+          {
+            "type": "input",
+            "title": "标题",
+            "value": "label"
+          }
+        ],
+        "fieldId": "contactName",
+        "validate": ""
+      },
+      {
+        "validates": [
+          "required",
+          "norepeat"
+        ],
+        "icon": "singleTxt",
+        "name": "单行文本",
+        "label": "联系方式",
+        "placeholder": "请输入联系方式",
+        "hideCondition": "",
+        "type": "input",
+        "fields": [
+          {
+            "type": "input",
+            "title": "标题",
+            "value": "label"
+          }
+        ],
+        "fieldId": "phoneNumber",
+        "validate": ""
+      },
+      {
+        "validates": [
+          "required",
+          "norepeat"
+        ],
+        "icon": "singleTxt",
+        "name": "单行文本",
+        "label": "地址信息",
+        "placeholder": "请输入地址信息",
+        "hideCondition": "",
+        "type": "input",
+        "fields": [
+          {
+            "type": "input",
+            "title": "标题",
+            "value": "label"
+          }
+        ],
+        "fieldId": "address",
+        "validate": ""
+      }
+    ]
+  },
+  "status": 0
+}
