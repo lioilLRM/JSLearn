@@ -90,3 +90,89 @@ function compare(p) { // 这是比较函数
     return a - b // 升序
   }
 }
+// js 数组根据特定规则排序
+const sortRows = ["物料编码","物料名称","物料规格","物料图号","补充描述","物料属性","物料类别","主单位","保留小数位","取整规则","存货仓库","批次管理",'生成备料任务']
+function sortRowsByName(rows) {
+  const sortNameRows = ["物料编码","物料名称","物料规格","物料图号","补充描述","物料属性","物料类别","主单位","保留小数位","取整规则","存货仓库","批次管理",'生成备料任务']
+  rows = rows.filter(row => sortNameRows.includes(row.label))
+  console.log("filter rows: ",rows);
+  rows.sort((a, b) => {
+    return sortNameRows.indexOf(a.label) - sortNameRows.indexOf(b.label)
+  })
+  return rows
+}
+
+let rows = [
+  {
+      "label": "物料编码",
+      "value": "30A0201020B1"
+  },
+  {
+      "label": "物料名称",
+      "value": "横球销毛坯"
+  },
+  {
+      "label": "物料规格",
+      "value": "MQB B-SUV"
+  },
+  {
+      "label": "电子标签",
+      "value": "IF2021060100045"
+  },
+  {
+      "label": "物料属性",
+      "value": "自制件"
+  },
+  {
+      "label": "物料类别",
+      "value": "连接杆球销"
+  },
+  {
+      "label": "主单位",
+      "value": "支"
+  },
+  {
+      "label": "保留小数位",
+      "value": "0"
+  },
+  {
+      "label": "取整规则",
+      "value": "去尾法"
+  },
+  {
+      "label": "存货仓库",
+      "value": "毛坯库-沙门厂区"
+  },
+  {
+      "label": "有效状态",
+      "value": "生效"
+  },
+  {
+      "label": "批次管理",
+      "value": "是"
+  },
+  {
+      "label": "序列号管理",
+      "value": "是"
+  },
+  {
+      "label": "生成备料任务",
+      "value": "是"
+  },
+  {
+      "label": "单重管理",
+      "value": "否"
+  },
+  {
+      "label": "标准值",
+      "value": 0
+  },
+  {
+      "label": "库存预警",
+      "value": "否"
+  },
+  {
+      "label": "出厂检验",
+      "value": "否"
+  }
+]
