@@ -1,37 +1,172 @@
-###新增修改 节拍单价
-POST http://{{host}}:8083/construction/meter-price/savaOrUpdate
-mes-token:{{token}}
-Content-Type: application/json
-
-{
-  "materialId": 55898,
-  "processId": 817,
-  "piecePrice": 12,
-  "meter": 22
+let a = {
+  dataTitle: 'wcName,wcCode',
+  formField: [
+    {
+      type: 'dataTitle',
+      label: '数据标题',
+      fieldId: 'id',
+      hideCondition: 'onlyList',
+    },
+    {
+      icon: 'card',
+      name: '卡片分组',
+      type: 'card',
+      label: '基础信息',
+      fields: [{ type: 'input', title: '标题', value: 'label' }],
+      fieldId: 'input_1592637908122',
+      noListed: true,
+      fieldType: 0,
+    },
+    {
+      icon: 'singleTxt',
+      name: '单行文本',
+      type: 'input',
+      hover: false,
+      label: '工作中心编码',
+      fields: [{ type: 'input', title: '标题', value: 'label' }],
+      fieldId: 'wcCode',
+      norepeat: false,
+      required: true,
+      validate: '{"required":true,"norepeat":false}',
+      fieldType: 0,
+      validates: ['required', 'norepeat'],
+      placeholder: '请输入工作中心编码',
+      hideCondition: '',
+    },
+    {
+      icon: 'singleTxt',
+      name: '单行文本',
+      type: 'input',
+      hover: false,
+      label: '工作中心名称',
+      fields: [{ type: 'input', title: '标题', value: 'label' }],
+      fieldId: 'wcName',
+      norepeat: false,
+      required: true,
+      validate: '{"required":true,"norepeat":false}',
+      fieldType: 0,
+      validates: ['required', 'norepeat'],
+      placeholder: '请输入工作中心名称',
+      hideCondition: '',
+    },
+    {
+      type: 'radio',
+      label: '是否产线',
+      fieldId: 'isLine',
+      options: [
+        { itemName: '否', itemValue: '0' },
+        { itemName: '是', itemValue: '1' },
+      ],
+      required: true,
+      validate: '{"required":true}',
+      fieldType: 0,
+      validates: ['required'],
+      defaultValue: '0',
+      disabledCondition: 'isEdit',
+    },
+    {
+      icon: 'xlk',
+      name: '下拉框',
+      type: 'select',
+      hover: false,
+      label: '工作中心类型',
+      fields: [{ type: 'input', title: '标题', value: 'label' }],
+      fieldId: 'wcType',
+      options: [
+        { itemName: '以设备或工位为主', itemValue: '0' },
+        { itemName: '以人员为主', itemValue: '1' },
+      ],
+      required: true,
+      validate: '{"required":true}',
+      fieldType: 0,
+      validates: ['required'],
+      defaultValue: '0',
+      hideCondition: '{"relation":"==","field":"isLine","dvalue":"0"}',
+    },
+    {
+      icon: 'fxk',
+      name: '部门多选',
+      type: 'tree',
+      hover: false,
+      label: '所属部门',
+      table: 'department',
+      fields: [{ type: 'input', title: '标题', value: 'label' }],
+      fieldId: 'workcenterBelong',
+      options: '',
+      validate: '',
+      fieldType: 0,
+      validates: ['required'],
+      hideCondition: '',
+    },
+    {
+      type: 'percent',
+      label: '稼动率',
+      fields: [{ type: 'input', title: '标题', value: 'label' }],
+      fieldId: 'utilization',
+      required: true,
+      fieldType: 0,
+      placeholder: '请输入稼动率',
+      hideCondition: '',
+    },
+    {
+      type: 'pline-list',
+      label: '产线列表',
+      fields: [{ type: 'input', title: '标题', value: 'label' }],
+      fieldId: 'workcenterLines',
+      required: true,
+      fieldType: 0,
+      hideCondition: '{"relation":"==","field":"isLine","dvalue":"1"}',
+    },
+    {
+      type: 'table',
+      label: '资源列表',
+      fields: [{ type: 'input', title: '标题', value: 'label' }],
+      forbid: false,
+      fieldId: 'resources',
+      children: [
+        {
+          type: 'select',
+          label: '资源类型',
+          fieldId: 'resourceType',
+          options: [
+            { itemName: '设备', itemValue: 'custom_form_equipment' },
+            { itemName: '人员', itemValue: 'custom_form_user' },
+            { itemName: '工位', itemValue: 'custom_form_station' },
+          ],
+          required: true,
+          eventname: 'workcenter_resource',
+          fieldType: 0,
+        },
+        {
+          type: 'relation',
+          label: '资源信息',
+          table: '',
+          params: { isFilter: true },
+          fieldId: 'information',
+          required: true,
+          rowtable: 'resourceType',
+          fieldType: 0,
+          outParams: 'ignoreKey|resourceType',
+        },
+        {
+          type: 'percent',
+          label: '稼动率',
+          fields: [{ type: 'input', title: '标题', value: 'label' }],
+          fieldId: 'utilization',
+          required: true,
+          validate: '{"required":true,"norepeat":false}',
+          fieldType: 0,
+          placeholder: '请输入稼动率',
+          hideCondition: '',
+        },
+      ],
+      noListed: true,
+      required: true,
+      validate: '{"required":true}',
+      fieldType: 0,
+      hideCondition: '{"relation":"==","field":"isLine","dvalue":"0"}',
+    },
+  ],
+  showFields: 'id,wcName,wcCode,isLine,wcType,workcenterBelong',
+  queryCriteria: 'wcName,wcCode,isLine,wcType,workcenterBelong',
 }
-
-
-
-### 获取节拍单价列表
-POST http://{{host}}:8083/construction/meter-price/getPageListByParams
-mes-token:{{token}}
-Content-Type: application/json
-
-{"current":1,"size":20,"sort":[{"field":"createTime","mode":"desc"}],
-  "systemFields":[
-    {"field":"processIds","value":[817],"type":"text","method":"in"}
-
-  ],"customFields":[]
-}
-
-
-
-### 根据节拍单价id 查询详情
-GET http://{{host}}:8083/construction/meter-price/detail?id=1
-mes-token:{{token}}
-
-
-### 删除节拍单价
-POST http://{{host}}:8083/construction/meter-price/delLogic
-
-[1]
