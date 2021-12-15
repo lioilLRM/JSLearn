@@ -25,6 +25,7 @@ console.log(`person.name：`, person.name)
  问题：
  1. 如何遍历一个对象的属性？
  2.对于对象的嵌套属性；如何遍历？
+ 3. 发布订阅模式
  */
 const book = { _year: 2021, edition: 1, name: 'JS高级程序设计', version: 4 }
 // , author: { name: 'Matt Frisbie', age: 22 }

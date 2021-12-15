@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双向绑定</title>
+</head>
+<body>
+  
+  <input id="input" type="text">
+  <span id="span"></span>
+</body>
+<script>
+  // 要实现的效果：输入的数据实时赋值给对象的name属性。
+let person = {}
+Object.defineProperty(person,'name', {
+  get() {
+    return this.name
+  },
+  set(nVal) {
+    console.log(`set newValue：`, nVal);
+    document.getElementById('input').value = nVal
+    document.getElementById('span').innerHTML = nVal
+  }
+})
+
+const input = document.getElementById('input')
+input.addEventListener('keyup', e => {
+  person.name = e.target.value
+})
+
+class Dep {
+  
+}
+
+
+
+</script>
+</html>
