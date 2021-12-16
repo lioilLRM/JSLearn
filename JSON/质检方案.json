@@ -87,8 +87,7 @@
         { "itemName": "出厂检验", "itemValue": 2 },
         { "itemName": "完工检验", "itemValue": 7 },
         { "itemName": "首件检验", "itemValue": 3 },
-        { "itemName": "制程检验", "itemValue": 4 },
-        { "itemName": "通用检验", "itemValue": 5 }
+        { "itemName": "制程检验", "itemValue": 4 }
       ],
       "required": true,
       "validate": "{\"required\":true}",

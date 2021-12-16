@@ -1,0 +1,178 @@
+{
+  "dataTitle": "orderNo",
+  "formField": [
+    {
+      "icon": "card",
+      "name": "卡片分组",
+      "type": "card",
+      "label": "基础信息",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "input_1592637908122",
+      "noListed": true,
+      "fieldType": 0
+    },
+    {
+      "icon": "singleTxt",
+      "name": "单行文本",
+      "type": "input",
+      "hover": false,
+      "label": "订单编码",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "orderNo",
+      "norepeat": false,
+      "required": true,
+      "validate": "{\"required\":true,\"norepeat\":false}",
+      "fieldType": 0,
+      "validates": ["required", "norepeat"],
+      "placeholder": "请输入订单编码",
+      "hideCondition": ""
+    },
+    {
+      "icon": "singleTxt",
+      "name": "单行文本",
+      "type": "relation",
+      "hover": false,
+      "label": "供方信息",
+      "table": "custom_form_contactcompany",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "params": { "companyAttribute": "外购供方" },
+      "fieldId": "supplierId",
+      "norepeat": false,
+      "required": true,
+      "validate": "{\"required\":true,\"norepeat\":false}",
+      "fieldType": 0,
+      "validates": ["required", "norepeat"],
+      "placeholder": "请选择供方信息",
+      "hideCondition": ""
+    },
+    {
+      "type": "relation",
+      "label": "物料信息",
+      "table": "custom_form_inventoryfile",
+      "params": { "property": "2" },
+      "fieldId": "materialId",
+      "required": true,
+      "eventname": "purchase_order",
+      "fieldType": 0,
+      "placeholder": "请选择物料"
+    },
+    {
+      "type": "date",
+      "label": "要求交货日期",
+      "fieldId": "needTime",
+      "required": false,
+      "validate": "",
+      "fieldType": 0,
+      "placeholder": "请选择时间",
+      "hideCondition": ""
+    },
+    {
+      "type": "input-prefix",
+      "label": "订单数量",
+      "fieldId": "needCount",
+      "required": true,
+      "fieldType": 0,
+      "placeholder": "请输入数量"
+    },
+    {
+      "type": "subUnits",
+      "label": "辅计量",
+      "fieldId": "subNum",
+      "required": true,
+      "fieldType": 0,
+      "inputtype": "number",
+      "hideCondition": "onlyList"
+    },
+    {
+      "type": "input-prefix",
+      "label": "入库数量",
+      "fieldId": "stockCount",
+      "fieldType": 0,
+      "placeholder": "请输入数量"
+    },
+    {
+      "type": "input-prefix",
+      "label": "退货数量",
+      "fieldId": "backNum",
+      "fieldType": 0,
+      "placeholder": "请输入数量"
+    },
+    {
+      "type": "percent",
+      "label": "超收比例",
+      "prefix": "%",
+      "fieldId": "overOrderStorage",
+      "fieldType": 0,
+      "inputType": "number",
+      "defaultValue": "0",
+      "disabledSort": true
+    },
+    {
+      "type": "input-prefix",
+      "label": "报废检验数量",
+      "fieldId": "scrapQtNum",
+      "fieldType": 0,
+      "placeholder": "请输入数量"
+    },
+    {
+      "type": "select",
+      "label": "行状态",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "status",
+      "options": [
+        { "itemName": "未开始   ", "itemValue": "0" },
+        { "itemName": "执行中", "itemValue": "2" },
+        { "itemName": "已完成", "itemValue": "3" },
+        { "itemName": "已关闭", "itemValue": "1" }
+      ],
+      "required": true,
+      "fieldType": 0,
+      "defaultValue": "0",
+      "hideCondition": "onlyList"
+    },
+    {
+      "type": "select",
+      "label": "订单状态",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "orderStatus",
+      "options": [
+        { "itemName": "未开始   ", "itemValue": "0" },
+        { "itemName": "执行中", "itemValue": "2" },
+        { "itemName": "已完成", "itemValue": "3" },
+        { "itemName": "已关闭", "itemValue": "1" }
+      ],
+      "required": true,
+      "fieldType": 0,
+      "defaultValue": "0",
+      "hideCondition": "onlyList"
+    },
+    {
+      "icon": "xlk",
+      "name": "",
+      "type": "relation",
+      "hover": false,
+      "label": "采购人员",
+      "table": "custom_form_user",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "salesId",
+      "required": false,
+      "validate": "{\"required\":true}",
+      "fieldType": 0,
+      "validates": ["required"],
+      "placeholder": "请选择采购人员",
+      "defaultValue": ""
+    },
+    {
+      "type": "input",
+      "label": "备注信息",
+      "fieldId": "remarks",
+      "required": false,
+      "validate": "{\"required\":true,\"norepeat\":false}",
+      "fieldType": 0,
+      "placeholder": "请添加备注信息",
+      "hideCondition": ""
+    }
+  ],
+  "showFields": "status,materialId,needCount,subNum,needTime,overOrderStorage,stockCount,backNum,scrapQtNum,remarks,orderNo,supplierId,orderStatus,salesId,creator,createTime",
+  "queryCriteria": "status,materialId,needTime,orderNo,supplierId,orderStatus,salesId,creator,createTime"
+}

@@ -1,0 +1,280 @@
+{
+  "dataTitle": "orderCode",
+  "formField": [
+    {
+      "type": "card",
+      "label": "订单信息",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "orderinfoCard",
+      "noListed": true,
+      "fieldType": 0
+    },
+    {
+      "type": "multiColumn",
+      "label": "四列布局",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "columns": 4,
+      "fieldId": "orderinfo",
+      "children": [
+        {
+          "type": "code-number",
+          "label": "订单编码",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "orderCode",
+          "codeType": "customCode13",
+          "disabled": false,
+          "required": true,
+          "fieldType": 0,
+          "placeholder": "系统生成"
+        },
+        {
+          "type": "radio",
+          "label": "需求来源",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "demandSource",
+          "options": [
+            { "itemName": "面向库存", "itemValue": "0" },
+            { "itemName": "面向销售订单", "itemValue": "1" }
+          ],
+          "required": true,
+          "fieldType": 0
+        },
+        {
+          "type": "relation",
+          "label": "关联销售订单",
+          "table": "custom_form_saleOrderSelect",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "params": { "status": "0" },
+          "fieldId": "salesOrderId",
+          "noListed": true,
+          "required": true,
+          "eventname": "order_saleorderdetail",
+          "fieldType": 0,
+          "hideCondition": "{\"relation\":\"==\",\"field\":\"demandSource\",\"dvalue\":\"1\"}"
+        },
+        {
+          "type": "relation",
+          "label": "关联销售订单",
+          "table": "custom_form_saleorder",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "params": { "status": "0" },
+          "fieldId": "salesId",
+          "required": true,
+          "fieldType": 0,
+          "hideCondition": "onlyList"
+        },
+        {
+          "type": "relation",
+          "label": "客户信息",
+          "table": "custom_form_contactcompany",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "customId",
+          "fieldType": 0,
+          "hideCondition": "onlyList"
+        },
+        {
+          "type": "relation",
+          "label": "产品信息",
+          "table": "custom_form_inventoryfile",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "materialId",
+          "required": true,
+          "eventname": "order_inventoryfile",
+          "fieldType": 0,
+          "paramsFields": "materialId"
+        },
+        {
+          "type": "input",
+          "label": "产品规格",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "specs",
+          "fieldType": 0,
+          "hideCondition": "isDetail"
+        },
+        {
+          "type": "select",
+          "label": "物料清单",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "bomId",
+          "property": { "status": 0 },
+          "required": true,
+          "eventname": "order_produceBom",
+          "fieldType": 0,
+          "paramsFields": "bomId"
+        },
+        {
+          "type": "table",
+          "label": "",
+          "oneRow": "true",
+          "fieldId": "inventorys",
+          "children": [
+            {
+              "type": "relation",
+              "label": "物料信息",
+              "table": "custom_form_inventoryfile",
+              "width": "400px",
+              "pprops": { "itemName": "idNames" },
+              "fieldId": "matId",
+              "eventname": "inventorys_usage",
+              "paramsFields": "mid|bomId"
+            },
+            {
+              "type": "child-usages",
+              "label": "子件用量",
+              "width": "225px",
+              "regexp": "positiveIntegerH",
+              "fieldId": "usagesObj",
+              "labelTip": "子件用量/母件数量"
+            },
+            {
+              "type": "percent",
+              "label": "损耗率",
+              "width": "100px",
+              "prefix": "%",
+              "fieldId": "rate",
+              "inputType": "number"
+            },
+            {
+              "type": "select",
+              "label": "投料类型",
+              "table": "bom",
+              "width": "130px",
+              "fieldId": "matType",
+              "options": [
+                { "itemName": "扫码投料", "itemValue": "1" },
+                { "itemName": "扫码倒冲", "itemValue": "4" },
+                { "itemName": "自动倒冲", "itemValue": "3" }
+              ]
+            },
+            {
+              "type": "tree",
+              "label": "选择仓库",
+              "props": { "label": "typeName" },
+              "table": "warehouse",
+              "fieldId": "warehouse",
+              "labelTip": "需要备料的选择备料仓库，倒冲的选择倒冲仓库",
+              "eventname": "inventorys_warehouse",
+              "titletable": "custom_form_inventoryfile",
+              "paramsFields": "id|matId"
+            },
+            {
+              "type": "percent",
+              "label": "发料控制",
+              "width": "120px",
+              "prefix": "%",
+              "fieldId": "issueMaterialsCtr",
+              "labelTip": "发料时，允许超出正常备料数量的比例",
+              "inputType": "number"
+            }
+          ],
+          "required": "false"
+        },
+        {
+          "type": "relation",
+          "label": "供方信息",
+          "table": "custom_form_contactcompany",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "params": { "companyAttribute": "外协供方" },
+          "fieldId": "outsourceSupplierId",
+          "required": true,
+          "eventname": "order_contactcompany",
+          "fieldType": 0
+        },
+        {
+          "type": "inventory",
+          "label": "订单数量",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "regexp": "positiveInteger",
+          "fieldId": "needCount",
+          "required": true,
+          "fieldType": 0,
+          "inputType": "number",
+          "placeholder": ""
+        },
+        {
+          "type": "subUnits",
+          "label": "辅计量",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "regexp": "positiveInteger",
+          "fieldId": "subUnits",
+          "required": true,
+          "fieldType": 0,
+          "inputType": "number",
+          "hideCondition": "onlyList"
+        },
+        {
+          "type": "production-cycle",
+          "label": "计划到货日期",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "needTime",
+          "dateType": "yyyy-MM-dd",
+          "required": true,
+          "fieldType": 0,
+          "placeholder": ""
+        },
+        {
+          "type": "percent",
+          "label": "超收比例",
+          "prefix": "%",
+          "fieldId": "overOrderStorage",
+          "fieldType": 0,
+          "inputType": "number",
+          "defaultValue": "0"
+        },
+        {
+          "type": "select",
+          "label": "订单状态",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "status",
+          "options": [
+            { "itemName": "未开始   ", "itemValue": "5" },
+            { "itemName": "执行中", "itemValue": "1" },
+            { "itemName": "已完成", "itemValue": "2" },
+            { "itemName": "已关闭", "itemValue": "3" }
+          ],
+          "required": true,
+          "fieldType": 0,
+          "defaultValue": "0",
+          "hideCondition": "onlyList"
+        },
+        {
+          "type": "relation",
+          "label": "采购人员",
+          "table": "custom_form_user",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "planningPersonnelId",
+          "eventname": "order_user",
+          "fieldType": 0
+        },
+        {
+          "type": "input-prefix",
+          "label": "入库数量",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "completedCount",
+          "fieldType": 0,
+          "hideCondition": "onlyList"
+        },
+        {
+          "type": "input-prefix",
+          "label": "退货数量",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "backNum",
+          "fieldType": 0,
+          "hideCondition": "onlyList"
+        },
+        {
+          "type": "input-prefix",
+          "label": "报废检验数量",
+          "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+          "fieldId": "scrapQtNum",
+          "fieldType": 0,
+          "hideCondition": "onlyList"
+        }
+      ],
+      "noListed": true,
+      "fieldType": 0
+    }
+  ],
+  "showFields": "orderCode,demandSource,status,materialId,bomId,outsourceSupplierId,needTime,needCount,subUnits,overOrderStorage,completedCount,backNum,scrapQtNum,salesId,needTime,planningPersonnelId,creator,createTime",
+  "queryCriteria": "orderCode,demandSource,status,materialId,outsourceSupplierId,needTime,salesId,planningPersonnelId,creator,createTime"
+}

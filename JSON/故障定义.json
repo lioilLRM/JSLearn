@@ -1,0 +1,102 @@
+{
+  "dataTitle": "faultName,faultCode",
+  "formField": [
+    {
+      "type": "dataTitle",
+      "label": "数据标题",
+      "fieldId": "id",
+      "hideCondition": "onlyList"
+    },
+    {
+      "icon": "card",
+      "name": "卡片分组",
+      "type": "card",
+      "label": "基础信息",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "input_1592637908122",
+      "noListed": true,
+      "fieldType": 0
+    },
+    {
+      "type": "input",
+      "label": "电子标签",
+      "fieldId": "rfId",
+      "hideCondition": "listDetail"
+    },
+    {
+      "tip": "(系统字段-故障编码)",
+      "type": "input",
+      "label": "故障编码",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "faultCode",
+      "required": true,
+      "fieldType": 0,
+      "placeholder": "请输入故障编码"
+    },
+    {
+      "tip": "(系统字段-故障名称)",
+      "type": "input",
+      "label": "故障名称",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "faultName",
+      "required": true,
+      "fieldType": 0,
+      "placeholder": "请输入故障名称"
+    },
+    {
+      "tip": "(系统字段-故障类型)",
+      "type": "tree",
+      "label": "故障类型",
+      "props": { "label": "typeName" },
+      "table": "fault",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "faultType",
+      "required": true,
+      "fieldType": 0,
+      "placeholder": "请选择故障类型"
+    },
+    {
+      "type": "radio",
+      "label": "适用对象",
+      "fieldId": "target",
+      "options": [
+        { "itemName": "设备", "itemValue": "0" },
+        { "itemName": "工装", "itemValue": "1" }
+      ],
+      "required": true,
+      "validate": "{\"required\":true}",
+      "fieldType": 0,
+      "validates": ["required"],
+      "defaultValue": "0",
+      "hideCondition": ""
+    },
+    {
+      "type": "multi-relation",
+      "label": "工装档案",
+      "table": "custom_form_toolfile",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "toolingFileId",
+      "required": true,
+      "eventname": "toollist_toolfile",
+      "fieldType": 0,
+      "hideCondition": "{\"relation\":\"==\",\"field\":\"target\",\"dvalue\":\"1\"}"
+    },
+    {
+      "type": "multi-tree",
+      "field": 0,
+      "label": "设备类型",
+      "props": { "label": "typeName" },
+      "table": "machine",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "modeTypes",
+      "options": [],
+      "required": true,
+      "validate": "{\"required\":true}",
+      "fieldType": 0,
+      "validates": ["required"],
+      "hideCondition": "{\"relation\":\"==\",\"field\":\"target\",\"dvalue\":\"0\"}"
+    }
+  ],
+  "showFields": "id,rfId,faultCode,faultName,faultType,target,modeTypes,toolingFileId",
+  "queryCriteria": "faultCode,faultName,faultType,target,modeTypes,toolingFileId"
+}
