@@ -1,0 +1,51 @@
+
+const menus = [
+  {	id: 'index',	title: '首页',	isVisible: true },
+  { id: 'apps', title: '应用中心', isVisible: true,
+    children: [{	id: 'apps-index',	title: '首页',	isVisible: true }]
+  },
+  {	id: 'my',	title: '我的',	isVisible: false,
+    children: [{	id: 'my-index',	title: '首页',	isVisible: true }]
+  }
+]
+// 递归写法
+function getNewMenus(array) {
+  if (!array) return []
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].isVisible) {
+      console.log('array[ii.id].id: ', array[i].id)
+      if (array[i].children) {
+        getNewMenus(array[i].children)
+      }
+    }
+  }
+}
+// console.time('time')
+// getNewMenus(menus)
+// console.timeEnd('time')
+// 立即执行函数的写法：眼前一亮
+// (function getNewMenusV2(menus) {
+//   if (!menus) return []
+//   for (let i = 0; i < menus.length; i++) {
+//     if (!menus[i].isVisible) continue
+//     if (menus[i].isVisible) {
+//       console.log('menus[ii.id].id: ', menus[i].id)
+//       if (menus[i].children) {
+//         getNewMenusV2(menus[i].children)
+//       }
+//     }
+//   }
+// })(menus)
+
+(function tree(menus) {
+  if (!menus) return []
+  for (let i = 0; i < menus.length; i++) {
+    const item = menus[i]
+    if (!item.isVisible) continue
+    if (item.children) {
+      console.log(`menus：`, menus)
+
+      tree(item.children)
+    }
+  }
+})(menus)

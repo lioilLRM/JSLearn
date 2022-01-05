@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM范围</title>
+  <style>
+    #p1 {
+      border: 1px solid red;
+      width: 200px;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div id="p1">
+    <b>firsts</b> 
+    secends
+    <i>three</i>
+    four 五 六
+    <span>7</span>
+    上海市普陀区金沙江路 1518 弄上海市普陀区金沙江路 1518 弄上海市普陀区金沙江路 1518 弄上海市普陀区金沙江路 1518 弄
+  </div>
+  <script>
+      let range1 = document.createRange(),
+           range2 = document.createRange(),
+           p1 = document.getElementById("p1");
+      
+    //  console.log(`p1.nodeType：`,p1.nodeType);
+    //  console.log(`p1.nodeName：`,p1.nodeName);
+     
+
+     
+      // console.log(range1.selectNode(p1).startContainer());
+      // console.log( range2.selectNodeContents(p1));
+      
+      range1.setStart(p1, 0)
+      range1.setEnd(p1,7)
+      console.log(`range1：`,range1, p1.childNodes.length);
+      let rangeWidth = range1.getBoundingClientRect().width;
+      console.log(`rangeWidth：`,rangeWidth);
+      
+    let selectRange =   document.getSelection().addRange(range1);
+    // console.log(`selectRange：`,selectRange);
+    console.log(`p1.offsetWidth：`,p1.offsetWidth);
+    console.log(`p1.scrollWidth：`,p1.scrollWidth);
+    
+    
+    
+
+  </script>
+</body>
+</html>

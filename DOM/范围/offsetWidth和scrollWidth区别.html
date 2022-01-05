@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #noOverView {
+    margin: 20px;
+    padding: 20px;
+    /* border: 30px solid #333; */
+    /* border: 10vw solid #333; */
+    /* border: calc(100px - 70px) solid #333; */
+    border: 30px solid  pink;
+    word-break: keep-all;
+    /* overflow-y: scroll; */
+    width:200px;
+}
+
+#overView {
+  margin: 20px;
+    padding: 20px;
+    /* border: 30px solid #333; */
+    /* border: 10vw solid #333; */
+    /* border: calc(100px - 70px) solid #333; */
+    border: 30px solid  pink;
+    word-break: keep-all;
+    overflow-y: scroll;
+    width:200px;
+}
+
+  </style>
+</head>
+<body>
+  <h1>clientWidth,scrollWidth,,offsetWidth,getBoundingClientRect()等等的区别</h1>
+  <section>
+    <p>  clientWidth：对象内容的可视区的宽度，不包滚动条等边线，会随对象显示大小的变化而改变 clientWidth = content + padding-left + padding-right</p>
+    <p>  scrollWidth：对象的实际内容的宽度，不包边线宽度，会随对象中内容超过可视区后而变大。content + padding-left + padding-right + scrollbar + border-left + border-right +滚动进入不可见的内容</p>
+    <p>  offsetWidth：对象整体的实际宽度，包滚动条等边线，会随对象显示大小的变化而改变。offsetWidth = content + padding-left + padding-right + border-left + border-right + scrollbar</p>
+  </section>
+
+  <h2>当元素内容没有超过可视区域</h2>
+
+    <div id="noOverView"> 我是很长很长的内容我</div>
+    <p class="clientWidth">clientWidth：</p>
+    <p class="scrollWidth">scrollWidth：</p>
+    <p class="offsetWidth">offsetWidth：</p>
+
+  <h2>当元素内容超过可视区域</h2>  
+    <div id="overView">
+      我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容
+    </div>
+    <div class="overViewBox">
+      <p class="clientWidth">clientWidth：</p>
+      <p class="scrollWidth">scrollWidth：</p>
+      <p class="offsetWidth">offsetWidth：</p>
+      <p class="scrollBarWidth">scrollBarWidth：</p>
+
+    </div>
+
+    <h2>getBoundingClientRect()</h2>
+    <p>使用场景：获取页面元素的位置和判断元素是否在可视区域。</p>
+  
+<script>
+  const noOverViewBox = document.getElementById('noOverView')
+  const clientWidthBox = document.querySelector('.clientWidth')
+  const scrollWidthBox = document.querySelector('.scrollWidth')
+  const offsetWidthBox = document.querySelector('.offsetWidth')
+
+  clientWidthBox.innerText+=noOverViewBox.clientWidth
+  scrollWidthBox.innerText+=noOverViewBox.scrollWidth
+  offsetWidthBox.innerText+=noOverViewBox.offsetWidth
+  console.log(`元素上边距离页面上边的距离：`, noOverViewBox.getBoundingClientRect().top);
+  console.log(`元素下边距离页面上边的距离`, noOverViewBox.getBoundingClientRect().bottom);
+  console.log(`元素左边距离页面左边的距离`, noOverViewBox.getBoundingClientRect().left);
+
+  console.log(`元素右边距离页面左边的距离`, noOverViewBox.getBoundingClientRect().right);
+
+
+  const overViewBox = document.getElementById('overView')
+  const overViewClientWidthBox = document.querySelector('.overViewBox .clientWidth')
+  const overViewScrollWidthBox = document.querySelector('.overViewBox .scrollWidth')
+  const overViewOffsetWidthBox = document.querySelector('.overViewBox .offsetWidth')
+  const scrollBarWidthBox = document.querySelector('.overViewBox .scrollBarWidth')
+
+
+  overViewClientWidthBox.innerText+=overViewBox.clientWidth
+  overViewScrollWidthBox.innerText+=overViewBox.scrollWidth
+  overViewOffsetWidthBox.innerText+=overViewBox.offsetWidth
+
+  let borderWidth = 0
+  const overViewBoxStyle = window.getComputedStyle(overViewBox, null)
+  console.log(`overViewBoxStyle：`,overViewBoxStyle['borderRightWidth']);
+  borderWidth = parseFloat(overViewBoxStyle['borderRightWidth'].replace('px', '')) + parseFloat(overViewBoxStyle['borderLeftWidth'].replace('px', ''))
+
+  const scrollBarWidth = overViewBox.offsetWidth- overViewBox.clientWidth - borderWidth
+  scrollBarWidthBox.innerText+=scrollBarWidth
+
+  
+
+
+
+</script>
+</body>
+</html>

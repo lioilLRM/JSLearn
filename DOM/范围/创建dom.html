@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建dom</title>
+</head>
+<body>
+  <script>
+   // 通过prototype debug hook 的骚操作
+
+    const appendChild = Node.prototype.appendChild;
+    // 这个地方能否使用箭头函数呢？^-^
+    Node.prototype.appendChild = function(...args) {
+      console.log('append', this.className);
+      if (this.id === 'mapDiv') {
+        debugger;
+      }
+      appendChild.bind(this, ...args)();
+    }
+
+    document.createElement = function(create) {
+    return function() {
+      console.log(`createElement hook：`);
+      
+        var ret = create.apply(this, arguments);
+        if (ret.tagName.toLowerCase() === "div") {
+            ret.setAttribute("foo", "bar");
+        }
+        return ret;
+    };
+}(document.createElement)
+    // const createElement = Document.prototype.createElement;
+    // Document.prototype.createElement = function(...args) {
+    //   console.log('append', this.className);
+    //   createElement.apply(this,arguments);
+    // }
+
+//     var f = Node.prototype.appendChild;
+// Node.prototype.appendChild = function(){
+//   console.log(`111：`,111);
+  
+//   f.apply(this, arguments);
+//   arguments[0].innerHTML="!Intercepted!"; 
+// };
+// document.body.appendChild(document.createElement("div"));
+let div = document.createElement('div');
+    div.id = 'title';
+    div.className = 'title';
+    div.innerText="我是函数创建的div"
+document.body.appendChild(div);
+
+
+
+
+  </script>
+</body>
+</html>
