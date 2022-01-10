@@ -32,21 +32,26 @@ const provinceList = [
 ]
 // 递归实现：深度优先遍历
 // 好处：表达性好，容易理解 缺点：层级过深的话，容易导致栈溢出
+let loopCountV1 = 0
+
 const dfsTransFn = (tree, func) => {
   tree.forEach(node => {
     // func(node)
+    loopCountV1++
     console.log(`${node.id}....${node.label}`)
 
     if (node.children && node.children.length) {
       dfsTransFn(node.children, func)
     }
   })
+  console.log(`loopCountV1：`, loopCountV1)
+
   return tree
 }
 
-// dfsTransFn(provinceList, (node) => {
-//   console.log(`${node.id}....${node.label}`)
-// })
+dfsTransFn(provinceList, (node) => {
+  console.log(`${node.id}....${node.label}`)
+})
 
 // 栈实现：深度优先遍历(待实现)
 const dfsStackFn = (tree, func) => {
@@ -58,26 +63,32 @@ const dfsStackFn = (tree, func) => {
 
     // node.children && stack.unshift(...node.children)
     if (node.children) {
-      stack.unshift(...node.children)
+      stack.unshift(...node.children) // 把下一级的插入到数组的首位
     }
   }
-  // const nodes = []
-  // if (tree) {
-  //   stack.push(tree)
-  //   while (stack.length) {
-  //     const item = stack.pop()
-  //     nodes.push(item.label)
-
-  //     const children = item.children ? item.children : []
-  //     for (let i = children.length - 1; i >= 0; i--) {
-  //       stack.push(children[i])
-  //     }
-  //   }
-  // }
 }
 
 dfsStackFn(provinceList, (node) => {
   console.log(`${node.id}--${node.label}：`)
+})
+
+// 广度优先遍历：基于栈的实现
+const bfsTransFn = (tree, func) => {
+  let node
+  const stack = [...tree]
+  let loopCount = 0
+  while ((node = stack.shift())) {
+    loopCount++
+    func(node)
+    if (node.children) {
+      stack.push(...node.children) // 把下一级的插入到数组的尾部
+    }
+  }
+  console.log(`loopCount：`, loopCount)
+}
+
+bfsTransFn(provinceList, node => {
+  console.log(`${node.id}-->${node.label}`)
 })
 
 // 如何取出数组的第一个；最后一个

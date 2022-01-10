@@ -31,3 +31,9 @@ function supplyV2(fruit, quantity) {
 supply('apple', 11)
 supplyV2('apple', 110)
 
+// 小函数
+
+function before() {
+  
+}
+
