@@ -1,5 +1,5 @@
 {
-  "dataTitle": "maintainName,maintainCode",
+  "dataTitle": "checkName,checkCode",
   "formField": [
     {
       "type": "dataTitle",
@@ -13,7 +13,7 @@
       "type": "card",
       "label": "基础信息",
       "fields": [{ "type": "input", "title": "标题", "value": "label" }],
-      "fieldId": "input_1592637908122",
+      "fieldId": "input_1592297578234",
       "noListed": true,
       "fieldType": 0
     },
@@ -25,21 +25,23 @@
     },
     {
       "type": "input",
-      "label": "保养标准编码",
+      "field": 0,
+      "label": "点检标准编码",
       "fields": [{ "type": "input", "title": "标题", "value": "label" }],
-      "fieldId": "maintainCode",
+      "fieldId": "checkCode",
       "required": true,
       "fieldType": 0,
-      "placeholder": "请输入保养标准编码"
+      "placeholder": "请输入点检标准编码"
     },
     {
       "type": "input",
-      "label": "保养标准名称",
+      "field": 0,
+      "label": "点检标准名称",
       "fields": [{ "type": "input", "title": "标题", "value": "label" }],
-      "fieldId": "maintainName",
+      "fieldId": "checkName",
       "required": true,
       "fieldType": 0,
-      "placeholder": "请输入保养标准"
+      "placeholder": "请输入点检标准名称"
     },
     {
       "type": "radio",
@@ -74,58 +76,39 @@
       "isMultiselectV2": true
     },
     {
-      "tip": "（系统字段-适用设备类型）",
       "type": "multi-tree",
-      "hover": false,
+      "field": 0,
       "label": "设备类型",
       "props": { "label": "typeName" },
       "table": "machine",
       "fields": [{ "type": "input", "title": "标题", "value": "label" }],
       "fieldId": "modeTypes",
-      "required": true,
-      "fieldType": 0,
-      "placeholder": "请选择设备类型",
-      "checkStrictly": false,
-      "isMultiselectV2": true,
-      "hideCondition": "{\"relation\":\"==\",\"field\":\"target\",\"dvalue\":\"0\"}"
-    },
-    {
-      "type": "number",
-      "label": "保养周期",
-      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
-      "prefix": "天",
-      "regexp": "positiveIntegerH",
-      "fieldId": "maintainCycle",
-      "options": ["天", "月", "年"],
-      "required": true,
-      "fieldType": 0,
-      "placeholder": "请输入"
-    },
-    {
-      "type": "relation",
-      "label": "作业文件",
-      "table": "custom_form_workfiles",
-      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
-      "fieldId": "maintainList",
-      "required": false,
-      "fieldType": 0,
-      "placeholder": "请输入"
-    },
-    {
-      "type": "switch",
-      "label": "停机保养",
-      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
-      "fieldId": "stop",
-      "options": [
-        { "itemName": "是", "itemValue": "1" },
-        { "itemName": "否", "itemValue": "0" }
-      ],
+      "options": [],
       "required": true,
       "validate": "{\"required\":true}",
       "fieldType": 0,
+      "validates": ["required"],
+      "checkStrictly": false,
+      "hideCondition": "{\"relation\":\"==\",\"field\":\"target\",\"dvalue\":\"0\"}",
+      "isMultiselectV2": true
+
+    },
+    {
+      "icon": "singleTxt",
+      "name": "单行文本",
+      "type": "relation",
+      "hover": false,
+      "label": "作业文件",
+      "table": "custom_form_workfiles",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "checkList",
+      "norepeat": false,
+      "required": false,
+      "validate": "{\"required\":true,\"norepeat\":false}",
+      "fieldType": 0,
       "validates": ["required", "norepeat"],
-      "defaultValue": false,
-      "hideCondition": "{\"relation\":\"==\",\"field\":\"target\",\"dvalue\":\"0\"}"
+      "placeholder": "请输入",
+      "hideCondition": ""
     },
     {
       "type": "switch",
@@ -143,15 +126,43 @@
       "hideCondition": ""
     },
     {
-      "type": "table-dialog",
-      "label": "保养列表",
-      "title": "保养项",
+      "type": "checkbox",
+      "label": "每周",
       "fields": [{ "type": "input", "title": "标题", "value": "label" }],
-      "fieldId": "maintainItem",
+      "fieldId": "weeks",
+      "options": [
+        { "itemName": "周一", "itemValue": "1" },
+        { "itemName": "周二", "itemValue": "2" },
+        { "itemName": "周三", "itemValue": "3" },
+        { "itemName": "周四", "itemValue": "4" },
+        { "itemName": "周五", "itemValue": "5" },
+        { "itemName": "周六", "itemValue": "6" },
+        { "itemName": "周日", "itemValue": "7" }
+      ],
+      "required": true,
+      "validate": "{\"required\":true}",
+      "hideCondition": "{\"relation\":\"==\",\"field\":\"autoTask\",\"dvalue\":\"true\"}"
+    },
+    {
+      "type": "days",
+      "field": 0,
+      "label": "每日",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "days",
+      "required": true,
+      "hideCondition": "{\"relation\":\"==\",\"field\":\"autoTask\",\"dvalue\":\"true\"}"
+    },
+    {
+      "type": "table-dialog",
+      "label": "点检列表",
+      "title": "点检项",
+      "fields": [{ "type": "input", "title": "标题", "value": "label" }],
+      "fieldId": "checkItem",
       "children": [
         {
           "type": "code-number",
           "label": "电子标签",
+          "width": 140,
           "fieldId": "rfId",
           "codeType": "check",
           "required": true,
@@ -159,25 +170,21 @@
         },
         {
           "type": "input",
-          "label": "保养项目",
-          "fieldId": "maintainPosition",
+          "label": "点检项目",
+          "fieldId": "checkPosition",
           "required": true
         },
         {
           "type": "radio",
           "label": "扫码确认",
-          "fieldId": "isScanningMaintain",
-          "options": [
-            { "itemName": "是", "itemValue": "1" },
-            { "itemName": "否", "itemValue": "0" }
-          ],
+          "fieldId": "isScanningCheck",
+          "options": ["是", "否"],
           "required": true
         },
         {
-          "rows": 6,
           "type": "input",
-          "label": "保养方法",
-          "fieldId": "content",
+          "label": "点检方法",
+          "fieldId": "checkMethod",
           "required": true
         },
         {
@@ -185,13 +192,48 @@
           "label": "参考图片",
           "length": 3,
           "fieldId": "imgs"
+        },
+        {
+          "type": "radio",
+          "label": "数值判定",
+          "fieldId": "numJudgment",
+          "options": [
+            { "itemName": "是", "itemValue": "1" },
+            { "itemName": "否", "itemValue": "0" }
+          ],
+          "required": true
+        },
+        {
+          "type": "number-up",
+          "label": "标准值",
+          "fieldId": "standardValue",
+          "datatype": "number",
+          "hideCondition": "{\"relation\":\"==\",\"field\":\"numJudgment\",\"dvalue\":1}"
+        },
+        {
+          "type": "number-up",
+          "label": "上限值",
+          "fieldId": "upLimit",
+          "datatype": "number",
+          "hideCondition": "{\"relation\":\"==\",\"field\":\"numJudgment\",\"dvalue\":1}"
+        },
+        {
+          "type": "number-up",
+          "label": "下限值",
+          "fieldId": "downLimit",
+          "datatype": "number",
+          "hideCondition": "{\"relation\":\"==\",\"field\":\"numJudgment\",\"dvalue\":1}"
         }
       ],
       "noListed": true,
+      "norepeat": false,
       "required": true,
-      "fieldType": 0
+      "validate": "{\"required\":true,\"norepeat\":false}",
+      "fieldType": 0,
+      "validates": ["required", "norepeat"],
+      "hideCondition": ""
     }
   ],
-  "showFields": "id,rfId,maintainCode,maintainName,target,modeTypes,toolingFileModeTypes,maintainCycle,stop",
-  "queryCriteria": "maintainCode,maintainName,target,modeTypes,toolingFileModeTypes"
+  "showFields": "id,rfId,checkCode,checkName,target,modeTypes,toolingFileModeTypes",
+  "queryCriteria": "checkCode,checkName,target,modeTypes,toolingFileModeTypes"
 }

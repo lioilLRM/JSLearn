@@ -76,14 +76,15 @@
       "props": { "label": "typeName" },
       "table": "toolfile",
       "fields": [{ "type": "input", "title": "标题", "value": "label" }],
-      "fieldId": "toolingFileId",
+      "fieldId": "toolingFileModeTypes",
       "options": [],
       "required": true,
       "validate": "{\"required\":true}",
       "fieldType": 0,
       "validates": ["required"],
-      "hideCondition": "{\"relation\":\"==\",\"field\":\"target\",\"dvalue\":\"1\"}",
-      "checkStrictly": false
+      "checkStrictly": false,
+      "isMultiselectV2": true,
+      "hideCondition": "{\"relation\":\"==\",\"field\":\"target\",\"dvalue\":\"1\"}"
     },
     {
       "tip": "（系统字段-适用设备类型）",
@@ -96,10 +97,11 @@
       "fieldId": "modeTypes",
       "required": true,
       "fieldType": 0,
-      "hideCondition": "{\"relation\":\"==\",\"field\":\"target\",\"dvalue\":\"0\"}",
-      "checkStrictly": false
+      "checkStrictly": false,
+      "isMultiselectV2": true,
+      "hideCondition": "{\"relation\":\"==\",\"field\":\"target\",\"dvalue\":\"0\"}"
     }
   ],
-  "showFields": "id,rfId,faultCode,faultName,faultType,target,modeTypes,toolingFileId",
-  "queryCriteria": "faultCode,faultName,faultType,target,modeTypes,toolingFileId"
+  "showFields": "id,rfId,faultCode,faultName,faultType,target,modeTypes,toolingFileModeTypes",
+  "queryCriteria": "faultCode,faultName,faultType,target,modeTypes,toolingFileModeTypes"
 }
