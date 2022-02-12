@@ -73,6 +73,7 @@ dfsStackFn(provinceList, (node) => {
 })
 
 // 广度优先遍历：基于栈的实现
+// 步骤：1. 将树形结构的数组展开
 const bfsTransFn = (tree, func) => {
   let node
   const stack = [...tree]
