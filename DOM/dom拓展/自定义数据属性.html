@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义数据属性data-</title>
+</head>
+<body>
+  <div id="myDiv" data-appId="12345" data-myname="Nicholas">JS高级程序设计4：15.3.5 自定义数据属性</div>
+  <script>
+    const div = document.querySelector('#myDiv');
+    console.log(`div：`,div.dataset); 
+    // 取得自定义数据属性的值
+    console.log(`div：`,div.dataset.appid);
+    const DOMStringMap = {
+        "appid": "12345",
+        "myname": "Nicholas"
+    }
+
+    // 设置自定义数据属性的值
+    div.dataset.appid = 2333
+    console.log(`div：`,div.dataset);
+    
+  </script>
+</body>
+</html>
