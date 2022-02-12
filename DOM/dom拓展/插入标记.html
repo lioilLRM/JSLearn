@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>插入标记innerHTML+outerHTML</title>
+</head>
+<body>
+    <div id="content">
+      <p>哈哈哈</p>
+      <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+      </ul>
+    </div>
+    <script>
+      const content = document.querySelector('#content');
+      console.log(`content.innerHTML：`,content.innerHTML);
+      
+      content.innerHTML =`<h1>Hello, world!</h1>`
+
+      console.log(`content.innerHTML：`,content.innerHTML);
+
+
+      console.log('content.outerHTML', content.outerHTML);
+    </script>
+</body>
+</html>
