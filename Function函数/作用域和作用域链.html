@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域和作用域链</title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 证明函数是对象
+    // function test(a,b) {
+    //   console.log(`test.name, test.length：`,test.name, test.length, test.prototype);
+    // }
+    // test()
+
+    function a(arg1, arg2) {
+      console.log(`a：`,);
+      function b() {
+        console.log(`b：`,);
+        function c() {
+          console.log(`c：`,);
+        }
+        c()
+      }
+      b()
+    }
+    a(1,2)
+
+
+
+   </script>
+</body>
+</html>

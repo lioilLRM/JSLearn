@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预编译</title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    // console.log(`a：`,a);
+    // function a(a) {
+    //   var a = 10;
+    //   var a = function () {
+    //     console.log(`innerFn：`,);
+        
+    //   }
+    // }
+    // var a  = 1;
+
+    // 暗示全局变量问题： imply global variable
+      // a = 1 // 未被声明就赋值的话，属于暗示全局变量，所有权属于window
+      // console.log(`a：`,a); 
+      // 函数预编译的过程：
+     /**
+      * AO: activation object
+       *1. 寻找形参和变量声明
+       2. 实参赋值给形参
+       3. 找函数声明，赋值
+       4. 执行
+       *  */
+      // function test(a) {
+      //   console.log(`a：`,a); // a 函数？还是形参的值？
+      //   var a = 1
+      //   console.log(`a：`,a); // 1
+      //   function a() {}
+      //   console.log(`a：`,a); // 1
+      //   var b = function () {}
+      //   console.log(`b：`,b); // b函数的内容
+      //   function d() {}  
+      // }
+      // test(2)
+
+      // function test2(a, b) {
+      //   console.log(`a：`,a, b); // 1
+      //   c = 0
+      //   var c;
+      //   a = 5;
+      //   b = 6;
+      //   console.log(`b：`, b); // 6
+      //   function b() {}
+      //   function d() {}
+      //   console.log(`b：`,b); // 6
+      // }
+      // test2(1,2)
+
+      // 1,2
+      /**
+       * AO = {
+          a: undefined -> 1 
+          b: undefined -> 2 -> function b(){},
+          c: 0,
+          d: function d(){}
+          }
+       **/
+
+      //  var b = 2
+      //  console.log(`a：`,a);
+      //  function a(a) {
+      //    console.log(`a：`,a);
+      //    var a = 2;
+      //    console.log(`a：`,a);
+      //    function a() {
+      //      var b  = 5
+      //      console.log(`b：`,b);
+      //    }
+
+      //  }
+      // a(1)       
+      
+      // function test3() {
+      //   console.log(`b：`,b);
+      //   if(a) {
+      //     var b = 2
+      //   }
+      //   c = 3
+      //   console.log(`test inner c：`,c);
+      // }
+      // var a
+      // test3()
+      // a = 1
+      // console.log(`a：`,a);
+      // console.log(`c：`,c);
+      
+    // 预编译分析
+      // GO = {
+      //   a: undefined,
+      //   test: function test() {},
+      //   c: 3, // 执行test的时候赋值
+      // }
+      // AO = {
+      //   b: undefined, // 这里有误解，本来以为在if条件里面不会提升变量的，其实是需要的
+      // }
+
+      // function test4() {
+      //   return a
+      //   a = 1;
+      //   function a() {}
+      //   var a =2
+      // }
+      // console.log(`：`, test4()) ;
+      // 预编译分析
+        // GO = {
+          
+        // }
+        // AO = {
+        //   a: undefined -> function a(){}-return,
+        // }
+
+
+          // function test5() {
+          //   a = 1;
+          //   function a() {}
+          //   var a = 2
+          //   return a
+          // }
+          // console.log(`test：`,test5());
+          // 预编译分析
+            // GO = {
+              
+            // }
+            // AO = {
+            //   a: undefined -> function a(){}->1->2,
+            // }
+
+    ;(function() {
+      return;
+      a = 1
+      function test(e) {
+        console.log(`e 1：`,e);
+        
+        function e() {}
+        arguments[0] = 2
+        console.log(`e 2：`,e); // 2
+        if(a) {
+          var b = 3
+        }
+        var c;
+        a = 4
+        var a;
+        console.log(`b：`,b); // undefined
+        f = 5
+        console.log(`c：`,c); // undefined
+        console.log(`a：`,a); // 4
+      }
+
+      var a;
+      test(1)
+      // 预编译分析
+        // GO = {
+        //   a: undefined ->开始执行 1,
+        //   test: function test() {},
+        //   f: 5
+        // }
+
+        // AO = {
+        //   e: undefined ->形参 1-> function e() {} -> 执行-> 2,
+        //   b: undefined,
+        //   c: undefined,
+        //   a: undefined->执行 4,
+        // }
+    })();
+
+      
+  </script>
+</body>
+</html>

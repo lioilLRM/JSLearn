@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Cat() {}
+Cat.prototype = {
+  food: 'fish',
+  type: '猫咪',
+  say: function() {
+    console.log(`I love ${this.food}`)
+  }
+}
+
+const blackCat = new Cat()
+blackCat.say()
+
+const whiteDog = { food: '骨头', type: '狗狗' }
+blackCat.say.call(whiteDog)
+blackCat.say.apply(whiteDog)
+// whiteDog.say()
+
+// 2022年2月15日 P12 小野前端 JavaScript深度指南
+// 说明：apply应用之实现继承
+;(function() {
+  function Compute() {
+    this.name = 'Compute'
+    this.add = function(a, b) {
+      console.log(`a+b：`, a + b)
+    }
+    this.sub = function(a, b) {
+      console.log(`a-b：`, a - b)
+    }
+  }
+
+  function FullCompute() {
+    // 通过apply改变this的指向，继承Compute里面的方法
+    Compute.apply(this)
+    this.mul = function(a, b) {
+      console.log(`a*b：`, a * b)
+    }
+    this.div = function(a, b) {
+      console.log(`a/b：`, a / b)
+    }
+  }
+
+  const compute = new FullCompute()
+  compute.add(1, 2)
+  compute.mul(1, 2)
+  console.log(`compute.name：`, compute.name)
+}())
+
+// 说明：通过原型链继承的问题：student实例对象继承了Teacher和Professor的所有的东西。但是不是所有的东西都是必须的。应该只继承部分属性即可。
+;(function() {
+  function Professor() {}
+  Professor.prototype.topSkill = 'Java'
+  var professor = new Professor()
+
+  function Teacher() {
+    this.mSkill = 'Javascript'
+    this.students = 500
+    this.success = {
+      book: '《书》',
+      student: 3000
+    }
+    this.say = function() {
+      console.log(`I am teacher：`)
+    }
+  }
+  Teacher.prototype = professor
+  var teacher = new Teacher()
+  teacher.name = '孔子'
+
+  function Student() {
+    this.pSkill = 'HTML/CSS'
+  }
+  Student.prototype = teacher
+
+  var student = new Student()
+  // 修改原始值和引用值的区别：
+  student.students++
+  console.log(`student, Teacher, teacher：`, student, teacher)
+
+  student.success.book = '<春秋>'
+  console.log(`student：teacher`, student, teacher)
+  // Professor.prototype的原型-》是Object.prototype;Object.prototype的原型是null
+  console.log(`Professor.prototype：`, Professor.prototype)
+
+  console.log(`Object.prototype：`, Object.prototype)
+}())
+
+// 说明：通过apply和call实现部分继承
+// 好处：能够分模块开发；有利于多人合作
+// 缺点：没有办法访问继承的prototype
+;(function() {
+  function Teacher(name, skill) {
+    this.name = name
+    this.skill = skill
+  }
+  Teacher.prototype.wife = '老婆'
+  function Student(options) {
+    // 借用别人的属性和方法
+    Teacher.apply(this, [options.name, options.skill])
+
+    this.age = options.age
+    this.major = options.major
+  }
+
+  const student = new Student({ name: '喵思维', skill: 'JS', age: 32, major: '计算机' })
+  console.log(`student：`, student)
+}())
+
+// 2022年2月16日:P12,
+// 解决上面的继承问题：但是引出了新的问题：在子类上面的prototype添加的新属性父类也继承了
+;(function() {
+  function Teacher() {
+    this.name = '老子'
+    this.skill = '道德经'
+  }
+
+  Teacher.prototype.wife = '老娘'
+
+  function Student() {
+    this.name = '小子'
+  }
+  // 公共原型
+  Student.prototype = Teacher.prototype
+  Student.prototype.age = 18
+
+  const teacher = new Teacher()
+  const student = new Student()
+
+  console.log(`teacher：`, teacher)
+  console.log(`student：`, student)
+}())
+// 圣杯模式：通过中间层去继承，避免子类在prototyoe添加属性的时候修改了父类的属性。
+;(function(){
+  function Teacher() {
+    this.name = '老子'
+    this.skill = '道德经'
+  }
+  Teacher.prototype.wife = '老娘'
+
+  function Student() {
+    this.name = '小子'
+  }
+
+  function Buffer() { }
+  
+  Buffer.prototype = Teacher.prototype
+  let buffer = new Buffer()
+  console.log(`buffer：`,buffer);
+  Student.prototype = buffer
+  Student.prototype.age = 18
+  // Student.prototype = Teacher.prototype
+  // Student.prototype.age = 18
+
+  const teacher = new Teacher()
+  const student = new Student()
+
+  console.log(`teacher：`, teacher)
+  console.log(`student：`, student)
+  console.log(`student.wife：`,student.wife);
+  
+
+}())
+// 中间层封装
+;(function(){
+  console.log('中间层封装');
+  function Teacher() {
+    this.name = '老子'
+    this.skill = '道德经'
+  }
+  Teacher.prototype.wife = '老娘'
+
+  function Student() {
+    this.name = '小子'
+  }
+
+  inherit(Student, Teacher)
+  Student.prototype.age = 12
+
+  let student = new Student()
+  let teacher = new Teacher()
+
+  console.log(`student：`,student);
+  console.log(`Teacher：`,teacher);
+  
+
+  
+
+  function inherit(Target, Origin) {
+    function Buffer() {}
+    Buffer.prototype = Origin.prototype
+    Target.prototype = new Buffer()
+
+    Target.prototype.constructor = Target
+    Target.prototype.super_class = Origin
+  }
+  
+}())
+// 继承的封装
+;(function(){
+
+  
+  function test() {
+    function Buffer() {}
+    function inherit(Target, Origin) {
+    Buffer.prototype = Origin.prototype
+    Target.prototype = new Buffer()
+
+    Target.prototype.constructor = Target
+    Target.prototype.super_class = Origin
+  }
+  return inherit
+  }
+
+  var inherit = test() // 多余的
+
+  var inheritV2 = (function() {
+    function Buffer() {}
+    // 去掉函数名返回 
+      //   function inherit(Target, Origin) {
+      //   Buffer.prototype = Origin.prototype
+      //   Target.prototype = new Buffer()
+
+      //   Target.prototype.constructor = Target
+      //   Target.prototype.super_class = Origin
+      // }
+      // return inherit
+  // 直接返回一个匿名函数
+  return  function(Target, Origin) {
+    Buffer.prototype = Origin.prototype
+    Target.prototype = new Buffer()
+
+    Target.prototype.constructor = Target
+    Target.prototype.super_class = Origin
+  }
+  })()
+  inheritV2()
+
+}())
+
+
+
+
+  </script>
+</body>
+</html>

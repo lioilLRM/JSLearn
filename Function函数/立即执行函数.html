@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>立即执行函数IIFE</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 2022年2月12日：小野前端 JavaScript深度指南
+    // IIFE 传递的实参，接收参数：a,b，
+    (function(a, b) {
+      // let a = 1;
+      // let b = 2
+      console.log(`a+b：`,a+b);
+    }(233,111))
+
+    // ()包裹函数变成函数表达式
+    var num = (function(){
+      console.log(`执行IIFE 返回参数：`,);
+      return 22
+    }())
+    console.log(`num：`,num);
+
+    // 为什么这样子不能执行呢？报语法错误,
+
+    // function IIFE(){}() 
+    // 所以什么情况下可以加括号不报错呢？
+    // 在表达式后面加括号不报错；一定是表达式才能被执行符号执行
+    // 函数变成表达式后名称会自动被忽略：因为执行完后立即被销毁了。有没有函数名无意义
+    var IIFE = function(a) {
+      console.log('run IIFE', a);
+    }(1);
+    console.log(`IIFE excuted finish and destroy function：`,IIFE);
+    
+    // 这样子就能执行呢？
+    (function (){console.log(`执行匿名函数：`,11)})()
+
+    // 函数声明变成函数表达式的方法？
+    // 在函数在前面加：- + * / & | ! % 可以让函数声明变成表达式的方法，函数立即执行
+    1&&function(a) {
+      console.log(`执行IIFE2：`,a);
+    }(11)
+
+    // 逗号运算符
+    console.log(`逗号运算符(1,2,3)：返回最后一位数：`,(1,2,3));
+    
+    // 逗号表达式的应用：如果不写入参数的话，会报语法错误；
+    // 写入参数的话，会被JS引擎解析为逗号表达式。
+    function commaExpression() {
+
+    }(222)
+
+    ;(function(){
+      // 考的是括号表达式：(function b(){}) 是一个表达式，里面的b被忽略掉了。所以b是undefined
+      console.log(`======括号运算符表达式面试题======`,);
+      var a= 10
+      if(function b(){}) {
+        a+= typeof(b)
+      }
+      console.log(`a：`,a);
+      console.log(`======括号运算符表达式面试题======`,(function b(){}) );
+      
+    }());
+
+    
+  </script>
+</body>
+</html>

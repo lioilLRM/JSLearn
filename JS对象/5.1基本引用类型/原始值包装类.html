@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原始值包装类</title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    /** 2022年2月12日：小野前端 JavaScript深度指南
+     * 包装类
+     * 原始值没有自己的方法和属性
+     * 课程思路：
+     * 1. 讲解原始值，引出原始值的包装类Number
+     * 2. Number类实例化对象，给对象添加方法和属性
+     * 3. 将实例化对象和原始值参与运算。
+     **/
+    ;(function(){
+      var num = 1
+      var numb = new Number(num)
+      numb.len = 1
+      numb.add = function() {
+        console.log(`1：`,1);
+      }
+      console.log(`numb：`,numb);
+    }())
+
+    ;(function(){
+      var a = 1
+      a.len = 3 // new:这里做了隐式转换的过程：new Number(1).len = 3; 但是没有值去接收他，所以delete a.len, 变成undefined
+      let aa =  a.name = 'aa'
+      console.log(`a.len ：`,a.len, a.length, aa, typeof(a));
+
+      // 为了举例证明上面的问题
+      var obj = {name: 'obj'}
+      
+
+      // 原始值没有属性和方法，为社么有length属性？str可以，num为什么不行？
+      var str = 'abc' 
+      str.len = 4
+      // str.length => new String(str).length (new String()里面是有length属性的，so 打印 length)
+      console.log(`str.len, str.length：`,str.len, str.length, new String());
+      // str为什么没有像arr一样被 截断？new String(str).length = 2 没有值接收，delete 属性
+      str.length = 2
+      console.log(`str：`,str);
+      
+      
+    }())
+
+  ;(function(){
+    let arr = [1,2,3,4,5,6,7,8,9,10]
+    // 数组的length 属性直接截断
+    arr.length = 3
+    console.log(`arr：`,arr);
+    
+  }())
+  
+    
+    
+  ;(function(){
+    console.log('证明 null 和 undefined 设置不了任何的属性和方法的');
+    try{
+      console.log(`null.length：`,null.length);
+      console.log(`undefined.length：`,undefined.length);
+    }catch(e) {
+      console.log(`e：`,e);
+    }
+  }())
+
+  ;(function(){
+    var name = '123456'
+    name+=10
+    console.log(`name：`,name);
+    // var type = typeof(name)
+    var type = new String(typeof(name))
+    if(type.length === 6){ 
+      type.text = 'string'
+      // new String(type).text--> delete type.text
+    }
+    console.log(`type.text：`,type.text);
+    
+  }())
+  
+  // 说明：给定一个字符串，计算字符串的字节数
+;(function(){
+  function getStringByte(str) {
+    if(!str) return 0
+    let totalByte = 0;
+    if(str) {
+      let charAt = 0
+      let oneByteArrange = [0, 255]
+      for(let i = 0; i < str.length;i++) {
+        charAt = str[i].charCodeAt(0)
+        console.log(`charAt：`,charAt);
+        if(charAt>=oneByteArrange[0] && charAt<=oneByteArrange[1]) {
+          totalByte++
+        } else {
+          totalByte +=2
+        }
+      }
+    }
+    console.log(`totalByte：`,totalByte);
+    return totalByte
+  }
+
+  function getBytes(str) {
+    var bytes = str.length
+    for(let i = 0;i<str.length;i++) {
+      var pos = str.charCodeAt(i)
+      if(pos> 255) {
+        bytes++
+      }
+    }
+    return bytes
+  }
+
+  getStringByte('12345A中文')
+}())
+
+
+    
+
+
+  </script>
+</body>
+</html>
