@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数基础</title>
+</head>
+<body>
+  <!-- 基本功 -->
+  <script type="text/javascript">
+    console.log(`typeof function：`,typeof function(){});
+
+    // 普通的函数声明
+    // function test() {
+    //   var a = b = 1 // b挂载到window上面
+    //   console.log(`a, b：`,a, b, this);
+      
+    // }
+    // test()
+    // console.log(`a,b ：`, a, b );
+    //匿名函数表达式：  函数字面量的声明方式：在外部调用是使用不到test1的。
+    // 但是在里面是可以调用到
+    var test = function ()  {
+      var a = 1,
+            b = 2;
+      console.log(`a, b：`,a, b);
+      
+    }
+    test.name
+    console.log(`test.name：`,test.name);
+    
+    // test1();
+    // 如何在函数内部知道函数实际上传递的参数：arguments对象
+    // 如何指导函数形参的长度：
+    // 能否改变实参？如果传递了实参，实参是能够改变的；不传递实参，赋值无效。
+    // 如何没有手动添加return的话，js 引擎默认在最后添加一个return：return终止函数的执行。
+    function knowArg(a,b, c, d) {
+      console.log(`knowArg.length：`,knowArg.length);
+      console.log(`arguments：`,arguments, typeof(arguments));
+      a = 233 // 如果传递了实参，实参是能够改变的
+      console.log(`arguments[0]：`,arguments[0]);
+      console.log(`arguments：`,arguments, typeof(arguments));
+      d = 'dd' // 不传递实参，赋值无效。
+      console.log(`arguments[3]：`,arguments[3]);
+      
+      let newArgs = [].slice.call(arguments)
+      let totalArgNum  = 0
+       // 一个函数被调用时，累加它的实参数
+      newArgs.forEach(arg => {
+        totalArgNum+=arg
+      })
+      console.log(`totalArgNum：`,totalArgNum);
+    }
+    knowArg(1,2,3)
+
+    function returnName(name) {
+      return name || '请输入姓名'
+    }
+
+    console.log(`returnName('天宝')：`,returnName('天宝'));
+    console.log(`returnName()：`,returnName());
+    
+    // 参数默认值问题：形参的默认值是undefined
+    // 问题1：给a默认值1，b没有默认值；调用函数，a保留默认值，给b传递默认值2，如何实现？
+    function argsDefaultValueES6(a = 1, b) {
+      console.log(`a, b：`,a, b);
+    }
+    argsDefaultValueES6(undefined, 2)
+
+    function argsDefaultValueES5(a, b) {
+      var a = arguments[0] || 1
+      var b = arguments[1] || 2
+      console.log(`a+b：`,a+b);
+      
+    }
+    argsDefaultValueES5(0,4)
+
+    // 递归
+    // n 的阶乘：n! = n * (n - 1)
+    function fact(n) {
+      if(n === 1) return 1
+      return n * fact(n - 1)
+    }
+    console.log(`fact(n)：`,fact(5));
+    
+
+
+    
+  </script>
+</body>
+</html>

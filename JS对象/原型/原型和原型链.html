@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型和原型链</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 2022年2月12日：小野前端 JavaScript深度指南
+
+
+    ;(function(){
+        function HandPhone(options) {
+        // 配置项通过参数传入
+        this.brand = options.brand
+        this.color = options.color
+
+        // 固定项
+        // this.screen = '16:9'
+        // this.system = 'Android'
+      }
+      // 原型prototype 其实是function 对象的一个属性
+      // 打印出来看下，他其实也是一个对象。
+      console.log(`HandPhone.prototype：`,HandPhone.prototype);
+      
+      // 对象添加上属性并且能够打印出来
+      // 说明prototype是构造函数实例化出来每个对象的公共祖先
+      // HandPhone.prototype.rom = '256G'
+      // HandPhone.prototype.ram = '12G'
+
+      // 固定性通过prototype继承
+      HandPhone.prototype = {
+        rom: '256G',
+        ram: '12G',
+        screen: '16:9',
+        call: function() {
+          console.log('I am call someone!');
+        }
+      }
+
+      let xiaomi = new HandPhone({brand: '小米', color: 'red', screen: '100*100', system: 'Android'})
+      let huawei = new HandPhone({brand: '华为', color: 'green', screen: '100*100',system: 'Android'})
+      console.log(`xiaomi, huawei：`,xiaomi, huawei);
+      console.log(`xiaomi.ram, huawei.ram：`,xiaomi.ram, huawei.ram);
+
+      
+
+    }())
+    
+    ;(function(){
+      console.log(`说明prototype的原始指向：`,);
+      
+      function Telephone() {}
+
+      function HandPhone(options) {
+        this.brand = options.brand
+        this.color = options.color
+      }
+      console.log(`HandPhone.prototype：`,HandPhone.prototype);
+      console.log(`说明prototype的原始指向的是构造HandPhone函数`,);
+
+      HandPhone.prototype = {
+        constructor: Telephone
+      }
+      console.log(`change HandPhone.prototype：`,HandPhone.prototype);
+      console.log(`说明HandPhone的prototype指向是可以更改的，指向了Telephone构造函数`,);
+
+
+    }())
+
+    /**
+     * 说明：描述实例的__proto__ 和 原型prototype的关系
+     * __proto__属于每一个实例化的对象。而不是属于某个构造函数
+     * */
+    ;(function(){
+      function Car() {
+        // var this = {
+        //   name: '宏光',
+        //   __proto__: Car.prototype,
+        // };
+        // this.name = '宏光' // this自身有的就访问this
+      }
+
+      Car.prototype.name = '五菱'
+      var wuling = new Car()
+      console.log(`wuling：`,wuling);
+      
+
+    }())
+
+    /**
+     * 说明：验证实例化对象的__proto__ 能否修改的问题 
+     **/
+    ;(function(){
+      function Person() {}
+      Person.prototype.name = '张三'
+
+      var p1 ={
+        name: '李四'
+      }
+      var person = new Person()
+      console.log(`person.name：`,person.name);
+
+      person.__proto__ = p1
+      // person[[['prototype']]] = p1
+      console.log(`person.name：`,person);
+      
+      
+    }())
+
+      /**
+       * 说明：验证Prototype在不同情况下赋值打印的问题
+       **/
+    ;(function(){
+      Car.prototype.name = '五菱'
+
+      function Car() { }
+
+      // Car.prototype = {
+      //   name: '宏光实例化之前'
+      // }
+
+      var wuling = new Car()
+
+      // 在实例化之后重新给prototype赋值无效：this = {__proto__: Car.prototype = {name: '五菱'}}
+      Car.prototype = {
+        name: '宏光实例化之后'
+      }
+      console.log(`wuling：`,wuling.name);
+      console.log(`wuling：`,wuling);
+
+      // Car.prototype.constructor => Car() => prototype ->name = '宏光实例化之后';
+    }())
+    
+    // 2022年2月13日P11 小野前端 JavaScript深度指南
+// 说明：car 的__proto__ 指向 Car.prototype, Car.prototype也是一个对象，也有__proto__
+// 
+    ;(function(){
+      function Car() {}
+      var car = new Car();
+      console.log(Car.prototype);
+      console.log(car);
+
+    }())
+    
+    // 说明：原型链说明；原型的终点是什么？
+    ;(function(){
+      function Professor() {}
+      Professor.prototype.topSkill = 'Java'
+      var professor = new Professor();
+
+      function Teacher() {
+        this.mSkill = 'Javascript'
+        this.students = 500
+        this.success = {
+          book: '《书》',
+          student: 3000
+        }
+        this.say = function(){
+          console.log(`I am teacher：`);
+        }
+      }
+      Teacher.prototype = professor
+      var teacher = new Teacher()
+      teacher.name = '孔子'
+
+      function Student() {
+        this.pSkill = 'HTML/CSS'
+      }
+      Student.prototype = teacher
+
+      var student = new Student()
+      // 修改原始值和引用值的区别：
+      student.students++
+      console.log(`student, Teacher, teacher：`,student, teacher);
+      
+      student.success.book = '<春秋>'
+      console.log(`student：teacher`,student, teacher);
+      // Professor.prototype的原型-》是Object.prototype;Object.prototype的原型是null
+      console.log(`Professor.prototype：`,Professor.prototype); 
+      
+      console.log(`Object.prototype：`,Object.prototype);
+      
+
+    }())
+
+    // 日期：2022年2月14日
+    // 说明：this的指向问题：如何打印原型上的brand
+    ;(function(){
+      function Car() {
+        this.brand = '五菱'
+      }
+      Car.prototype = {
+        brand: 'Mini',
+        intro: function() {
+          console.log(`我是${this.brand}车!`,);
+        }
+      }
+      function Truck() {
+        this.brand = '大运汽车'
+      }
+      var car = new Car()
+      var truck = new Truck()
+      car.intro()
+      Car.prototype.intro()
+      car.intro.call(truck)
+      Car.prototype.intro.call(truck)
+
+      // truck.intro()
+    }())
+
+    // 说明：函数默认返回值是什么？构造函数默认返回值？
+    ;(function(){
+      function Person() {
+        this.smoke = function() {
+          this.weight--
+        }
+      }
+      Person.prototype = {
+        weight: 120
+      }
+      var person = new Person()
+      console.log(`person.smoke()：`,person.smoke());
+      console.log(`person：`,person);
+      
+      console.log(`person.weight：`,person.weight);
+      console.log(`Person.prototype：`,Person.prototype);
+    }())
+
+    // 说明：字面量对象和new Object对象的原型是一样的
+    ;(function(){
+      var obj1 = {}
+      console.log(`obj1：`,obj1);
+      
+      var obj2 = new Object();
+      console.log(`obj2：`,obj2);
+      
+      function Obj() {}
+      var obj3 = new Obj()
+      console.log(`obj3：`,obj3);
+      console.log(`原型的原型是Object.prototype：`,obj3.__proto__);
+      
+
+      
+    }())
+    
+    // 说明：Object.create()
+    ;(function(){
+      function Obj() {}
+      Obj.prototype.num = 1
+
+      var obj1 = Object.create(Obj.prototype)
+      var obj2 = new Obj()
+
+      console.log(`obj1：`,obj1);
+      console.log(`obj2：`,obj2);
+
+      var test = {num: 3}
+      var obj3 = Object.create(test)
+      console.log(`obj3：`,obj3);
+    }())
+    
+    ;(function(){
+      console.log(`说明：不是所有对象都继承于Object.prototype`,);
+      console.log('Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__');
+      
+      // 创建obj1 空对象：没有原型；可以手动添加原型对象上去
+      var obj1 = Object.create(null)
+      console.log(`obj1：`,obj1);
+      obj1.num = 1
+      // console.log(`obj1.toString()：`,obj1.toString());
+      
+      var obj2 = Object.create(obj1);
+      console.log(`obj2：`,obj2);
+      
+      var obj3 = {
+        count: 3
+      }
+      // 手动给obj1对象添加原型对象
+      obj1.__proto__ = obj3;
+      console.log(`obj1：`,obj1);
+      console.log(`obj1访问手动原型对象里面的的count无法访问：`,obj1.count);
+
+      
+      console.log(`obj3：`,obj3);
+    }())
+
+    ;(function(){
+      console.log('对象的隐式转换，toString的继承问题');
+      var num = 1
+      var obj = {}
+      var obj2 = Object.create(null);
+      document.write(num)
+      document.write(obj)
+      // document.write(obj2) // 新创建的空对象缺乏toString()方法。所以进行隐式转换的时候失效
+      // 手动给obj2添加toString()
+      obj2.toString = function(){
+        return '你好'
+      }
+
+      document.write(obj2.toString())
+
+      
+    }())
+
+    ;(function(){
+      console.log('原型方法重写 的问题：toString');
+      console.log(`Object.toString()：`,Object.toString());
+      
+      console.log(Object.prototype.toString.call(1));
+      console.log(Object.prototype.toString.call(false));
+
+      console.log(Object.prototype.toString.call('1'));
+
+      console.log(Object.prototype.toString.call([1,2,3]));
+      console.log(Object.prototype.toString.call({arr:[1,2,3]}));
+
+      console.log(Number.prototype.toString.call(1));
+      console.log(Object.prototype.toString.call(1));
+      
+
+      
+      
+    }())
+
+    ;(function(){
+      function test() {
+        console.log(`a：`,11);
+      }
+
+      test.call( )
+
+    }())
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+  </script>
+</body>
+</html>
