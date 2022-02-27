@@ -6,9 +6,10 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			var arr = [1,2,3,4,5];
+      ;(function(){
+        var arr = [1,2,3,4,5];
 			for(var i in arr) {
-					console.log(arr[i]);
+					// console.log(arr[i]);
 			}
 			var result = arr.every(function(item, index) {
 				console.log(item);
@@ -33,6 +34,160 @@
 				}
 			})
 			console.log(filterArr);
+      }())
+
+      ;(function(){
+        console.warn('=======数组的三种声明方式=======')
+        console.log(`：`,);
+        let arr = [1,2,3]
+        let arrType2 = new Array(1,2,3)
+        let arrType3 = Array(1,2,3)
+        console.log(`arr, arrType2, arrType3：`,arr, arrType2, arrType3);
+        
+        console.warn('=======数组的原型都是Array.prototype=======')
+        console.log(`arr.__proto__：`,arr.__proto__);
+        console.log(`arrType2.__proto__：`,arrType2.__proto__);
+        console.log(`arrType3.__proto__：`,arrType3.__proto__);
+        console.log(`Array.prototype：`,Array.prototype);
+        
+        console.warn('=======证明数组是模仿对象而来的=======')
+        let obj = {
+          0: 1,  1: 2, 2: 3
+        }
+        // obj.name ==> 转换为obj[name]
+        console.log(`arr[0], obj[0]：`,arr[0], obj[0]);
+        
+        console.warn('=======稀松数组，最后一个逗号不认=======')
+        var emptyArr = [,,]
+        console.log(`emptyArr：`,emptyArr);
+        var arr2 = [,1,2,3,]
+        console.log(`最后一个逗号不认：arr2.length`,arr2.length);
+        
+        console.warn('=======new Array()不同参数的结果=======')
+        let oneNumberArr = new Array(5)
+        console.log(`设置长度：oneNumberArr：`,oneNumberArr);
+        let strArr = new Array('12')
+        console.log(`strArr：`,strArr);
+        let poorArr = new Array(1,2,)
+        console.log(`poorArr：`,poorArr);
+        
+        console.warn('=======访问数组不存在的下标结果=======')
+        console.log(`arr2[4]：`,arr2[4]);
+        
+        console.warn('=======数组的方法从哪来的？从Array.prototype继承来的=======')
+        
+        console.warn('=======数组push,unshift的返回值是什么？=======')
+        var pushArr = [1,2,3]
+        console.log(`执行了方法以后数组的长度：pushArr.push(11)：`,pushArr.push(11));
+        console.log(`pushArr.unshift(00)：`,pushArr.unshift(0,9,20), pushArr);
+        
+        console.warn('=======自定义数组的push,pop方法=======')
+        Array.prototype.myPush = function() {
+          for(let i  = 0;i< arguments.length;i++) {
+            this[this.length] = arguments[i];
+          }
+          return this.length
+        }
+       console.log(` pushArr.myPush(3,22,22)：`, pushArr.myPush(3,22,23), pushArr);
+      // console.log(`pushArr.pop(),pushArr：`,pushArr.pop(),pushArr);
+      
+       Array.prototype.myPop = function() {
+          let res = this[this.length-1];
+          this.length--
+          return res
+       }
+      console.log(`pushArr.myPop(), pushArr：`,pushArr.myPop(), pushArr);
+      
+       console.warn('=======实现数组的unshift,shift方法=======')
+       let unshiftArr = [1,2,3]
+       Array.prototype.myUnshift = function() {
+        let len = this.length
+        for(let i = 0;i< arguments.length;i++) {
+          this[i+len] = this[i];
+          this[i] = arguments[i];
+        }
+        return this.length
+       }
+
+       Array.prototype.myShift = function() {
+         let res = this[0]
+          for(let i = 0;i< this.length;i++) {
+            this[i] = this[i+1]
+          }
+          this.length--
+         return res
+       }
+
+       console.log(`pushArr.myUnshift(11,22,33), pushArr：`,
+       unshiftArr.myUnshift(11,22,33,99,11), unshiftArr);
+       console.log(`unshiftArr.myShift(), unshiftArr：`,unshiftArr.myShift(), unshiftArr);
+       
+       console.warn('=======数组reverse方法=======')
+       let reverseArr = [12,3,4]
+       console.log(`reverseArr.reverse()：`,reverseArr.reverse());
+       
+       console.warn('=======数组的splice=======')
+       let spliceArr = [1,2,4]
+       spliceArr.splice(2, 0 , 3)
+       console.log(`从前插入：`, spliceArr);
+       spliceArr.splice(-2, 0, '后面插入')
+       console.log(`后面插入:spliceArr：`,spliceArr);
+       
+       console.warn('=======数组sort方法：是按照ascii码排序的=======')
+       var sortArr = ['b', 'z', 'h', 'ii', 'a']
+       sortArr.sort()
+       console.log(`sortArr：`,sortArr);
+       console.log(`排序方法返回的结果：sortArr.sort()：`,sortArr.sort());
+        
+       let sortArr2 = [23, 46, 5, 7]
+       console.log(`sortArr2.sort()：`,sortArr2.sort());
+       // sort内部自定义的函数要求a,b两个参数比较：
+       // 返回值：1. 正值，b排在前面，2，负值，a安排在前面 3. 0,保持不动。
+       // 公司里面最重要的是什么：代码的可读性，而不是简写。
+       sortArr2.sort(function(a, b) {
+        //  if(a>b) {
+        //    return 1
+        //  } else {
+        //    return -1
+        //  }
+        return a-b
+       })
+       console.log(`sortArr2：`,sortArr2);
+
+       ;(function(){
+         console.warn('=======数组的随机排序=======')
+          let arr = [1,2,3,4,5,6,7]
+
+          arr.sort(function() {
+            // var rand = Math.random()
+            // if(rand - 0.5 >0){
+            //   return 1
+            // } else {
+            //   return -1
+            // }
+            return Math.random() - 0.5
+          })
+          console.log(`arr：`,arr);
+          console.warn('=======数组对象排序=======')
+          let students = [
+            {name: 'Jenny', age: 12},
+            {name: 'Benny', age: 21},
+            {name: 'Renny', age: 13},
+            {name: 'Penny', age: 14},
+          ]
+          students.sort(function(a, b){
+            return a.age - b.age;
+          })
+          console.log(`students：`,students);
+          
+
+          
+       }())
+
+       
+
+      }())
+			
 			
 		</script>
 	</body>
