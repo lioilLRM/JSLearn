@@ -184,10 +184,213 @@
           
        }())
 
-       
+
 
       }())
-			
+
+      // 2022年2月27日 P16 小野前端 JavaScript深度指南
+			;(function(){
+        console.warn('=======concat()=======')
+        console.warn('=======toString()=======')
+        ;(function(){
+         console.warn('=======slice：克隆一个数组=======')
+          let arr = [1,2,3,{name: 'John', age:12}, 5, 6]
+          let arr2 = arr.slice()
+          arr[3].name = 'new Date'
+          console.log(`arr2, arr：`,arr2, arr);
+          
+          // slice方法参数：[start, end)，第一个参数为闭区间；第二个参数为开区间
+          let arr3 = arr.slice(1, 4)
+          console.log(`arr3：`,arr3);
+          let arr4 = arr.slice(-3,-1)
+          console.log(`arr4：`,arr4);
+          
+          
+          console.warn('=======数组join方法和参数=======')
+          console.log(`arr.join()：`,arr.join());
+          console.log(`arr.join('-')：`,arr.join('-'));
+
+          console.warn('=======数组split方法和参数=======')
+        }())        
+      }())
+
+      ;(function(){
+        console.warn('=======类数组=======')
+        function test() {
+          // 不能使用push方法，
+          // 没有继承自Array.prototype
+          console.log(`arguments：`,arguments);
+        }
+        test(12,3,4,5)
+        console.log('类数组的面试题');
+        
+        var obj = {
+          '2': 3,
+          '3': 4,
+          'length': 2,
+          'splice': Array.prototype.splice,
+          'push': Array.prototype.push
+        }
+        obj.push(1)
+        obj.push(2)
+        console.log(`obj：`,obj);
+        // 原理：
+        // Array.prototype.push = function(elem) {
+        //   this[this.length] = elem
+        //   this.length++
+        // }
+        console.warn('=======类数组对象转为数组=======')
+        var obj2 = { '0': 1, 'length': 1,'splice': Array.prototype.splice,}
+        console.log(`obj2：`,obj2);
+        
+        console.warn('=======类数组对象转换为数组同时拥有对象和数组的方法=======')
+        let person = {
+          '0': 'Person1',
+          '1': '烹饪son',
+          '2': '李斯',
+          'length': 3,
+          name: '张三',
+          age: 12,
+          splice: Array.prototype.splice,
+          push: Array.prototype.push
+        }
+        // Object.prototype.splice = Array.prototype.splice
+        // Object.prototype.push = Array.prototype.push
+
+        person.push('老渣')
+        console.log(`person：`,person);
+        
+      }())
+
+      ;(function(){
+        console.warn('=======作业：数组去重方式：数组转对象再取对象值返回=======')
+        let arr = [22,22,44,11,1,2,3,1,2,3,4,'a', 'a','b','body']
+        Array.prototype.unique = function(arr) {
+          let obj = {}
+          let res = []
+
+          // 老师的写法
+          // for(let i = 0; i< this.length; i++) {
+          //   if(!obj.hasOwnProperty(this[i])) {
+          //     obj[this[i]] = this[i]
+          //     res.push(this[i])
+          //   }
+          // }
+
+
+          // 我的写法
+          // for(let i = 0;i< arguments[0].length;i++) {
+          //   let value = arguments[0][i]
+          //   obj[value] = value
+          // }
+          // for(let key in obj) {
+          //   res.push(obj[key])
+          // }
+          return res
+        }
+        console.log(`arr.unique(arr)：`,arr.unique(arr));
+        
+        console.warn('=======封装typeof方法=======')
+
+        function myTypeof(value) {
+          // if(value === null) return null;
+            // if(value === undefined) return undefined
+
+            // if(typeof value === 'boolean') return 'boolean'
+            // if(typeof value === 'number') return 'number'
+            // if(typeof value === 'string') return 'string'
+            // if(typeof value === 'function') return 'function'
+            // let type;
+            // if(typeof value === 'object') {
+            //   let toString = Object.prototype.toString
+            //   // console.log(`toString.call(value)：`,toString.call(value));
+            //   type = toString.call(value)
+            // }
+            // return type
+            let type = typeof value
+            let resMap = {
+              '[object Array]': 'object-array',
+              '[object Object]': 'object-object',
+              '[object Boolean]': 'object-boolean',
+              '[object Number]': 'object-number',
+              '[object String]': 'object-string',
+            }
+            if(value === null) return 'null'
+            if(type === 'object') {
+              let toString = Object.prototype.toString
+              let key = toString.call(value)
+              return resMap[key]
+            } else {
+              return type
+            }
+
+        }
+        let testTypeofData = [undefined, null, false, 1, 'str', [12], {a: 1}, function a(){}, new Number(1), Boolean(false), new Boolean()]
+        // testTypeofData.forEach(item => {
+        //   console.log(`myTypeof(value)：`,myTypeof(value));
+          
+        // })
+        console.log(`testTypeofData`,testTypeofData);
+        for(let i = 0; i < testTypeofData.length; i++) {
+          console.log(`i：`,myTypeof(testTypeofData[i]));
+        }
+      }())
+
+      ;(function(){
+        console.warn('=======面试题：计算单词出现的次数=======')
+        let str = 'aetjlsdfc,dfdsf12dddd'
+
+        function countWord(str) {
+          let temp = {}
+          for(let i = 0;i< str.length;i++) {
+            if(temp.hasOwnProperty(str[i])) {
+              temp[str[i]] ++
+            } else {
+              temp[str[i]] = 1
+            }
+          }
+          return temp
+        }
+        console.log(`countWord(str)：`,countWord(str));
+        
+        console.warn('=======面试题：闭包=======')
+        function closureFn() {
+          var d = 0
+          function inner() {
+            d++
+            console.log(`d：`,d);
+            
+          }
+
+          this.f = inner
+        }
+
+        let close = new closureFn()
+        close.f()
+        close.f()
+        // #易错点：本来我以为输出的是1，2，3,但是输出的1，2，1；两个实例里面的d处于不同的对象中
+        let close2 = new closureFn()
+        close2.f()
+
+        console.warn('=======面试题：函数表达式在外部忽略函数名称，但是内部可以使用=======')
+        var fnExpression = function fnName() {
+          console.log(`innerHtml：`);
+          fnName()
+        }
+        console.log(`fnExpression.name：`,fnExpression.name);
+        
+        console.log(`typeof(fnName)：`,typeof(fnName));
+        
+
+      console.warn('=======面试题：数组的特性，空值=======')
+      function getWeekDay(day) {
+        let daysOfWeek = [, '星期一', '星期二', '星期三', '星期4', '星期5', '星期6', '星期7']
+        return daysOfWeek[day]!==undefined ? daysOfWeek[day]: '未知数'
+      }
+      console.log(`getWeekDay(3)：`,getWeekDay(3));
+      
+
+      }())
 			
 		</script>
 	</body>

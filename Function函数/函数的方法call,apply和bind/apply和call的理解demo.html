@@ -170,7 +170,7 @@ blackCat.say.apply(whiteDog)
   
 
 }())
-// 中间层封装
+// 继承之中间层封装
 ;(function(){
   console.log('中间层封装');
   function Teacher() {
@@ -205,7 +205,7 @@ blackCat.say.apply(whiteDog)
   }
   
 }())
-// 继承的封装
+// P12：继承的封装
 ;(function(){
 
   
@@ -224,6 +224,8 @@ blackCat.say.apply(whiteDog)
   var inherit = test() // 多余的
 
   var inheritV2 = (function() {
+    console.log(`inheritV2：`,);
+    
     function Buffer() {}
     // 去掉函数名返回 
       //   function inherit(Target, Origin) {
@@ -236,6 +238,8 @@ blackCat.say.apply(whiteDog)
       // return inherit
   // 直接返回一个匿名函数
   return  function(Target, Origin) {
+    console.log(Target);
+    
     Buffer.prototype = Origin.prototype
     Target.prototype = new Buffer()
 
@@ -243,10 +247,83 @@ blackCat.say.apply(whiteDog)
     Target.prototype.super_class = Origin
   }
   })()
-  inheritV2()
+  // inheritV2()
+
+  let initProgramer = (function(){
+    var Programer =function() {}
+    Programer.prototype = {
+      name: '程序员',
+      tool: '计算机',
+      work: '编写程序',
+      duration: '10个小时',
+      say: function() {
+        console.log(`我是一名${this.myName}${this.name}，我的工作是使用${this.tool}${this.work}，
+        我的工作使用到${this.lang.toString()}`,);
+        
+      }
+    }
+
+    function Frontend() {}
+    function Backend() {}
+
+    inheritV2(Frontend, Programer)
+    inheritV2(Backend, Programer)
+
+    Frontend.prototype.lang = ['HTML', 'CSS', 'JavaScript']
+    Frontend.prototype.myName ='前端'
+
+    Backend.prototype.lang = ['Java', 'MySQL']
+    Backend.prototype.myName ='后端'
+    // Frontend.prototype ={
+    //   lang:  ['HTML', 'CSS', 'JavaScript'],
+    //   myName: '前端'
+    // }
+    // Backend.prototype = {
+    //   lang:  ['Java', 'MySQL'],
+    //   myName: '后端'
+    // }
+    return {
+      Frontend: Frontend,
+      Backend: Backend
+    }
+
+  }())
+
+  let frontend = new initProgramer.Frontend()
+  let backend = new initProgramer.Backend()
+  console.log(`frontend：`,frontend);
+  
+  frontend.say()
+  backend.say()
+
+
 
 }())
 
+// 说明：写插件的方法
+;(function(){
+  var Slider = function(options) {
+    this.imgs = options.imgs
+
+    
+  }
+  Slider.prototype = {
+    desc: '轮播图',
+    show: function() {
+      console.log(`this.imgs：`,this.imgs);
+      
+    }
+
+  }
+  window.Slider = Slider
+
+}())
+
+let slider = new Slider({
+  imgs: ['1.jpg']
+})
+
+slider.show()
 
 
 

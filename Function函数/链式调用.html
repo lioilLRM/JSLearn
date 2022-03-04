@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>课时13：链式调用</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 2022年2月19日 P13 小野前端 JavaScript深度指南
+    
+    ;(function(){
+      let sched = {
+        wakeup: function() {
+          console.log('Running');
+          return this
+        },
+        morning: function() {
+          console.log('Go Shopping');
+          return this
+        },
+        noon: function() {
+          console.log('Having a rest');
+          return this
+        },
+        afternoon: function() {
+          console.log('Studying');
+          return this
+        },
+        evening: function(){
+          console.log('Walking');
+          return this
+        },
+        night: function(){
+          console.log('Sleeping');
+          return this
+        }
+      }
+      sched.wakeup().morning().noon().afternoon().evening().night()
+
+    }())
+//说明：对象属性的遍历和说明
+    ;(function(){
+      console.log('===========对象属性的遍历和说明');
+      
+      let car = {
+        brand: '奔驰',
+        color: 'red',
+        displacement: '3.4',
+        key: 'key'
+      }
+      for(let key in car) {
+        console.log(`key：`,key);
+        // console.log(`car.key：`,car.key);
+        // 为什么这么取值不行？car.key =>转换car['key']的形式,key属性找不到
+        // console.log(`car.key：`,car.key); 
+      }
+    }())
+    //说明： hasOwnProperty
+    ;(function(){
+      var obj = {
+        name: '天宝',
+        age: 27
+      }
+
+      function Car() {
+       this.brand =  '奔驰';
+       this.color =  'red';
+       this.displacement =  '3.4';
+      }
+      Car.prototype = {lang: 5, width:10}
+      Object.prototype.carName = '无极'
+      var car = new Car();
+
+      console.log('======只打印自身拥有的属性，不打印原型链上的属性');
+      
+      for(let key in car) {
+        // console.log(`自身属性+原型链上的属性${key}: ${car[key]}`);
+        if(car.hasOwnProperty(key)) {
+          console.log(`${key}：${car[key]}`);
+          
+        }
+      }
+
+    }())
+// 说明：三种判断数组的方法
+    ;(function(){
+      console.log('======三种判断数组的方法');
+      
+      let arr = []
+      console.log(`arr.constructor=== Array：`,arr.constructor === Array);
+      // 这种方法有问题？有什么问题？
+      console.log(`arr instanceof Array：`,arr instanceof Array);
+      var ObjectToString = Object.prototype.toString
+      var isArray = '[object Array]'
+      if(ObjectToString.call(arr) === isArray) {
+        console.log('是数组');
+      } else {
+        console.log('不是数组');
+      }
+    }())
+    
+
+  // 2022年2月20日 P13 this：预编译函数this的指向过程
+  ;(function() {
+    console.log('======函数内部的this和 AO运行过程');
+    
+    function testThis(b) {
+      this.d = 3
+      var a = 1
+      function c() {}
+    }
+    testThis(1212)
+    console.log(`window.d：`, window.d)
+    console.log(`this.d：`, this.d)
+    // AO运行过程
+    // AO = {
+    //   arguments: [1212],
+    //   this: window,
+    //   b:1212,
+    //   a: undefined,
+    //   c: function c(){},
+    // }
+  }())
+
+  // 构造 函数里面this指向的执行过程；构造函数的this指向实例化对象
+  ;(function(){
+    console.warn('======构造函数this内部的GO和AO的执行过程');
+    
+    function TestThis() {
+      // 隐式执行的代码
+      // var this = {
+      //   __proto__: TestThis.prototype
+      // }
+      this.name = 'this执行过程'
+
+      // return this
+    }
+
+    var test = new TestThis()
+
+
+    // 1. GO内部的变量提升和函数提升；
+    // GO = {
+    //   TestThis: function TestThis() {},
+    //   test: undefined
+    // }
+    
+    // 2. 执行TestThis函数
+    // AO = {
+    //   // this: window // 初始值this指向window
+    //   this: {
+    //     __proto__: TestThis.prototype,
+    //     name: 'this执行过程'
+    //   }
+    // }
+  }())
+
+  // 说明：再次复习call和apply;改变this的指向
+  ;(function(){
+    console.warn('=======call和apply什么时候传递参数问题？=======')
+    
+    function Person() {
+      this.name = '张三'
+      this.age = 12
+
+    }
+
+    function Programer() {
+      // Person没有参数需要传递，直接call this
+      Person.call(this)
+      this.work = '编程'
+    }
+    var programer  = new Programer()
+    console.log(programer);
+
+    function Animal(type, num) {
+      this.type = type
+      this.num = num
+    }
+
+    function Dog() {
+      // Animal 构造函数需要参数
+      Animal.apply(this, ['狗类', 12])
+      this.name = '黄狗'
+    }
+
+    let dog = new Dog()
+    console.log(dog);
+  }())
+
+  // 说明：callee/caller
+  ;(function(){
+    console.warn('=======callee和caller说明=======')
+    function test(a, b, c) {
+      // callee属性是一个指向arguments对象所在函数的一个指针
+      console.log(`函数形参的长度：arguments.callee.length：`,arguments.callee);
+
+      console.log(`函数形参的长度：arguments.callee.length：`,arguments.callee.length);
+      console.log(`函数形参的长度：test.length：`,test.length);
+      console.log(`函数实参的长度：arguments.length：`,arguments.length);
+    }
+    test(1,2)
+
+    // function test1() {
+    //   console.log(`arguments.callee：`,arguments.callee);
+    //   function test2() {
+    //     console.log(`arguments.callee：`,arguments.callee);
+    //   }
+    //   test2()
+    // }
+    // test1()
+    
+    console.log('callee 的应用');
+    // 普通的递归调用
+    function sum(num) {
+      if(num <=1) {
+        return 1
+      }
+      return num+sum(num -1)
+    }
+ 
+    console.log(`sum(10)：`,sum(10));
+    
+    let sumCallee = (function(num){
+      if(num<=1) {
+        return 1
+      } 
+      // 匿名函数：没有函数名称可以使用；所以只能通过arguments的callee属性指向arguments对象所在函数的
+      return num+arguments.callee(num - 1)
+    }(101))
+    console.log(`sumCallee：`,sumCallee);
+    
+
+
+  }())
+
+  // 说明：caller
+  ;(function(){
+    console.warn('=======caller说明=======')
+    function test1() {
+      test2()
+    }
+
+    function test2() {
+      console.log(test2.caller);
+      // test2.caller()
+    }
+
+    test1()
+
+
+  }())
+
+
+;(function(){
+  console.warn('=======面试题=======')
+
+  function foo() {
+    // bar.apply(null, arguments);
+    // bar.apply(this, arguments);
+    bar.apply(null, arguments);
+  }
+
+  function bar() {
+    console.log(`this：`,this);
+    
+    console.log(`arguments：`,arguments);
+  }
+
+  foo(12, 3)
+
+}())
+
+;(function(){
+  console.warn('======={}=={}?如何让他们相等？=======')
+  console.log(`{}=={}：`,{}=={});
+  let obj = {}
+  let obj1 = obj
+  console.log(`obj1 == obj：`,obj1 == obj);
+}())
+  
+  ;(function(){
+    console.warn('=======面试题=======')
+    var a = 1
+    function test() {
+      var a = 2
+      this.a = 3
+      console.log(`test a：`,a, this.a);
+    }
+    test()
+    new test()
+    console.log(`a：`,a, this);
+    
+  }())
+
+  ;(function(){
+    console.warn('=======面试题3=======')
+    var a = 5
+    function test() {
+      a = 0
+      console.log(`a：`,a);
+      console.log(`this.a：`,this.a);
+      var a
+      console.log(`a：`,a);
+    }
+    test()
+
+  }())
+  
+    
+    
+  </script>
+</body>
+</html>

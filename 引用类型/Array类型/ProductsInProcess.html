@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>在制品看板</title>
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+  <script src="js/flexible.js"></script>
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src='./js/echarts.min.js'></script>
+	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/vue.min.js"></script>
+	<script src="./js/mock.js" type="text/javascript" charset="utf-8"></script>
+	<script src="./js/dayjs.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- <script src="./mock/productInProcess.js" type="text/javascript" charset="utf-8"></script> -->
+	<script src="./js/common.js"></script>
+
+
+	<style>
+		body::-webkit-scrollbar {
+			width: 0 !important;
+		}
+		@font-face {
+			font-family: "Microsoft YaHei, PingFang SC";
+			src: url('./font/PingFang.ttf');
+
+			font-weight: normal;
+			font-style: normal;
+		}
+		[v-cloak] {
+			display: none;
+		}
+		.flex-container {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-box-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+			-webkit-box-pack: justify;
+			-webkit-justify-content: space-between;
+			justify-content: space-between;
+		}
+
+		.flex-container.left {
+			-webkit-box-pack: start;
+			-webkit-justify-content: flex-start;
+			justify-content: flex-start;
+		}
+
+		.title {
+			display: flex;
+		}
+
+		.line {
+			width: .05rem;
+			height: 0.2625rem;
+			background: #09D1EA;
+		}
+
+		.bg-blue {
+			background-color: #278cf1;
+		}
+
+		.bg-purple {
+			background-color: #4b2eb9;
+		}
+
+		.bg-cyan {
+			background-color: #37b8c8;
+		}
+
+
+
+		.text-cyan {
+			color: #09d1ea;
+		}
+
+		.text-white {
+			color: white;
+		}
+
+		.text-purple {
+			color: #8955fe;
+		}
+
+		.text-blue {
+			color: #278cf1;
+		}
+
+		.wh10px {
+			height: .125rem;
+			width: .125rem;
+		}
+
+		.wh18px {
+			height: .225rem;
+			width: .225rem;
+		}
+
+		.marginR10px {
+			margin-right: .125rem;
+		}
+
+		.marginR20px {
+			margin-right: .25rem;
+		}
+
+		.marginR8px {
+			margin-right: .1rem;
+		}
+
+		.marginB20px {
+			margin-bottom: .25rem;
+		}
+
+		.titleText {
+			font-size: .225rem;
+			font-family: Microsoft YaHei,PingFangSC-Regular, PingFang SC;
+			font-weight: 400;
+			line-height: .225rem;
+		}
+    .fs24{
+      font-size: 0.3rem;
+    }
+
+
+		#chart {
+			background: rgba(8, 14, 45, 0.28);
+			border-radius: .1rem;
+			border: .025rem solid rgba(39, 51, 91, 0.5);
+			margin-bottom: .375rem;
+		}
+
+		.bottom {
+			max-height: 6.5625rem;
+
+		}
+
+		.productStatus {
+			margin-bottom: .375rem;
+		}
+
+
+
+		#waitingProcess-container,
+		#working-container,
+		#waitingToStore-container {
+			position: relative;
+			height: 6.7875rem;
+			overflow: hidden;
+			/* overflow-y: scroll; */
+			padding-left: .1875rem;
+    	padding-right: .1875rem;
+		}
+
+		.list-fake{
+			border: 1px solid red;
+			position:absolute;
+			top: 0;
+			overflow: hidden;
+			z-index: -1;
+			width: 95%;
+		}
+
+
+		#waitingProcess,
+		#working,
+		#waitingToStore{
+			position:absolute;
+			top: 0;
+			overflow: hidden;
+			width: 98%;
+		}
+
+		.productCardBox {
+			flex-wrap: wrap;
+		}
+
+		.card {
+			width: 3.8125rem;
+			height: 2.9375rem;
+			background: rgba(137, 85, 254, 0.16);
+			border-radius: .1rem;
+			padding: .3375rem .3rem .2rem;
+			margin-bottom: .125rem;
+			/* margin-right: 30px; */
+		}
+
+		/* #waitingProcess>.card:nth-child(2n) {
+			margin-right: 30px;
+		} */
+
+		#working .card {
+			background: rgba(39,140,241, 0.2);
+		}
+		/* #working>.card:nth-child(2n) {
+			margin-right: 30px;
+		} */
+
+		#waitingToStore .card {
+			background: rgba(55, 184, 200, 0.2);
+		}
+		/* #waitingToStore>.card:nth-child(2n) {
+			margin-right: 30px;
+		} */
+
+	
+		
+
+		.productTitle {
+			height: .2rem;
+			font-size: .2rem;
+			font-family: Microsoft YaHei, PingFangSC-Medium, PingFang SC;
+			font-weight: 500;
+			color: #FFFFFF;
+			line-height: .2rem;
+			margin-bottom: .3rem;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		.productRow {
+			margin-bottom: .25rem;
+		}
+
+		.productLabel {
+			height: .175rem;
+			font-size: .175rem;
+			font-family: Microsoft YaHei,PingFangSC-Regular, PingFang SC;
+			font-weight: 400;
+			color: #98A2AC;
+			line-height: .175rem;
+			margin-right: .25rem;
+			min-width: .7rem;
+		}
+
+		.productValue {
+			height: .175rem;
+			font-size: .175rem;
+			font-family: Microsoft YaHei,PingFangSC-Medium, PingFang SC;
+			font-weight: 500;
+			color: rgba(255, 255, 255, 0.95);
+			line-height: .175rem;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.row {
+			margin-left: 0;
+			margin-right: 0;
+		}
+		.container-fluid{
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.col-md-4 {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	</style>
+	
+
+</head>
+
+<body>
+	<div class="container-fluid"  id="app" v-cloak>
+		<div class="title flex-container marginB20px">
+			<div class="left-box flex-container">
+				<div class="line marginR10px"></div>
+				<span class="titleText text-cyan fs24">{{title}}</span>
+			</div>
+			<div class="rigth-box flex-container">
+				<div class="flex-container marginR20px" >
+					<div class="wh10px bg-purple marginR8px"></div>
+					<span >等待加工</span>
+				</div>
+				<div class="flex-container marginR20px">
+					<div class="wh10px bg-blue marginR8px"></div>
+					<span>正在加工</span>
+				</div>
+				<div class="flex-container">
+					<div class="wh10px bg-cyan marginR8px"></div>
+					<span>等待入库</span>
+				</div>
+			</div>
+		</div>
+		<div id="eChart" style="width: 100%;height:5.2375rem;"></div>
+		<div class="bottom row"  @mouseenter="enter"  @mouseleave="leave">
+			<div class="productContainer col-md-4">
+				<div class="productStatus flex-container left" >
+					<img class="wh18px marginR10px" src="./img/productsInProcess/waitProcess.png" @click="stopWorking">
+					<span class="titleText text-purple" @click="startWorking">等待加工</span>
+				</div>
+				<div ref="list" id="waitingProcess-container" >
+					<!-- <div class="list-fake" :style="{height: listHeight+'px'}"></div> -->
+					<div class="productCardBox flex-container" id="waitingProcess" >
+						<div class="card" v-for="(item,index) in visiableWaitingProcessDataList" :key="index">
+							<div class="productTitle">{{item.inventoryFileInfo?item.inventoryFileInfo:'--'}}</div>
+							<div class="productRow flex-container left">
+								<div class="productLabel">物料标签</div>
+								<div class="productValue">{{item.materialLabel ? item.materialLabel : '--'}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">物料数量</div>
+								<div class="productValue">{{item.labelNumber}}{{item.unit ? item.unit.split('#')[0] : ''}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">所在位置</div>
+								<div class="productValue">{{item.locationName ? item.locationName : '--'}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">呆滞时长</div>
+								<div class="productValue">{{item.stagnateAge ? item.stagnateAge : '--'}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">最近操作</div>
+								<div class="productValue">{{item.locationTime ? item.locationTimeStr : '--'}}</div>
+							</div>
+						</div>
+					</div>
+					<!-- 为了顺滑滚动链接，重复数据 -->
+					<div class="productCardBox flex-container" id="repeat-waitingProcess"></div>
+				</div>
+			</div>
+
+
+			<div class="productContainer col-md-4">
+				<div class="productStatus flex-container left" @click="stopScrollCard()">
+					<img class="wh18px marginR10px" src="./img/productsInProcess/working.png">
+					<span class="titleText text-blue">正在加工</span>
+				</div>
+				<div id="working-container">
+					<div class="productCardBox flex-container" id="working">
+						<div class="card" v-for="(item,index) in visiableWorkingDataList" :key="index">
+							<div class="productTitle">{{item.inventoryFileInfo?item.inventoryFileInfo:'--'}}</div>
+							<div class="productRow flex-container left">
+								<div class="productLabel">物料标签</div>
+								<div class="productValue">{{item.materialLabel ? item.materialLabel : '--'}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">物料数量</div>
+								<div class="productValue">{{item.labelNumber}}{{item.unit ? item.unit.split('#')[0] : ''}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">所在位置</div>
+								<div class="productValue">{{item.locationName ? item.locationName : '--'}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">呆滞时长</div>
+								<div class="productValue">{{item.stagnateAge ? item.stagnateAge : '--'}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">最近操作</div>
+								<div class="productValue">{{item.locationTime ? item.locationTimeStr : '--'}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="productCardBox flex-container" id="repeat-working"></div>
+				</div>
+			</div>
+
+			<div class="productContainer col-md-4">
+				<div class="productStatus flex-container left">
+					<img class="wh18px marginR10px" src="./img/productsInProcess/waitToStore.png">
+					<span class="titleText text-cyan">等待入库</span>
+				</div>
+				<div id="waitingToStore-container">
+					<div class="productCardBox flex-container" id="waitingToStore">
+						<div class="card" v-for="(item,index) in visiableWaitingToStoreList" :key="index">
+							<div class="productTitle">{{item.inventoryFileInfo?item.inventoryFileInfo:'--'}}</div>
+							<div class="productRow flex-container left">
+								<div class="productLabel">物料标签</div>
+								<div class="productValue">{{item.materialLabel ? item.materialLabel : '--'}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">物料数量</div>
+								<div class="productValue">{{item.labelNumber}}{{item.unit ? item.unit.split('#')[0] : ''}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">所在位置</div>
+								<div class="productValue">{{item.locationName ? item.locationName : '--'}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">呆滞时长</div>
+								<div class="productValue">{{item.stagnateAge ? item.stagnateAge : '--'}}</div>
+							</div>
+							<div class="productRow  flex-container left">
+								<div class="productLabel">最近操作</div>
+								<div class="productValue">{{item.locationTime ? item.locationTimeStr : '--'}}</div>
+							</div>
+						</div>
+					</div>
+					<!-- 为了顺滑滚动链接，重复数据 -->
+					<div class="productCardBox flex-container" id="repeat-waitingToStore"></div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			const VERSTION="20210729-001"
+			var app = new Vue({
+				el: "#app",
+				data() {
+					return {
+						
+						message: "已关闭1111111111111",
+						deptId: '',
+						id: '',
+						refreshHz:'600000',
+						waitingProcessDataList:[],
+						visiableWaitingProcessDataList: [],
+						storeWaitingProcessDataList:[],
+
+						workingDataList:[],
+						visiableWorkingDataList: [],
+						storeWorkingDataList:[],
+
+						waitingToStoreList:[],
+						visiableWaitingToStoreList: [],
+						storeWaitingToStoreList:[],
+
+						reqFrame: null,
+						reqFrame2: null,
+						reqFrame3: null,
+						
+						stopScroll: false,
+						title: '在制品监控',
+						api: '',
+
+						speed: 0.6,
+						listHeight: 0,
+						cardHeight: 245,
+						end: 4,
+
+            option: {force:true},
+						force: true,
+						maxLength: 0,
+						translateY: 0,
+						scrollCount: 0,
+						scrollColumns: [], // 滚动列
+						hoverStop: true, //是否启用鼠标hover控制
+					}
+				},
+				created() {
+					var api =''
+					this.api = window.location.origin
+					
+					if(this.api.indexOf('file://')>=0 || this.api.indexOf('127.0.0.1')>=0){
+						console.log('=============');
+							// this.api ='http://192.168.3.101'
+							this.api ='http://127.0.0.1:4523/mock/680712'
+
+					}
+					console.log('Vue created', this.api, VERSTION);
+					let refreshTimer = null;
+					// let title = this.getUrlParam('title');
+					// if(title) {
+					// 	this.title = title
+					// }
+
+					this.deptId = this.getUrlParam('deptId');
+					this.id = this.getUrlParam('id');
+					let getRefreshHz = this.getUrlParam('refreshHz');
+					if(getRefreshHz) {
+						this.refreshHz = getRefreshHz*60*1000; // 获取url的刷新频率分钟转换为毫秒
+					}
+					console.log('id', this.id, '刷新频率：毫秒，', this.refreshHz);
+
+
+					// 定时刷新
+					if (refreshTimer != null) {//判断计时器是否为空
+						clearInterval(refreshTimer);
+						refreshTimer = null;
+					}
+					refreshTimer = setInterval(()=> {
+						console.log('定时刷新');
+						cancelAnimationFrame(this.reqFrame || '')
+						cancelAnimationFrame(this.reqFrame2 || '')
+						cancelAnimationFrame(this.reqFrame3 || '')
+						this.login()
+						
+						
+
+					}, this.refreshHz);
+				},
+				mounted(){
+
+					this.login()
+
+				},
+				watch:{
+					scrollCount:{
+						handler(nval){
+							// console.log('watch scrollCount', nval, this.scrollColumns.length);
+						
+							if(nval == this.scrollColumns.length) {
+								this.startRequestAnimationFrame()
+							}
+						},
+						immediate: true
+
+					}
+				},
+				methods: {
+					initData(){
+						console.log('清空和初始化数据');
+						this.waitingProcessDataList = [];
+						this.visiableWaitingProcessDataList =  [];
+						this.storeWaitingProcessDataList = [];
+						this.workingDataList = [];
+						this.visiableWorkingDataList =  [];
+						this.storeWorkingDataList = [];
+						this.waitingToStoreList = [];
+						this.visiableWaitingToStoreList =  [];
+						this.storeWaitingToStoreList = [];
+						this.maxLength =  0;
+						this.translateY =  0;
+						this.scrollCount =  0;
+						this.scrollColumns =  []; 
+					},
+					getUrlParam(paramName) {
+						var url = decodeURI(window.location.href);
+						var arrObj = url.split("?");
+						if (arrObj.length > 1) {
+							var arrPara = arrObj[1].split("&");
+							var arr;
+							for (var i = 0; i < arrPara.length; i++) {
+								arr = arrPara[i].split("=");
+								if (arr != null && arr[0] == paramName) {
+									return arr[1];
+								}
+							}
+							return "";
+						}else {
+							return "";
+						}
+					},
+					login() {
+						let obj = {
+							'phone': '19999999999',
+							'password': '123456'
+						}
+						let api = ''
+						if(window.location.origin.indexOf('file://')>=0 || window.location.origin.indexOf('127.0.0.1')>=0){
+							console.log('=============');
+							// api ='http://192.168.3.101:8081'
+              api = 'http://127.0.0.1:4523/mock/680712'
+						} else {
+							api = this.api+':8081'
+						}
+						$.ajax({
+							url: api+'/api/auth/user/login',
+							dataType: "JSON",
+							headers: {
+								'Accept': 'application/json',
+								'Content-Type': 'application/json'
+							},
+							type: "POST",
+							async: false,//使用同步的方式,true为异步方式
+							data: JSON.stringify(obj),
+							success: res=> {
+								console.log('登录：', res)
+								// getData(res.data[0].loginToken)
+								let token = res.data[0].loginToken
+								// debugger
+								let p1, p2, p3;
+								console.time('startRequestAnimationFrame耗时end')
+								this.initData(); // 初始化数据避免加载新数据无法滚动的问题。
+								
+								if(this.id) {
+									console.log('存在id');
+									
+									getInfo(token,{id:this.id}).then(res => {
+										let data =res.data?res.data:{}
+										if(data.rangeType == 0&&data.dataRange){
+												this.deptId = data.dataRange
+										}
+										if(data.kanBanName) {
+											this.title = data.kanBanName
+										}
+										this.getEchartData(token);
+										
+										p1 = 	this.getWaitProcessData(token, 0)
+										p2 = 	this.getWorkingData(token, 1)
+										p3 = 	this.getWaitingToStoreData(token, 2)
+										console.log('p111111111111111111', p1,p2,p3);
+
+										this.handlePromiseAll(p1,p2,p3)
+              		})
+								} else {
+									// this.getEchartData(token);
+
+									p1 = 	this.getWaitProcessData(token, 0)
+									p2 = 	this.getWorkingData(token, 1)
+									p3 = 	this.getWaitingToStoreData(token, 2)
+									console.log('p12222222222222222222222', p1,p2,p3);
+
+									this.handlePromiseAll(p1,p2,p3)
+								}
+							},
+							error: function (res) {
+							}
+						})
+					},
+					handlePromiseAll(p1,p2,p3){
+						Promise.all([p1,p2,p3]).then(res => {
+								console.log('Promise.all', res);
+								let card1 = res[0];
+								let card2 = res[1];
+								let card3 = res[2];
+
+
+								this.maxLength = Math.max(...res);
+								this.listHeight = (Math.ceil(this.maxLength /2))* this.cardHeight;
+								// this.isOdd = 
+								console.log('数组最大长度， 列表的高度', this.maxLength, this.listHeight);
+								let map = ['waitingProcessDataList', 'workingDataList', 'waitingToStoreList']
+								// 根据最大长度进行数据填充
+								for(let i = 0;i<res.length;i++) {
+									let cardArrLength = res[i]
+									if(cardArrLength>4) {
+										console.log(`第${i+1}个可以滚动`);
+										this.scrollColumns.push(i)
+									}
+									if(cardArrLength == this.maxLength) {
+										console.log(`translateY：基于${i+1}进行滚动`);
+										
+										continue
+									}
+
+									if(cardArrLength>4) {
+										
+										let diffValue = this.maxLength - cardArrLength; // 最大长度和当前项的差值
+										if(diffValue<=cardArrLength) {
+
+											console.log(`填充数组${i}的前${diffValue}位`);
+											// console.log(map[i],this[map[i]]);
+											let sliceValue = this[map[i]].slice(0,diffValue);
+											this[map[i]] = [...this[map[i]], ...sliceValue]
+										} else {
+
+											console.log(`差值大于数组的位数，填充数组${i}的前${diffValue}位`);
+											let repeatNum = parseInt(diffValue/cardArrLength) // 取整
+											let remainder = diffValue%cardArrLength // 余数
+											for(let index = 0;index<repeatNum;index++){
+												let sliceValue = this[map[i]].slice(0, this[map[i]].len)
+												// console.log('sliceValue', sliceValue);
+
+												this[map[i]] = [...this[map[i]], ...sliceValue];
+											}
+											let newSliceValue = this[map[i]].slice(0, remainder)
+											// console.log('newSliceValue', newSliceValue);
+											
+											this[map[i]] = [...this[map[i]], ...newSliceValue]
+
+										}
+									}
+
+									
+									
+								}
+								console.log('---------长度--------',this.waitingProcessDataList.length, this.workingDataList.length, this.waitingToStoreList.length );
+								console.log('card的长度：', card1,card2,  card3);
+								console.timeLog('startRequestAnimationFrame耗时end')
+							
+								if(card1>4 ) {
+								  	this.scrollWaitProcessCard('waitingProcess')
+								} else {
+									this.visiableWaitingProcessDataList = this.waitingProcessDataList
+								}
+								if(card2> 4) {
+									this.scrollWorkingCard('working')
+								} else {
+									this.visiableWorkingDataList = this.workingDataList
+
+								}
+								if(card3> 4) {
+									
+									this.scrollStoreCard('waitingToStore')
+								} else {
+									this.visiableWaitingToStoreList = this.waitingToStoreList
+								}
+
+
+
+
+							}).catch(err=> {
+								console.log('Promise.all catch err');
+								console.log(err);
+								
+								
+							})
+					},
+					// 是否是奇数
+					isOddFn(num){
+						if(num%2!=0) {
+							return true
+						} else {
+							return false
+						}
+					},
+
+
+					getEchartData(token) {
+						let url = this.api+'/prod-api/report/make-material-snap-shot/getMakeMaterialSnapShotGroupList/top';
+						
+						let reqParams = {
+							deptId: this.deptId,
+						}
+						$.ajax({
+							// mock数据
+							// url: 'http://192.168.1.2/getEChartData', 
+							url: url,
+							dataType: "JSON",
+							headers: {
+								'Accept': 'application/json',
+								'Content-Type': 'application/json'
+							},
+							beforeSend: function (request) {
+								request.setRequestHeader("mes-token", token)
+							},
+							type: "post",
+							async: false,//使用同步的方式,true为异步方式
+							data: JSON.stringify(reqParams),
+							success: res=> {
+								// res = echartData
+								console.log(9999999999999, res);
+
+								if (res.code == 200) {
+									if (res.data.data.length > 0) {
+										// let dataTimeList = dateTimeAdd(res.data.length);
+										// console.log(dataTimeList);
+										// res.data.map((item, index) => {
+										// 	item.time = dataTimeList[index]
+										// })
+										console.log('initEchartByData');
+
+										this.initEchartByData(res.data.data);
+									}
+								}
+							},
+							error: function (data) {
+								console.log(data);
+							}
+						})
+					},
+				
+					getWaitProcessData(token, materialStatus){
+						return new Promise((resolve, reject)=> {
+							let url = this.api+'/prod-api/report/make-material-snap-shot/getMakeMaterialSnapShotList/v1?materialStatus=0'
+							// if(this.id) {
+							// 	url = 'http://192.168.3.101/prod-api/report/make-material-snap-shot/getMakeMaterialSnapShotList/v2?materialStatus=' + materialStatus+'&id='+this.id
+							// }
+								let reqParams = {
+									deptId: this.deptId,
+									materialStatus: materialStatus
+								}
+								$.ajax({
+								// mock数据
+								// url: 'http://192.168.1.2/getWaitProcessData',
+								url: url,
+								dataType: "JSON",
+								headers: {
+									'Accept': 'application/json',
+									'Content-Type': 'application/json'
+								},
+								beforeSend: function (request) {
+									request.setRequestHeader("mes-token", token)
+								},
+								type: "post",
+								async: false,//使用同步的方式,true为异步方式
+								data: JSON.stringify(reqParams),
+								success: res=> {
+									console.log(111111111111111111, res);
+									if(res.code ==200) {
+										if (res.data.data.length) {
+											this.waitingProcessDataList = res.data.data;
+											console.log('this.waitingchang  长度', this.waitingProcessDataList.length);
+											resolve( this.waitingProcessDataList.length)
+										} else {
+											resolve(0)
+										}
+									}
+									
+								},
+								error: function (data) {
+									reject(data)
+									console.log(data);
+								}
+							})
+						})
+
+						
+				},
+
+					getWorkingData(token, materialStatus){
+						
+						return new Promise((resolve, reject)=> {
+							let url =this.api+ '/prod-api/report/make-material-snap-shot/getMakeMaterialSnapShotList/v2'
+							// if(this.id) {
+							// 	url = 'http://192.168.3.101/prod-api/report/make-material-snap-shot/getMakeMaterialSnapShotList/v2?materialStatus=' + materialStatus+'&id='+this.id
+							// }
+							let reqParams = {
+								deptId: this.deptId,
+								materialStatus: materialStatus
+							}
+
+							$.ajax({
+								// mock数据
+								// url: 'http://192.168.1.2/getWorkingData',
+								url: url,
+								dataType: "JSON",
+								headers: {
+									'Accept': 'application/json',
+									'Content-Type': 'application/json'
+								},
+								beforeSend: function (request) {
+									request.setRequestHeader("mes-token", token)
+								},
+								type: "post",
+								async: false,//使用同步的方式,true为异步方式
+								data: JSON.stringify(reqParams),
+								success: res=> {
+									// res = workingData
+									console.log(22222222222222, res);
+								
+									if(res.code ==200) {
+										if (res.data.data.length) {
+											this.workingDataList = res.data.data;
+											console.log('this.waitingchang  长度', this.workingDataList.length);
+											resolve(this.workingDataList.length)
+										}else {
+											resolve(0)
+										}
+									}
+									
+								},
+								error: function (data) {
+									reject(data)
+									console.log(data);
+								}
+							})
+						})
+
+
+						
+						},
+				
+					getWaitingToStoreData(token, materialStatus){
+						return new Promise((resolve, reject)=> {
+							let url =this.api+ '/prod-api/report/make-material-snap-shot/getMakeMaterialSnapShotList/v3?materialStatus'
+							// if(this.id) {
+							// 	url = 'http://192.168.3.101/prod-api/report/make-material-snap-shot/getMakeMaterialSnapShotList/v2?materialStatus=' + materialStatus+'&id='+this.id
+							// }
+							let reqParams = {
+									deptId: this.deptId,
+									materialStatus: materialStatus
+								}
+
+							$.ajax({
+								// mock数据
+								// url: 'http://192.168.1.2/getWaitingToStoreData',
+								url: url,
+								dataType: "JSON",
+								headers: {
+									'Accept': 'application/json',
+									'Content-Type': 'application/json'
+								},
+								beforeSend: function (request) {
+									request.setRequestHeader("mes-token", token)
+								},
+								type: "post",
+								async: false,//使用同步的方式,true为异步方式
+								data: JSON.stringify(reqParams),
+								success: res=> {
+									// res = storeData;
+									console.log(3333333333, res);
+
+									if(res.code ==200) {
+										if (res.data.data.length) {
+											this.waitingToStoreList = res.data.data;
+											console.log('this.waitingchang  长度', this.waitingToStoreList.length);
+											resolve(this.waitingToStoreList.length)
+											
+										}else {
+											resolve(0)
+										}
+
+
+									}
+									
+								},
+								error: function (data) {
+									reject(data)
+									console.log(data);
+								}
+							})
+						})
+							
+					},
+				
+				
+				
+					stopScrollCard(){
+						this.stopScroll = !this.stopScroll;
+						this.scrollWaitProcessCard('waitingProcess')
+						this.scrollWorkingCard('working')
+						this.scrollStoreCard('waitingToStore')
+
+					},
+					stopWorking(){
+						console.error('点击');
+						
+            window.cancelAnimationFrame(this.reqFrame);
+					},
+					startWorking(){
+						this.stopWorking()
+						this.reqFrame = window.requestAnimationFrame( ()=> {
+                this.scrollWaitProcessCard();
+						})
+					},
+					        //获取计算后的translateY
+					getComputedTranslateY(dom) {
+						var startY = 0;
+						var style = window.getComputedStyle ? window.getComputedStyle(dom, null) : null || dom.currentStyle;
+						var matrix = style['transform'];
+						if (matrix && matrix != 'none') {
+								startY = Number(matrix.replace(/matrix\(|\)/g, '').split(',')[5]);
+						}
+						return startY;
+				},
+				
+
+
+					scrollWaitProcessCard(id){
+						
+						// return new Promise((resolve, reject)=> {
+							if(this.stopScroll) return;
+							let parentBoxDom = document.getElementById(`waitingProcess-container`);
+							let scrollerDom = document.getElementById('waitingProcess');
+							if(!scrollerDom) return;
+							if(this.scrollColumns[0]==0) {
+								this.translateY = this.getComputedTranslateY(scrollerDom);
+							}
+							let cardList = scrollerDom.querySelectorAll('.card');
+							// console.log('scrollerDom.scrollHeight', scrollerDom.scrollHeight, Math.abs(translateY), parentBoxDom.clientHeight, Math.abs(translateY) + parentBoxDom.clientHeight);
+							
+							if (scrollerDom.scrollHeight > Math.abs(this.translateY) + parentBoxDom.clientHeight) {
+								scrollerDom.style = 'transform: translate3d(0px, ' + (this.translateY - this.speed) + 'px, 0px);transition:all 0ms ease-in 0s';
+
+								// console.log('滚动高度=====', scrollerDom.scrollHeight );
+								
+							} else { 
+								//只有列表总高度超过容器高度或者force参数为false时才循环无限滚动
+								console.log('取数据', this.maxLength, this.waitingProcessDataList.length);
+								
+									let tmp = [];
+									let length = 0;
+									tmp = this.waitingProcessDataList.splice(0, 2);
+									length = tmp.length;
+									if (tmp.length) {
+											//新数据添加到缓存对象的尾部（等待缓存对象中前面的数据展示完才会被取出）
+											tmp.reverse()
+											tmp.forEach(item => {
+												this.storeWaitingProcessDataList.unshift(item);
+											})
+											// this.storeWaitingProcessDataList.reverse()
+											// this.storeWaitingProcessDataList.splice(0, 0, tmp[0]);
+									}
+									//一轮滚动还没结束（还有新数据未展示完）
+									if (length) {
+											//从缓存对象中取出第一个数据用于展示
+											tmp = this.storeWaitingProcessDataList.splice(0, 2);
+											//取出后再添加到尾部，用于循环展示
+											this.storeWaitingProcessDataList = this.storeWaitingProcessDataList.concat(tmp);
+											// console.log('一轮滚动还没结束', `tmp长度：${tmp.length}, store长度：${this.storeWaitingProcessDataList.length}`);
+											
+									}
+									//一轮滚动结束后且满足循环滚动条件则从缓存里取，以实现循环无限滚动
+									let waitingProcessDataListLength = this.maxLength%2 == 0?(this.maxLength/2):(Math.ceil(this.maxLength/2))+1
+									let cardListHeigth =  cardList.length%2==0?(cardList.length/2):(Math.ceil(cardList.length/2))+1
+									// console.log('waitingProcessDataListLength', cardList.length, cardListHeigth, this.maxLength, waitingProcessDataListLength);
+									
+									if (!length &&(this.force || (!this.force&& cardListHeigth && waitingProcessDataListLength * cardList[0].clientHeight > parentBoxDom.clientHeight))) {
+										let pickNum = 1;
+										// 如果是偶数
+										if(!this.isOddFn(this.maxLength)) {
+											pickNum = 2
+										} 
+										if(this.isOddFn(this.visiableWaitingProcessDataList.length)) {
+											pickNum = 3
+										}
+											//从缓存对象中取出第一个
+										tmp = this.storeWaitingProcessDataList.splice(0, pickNum);
+										//取出后再添加到尾部，用于循环展示
+										this.storeWaitingProcessDataList = this.storeWaitingProcessDataList.concat(tmp);
+										console.log('取缓存的数据', pickNum, this.maxLength, 'tmp长度：', tmp.length, `this.storeWaitingProcessDataList长度：${this.storeWaitingProcessDataList.length}`);
+									}
+									// console.log('temp最终长度', tmp.length);
+									
+									//将取出的数据展示到页面
+									tmp.forEach( item =>{
+											this.$set(this.visiableWaitingProcessDataList, this.visiableWaitingProcessDataList.length, item);
+									});
+
+									// console.log('this.visiableWaitingProcessDataList', this.visiableWaitingProcessDataList.length);
+									
+							}
+							//删除顶部无用的dom，防止浏览器卡顿
+							if (scrollerDom && cardList.length) {
+									let cardHeight = cardList[0].clientHeight;
+									let delLenght = (Math.abs(this.translateY) / cardHeight) >> 0;
+									// console.warn('删除的下标', delLenght);
+									
+									if (delLenght > 3) {
+											// console.log('删除的11111111111111', delLenght,this.translateY ,cardHeight,this.translateY % cardHeight);
+											delLenght = delLenght*2;
+											this.visiableWaitingProcessDataList.splice(0, delLenght);
+											scrollerDom.style = 'transform: translate3d(0px, ' + (this.translateY % cardHeight) + 'px, 0px);transition:all 0ms ease-in 0s;';
+
+									}
+							}
+							this.scrollCount++;
+							// console.warn('11111111111111');
+							
+
+					},
+					scrollWorkingCard(id){
+						
+						// return new Promise((resolve, reject)=> {
+								
+							if(this.stopScroll) return;
+							let parentBoxDom = document.getElementById(`working-container`);
+							let scrollerDom = document.getElementById('working');
+							if(!scrollerDom) return;
+							// let translateY = this.getComputedTranslateY(scrollerDom);
+							if(this.scrollColumns[0]==1) {
+								this.translateY = this.getComputedTranslateY(scrollerDom);
+							}
+							let cardList = scrollerDom.querySelectorAll('.card');
+							// console.log('scrollerDom.scrollHeight', scrollerDom.scrollHeight, Math.abs(translateY), parentBoxDom.clientHeight, Math.abs(translateY) + parentBoxDom.clientHeight);
+							
+							if (scrollerDom.scrollHeight > Math.abs(this.translateY) + parentBoxDom.clientHeight) {
+								scrollerDom.style = 'transform: translate3d(0px, ' + (this.translateY - this.speed) + 'px, 0px);transition:all 0ms ease-in 0s';
+								// console.log('滚动=====', this.translateY - this.speed);
+								
+							} else { 
+								//只有列表总高度超过容器高度或者force参数为false时才循环无限滚动
+								// console.log('取数据', this.maxLength);
+								
+									let tmp = [];
+									let length = 0;
+									tmp = this.workingDataList.splice(0, 2);
+									length = tmp.length;
+									if (tmp.length) {
+											//新数据添加到缓存对象的尾部（等待缓存对象中前面的数据展示完才会被取出）
+											tmp.reverse()
+											tmp.forEach(item => {
+												this.storeWorkingDataList.unshift(item);
+											})
+											// this.storeWorkingDataList.splice(0, 0, tmp[0]);
+									}
+									//一轮滚动还没结束（还有新数据未展示完）
+									if (length) {
+											//从缓存对象中取出第一个数据用于展示
+											tmp = this.storeWorkingDataList.splice(0, 2);
+											//取出后再添加到尾部，用于循环展示
+											this.storeWorkingDataList = this.storeWorkingDataList.concat(tmp);
+									}
+									//一轮滚动结束后且满足循环滚动条件则从缓存里取，以实现循环无限滚动
+									let waitingProcessDataListLength = this.maxLength%2 == 0?(this.maxLength/2):(Math.ceil(this.maxLength/2))+1
+									let cardListHeigth =  cardList.length%2==0?(cardList.length/2):(Math.ceil(cardList.length/2))+1
+									// console.log('waitingProcessDataListLength', cardList.length, cardListHeigth, this.maxLength, waitingProcessDataListLength);
+									
+									if (!length &&(this.force || (!this.force&& cardListHeigth && waitingProcessDataListLength * cardList[0].clientHeight > parentBoxDom.clientHeight))) {
+										let pickNum = 1;
+										// 如果是偶数
+										if(!this.isOddFn(this.maxLength)) {
+											pickNum = 2
+										} 
+										if(this.isOddFn(this.visiableWorkingDataList.length)) {
+											pickNum = 3
+										}
+											//从缓存对象中取出第一个
+											tmp = this.storeWorkingDataList.splice(0, pickNum);
+											//取出后再添加到尾部，用于循环展示
+											this.storeWorkingDataList = this.storeWorkingDataList.concat(tmp);
+										// console.log('取缓存的数据', pickNum, this.maxLength, 'tmp长度：', tmp.length, `this.storeWaitingProcessDataList长度：${this.storeWaitingProcessDataList.length}`);
+									}
+									// console.log('temp最终长度', tmp.length);
+									
+									//将取出的数据展示到页面
+									tmp.forEach( item =>{
+											this.$set(this.visiableWorkingDataList, this.visiableWorkingDataList.length, item);
+									});
+									// console.log('this.visiableWorkingDataList', this.visiableWorkingDataList.length);
+									
+									
+							}
+							//删除顶部无用的dom，防止浏览器卡顿
+							if (scrollerDom && cardList.length) {
+									let cardHeight = cardList[0].clientHeight;
+									let delLenght = (Math.abs(this.translateY) / cardHeight) >> 0;
+									if (delLenght > 3) {
+											// console.log('删除的22222222222222', delLenght,this.translateY ,cardHeight,this.translateY % cardHeight);
+											delLenght = delLenght*2;
+											this.visiableWorkingDataList.splice(0, delLenght);
+											scrollerDom.style = 'transform: translate3d(0px, ' + (this.translateY % cardHeight) + 'px, 0px);transition:all 0ms ease-in 0s;';
+									}
+							}
+							this.scrollCount++
+							// console.warn('22222222222222');
+						
+					
+					},
+					scrollStoreCard(id){
+
+						// return new Promise((resolve, reject)=> {
+								if(this.stopScroll) return;
+								let parentBoxDom = document.getElementById(`waitingToStore-container`);
+								let scrollerDom = document.getElementById('waitingToStore');
+								if(!scrollerDom) return;
+								if(this.scrollColumns[0]==2) {
+									this.translateY = this.getComputedTranslateY(scrollerDom);
+								}
+								let cardList = scrollerDom.querySelectorAll('.card');
+								// console.log('scrollerDom.scrollHeight', scrollerDom.scrollHeight, Math.abs(translateY), parentBoxDom.clientHeight, Math.abs(translateY) + parentBoxDom.clientHeight);
+								
+								if (scrollerDom.scrollHeight > Math.abs(this.translateY) + parentBoxDom.clientHeight) {
+									scrollerDom.style = 'transform: translate3d(0px, ' + (this.translateY - this.speed) + 'px, 0px);transition:all 0ms ease-in 0s;';
+									
+								} else { 
+									//只有列表总高度超过容器高度或者force参数为false时才循环无限滚动
+									// console.log('取数据', this.maxLength);
+									
+										let tmp = [];
+										let length = 0;
+										tmp = this.waitingToStoreList.splice(0, 2);
+										length = tmp.length;
+										if (tmp.length) {
+												//新数据添加到缓存对象的尾部（等待缓存对象中前面的数据展示完才会被取出）
+												tmp.reverse()
+												tmp.forEach(item => {
+													this.storeWaitingToStoreList.unshift(item);
+												})
+												// this.storeWaitingToStoreList.splice(0, 0, tmp[0]);
+										}
+										//一轮滚动还没结束（还有新数据未展示完）
+										if (length) {
+												//从缓存对象中取出第一个数据用于展示
+												tmp = this.storeWaitingToStoreList.splice(0, 2);
+												//取出后再添加到尾部，用于循环展示
+												this.storeWaitingToStoreList = this.storeWaitingToStoreList.concat(tmp);
+										}
+										//一轮滚动结束后且满足循环滚动条件则从缓存里取，以实现循环无限滚动
+										let waitingProcessDataListLength = this.maxLength%2 == 0?(this.maxLength/2):(Math.ceil(this.maxLength/2))+1
+										let cardListHeigth =  cardList.length%2==0?(cardList.length/2):(Math.ceil(cardList.length/2))+1
+										// console.log('waitingProcessDataListLength', cardList.length, cardListHeigth, this.maxLength, waitingProcessDataListLength);
+										
+										if (!length &&(this.force || (!this.force&& cardListHeigth && waitingProcessDataListLength * cardList[0].clientHeight > parentBoxDom.clientHeight))) {
+											let pickNum = 1;
+											// 如果是偶数
+											if(!this.isOddFn(this.maxLength)) {
+												pickNum = 2
+											} 
+											if(this.isOddFn(this.visiableWaitingToStoreList.length)) {
+												pickNum = 3
+											}
+												//从缓存对象中取出第一个
+												tmp = this.storeWaitingToStoreList.splice(0, pickNum);
+												//取出后再添加到尾部，用于循环展示
+												this.storeWaitingToStoreList = this.storeWaitingToStoreList.concat(tmp);
+											// console.log('取缓存的数据', pickNum, this.maxLength, 'tmp长度：', tmp.length, `this.storeWaitingProcessDataList长度：${this.storeWaitingProcessDataList.length}`);
+												
+										}
+										// console.log('temp最终长度', tmp.length);
+										
+										//将取出的数据展示到页面
+										tmp.forEach( item =>{
+												this.$set(this.visiableWaitingToStoreList, this.visiableWaitingToStoreList.length, item);
+										});
+										// console.log('this.visiableWaitingToStoreList', this.visiableWaitingToStoreList.length);
+										
+								}
+								//删除顶部无用的dom，防止浏览器卡顿
+								if (scrollerDom && cardList.length) {
+										let cardHeight = cardList[0].clientHeight;
+										let delLenght = (Math.abs(this.translateY) / cardHeight) >> 0;
+										if (delLenght > 3) {
+												// console.log('删除的3333333333333', delLenght,this.translateY ,cardHeight,this.translateY % cardHeight);
+												delLenght = delLenght*2;
+												this.visiableWaitingToStoreList.splice(0, delLenght);
+											scrollerDom.style = 'transform: translate3d(0px, ' + (this.translateY % cardHeight) + 'px, 0px);transition:all 0ms ease-in 0s;';
+										}
+								}
+								this.scrollCount++;
+								// console.warn('3333333333333333333333333');
+								
+							
+					},
+					// startScroll
+					startRequestAnimationFrame(){
+							this.scrollCount= 0
+							if(this.scrollColumns.length) {
+								this.scrollColumns.forEach(column => {
+									if(column == 0) {
+										window.cancelAnimationFrame(this.reqFrame);
+										this.reqFrame = window.requestAnimationFrame( ()=> {
+												this.scrollWaitProcessCard();
+										})
+									} else if (column == 1) {
+										window.cancelAnimationFrame(this.reqFrame2)
+										this.reqFrame2 = window.requestAnimationFrame(()=> {
+											this.scrollWorkingCard()
+										})
+
+									} else {
+										window.cancelAnimationFrame(this.reqFrame3)
+										this.reqFrame3 = window.requestAnimationFrame(()=> {
+												this.scrollStoreCard()
+										})
+									}
+
+								})
+							}
+						
+
+						
+						
+					},
+					enter(){
+						console.log('hover enter');
+						if(this.scrollColumns.length) {
+								this.scrollColumns.forEach(column => {
+									if(column == 0) {
+										window.cancelAnimationFrame(this.reqFrame);
+									} else if (column == 1) {
+										window.cancelAnimationFrame(this.reqFrame2)
+									} else {
+										window.cancelAnimationFrame(this.reqFrame3)
+									}
+								})
+							}
+					},
+					leave(){
+						console.log('hover leave');
+						this.startRequestAnimationFrame()
+					},
+					initEchartByData(data) {
+			// 基于准备好的dom，初始化echarts实例
+						console.log('初始化echart', data);
+						// console.log('初始化echart===============');
+						
+						var myChart = echarts.init(document.getElementById('eChart'));
+						
+						let xAxisData = data.map(item => {
+							if(item.materialIdNames) {
+								return item.materialIdNames
+							} else {
+								return '--'
+							}
+						});
+					let waitingProcessXAxisData = data.map(item => item.waitLabelNumber);
+					let workingXAxisData = data.map(item => item.inProgressLabelNumber);
+						let waitToStoreXAxisData = data.map(item => item.inStockLabelNumber);
+						console.log(workingXAxisData, waitToStoreXAxisData);
+
+						// console.log(waitingProcessXAxisData, workingXAxisData, waitToStoreXAxisData);						// 指定图表的配置项和数据
+						// 指定图表的配置项和数据
+						var option = {
+							tooltip: {},
+							color: [ '#4b2eb9',"#278cf1", "#37b8c8"],
+							grid: { show: false, left: '3.5%', right: '3%', top: '4%' },
+							xAxis: [
+								{
+									type: 'category',
+									data: xAxisData,
+									name: '产品',
+									axisLabel: {
+										color: '#fff',
+										lineHeight: 20,
+										formatter: function(params) {
+											if(params.length<12) {
+												return params
+											} else {
+												let tempStr =  params.substring(0,10) + "\n"
+												let text = params.substring(10,20)+'...'
+												return tempStr+text
+											}
+									}
+									},
+								}
+							],
+							yAxis: [
+								{
+									type: 'value',
+									axisLabel: { color: '#fff', },
+									splitLine: { show: false, }
+								}
+							],
+							series: [
+								{
+									name: '等待加工',
+									type: 'bar',
+									stack: '类型',
+									barWidth: 32,
+									label: { show: false, position: 'top' },
+									data: waitingProcessXAxisData,
+								},
+								{
+									name: '正在加工',
+									type: 'bar',
+									stack: '类型',
+									barWidth: 32,
+									label: {
+										show: false,
+										position: 'top'
+									},
+									data: workingXAxisData,
+								},
+								{
+									name: '等待入库',
+									type: 'bar',
+									stack: '类型',
+									barWidth: 32,
+									label: {
+										show: true,
+										position: 'top',
+										formatter: function (params) {
+											return params.value + waitingProcessXAxisData[params.dataIndex] + workingXAxisData[params.dataIndex]
+											// return params.value + workingXAxisData[params.dataIndex]
+										},
+									},
+									data: waitToStoreXAxisData,
+								},
+							]
+						};
+
+						// 使用刚指定的配置项和数据显示图表。
+						myChart.setOption(option);
+						window.addEventListener('resize', () => {
+							myChart.resize();
+          })
+					}
+				}
+			})
+
+
+
+		</script>
+</body>
+
+
+</html>

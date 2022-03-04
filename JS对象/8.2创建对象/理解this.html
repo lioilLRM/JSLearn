@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this的理解和demo</title>
+</head>
+<body>
+  
+  <script type="text/javascript">
+    // 2022年2月12日：小野前端 JavaScript深度指南
+  //全局this-> window
+//预编译函数this-> window
+// apply/call改变this指向
+//构造函数的this指向实例化对象
+  /**
+   * 理解this
+   * 课程思路：
+   * 1.
+   */
+  
+  (function() {
+    function Car() {
+      this.color = 'red'
+      console.log(`this：`, this)
+    }
+    try {
+      console.log(`this：`, this)
+      console.log('Car 函数执行的话，生成AO对象，AO对象里面存在有this,其中this指向window')
+      // this在没有实例化的时候 执行window，一旦实例化构造函数以后，this指向实例化的对象。
+      Car()
+    } catch (e) {
+      console.log(`e：`, e)
+    }
+  }())
+  ;(function() {
+    console.log('======如何证明this指向实例化的对象？')
+    // new Car 执行，执行的时候，AO产生
+    // const AO = {
+    //   this: {
+    //     color: color,
+    //     brand: brand,
+    //   }
+    // }
+    function Car(options) {
+      //   this: {
+    //     color: color,
+    //     brand: brand,
+    //   }
+      this.color = options.color
+      this.brand = options.brand
+      console.log(`this 指向实例化的对象：`, this)
+      // return this
+    }
+    const car1 = new Car({ color: 'red', brand: '明' })
+    const car2 = new Car({ color: 'green', brand: '五菱宏光' })
+    console.log(`car1.color, car2.color：`, car1.color, car2.color)
+  }())
+  ;(function() {
+    console.log('=====能否改变构造函数默认的返回值')
+    // 构造函数如果没有返回值的话，默认return this
+    // 如果return 返回值会发生什么？
+    // 如果return 原始值的话，返回无效。return 引用值的话，可以正常返回引用值（对象，函数）。
+    function Car() {
+      this.color = 'red'
+      this.brand = 'WUling'
+      // return 122 //
+      return {}
+    }
+  
+    var car = new Car()
+    console.log(`car：`, car)
+  }())
+  
+   // 2022年2月20日 P13 this：预编译函数this的指向过程
+   ;(function() {
+    console.log('======函数内部的this和 AO运行过程');
+    
+    function testThis(b) {
+      this.d = 3
+      var a = 1
+      function c() {}
+    }
+    testThis(1212)
+    console.log(`window.d：`, window.d)
+    console.log(`this.d：`, this.d)
+    // AO运行过程
+    // AO = {
+    //   arguments: [1212],
+    //   this: window,
+    //   b:1212,
+    //   a: undefined,
+    //   c: function c(){},
+    // }
+  }())
+
+  // 构造 函数里面this指向的执行过程；构造函数的this指向实例化对象
+  ;(function(){
+    console.warn('======构造函数this内部的GO和AO的执行过程');
+    
+    function TestThis() {
+      // 隐式执行的代码
+      // var this = {
+      //   __proto__: TestThis.prototype
+      // }
+      this.name = 'this执行过程'
+
+      // return this
+    }
+
+    var test = new TestThis()
+
+
+    // 1. GO内部的变量提升和函数提升；
+    // GO = {
+    //   TestThis: function TestThis() {},
+    //   test: undefined
+    // }
+    
+    // 2. 执行TestThis函数
+    // AO = {
+    //   // this: window // 初始值this指向window
+    //   this: {
+    //     __proto__: TestThis.prototype,
+    //     name: 'this执行过程'
+    //   }
+    // }
+  }())
+
+  // 说明：再次复习call和apply;改变this的指向
+  ;(function(){
+    console.warn('=======call和apply什么时候传递参数问题？=======')
+    
+    function Person() {
+      this.name = '张三'
+      this.age = 12
+
+    }
+
+    function Programer() {
+      // Person没有参数需要传递，直接call this
+      Person.call(this)
+      this.work = '编程'
+    }
+    var programer  = new Programer()
+    console.log(programer);
+
+    function Animal(type, num) {
+      this.type = type
+      this.num = num
+    }
+
+    function Dog() {
+      // Animal 构造函数需要参数
+      Animal.apply(this, ['狗类', 12])
+      this.name = '黄狗'
+    }
+
+    let dog = new Dog()
+    console.log(dog);
+  }())
+  
+  </script>
+</body>
+</html>
+
+

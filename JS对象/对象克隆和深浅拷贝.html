@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P14 对象克隆和深浅拷贝</title>
+</head>
+<body>
+  <script>
+    // 2022年2月20日 P14 小野前端 JavaScript深度指南
+    // 说明：浅拷贝
+    ;(function(){
+      console.warn('=======对象拷贝克隆:浅拷贝=======')
+      var person1 = {
+        name: 'John',
+        age: 12,
+        son: {
+          first: {name: '1号机', age: 3},
+          second: {name: '2号机', age: 2},
+          third: {name: '3号机', age: 1},
+        },
+        car: ['bencz', 'DFYH']
+      }
+
+      // var person2 = {}
+      // 
+      // for(let key in person1) {
+      //   person2[key] = person1[key]
+      // }
+      let person2 = clone(person1)
+
+      person2.name = '逻辑'
+      console.log(`person1, person2：`,person1, person2);
+      
+      // 浅拷贝
+      function clone(origin, target) {
+        let tar = target || {}
+        for(let key in origin) {
+          tar[key] = origin[key]
+        }
+        return tar
+      }
+
+      
+
+    }())
+    // 说明：深拷贝
+
+    ;(function(){
+      console.warn('=======深拷贝=======')
+      var person1 = {
+        name: 'John',
+        age: 12,
+        son: {
+          first: {name: '1号机', age: 3},
+          second: {name: '2号机', age: 2},
+          third: {name: '3号机', age: 1},
+        },
+        car: ['bencz', 'DFYH']
+      }
+
+
+      let person2 = deepClone(person1)
+      person2.son.four = {name: 'John', age: 3}
+      person2.car.push('五菱')
+      console.log(`person1：`,person1);
+      console.log(`person2：`,person2);
+      
+
+      // 深拷贝
+      function deepClone(origin, target) {
+        let newTarget = target || {}
+        let toString = Object.prototype.toString
+        let isArrayType = '[object Array]'
+
+        for(let key in origin) {
+          if(origin.hasOwnProperty(key)) {
+            if(typeof origin[key] === 'object' && origin[key] !== null) {
+              if(toString.call(origin[key]) === isArrayType) {
+                newTarget[key] = []
+              } else {
+                newTarget[key] = {}
+              }
+              deepClone(origin[key], newTarget[key])
+            } else {
+              newTarget[key] = origin[key]
+            }
+          }
+        }
+        return newTarget
+      }
+
+    }())
+
+// 说明： 面试题
+;(function(){
+  console.warn('=======面试题1=======')
+
+console.log('下面执行输出什么？');
+
+  function test() {
+    // foo 变量提升：输出undefined
+
+    console.log(`foo：`,foo);
+    var foo = 2
+    console.log(foo)
+    console.log(`typeof(a)：`,typeof(a));
+    console.log(`this.a：`,this.a);
+    try {
+      console.log(a) // a is not defined
+    }catch (e) {
+      console.log(e) // a is not defined
+
+    }
+
+    
+  }
+
+  test()
+
+}())
+
+// 面试题
+;(function(){
+  console.warn('=======面试题2=======')
+      
+ // 函数预编译的过程：AO执行过程；
+     /**
+      * AO: activation object
+       *1. 寻找形参和变量声明
+       2. 实参赋值给形参
+       3. 找函数声明，赋值
+       4. 执行
+       **/
+  // 这题我搞错了。忘记上面的概念了；
+  function a() {
+    var test;
+    test()
+    function test() {
+      console.log(`test：`,);
+    }
+  }
+  a()
+}())
+
+;(function(window){
+ 
+
+}(window))
+
+{
+  console.warn('=======面试题13=======')
+  var name = 'win111'
+  var a = {
+    name: 'aaa',
+    say: function() {
+      console.log(`this.name：`,this.name, this);
+    }
+  }
+  // var fun = a.say
+  // fun()
+
+  a.say()
+  
+  var b = {
+    name: 'bbb',
+    say: function(aa) {
+      aa = null;
+      // aa()
+      // !function() {
+      // console.log(`this.name：`,this.name);
+    // }()
+    }
+  }
+  // 这里搞错了：为啥呢？
+  b.say(a.say)
+  b.say = a.say
+  b.say()
+}
+// {
+//   ;(function(){
+//     console.log(`立即执行函数的this：`,this);
+    
+//   }())
+// }
+
+;(function(){
+  console.warn('=======面试题4=======')
+  function test() {
+    var marty = {
+      name: 'John',
+      printName: function() {
+        console.log(`this.name：`,this.name);
+      }
+    }
+    var person1 = {name: '初号机'}
+    var person2 = {name: '二号机'}
+    var person3 = {name: '三号机'}
+    person3.printName = marty.printName
+
+    marty.printName.call(person1) // 初号机
+    marty.printName.apply(person2) // 2好几
+    marty.printName() // John
+    person3.printName() // 3好几
+
+  }
+
+  test()
+ 
+}())
+
+;(function(){
+  console.warn('=======面试题5=======') 
+  var bar = {a: 1}
+  function test() {
+    bar.a = 'a'
+    Object.prototype.b = 'b'
+    return function inner() {
+      console.log(`bar.a：`,bar.a);
+      console.log(`bar.b：`,bar.b);
+    }
+  }
+  // var test = test()
+  // test()
+
+  // test()() 
+
+}())
+
+;(function(window){
+  
+  console.warn('=======面试题6=======')
+  function Foo() {
+    getName = function() {
+      console.log(`1：`,1);
+    }
+    return this
+  }
+
+  Foo.getName = function() {
+    console.log(`2：`,2);
+  }
+
+  Foo.prototype.getName = function() {
+    console.log(`3：`,3);
+  }
+
+  var getName = function() {
+    console.log(`4：`,4);
+  }
+
+  function getName() {
+    console.log(`5：`,5);
+  }
+
+  // 构造函数的静态属性 ： 直接定义在构造函数上的属性或者方法，称为静态成员，可以通过构造函数Fn自身访问，实例无法访问。
+  // 输出2；Foo是函数；也是一个对象；所以通过对象取值的方式去获取Foo对象里面的getName方法
+  Foo.getName()
+  // 输出4：预编译阶段先提升getName变量，然后发现getName函数和变量一致；覆盖；
+  // 执行阶段getName被重新赋值为函数；执行到getName函数的时候，输出4
+  getName()
+
+
+  // 输出：5；GO内部同上；在执行Foo返回this；this指向window，执行getName()
+  // 这题搞错了；没有搞明白是什么回事？错误的原因是没有搞清楚如果一个变量没有使用var或者lef
+  // 定义的话，该变量会挂载到全局作用域上；
+  // Foo().getName()
+
+  // 输出2：想不出来：new Foo对象上的getName函数,执行函数；
+  new Foo.getName()
+
+  // 输出3：new Foo()构造函数返回一个实例化对象；实例对象去找自身的this上是否有getName函数
+  // 没有找到，就沿着原型链上找。
+  new Foo().getName()
+
+  // 这个有迷惑点：new new Foo()这两个new那个先执行？是否符合语法规则？
+  new new Foo().getName()
+
+}(window))
+
+;(function(){
+  console.warn('=======验证=======')
+  function test() {
+    // 如果对于一个变量没用用var 或者 let等声明的话，他就默认是全局属性,就是window对象的一个属性
+    a = 1
+    console.log(`a：`,a);
+  }
+  test()
+  console.log(this);
+  
+}())
+
+
+{
+  var bar = {
+    myName:"time.geekbang.com",
+    printName: function () {
+      console.log(myName)
+    }
+  }
+
+  function foo() {
+    let myName = "极客时间"
+    return bar.printName
+  }
+
+let myName = "极客邦"
+let _printName = foo()
+_printName()
+bar.printName()
+
+// GO = {
+//   bar: undefined, -->{}
+//   myName: undefined, --> "极客邦"
+//   _printName: undefined,
+//   foo: function foo() {}
+// }
+
+}
+  </script>
+</body>
+</html>

@@ -12,6 +12,8 @@
             const worker = new Worker(url)
             worker.postMessage(num)
             worker.addEventListener('message', function(evt) {
+              console.log(`runWorker res：`,evt.data);
+              
               resolve(evt.data)
             })
             worker.onerror = reject
@@ -23,28 +25,33 @@
            
         }
         function b() {
-            runWorker('./worker2.js', 10*10000*10000).then(res => {
+            runWorker('./worker.js', 10*10000*10000).then(res => {
               console.log(`b res：`,res);
+              blist = res
+
             })
         }
-        function editDom() {
-          let dom = document.getElementById('container');
-          dom.innerHTML = 'Create dom'
-        }
-
+        // function editDom() {
+        //   let dom = document.getElementById('container');
+        //   dom.innerHTML = 'Create dom'
+        // }
+        var alist, blist;
         a();
         b()
+        // console.log(`1111：`,1111);
+        
+
     </script>
     <script>
-        function c() {
-            d();
-        }
-        function d() {
-          runWorker('./worker.js', 1*10000*10000).then(res => {
-              console.log(`c res：`,res);
-            })
-        }
-        c();
+        // function c() {
+        //     d();
+        // }
+        // function d() {
+        //   runWorker('./worker.js', 1*10000*10000).then(res => {
+        //       console.log(`c res：`,res);
+        //     })
+        // }
+        // c();
     </script>
 </body>
 </html>
