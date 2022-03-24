@@ -160,6 +160,50 @@
     let dog = new Dog()
     console.log(dog);
   }())
+
+  ;(function(){
+ // JS 的 new 到底是干什么的？https://zhuanlan.zhihu.com/p/23987456?refer=study-fe
+    var soldier = {
+      id: '1',
+      type: '美国大兵',
+      attackNum: 5,
+      walk: function() {console.log(`走两步：`,)},
+      run: function() {console.log(`走两步：`,)},
+      die: function() {console.log(`走两步：`,)},
+      attack: function() {console.log(`走两步：`,)},
+      defect: function() {console.log(`11`) }
+    }
+
+    function Soldier(id, life) {
+      // let tempObj = {
+      //   id: id,
+      //   life: life,
+      // }
+      // tempObj.prototype = soldier
+      // return tempObj
+      this.id = id
+      this.life = life
+    }
+    // new 操作为了记录「临时对象是由哪个函数创建的」，所以预先给「士兵.prototype」加了一个 constructor 属性
+    // 对「士兵.prototype」赋值，那么这个 constructor 属性就没了
+    Soldier.prototype = {
+      constructor: Soldier, // 手动加上constructor
+      id: '1',
+      type: '美国大兵',
+      attackNum: 5,
+      walk: function() {console.log(`走两步：`,)},
+      run: function() {console.log(`走两步：`,)},
+      die: function() {console.log(`走两步：`,)},
+      attack: function() {console.log(`走两步：`,)},
+      defect: function() {console.log(`11`) }
+    }
+    let aSoldier = new Soldier(1,11)
+    console.log(`ne：`,aSoldier);
+
+   
+    
+
+  }())
   
   </script>
 </body>

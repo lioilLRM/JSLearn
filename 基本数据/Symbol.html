@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symbol说明</title>
+</head>
+<body>
+    <script>
+      let girlInfo = {
+        name: '小美',
+        age: 22,
+        desc: '平时喜欢做瑜伽，有男朋友...',
+        [Symbol('newDesc')]: '平时喜欢做瑜伽，有男朋友...'
+      }
+
+      let girlInfo2 = {
+        desc: '喜欢笑，热情...', 
+        [Symbol('newDesc')]: '平时喜欢看书，电影...'
+
+      }
+
+      let girlInfo3 = Object.assign(girlInfo, girlInfo2)
+      console.log(`girlInfo3：`,girlInfo3);
+
+      
+      console.log(Object.getOwnPropertySymbols(girlInfo3)[0].newDesc);
+      
+      
+    </script>
+</body>
+</html>
