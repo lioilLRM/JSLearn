@@ -1,1 +1,142 @@
-{"code":200,"data":{"total":2,"current":1,"pages":1,"size":20,"records":[{"companyName":"零星","materielId":43884,"specs":"Φ22mm","qualityStatus":4,"id":7120,"mainUnit":"PCS#0#ceil","arrivalType":1,"unit":"PCS#0#ceil","creatorNames":"李珍 626","refusedNum":0E-8,"status":1,"supplierId":694,"warehousNum":0E-8,"scrapQtNum":0E-8,"materielNo":"20404.0.00061","arrivalNumber":1600.00000000,"comingOrderNo":"CR2021120200004","creator":"1347089958270599170","buyBatch":"CG21120027","isDelete":0,"createTime":"2021-12-02 08:12:55","materielName":"20404.0.00061 光缆孔塞 空","orderCode":"PO02111290029-2","businessType":10,"subNum":0E-8},{"companyName":"零星","materielId":43838,"specs":"Φ16mm","qualityStatus":4,"id":7119,"mainUnit":"PCS#0#ceil","arrivalType":1,"unit":"PCS#0#ceil","creatorNames":"李珍 626","refusedNum":0E-8,"status":1,"supplierId":694,"warehousNum":0E-8,"scrapQtNum":0E-8,"materielNo":"20404.0.00015","arrivalNumber":1600.00000000,"comingOrderNo":"CR2021120200003","creator":"1347089958270599170","buyBatch":"","isDelete":0,"createTime":"2021-12-02 08:12:02","materielName":"20404.0.00015 光缆孔塞 空","orderCode":"PO02111290029-1","businessType":10,"subNum":0E-8}],"searchCount":true,"orders":[]},"msg":"操作成功","rCode":0,"time":2591359}
+[
+    {
+        "defaultValue": "0",
+        "icon": true,
+        "width": "80",
+        "options": [
+            {
+                "itemName": "未开始   ",
+                "itemValue": "0"
+            },
+            {
+                "itemName": "执行中",
+                "itemValue": "2"
+            },
+            {
+                "itemName": "已完成",
+                "itemValue": "3"
+            },
+            {
+                "itemName": "已关闭",
+                "itemValue": "1"
+            }
+        ],
+        "label": "行状态",
+        "hideCondition": "isDetail",
+        "type": "select",
+        "fields": [
+            {
+                "type": "input",
+                "title": "标题",
+                "value": "label"
+            }
+        ],
+        "fieldType": 0,
+        "required": true,
+        "fieldId": "status"
+    },
+    {
+        "label": "物料信息",
+        "placeholder": "请选择物料",
+        "type": "relation",
+        "params": {
+            "property": "2"
+        },
+        "fieldType": 0,
+        "table": "custom_form_inventoryfile",
+        "required": true,
+        "eventname": "purchase_order",
+        "fieldId": "materialId"
+    },
+    {
+        "width": "185",
+        "label": "订单数量",
+        "placeholder": "请输入数量",
+        "type": "input-prefix",
+        "fieldType": 0,
+        "required": true,
+        "fieldId": "needCount"
+    },
+    {
+        "name": "交付日期",
+        "width": "200",
+        "format": "yyyy-MM-dd",
+        "label": "要求交货日期",
+        "placeholder": "请交货日期",
+        "type": "production-cycle",
+        "fieldType": 0,
+        "required": false,
+        "fieldId": "needTime"
+    },
+    {
+        "prefix": "%",
+        "defaultValue": "0",
+        "width": "120",
+        "inputType": "number",
+        "label": "超收比例",
+        "type": "percent",
+        "fieldType": 0,
+        "fieldId": "overOrderStorage"
+    },
+    {
+        "width": "100",
+        "label": "净到货量",
+        "placeholder": "",
+        "hideCondition": "isDetail",
+        "type": "input-prefix",
+        "fieldType": 0,
+        "required": false,
+        "fieldId": "arrivalNumber"
+    },
+    {
+        "width": "100",
+        "label": "净入库量",
+        "placeholder": "",
+        "hideCondition": "isDetail",
+        "type": "input-prefix",
+        "fieldType": 0,
+        "required": false,
+        "fieldId": "stockCount"
+    },
+    {
+        "width": "100",
+        "label": "拒收数量",
+        "placeholder": "",
+        "hideCondition": "isDetail",
+        "type": "input-prefix",
+        "fieldType": 0,
+        "required": false,
+        "fieldId": "refusedNum"
+    },
+    {
+        "width": "100",
+        "label": "退货数量",
+        "placeholder": "",
+        "hideCondition": "isDetail",
+        "type": "input-prefix",
+        "fieldType": 0,
+        "required": false,
+        "fieldId": "backNum"
+    },
+    {
+        "width": "100",
+        "label": "报废检验数量",
+        "placeholder": "",
+        "hideCondition": "isDetail",
+        "type": "input-prefix",
+        "fieldType": 0,
+        "required": false,
+        "fieldId": "scrapQtNum"
+    },
+    {
+        "width": "250",
+        "label": "备注信息",
+        "placeholder": "请添加备注说明",
+        "hideCondition": "",
+        "type": "input",
+        "fieldType": 0,
+        "required": false,
+        "fieldId": "remarks",
+        "validate": "{\"required\":true,\"norepeat\":false}"
+    }
+]
