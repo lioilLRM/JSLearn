@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>replace 正则匹配</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="medium-6 cell">
+          <div class="callout primary">
+            <h5>Multi text replace</h5>
+            <p>
+              A simple script for replacing multiple placeholders in a piece of
+              text.
+            </p>
+            <p>
+              Fill in the name and phone and see the placeholders get replaced
+              with your values
+            </p>
+          </div>
+        </div>
+        <div class="medium-6 cell">
+          <label
+            >Name
+            <input type="text" name="name" id="name" />
+          </label>
+          <label
+            >Phone
+            <input type="text" name="phone" id="phone" />
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="medium-6 cell">
+          <label
+            >Input Text
+            <textarea name="text" id="text" cols="30" rows="5">
+    My name is: %name%, 
+    My phonenumber: %phone%
+    %phone%
+          </textarea
+            >
+          </label>
+        </div>
+        <div class="medium-6 cell">
+          <label
+            >Result
+            <textarea name="text" id="result" cols="30" rows="5" disabled>
+            </textarea>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="input"></div>
+
+    <div id="result"></div>
+
+    <script type="text/javascript">
+      const name = document.getElementById('name')
+      const phone = document.getElementById('phone')
+      const text = document.getElementById('text')
+      const result = document.getElementById('result')
+      const elements = [name, phone]
+
+      const go = () => {
+        const x = elements.reduce((accu, elem) => {
+          return {
+            ...accu,
+            [elem.id]: elem.value,
+          }
+        }, {})
+        console.log(x)
+        result.textContent = multireplace(text.value, x)
+      }
+
+      name.addEventListener('keyup', go)
+      phone.addEventListener('keyup', go)
+
+      /**
+       * @param text String String with placeholders
+       * @param values Object Key, value pairs to replace
+       */
+      const multireplace = (text, values) => {
+        const reg = /%(\w+)%/g
+        console.log(text, values)
+        // match 是匹配到的字串；key参数
+        return text.replace(reg, (match, key, offset, string,ngroup) => {
+          console.log('match, key, key2:', match, key, offset, string,ngroup)
+          return values[key] || ''
+        })
+      }
+    </script>
+  </body>
+</html>
