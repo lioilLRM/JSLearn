@@ -55,4 +55,28 @@ console.log(`numArr：`, numArr)
 const strArr = ['1', '2', '10', '11', '20']
 strArr.sort()
 console.log(`strArr：`, strArr)
+// 上面的排序方式只能排序number，对于排序字符串不生效；
+// arr.sort(function(a,b){return a.localeCompare(b)})来进行排序
+// 但中文排序时发现不是我们想要的 可以通过加参数的方法 a.localeCompare(b,'zh-CN')
+
+;(function() {
+  const numbers = [
+    'IDBD-867',
+    'IPX-871',
+    'IPX-837',
+    'ADN-381',
+    'IPX-817',
+    'ATID-495']
+
+  const sortRes = numbers.sort((a, b) => {
+    return b - a
+  })
+  // 排序无效
+  console.log(`sortRes：`, sortRes)
+
+  const sortResV2 = numbers.sort((a, b) => {
+    return a.localeCompare(b)
+  })
+  console.log(`sortResV2：`, sortResV2)
+}())
 

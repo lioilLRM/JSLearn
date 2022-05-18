@@ -111,7 +111,8 @@ function getNotRepeatBatchProperty(batchPropertyList) {
   // console.log(`onlyOneLabelResult`, onlyOneLabelResult)
   return onlyOneLabelResult
 }
-
+// 数组对象根据属性值进行合并对象
+// [ { label: '厚度（mm）', value: '350' } ]
 function getNotRepeatBatchPropertyV2(batchPropertyList) {
   const labelList = batchPropertyList.map(item => item.label)
   const onlyLabelList = Array.from(new Set(labelList))
@@ -127,3 +128,5 @@ function getNotRepeatBatchPropertyV2(batchPropertyList) {
 }
 
 getNotRepeatBatchPropertyV2(batchPropertyList)
+
+
