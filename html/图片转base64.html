@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片转base64</title>
+  <style>
+    #preview {
+      width: 50%;
+      height: 50%;
+    }
+  </style>
+</head>
+<body>
+  <h4>通过读取图片，读取图片后，将图片转为base64编码，在img标签上显示出来。</h4>
+    <input type="file" name="file" id="file">
+    <img src="" alt="预览图" id="preview">
+
+    <script>
+      
+        const inputFile = document.querySelector('input')
+        const preview = document.querySelector('#preview')
+        inputFile.onchange = function() {
+          const file = inputFile.files[0]
+          const reader = new FileReader()
+          reader.readAsDataURL(file)
+
+          reader.onload = (event) =>{
+            console.log(`event.target.result`, event.target.result)
+            preview.src = event.target.result
+          }
+          console.log(`file`, file)
+        }
+    </script>
+</body>
+</html>
