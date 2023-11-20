@@ -1,0 +1,405 @@
+﻿<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style type="text/css">
+      /* html[theme='dark-mode'] {
+        filter: invert(1) hue-rotate(180deg);
+      }
+      html[theme='dark-mode'] img{
+  filter: invert(1) hue-rotate(180deg);
+}
+      html {
+  transition: color 300ms, background-color 300ms;
+} */
+html {
+    /* filter: invert(1) hue-rotate(180deg); */
+    background-color: #1e1e1e;
+    
+}
+::-webkit-scrollbar {
+display: none; /* Chrome Safari */
+}
+      .export-table {
+        width: 100%;
+        color: gray;
+
+        margin-top: 20px;
+
+        border-collapse: collapse;
+      }
+
+      .explaincol {
+        width: 100%;
+      }
+
+      .export-td {
+        border: 1px solid #c3c3c3;
+
+        vertical-align: top;
+      }
+
+      .idcol,
+      .wordcol,
+      .level,
+      .explaincol,
+      .phoncol {
+        background-color: #4f81bd;
+
+        border: 1px solid #4f81bd;
+
+        color: gray;
+
+        height: 40px;
+      }
+
+      .output-info {
+        font-size: 11px;
+
+        color: #a2a2a2;
+
+        margin: 20px;
+
+        text-align: center;
+      }
+
+      #words-box{
+        height: 100px;
+        width: 100%;
+      }
+      .word {
+        font-size: 24px;
+        color: #67b43c;
+        animation: 10s fly linear infinite normal;
+        /* transition-duration: 47s;
+        transform: translateX(801px); */
+      }
+      .word:hover{
+        animation-play-state: paused;
+      }
+  
+      @keyframes fly {
+            0% {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                -webkit-transform: translate3d(100%, 0, 0);
+                transform: translate3d(100%, 0, 0);
+            }
+        }
+    </style>
+  </head>
+
+  <body>
+    <table border="0" cellpadding="5px" class="export-table">
+      <!-- <thead>
+        <tr>
+          <th class="idcol">#</th>
+          <th class="wordcol">单词</th>
+          <th class="phoncol">音标</th>
+          <th class="level">等级</th>
+          <th class="explaincol">解释</th>
+        </tr>
+      </thead> -->
+
+      <tbody>
+        <tr>
+          <td class="export-td">1</td>
+
+          <td class="export-td">ain't</td>
+
+          <td class="export-td">英:/eint/ 美:/ent/</td>
+
+          <td class="export-td">★</td>
+
+          <td class="export-td">
+            <div id="ID4001" class="explain_wrap_styleless">
+              <div id="ID4001child" class="expDiv">prep. 不</div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="export-td">2</td>
+
+          <td class="export-td">reasonable</td>
+
+          <td class="export-td">英:/'riːz(ə)nəb(ə)l/ 美:/'riznəbl/</td>
+
+          <td class="export-td">★</td>
+
+          <td class="export-td">
+            <div id="ID4001" class="explain_wrap_styleless">
+              <div id="ID4001child" class="expDiv">
+                adj. 合理的；通情达理的；公平适度的
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="export-td">3</td>
+
+          <td class="export-td">witty</td>
+
+          <td class="export-td">英:/'wɪtɪ/ 美:/'wɪti/</td>
+
+          <td class="export-td">★</td>
+
+          <td class="export-td">
+            <div id="ID4001" class="explain_wrap_styleless">
+              <div id="ID4001child" class="expDiv">adj. 诙谐的；富于机智的</div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="export-td">4</td>
+
+          <td class="export-td">dragging</td>
+
+          <td class="export-td">/dræg/</td>
+
+          <td class="export-td">★</td>
+
+          <td class="export-td">
+            <div id="ID4001" class="explain_wrap_styleless">
+              <div id="ID4001child" class="expDiv">
+                vt. 牵引（drag的现在分词） adj. 拖曳用的；拖延的
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="export-td">5</td>
+
+          <td class="export-td">steep</td>
+
+          <td class="export-td">英:/stiːp/ 美:/stip/</td>
+
+          <td class="export-td">★</td>
+
+          <td class="export-td">
+            <div id="ID4001" class="explain_wrap_styleless">
+              <div id="ID4001child" class="expDiv">
+                adj. 陡峭的；夸大的；不合理的；急剧升降的 vt. 浸；泡；使…充满
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="export-td">6</td>
+
+          <td class="export-td">daggers</td>
+
+          <td class="export-td">/'dæɡə/</td>
+
+          <td class="export-td">★</td>
+
+          <td class="export-td">
+            <div id="ID4001" class="explain_wrap_styleless">
+              <div id="ID4001child" class="expDiv">
+                n. 短剑；匕首（dagger的复数） v.
+                用短剑刺（dagger的第三人称单数）
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="export-td">7</td>
+
+          <td class="export-td">grown-ups</td>
+
+          <td class="export-td"></td>
+
+          <td class="export-td">★</td>
+
+          <td class="export-td">
+            <div id="ID4001" class="explain_wrap_styleless">
+              <div id="ID4001child" class="expDiv"></div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="export-td">8</td>
+
+          <td class="export-td">provocative</td>
+
+          <td class="export-td">英:/prə'vɒkətɪv/ 美:/prə'vɑkətɪv/</td>
+
+          <td class="export-td">★</td>
+
+          <td class="export-td">
+            <div id="ID4001" class="explain_wrap_styleless">
+              <div id="ID4001child" class="expDiv">
+                adj. 刺激的；气人的；挑衅的；挑逗的 n. 刺激物；挑拨物；兴奋剂
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="export-td">9</td>
+
+          <td class="export-td">emotionless</td>
+
+          <td class="export-td">英:/iˈməuʃənlis/ 美:/ɪ'moʃənləs/</td>
+
+          <td class="export-td">★</td>
+
+          <td class="export-td">
+            <div id="ID4001" class="explain_wrap_styleless">
+              <div id="ID4001child" class="expDiv">
+                adj. 不露情感的,没有情感的
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="export-td">10</td>
+
+          <td class="export-td">squeal</td>
+
+          <td class="export-td">英:/skwiːl/ 美:/skwil/</td>
+
+          <td class="export-td">★</td>
+
+          <td class="export-td">
+            <div id="ID4001" class="explain_wrap_styleless">
+              <div id="ID4001child" class="expDiv">
+                v. 用长而尖的声音说；发出长声尖叫；告密 n. 长而尖的叫声
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!--template_end-->
+      </tbody>
+    </table>
+
+    <!-- <div class="output-info">
+      共导出10条记录 | 导出时间 2022-Oct-31 10:10:40
+    </div> -->
+
+    <button id="showTable" style="background-color: #1e1e1e">显示原始表格</button></button>
+    <div id="words-box">
+      <div id="word"></div>
+    </div>
+   
+
+  </body>
+  <script>
+    let showTableBtn = document.getElementById('showTable')
+    
+    showTableBtn.addEventListener('click', ()=> {
+      console.log('11111');
+      let table = document.querySelector('.export-table')
+      if(table.style.display === 'none') {
+        table.style.display = ''
+      } else {
+        table.style.display = 'none'
+      }
+    })
+   
+
+    function getAllWordInfos() {
+     let table =  document.querySelector('.export-table')
+     let wordInfos = []
+      // .rows[0].cells[1].innerHTML
+     console.log(table.rows)
+      for(let i = 0;i<table.rows.length;i++) {
+        let row = table.rows[i]
+        // console.log(`row[i]：`,row.cells[0]);
+        let rowCells = [].slice.call(row.cells)
+        // console.log(rowCells)
+          let wordInfo = {}
+          rowCells.forEach((rowCell, index) => {
+            if(index === 0) {
+                wordInfo.index = i+1
+            }
+              if(index === 1) {
+                wordInfo.word = rowCell.innerText
+            }
+              if(index === 2) {
+                wordInfo.spell = rowCell.innerText
+            }
+              if(index === 3) {
+                wordInfo.start = rowCell.innerText
+            }
+              if(index === 4) {
+                wordInfo.explain = rowCell.innerText
+            }
+              
+        })
+          // console.log(wordInfo)
+         wordInfos.push(wordInfo) 
+      }
+      return wordInfos
+    }
+
+
+   const allWordInfos =  getAllWordInfos()
+
+   console.log(`allWordInfos：`,allWordInfos);
+   let words = allWordInfos.map(wordInfo => wordInfo.word)
+
+   console.log(`words：`,words);
+
+   function createWordDom(word) {
+    let wordsBox = document.getElementById('words-box')
+    let wordDom = document.createElement('div')
+    wordDom.className = 'word fly'
+    wordDom.innerText = word
+    console.log(wordDom);
+    
+    wordsBox.appendChild(wordDom)
+   }
+
+   function insertWordDom(word) {
+    let wordsBox = document.getElementById('words-box')
+    let wordDom = document.getElementById('word')
+    wordDom.className = 'word fly'
+    wordDom.innerText = word
+   }
+
+   function createAllWordDom(words) {
+    console.log(words);
+    
+    for(let i = 0;i<=words.length;i++) {
+      let item = words[i]
+      console.log(`item：`,item);
+      // if(i === words.length) {
+      //   i = 0
+      // }
+      
+      (function(item, i){
+        console.log(`word：`,item);
+        
+        setTimeout(function() {
+          insertWordDom(item)
+        }, 10000 * i)
+      })(item, i)
+    }
+
+   }
+   createAllWordDom(words)
+   // TODO
+   /**
+    * 1. 单词加入随机颜色
+    * 2. 在单词上面悬浮的时候显示中文词意
+    * 
+    * 
+    * */
+
+
+   
+    
+  </script>
+
+</html>

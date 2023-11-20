@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>钩子函数</title>
+</head>
+<body>
+
+</body>
+<script>
+
+  let _alert = alert
+
+  alert = function() {
+    // 方法执行前执行的内容
+    console.log('alert 初始化');
+    // 执行原函数
+    _alert.apply(this, arguments);
+    // 方法执行后执行的内容
+    console.log('alert 执行结束');
+  }
+// 防止hook 检测
+alert.toString = function() {
+  return "function alert() { [native code] }"
+}
+  // alert('hook 测试')
+
+  
+
+</script>
+</html>

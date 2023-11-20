@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrapper {
+  display: grid;
+  /*  声明了三列，宽度分别为 200px 100px 200px */
+  grid-template-columns: 200px 200px  200px;
+  grid-gap: 5px;
+  /*  声明了两行，行高分别为 50px 50px  */
+  /* grid-template-rows: 50px 50px; */
+  /* repeat() 函数：可以简化重复的值。
+  该函数接受两个参数，第一个参数是重复的次数，第二个参数是所要重复的值。
+  比如上面行高都是一样的，我们可以这么去实现，实际效果是一模一样的 */
+  grid-template-rows: repeat(2, 50px);
+}
+.item {
+  text-align: center;
+  font-size: 200%;
+  color: #fff;
+}
+.one {
+  background: #19CAAD;
+}
+.two { 
+  background: #8CC7B5;
+}
+.three {
+  background: #D1BA74;
+}
+.four {
+  background: #BEE7E9;
+}
+.five {
+  background: #E6CEAC;
+}
+.six {
+  background: #ECAD9E;
+}
+.wrapper-two{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-gap: 5px;
+  grid-auto-rows: 50px;
+}
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="one item">One</div>
+    <div class="two item">Two</div>
+    <div class="three item">Three</div>
+    <div class="four item">Four</div>
+    <div class="five item">Five</div>
+    <div class="six item">Six</div>
+  </div>
+
+
+  <div class="wrapper-two">
+    <div class="one item">One</div>
+    <div class="two item">Two</div>
+    <div class="three item">Three</div>
+    <div class="four item">Four</div>
+    <div class="five item">Five</div>
+    <div class="six item">Six</div>
+  </div>
+</body>
+</html>

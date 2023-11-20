@@ -17,22 +17,55 @@
 			
 			let blackCat = new cat;
 			let whiteDog ={food: 'bone'}
+      // 我们不想对它重新定义say方法，
+      //那么我们可以通过call或apply用blackCat的say方法
 			blackCat.say.call(whiteDog)
 			console.log(whiteDog);
-			
-			// function cat() { }
-			// cat.prototype = {
-			// food: "fish",
-			// say: function () {
-			// alert("I love " + this.food);
-			// }
-			// };
-			// var blackCat = new cat;
-			// //blackCat.say();
-			// var whiteDog = { food: "bone" };
-			// blackCat.say.call(whiteDog);
-			// console.log(whiteDog);
 
+      // 可以看出call和apply是为了动态改变this而出现的，
+      //当一个object没有某个方法，但是其他的有，我们可以借助call或apply用其它对象的方法来操作
+      let dom = document.getElementsByTagName('p')
+      // 返回一个类数组对象；但是该对象没有数组的方法
+      // 数组的pop,push等方法，但是Array的prototype上有这些方法
+
+      // 我想dom 使用 Array 的push 方法，
+      // 按照上面的理解；应该这样子用：
+      // Array.prototype.push.call(dom)
+      // 但是直接报异常了。。
+
+      // 为什么？通过 Array.prototype.slice.call(dom) 这种方式调用，就能够调用Array下的所有方法了
+      // 
+      // slice 方法返回的是一个拷贝后的数组，所以拥有数组的所有方法了；
+      // slice(start,end) 方法的接收两个参数；如果第一个参数省略的话，start默认从0开始。
+      // call(thisArg, arg1, arg2, ...) 的第一个参数是
+      let newDom = Array.prototype.slice.call(dom)
+      // 所以；上面的代码等同于下面的代码
+      let newDom2 = Array.prototype.slice.call(dom, 0)
+
+      // [] 是 Array 的实例，所以可以直接使用[].slice方法
+      let newDom3 = [].slice.call(dom, 0)
+
+
+
+
+
+
+
+
+
+      function changeStyle(attr, value){
+          this.style[attr] = value;
+      }
+      var box = document.getElementById('box');
+      // window.changeStyle.call(box, "height", "200px");
+      //call中的第一个参数用于指定将要调用此函数的对象，在这里，changeStyle函数将被box对象调用，this指向了box对象，如果不用call的话，程序报错，因为window对象中没有style属性。
+
+
+   
+
+
+			
+	
 			
 		</script>
 	</body>

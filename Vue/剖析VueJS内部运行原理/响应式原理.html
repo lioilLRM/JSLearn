@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let person = {
+      name: '外挂人',
+      blood: 100,
+      age: 18,
+      ability: '监听,锁血',
+      charater: '敏感型性格',
+
+    }
+
+    function observer(value) {
+      if(!value || typeof value!== 'object') {
+        return
+      }
+
+      Object.keys(value).forEach(key => {
+        defineReactive(value, key, value[key])
+      })
+    
+    }
+
+    function defineReactive(obj, key, value) {
+      const dep = new Dep()
+
+      Object.defineProperty(obj, key,  {
+        enumerable: true,
+        configurable: true,
+        get: function() {
+          console.log(`get value：`,value);
+          dep.addSub(Dep.target)
+          return value
+          
+        },
+        set: function(nval) {
+          console.log(`set nval：`,nval);
+          if(nval === value) return
+
+          dep.notify()
+          updateView(nval)
+          return nval
+        }
+      })
+    }
+    // defineReactive(person, 'blood', 200)
+    // console.log(`person.blood：`,person.blood);
+    // person.blood = 300
+
+    function updateView(val) {
+      console.log(`更新视图了！：`,);
+    }
+
+    class Vue {
+      constructor(options) {
+        this._data = options.data
+
+        new Watcher()
+        observer(this._data)
+
+        console.log(`render：`, this._data.test);
+        
+      }
+    }
+
+    class Dep {
+      constructor() {
+        this.subs = []
+      }
+      addSub(sub) {
+        this.subs.push(sub)
+      }
+      notify() {
+        this.subs.forEach(sub => {
+          sub.update()
+        })
+      }
+    }
+
+    class Watcher {
+      constructor() {
+        Dep.target = this
+      }
+      update() {
+        console.log(`watcher 视图 update：`,);
+        
+      }
+    }
+
+    let vm = new Vue({
+      data: {
+        test: 'Vue test'
+      }
+    })
+    vm._data.test = '修改test的值'
+    // console.log(`vm._data：`,vm._data.test);
+    
+    Dep.target = null;
+
+   
+  </script>
+</body>
+</html>

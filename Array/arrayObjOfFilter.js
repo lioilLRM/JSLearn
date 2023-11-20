@@ -1,3 +1,5 @@
+// 数组对象过滤 数组对象条件过滤
+
 const staff = [
   { name: 'April', job: 'programmer', age: '18', hobby: 'study' },
   { name: 'Shawn', job: 'student', age: '8', hobby: 'study' },

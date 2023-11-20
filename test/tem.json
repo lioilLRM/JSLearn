@@ -1,0 +1,68 @@
+[
+  {
+    "label": "表面处理",
+    "name": "表面处理",
+    "fieldId": "extProperty1",
+    "field": "bInventoryFile$extProperty1",
+    "type": "input",
+    "placeholder": "请输入表面处理",
+    "required": false,
+    "fieldType": 0,
+    "regexp": "",
+    "isStockProperty": true,
+    "disabledSort": false,
+    "columnConfigIsFixed": false,
+    "columnConfigSortIndex": 3,
+    "searchConfigSortIndex": 2
+  },
+  {
+    "label": "图号",
+    "name": "图号",
+    "fieldId": "extProperty2",
+    "field": "bInventoryFile$extProperty2",
+    "type": "input",
+    "placeholder": "请输入图号",
+    "required": false,
+    "fieldType": 0,
+    "regexp": "",
+    "isStockProperty": true,
+    "disabledSort": false,
+    "columnConfigIsFixed": false,
+    "columnConfigSortIndex": 4,
+    "searchConfigSortIndex": 3
+  },
+  {
+    "label": "物料规格",
+    "name": "物料规格",
+    "fieldId": "extProperty3",
+    "field": "bInventoryFile$extProperty3",
+    "type": "input",
+    "placeholder": "请输入物料规格",
+    "required": false,
+    "fieldType": 0,
+    "regexp": "",
+    "isStockProperty": true,
+    "disabledSort": false,
+    "columnConfigIsFixed": false,
+    "columnConfigSortIndex": 5,
+    "searchConfigSortIndex": 4
+  },
+  {
+    "label": "材质",
+    "name": "材质",
+    "fieldId": "extProperty4",
+    "field": "bInventoryFile$extProperty4",
+    "type": "input",
+    "placeholder": "请输入材质",
+    "required": false,
+    "fieldType": 0,
+    "regexp": "",
+    "isStockProperty": true,
+    "disabledSort": false,
+    "columnConfigIsFixed": false,
+    "columnConfigSortIndex": 6,
+    "searchConfigSortIndex": 5
+  }
+]
+
+

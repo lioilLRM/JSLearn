@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>记单词测试</title>
+    <style>
+      html {
+        background-color: #1e1e1e;
+        overflow:hidden;
+      }
+        .word{
+          display: inline-block;
+          color: brown;
+          width: 100%;
+          font-size: 24px;
+          font-weight: bold;
+          animation: Animation 15s linear infinite;
+        }
+        /* 定义动画 */
+      @keyframes Animation {
+        0% {
+          /* 动画开始
+             具体值：从距离动画元素顶端的xx位置处开始执行动画。比如200px，它会从距离动画元素顶端200px的位置开始执行动画。
+             百分比：根据动画元素的宽度进行比例换算。
+             0%：从动画元素顶端开始执行动画，100%：从动画元素尾部开始执行动画，200%：从距离动画元素宽度2倍的位置开始执行动画。
+          */
+          transform: translateX(100%);
+          /* transform: translateX(200px); */
+        }
+        100% {
+          /* 动画完成
+             负数表示向左移动的距离
+             动画元素向左移动它自身的宽度后，动画结束
+          */
+          transform: translateX(0%);
+        }
+      }
+    </style>
+</head>
+<body>
+  <div id="container">
+      <span class="word">
+        innocent
+      </span>
+  </div>
+  <script>
+    let wordList = [
+    {
+        "word": "innocent",
+        "explain": "adj. 无罪的；无辜的；无知的; n. 天真的人；笨蛋副 词:   innocently "
+    },
+    {
+        "word": "sibling",
+        "explain": "n. 兄弟姊妹；民族成员"
+    },
+    {
+        "word": "siblings",
+        "explain": "同科"
+    },
+    {
+        "word": "vagina",
+        "explain": "n. 阴道；叶鞘；鞘Vagina阴道"
+    },
+    {
+        "word": "vulva",
+        "explain": "n. 阴户,女阴,阴户,孔形容词:   vulviform "
+    },
+    {
+        "word": "maid",
+        "explain": "n. 女仆；少女; vt. 侍候；做新娘的女傧相; vi. 当女仆"
+    },
+    {
+        "word": "evolve",
+        "explain": "vt. & vi. 演变；进化时 态:   evolved，evolving，evolves  形容词:   evolvable 名 词:   evolvement "
+    },
+    {
+        "word": "monitoring",
+        "explain": "n. 监视;控制;监测;追踪"
+    },
+    {
+        "word": "SOULBINDING",
+        "explain": ""
+    },
+    {
+        "word": "goblin",
+        "explain": "n. 小妖精,丑妖精"
+    }
+]
+    
+    
+  
+  </script>
+</body>
+</html>

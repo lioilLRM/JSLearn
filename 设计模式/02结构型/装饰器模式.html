@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按钮点击需求1.0</title>
+</head>
+<style>
+    #modal {
+        height: 200px;
+        width: 200px;
+        line-height: 200px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<body>
+	<button id='open'>点击打开</button>
+	<button id='close'>关闭弹窗</button>
+</body>
+<script>
+    // // 弹窗创建逻辑，这里我们复用了单例模式面试题的例子
+    // const Modal = (function() {
+    // 	let modal = null
+    // 	return function() {
+    //         if(!modal) {
+    //         	modal = document.createElement('div')
+    //         	modal.innerHTML = '您还未登录哦~'
+    //         	modal.id = 'modal'
+    //         	modal.style.display = 'none'
+    //         	document.body.appendChild(modal)
+    //         }
+    //         return modal
+    // 	}
+    // })()
+    
+    // // 点击打开按钮展示模态框
+    // document.getElementById('open').addEventListener('click', function() {
+    //     // 未点击则不创建modal实例，避免不必要的内存占用
+    // 	const modal = new Modal()
+    // 	modal.style.display = 'block'
+    // })
+    
+    // // 点击关闭按钮隐藏模态框
+    // document.getElementById('close').addEventListener('click', function() {
+    // 	const modal = document.getElementById('modal')
+    // 	if(modal) {
+    // 	    modal.style.display = 'none'
+    // 	}
+    // })
+// 装饰器模式 是什么？
+    // 通俗的说：在不改变原有的代码结构下；给代码添加新的功能；比如钢铁侠，给身体加上一套装甲；增强了原有的功能。
+    
+    // 为什么需要装饰器模式？
+    // 如何使用装饰器模式？
+    // 装饰器模式在Vue、或者在工作中的应用？
+    const Modal = (function(){
+      let modal = null;
+      return function() {
+        if(!modal) {
+          modal = document.createElement("div");
+          modal.innerHTML = '请登录哦！'
+          modal.style.display = 'none'
+          modal.id = 'modal'
+          document.body.appendChild(modal);
+        }
+        return modal
+      }
+    }())
+
+        // ES6的class 写法
+    class OpenButton {
+      onClick() {
+        const modal = new Modal()
+        modal.style.display = 'block'
+      }
+    }
+
+    class Decorator{
+      constructor(openButton) {
+        this.openButton = openButton
+      }
+
+      onClick() {
+        this.openButton.onClick()
+        // 包装了一层新的逻辑
+        this.changeButtonStatus()
+      }
+      changeButtonText() {
+        const btn = document.getElementById("open")
+        btn.innerText = '禁用状态'
+      }
+      disabledButton() {
+        const btn = document.getElementById("open")
+        btn.setAttribute("disabled", true)
+      }
+
+      changeButtonStatus() {
+        this.changeButtonText()
+        this.disabledButton()
+      }
+    }
+
+    const openBtn = new OpenButton()
+    const decorator = new Decorator(openBtn)
+    document.getElementById('open').addEventListener('click', function(event) {
+      // ES5 的 装饰器写法
+      // openModal()
+      // changeButtonStatus()
+      
+      // ES6 的写法
+      // openBtn.onClick()
+
+      // ES6 的装饰器写法
+      decorator.onClick()
+
+    })
+
+    document.getElementById('close').addEventListener("click", function(event) {
+      const modal = document.getElementById('modal')
+      if(modal) {
+        modal.style.display = 'none'
+      }
+    })
+
+    function openModal() {
+      const modal = new Modal()
+      modal.style.display = 'block'
+    }
+
+    function changeButtonText() {
+      const button = document.getElementById('open')
+      button.innerText = '快去登录'
+    }
+
+    function disabledButton() {
+      const button = document.getElementById('open')
+      button.setAttribute('disabled', true)
+    }
+
+    // 实现了“只添加，不修改”的装饰器模式
+    function changeButtonStatus() {
+      changeButtonText()
+      disabledButton()
+    }
+
+
+
+
+    
+    class Circle {
+      draw() {
+        console.log('画个圆！');
+      }
+    }
+
+    // class Decorator {
+    //   constructor(circle) {
+    //     this.circle = circle;
+    //   }
+    //   draw(circle) {
+    //     this.circle.draw()
+    //     this.drawRedBorder(circle)
+    //   }
+    //   drawRedBorder(circle) {
+    //     console.log('设置红色边框');
+        
+    //   }
+    // }
+
+    // let circle = new Circle()
+    // circle.draw()
+    // let decorator = new Decorator(circle)
+    // decorator.draw(circle)
+
+</script>
+</html>

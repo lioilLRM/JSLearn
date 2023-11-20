@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./element.css">
+</head>
+
+<body>
+  <script src="//unpkg.com/vue@2/dist/vue.js"></script>
+  <script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
+  <div id="app">
+    <el-switch v-model="value1" active-text="按月付费" inactive-text="按年付费" 
+    :active-value="activeValue"
+      :inactive-value="inActiveValue" 
+      @input='update'>
+    </el-switch>
+    <!-- <el-switch style="display: block" v-model="value2" active-color="#13ce66" inactive-color="#ff4949"
+      active-text="按月付费" inactive-text="按年付费" @input='update'>
+    </el-switch> -->
+  </div>
+
+  <script>
+
+    var Main = {
+      data() {
+        return {
+          defaultValue: false,
+          value1: false,
+
+          activeValue: '是',
+          inActiveValue: '否'
+        }
+      },
+      created() {
+        this.handleDefaultValue()
+        console.log('mounted value1', this.value1)
+      },
+      methods: {
+        handleDefaultValue() {
+          if(this.defaultValue) {
+            this.value1 = true
+          }
+          if(this.activeValue && this.inActiveValue) {
+              let mapping = {
+                true: this.activeValue,
+                false: this.inActiveValue
+              }
+              this.value1 = mapping[this.defaultValue]
+            }
+        },
+
+        update(value) {
+          console.log('value', value)
+        }
+      }
+    };
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+
+
+
+  </script>
+</body>
+
+</html>

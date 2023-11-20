@@ -1,5 +1,5 @@
 var arr = [0.1, 0.0, 0, 3, 1, 1.0, 1.1, 1.11, 2, 1, '1', '2', 1]
-
+// 数组去重
 function unique(array) {
   const result = []
   for (let i = 0; i < array.length; i++) {

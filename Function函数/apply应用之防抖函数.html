@@ -1,44 +1,131 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	
-	<body>
-		
-		<button>click</button>
-		
-		<script type="text/javascript">
-			/*函数防抖*/
-			function debounce (fn, delay) {
-				delay = delay || 600
-				let timer
-				return function () {
-					let ctx = this
-					console.log(ctx);
-					let args = arguments //保存此处的arguments，因为setTimeout是全局的，arguments不是防抖函数需要的。
-					console.log(args);
-					if (timer) {
-						clearTimeout(timer)
-					}
-					timer = setTimeout(() => {
-						timer = null
-						fn.apply(ctx, args)
-					}, delay)
-				}
-			}
-			
-			let btn = document.getElementsByTagName('button')
-			console.log(btn);
-			btn[0].addEventListener('click',debounce(function() {
-				console.log('111111111');
-			}),1000)
-			
-			
-			
-			
-			
-		</script>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <button>click</button>
+
+    <script type="text/javascript">
+      /*函数防抖*/
+      function debounce(fn, delay) {
+        delay = delay || 600
+        let timer
+        return function () {
+          let ctx = this
+          console.log(ctx)
+          let args = arguments //保存此处的arguments，因为setTimeout是全局的，arguments不是防抖函数需要的。
+          console.log(args)
+          if (timer) {
+            clearTimeout(timer)
+          }
+          timer = setTimeout(() => {
+            timer = null
+            fn.apply(ctx, args)
+          }, delay)
+        }
+      }
+
+      let btn = document.getElementsByTagName('button')[0]
+      // console.log(btn);
+      // btn[0].addEventListener('click',debounce(function() {
+      // 	console.log('111111111');
+      // }),1000)
+
+      function debounceV1(fn, wait) {
+        console.log('节流')
+
+        let timeout
+        return function () {
+          let context = this
+          let args = arguments
+          console.log(`args：`, args)
+
+          clearTimeout(timeout)
+          timeout = setTimeout(function () {
+            fn.apply(context, args)
+          }, wait)
+        }
+      }
+      // btn.onclick = function(event) {
+      //   console.log(`event：`,event);
+      // }
+      let count = 0
+      function log(event) {
+        console.log(`log：`, count++, this, event)
+        return `count：${count}`
+      }
+      // log()
+      btn.onclick = debounceV2(log, 2000, true)
+
+      function debounceV2(fn, wait, immediate) {
+        let timeout
+        let result
+        return function () {
+          console.log(`debounceV2 timeout：`, timeout)
+
+          let context = this
+          let args = arguments
+          if (timeout) {
+            clearTimeout(timeout)
+          }
+          if (immediate) {
+            let callNow = !timeout
+            timeout = setTimeout(function () {
+              timeout = null
+            }, wait)
+            if (callNow) {
+              result = fn.apply(context, args)
+            }
+          } else {
+            timeout = setTimeout(function () {
+              fn.apply(context, args)
+            }, wait)
+          }
+          console.log(`result：`, result)
+
+          return result
+        }
+      }
+
+      function debounceV3(fn, wait, immediate) {
+        let timeout
+        let result
+        let debounced =  function () {
+          console.log(`debounceV2 timeout：`, timeout)
+
+          let context = this
+          let args = arguments
+          if (timeout) {
+            clearTimeout(timeout)
+          }
+          if (immediate) {
+            let callNow = !timeout
+            timeout = setTimeout(function () {
+              timeout = null
+            }, wait)
+            if (callNow) {
+              result = fn.apply(context, args)
+            }
+          } else {
+            timeout = setTimeout(function () {
+              fn.apply(context, args)
+            }, wait)
+          }
+          console.log(`result：`, result)
+
+          return result
+        }
+
+        debounced.cancel = function() {
+          clearTimeout(timeout)
+          timeout = null
+        }
+        return debounced
+      }
+      // 总结：通过学习这个例子学会了apply的应用；改变this的指向
+    </script>
+  </body>
 </html>

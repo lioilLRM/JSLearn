@@ -1,3 +1,4 @@
+// 数组工具类拓展
 const arrayUtils = {
   append(array, ...elements) {
     array.push(...elements)

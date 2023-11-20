@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动画</title>
+  <style>
+    html,body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      background-color:#1e1e1e ;
+    }
+    .container{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .table {
+      /* height: 40px;
+      width: 100%;
+      background-color: aquamarine;
+      border: 1px solid red */
+      position: relative;
+      width: 100%;
+      color: aliceblue;
+    }
+    .table__header{
+      height: 50px;
+      border: 1px solid red;
+    }
+    .table__body {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      overflow: hidden;
+      height: 300px;
+      background-color: pink;
+      width: 100%;
+
+    }
+    .table__anim-wrap{
+      position: absolute;
+      left: 0;
+      width: 100%;
+
+      /* transform: translateY(-780px);
+      transition: all 28000ms linear 0s; */
+    }
+    .row{
+      height: 50px;
+      border: 1px solid green;
+      color: aqua;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="table">
+       <div class="table__header">header</div>
+       <div class="table__body">
+        <div class="table__anim-wrap">
+          <div class="row">1</div>
+          <div class="row">2</div>
+          <div class="row">3</div>
+          <div class="row">4</div>
+          <div class="row">5</div>
+          <div class="row">6</div>
+          <div class="row">7</div>
+          <div class="row">8</div>
+          <div class="row">9</div>
+          <div class="row">10</div>
+          <div class="row">1</div>
+          <div class="row">2</div>
+          <div class="row">3</div>
+          <div class="row">4</div>
+          <div class="row">5</div>
+          <div class="row">6</div>
+          <div class="row">7</div>
+          <div class="row">8</div>
+          <div class="row">9</div>
+          <div class="row">10</div>
+        </div>
+
+       </div>
+      
+    </div>
+  </div>
+    <script>
+      let animWrap = document.querySelector('.table__anim-wrap')
+      // animWrap.style.transform = 'translateY(-292px)'
+      // animWrap.style.transition = 'all 28000ms linear'
+      
+
+      let recoverAnimTimer = setTimeout(()=>{
+        console.log(`11:`, 11);
+        
+        animWrap.style.cssText  = setAnimStyle(true)
+        console.log(animWrap);
+        
+      },1000)
+
+      animWrap.addEventListener('transitionend', (evt)=>{
+        console.log(`结束evt:`, evt);
+        animWrap.style.cssText =  this.setAnimStyle(false)
+        clearTimeout(recoverAnimTimer)
+        recoverAnimTimer = setTimeout(()=>{
+          animWrap.style.cssText = setAnimStyle(true)
+        }, 100)
+      })
+
+      function setAnimStyle(recoverAnim) {
+        if (!recoverAnim){
+          console.log('false');
+          
+          return ``
+        } else {
+          let style = `
+            transform: translateY(-728px);
+            transition: all 28000ms linear 0s;
+          `
+          console.log('222', style);
+
+          return style
+        }
+      }
+
+    </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const dir = 'G:/5-1/桃乃木'
+const dir = ''
 const readDirs = fs.readdirSync(dir)
 console.log(`readDir：`,readDirs);
 

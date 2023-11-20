@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex 布局</title>
+  <style>
+    html, body{
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #1e1e1e;
+    }
+    .flex-box{
+      display: flex;
+      align-items: flex-start;
+
+      height: 200px;
+      width: 200px;
+      background-color: pink;
+    }
+    .flex__item{
+      /*flex1：  flex-grow: 1 flex-shrink: 1 flex-basis: 0;;; */
+      /* flex: 0; */
+      /* flex: auto; */
+      height: 50px;
+      width: 50px;
+      font-size: 25px;
+      color: rgb(3, 254, 3);
+      text-align: center;
+      line-height: 50px;
+    }
+    .yellow {
+      background-color:rgb(241, 241, 118);
+    }
+    .red {
+      background-color:rgb(42, 19, 19);
+      /* flex: auto; */
+      flex-grow: 1;
+    }
+    .blue {
+      flex-grow: 2;
+
+      background-color: rgb(31, 31, 230);
+    }
+    .text-limit1 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+    <div class="flex-box">
+      <div class="flex__item yellow">10</div>
+      <div class="flex__item red text-limit1">200000000</div>
+      <div class="flex__item blue text-limit1">30000000000</div>
+    </div>
+</body>
+</html>

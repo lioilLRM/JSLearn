@@ -9,7 +9,10 @@ module.exports = {
   'extends': 'eslint:recommended',
   'parserOptions': {
     'ecmaVersion': 12,
-    'sourceType': 'module'
+    'sourceType': 'module',
+    'ecmaFeatures': { // 支持装饰器
+      'legacyDecorators': true
+    }
   },
   'rules': {
     'accessor-pairs': 2,

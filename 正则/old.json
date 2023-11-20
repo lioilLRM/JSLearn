@@ -1,0 +1,594 @@
+{
+  "orderType": 0,
+  "routeIdNames": "v919",
+  "needTime": "2023-06-27 23:59:59",
+  "id": 6231,
+  "dispatchNum": 400,
+  "depIdNames": "质量部",
+  "bomData": {
+      "matId": 263,
+      "id": 143,
+      "materielBom": {
+          "child": [
+              {
+                  "pUnit": "PCS#2#floor",
+                  "mid": 143,
+                  "pUsages": 1,
+                  "matUseMode": 1,
+                  "rate": 0,
+                  "usagesObj": {
+                      "mainUnit": "PCS#2#floor",
+                      "subUnit": "PCS#3#floor",
+                      "mainUsage": 1,
+                      "subUsage": 3
+                  },
+                  "id": 942,
+                  "usages": 3,
+                  "seq": "2",
+                  "matName": "铝扣板005 | 888005",
+                  "issueMaterialsCtr": 0,
+                  "creator": "1331848333144129537",
+                  "isDelete": 0,
+                  "updateTime": "2023-02-20 17:56:35",
+                  "warehouse": "3345",
+                  "matType": "3",
+                  "unit": "PCS#3#floor",
+                  "creatorNames": "谈文",
+                  "updatorNames": "谈文",
+                  "createTime": "2023-02-13 10:55:57",
+                  "matId": 254,
+                  "hasChild": false,
+                  "updator": "1331848333144129537",
+                  "warehouseNames": "安徽仓库",
+                  "matCode": "888005",
+                  "status": 0
+              },
+              {
+                  "pUnit": "PCS#2#floor",
+                  "mid": 143,
+                  "pUsages": 4,
+                  "matUseMode": 1,
+                  "rate": 0,
+                  "usagesObj": {
+                      "mainUnit": "PCS#2#floor",
+                      "subUnit": "件#2#ceil",
+                      "mainUsage": 4,
+                      "subUsage": 1
+                  },
+                  "id": 943,
+                  "usages": 1,
+                  "seq": "1",
+                  "matName": "委外产品（这是一个超级长的物料名称惺惺惜惺惺想想哈哈哈哈哈哈哈哈哈哈1九九九哈哈哈） | 0007000",
+                  "issueMaterialsCtr": 0,
+                  "creator": "1331848333144129537",
+                  "isDelete": 0,
+                  "updateTime": "2023-03-27 10:48:07",
+                  "warehouse": "3345",
+                  "matType": "1",
+                  "unit": "件#2#ceil",
+                  "creatorNames": "谈文",
+                  "updatorNames": "谈文",
+                  "createTime": "2023-03-27 10:48:07",
+                  "matId": 273,
+                  "hasChild": true,
+                  "updator": "1331848333144129537",
+                  "warehouseNames": "安徽仓库",
+                  "matCode": "0007000",
+                  "status": 0
+              }
+          ]
+      },
+      "matCode": "888014",
+      "version": "v32",
+      "matName": "铝扣板014（这就是以恶搞查急急急急急急急急急急急急急急急急急急哈哈哈哈哈哈哈哈哈哈哈哈啊哈啊啊啊啊啊啊啊啊啊啊）"
+  },
+  "materialId": "263",
+  "creatorNames": "谈文",
+  "updatorNames": "谈文",
+  "depId": "1335116383406522369",
+  "demandSource": 0,
+  "status": 1,
+  "planningPersonnelId": "1331848333144129537",
+  "currentUnit": "PCS",
+  "materialIdNames": "铝扣板014（这就是以恶搞查急急急急急急急急急急急急急急急急急急哈哈哈哈哈哈哈哈哈哈哈哈啊哈啊啊啊啊啊啊啊啊啊啊） | 888014",
+  "bomIdNames": "v32",
+  "routeDeta": [
+      {
+          "showInventory": true,
+          "mid": 405,
+          "seqMatching": 0,
+          "qid": 1102,
+          "seqMatching_disabled": false,
+          "qualityTest": {
+              "fourPlan": {
+                  "planIds": [
+                      "456"
+                  ],
+                  "plandIdsStr": "456",
+                  "planNames": [
+                      "ZJ202208240031 铝扣件类别制程检验"
+                  ]
+              },
+              "sevenPlan": {
+                  "planIds": [
+                      "425",
+                      "412",
+                      "460"
+                  ],
+                  "plandIdsStr": "425,412,460",
+                  "planNames": [
+                      "ZJ20220824002 888014完工检验",
+                      "ZJ20230011100001 888014完工检验2301110001",
+                      "ZJ202230411001 888014完工检验"
+                  ],
+                  "control": 0
+              },
+              "qaPlan": "3,7,4",
+              "thirdPlan": {
+                  "planIds": [
+                      "411"
+                  ],
+                  "plandIdsStr": "411",
+                  "planNames": [
+                      "888014首件检验"
+                  ],
+                  "control": "0"
+              }
+          },
+          "processName": "GP-12 外观检",
+          "sevenPlan": {
+              "planIds": [
+                  "425",
+                  "412",
+                  "460"
+              ],
+              "plandIdsStr": "425,412,460",
+              "planNames": [
+                  "ZJ20220824002 888014完工检验",
+                  "ZJ20230011100001 888014完工检验2301110001",
+                  "ZJ202230411001 888014完工检验"
+              ],
+              "control": 0
+          },
+          "plineOption": [
+              {
+                  "itemName": "上序结束后才可开始",
+                  "itemValue": "0"
+              },
+              {
+                  "itemName": "上序开始后就可开始",
+                  "itemValue": "1"
+              }
+          ],
+          "id": 1102,
+          "processType": 1,
+          "finishedDisabled": false,
+          "jobFile": [
+              1115
+          ],
+          "hzq": {
+              "unit": "minute",
+              "time": "6"
+          },
+          "seq": 1,
+          "isChangeMatLabel": "1",
+          "fixedUsages": 10,
+          "creator": "1331848333144129537",
+          "inventorys": [
+              {
+                  "detaId": 1102,
+                  "pUnit": "PCS#2#floor",
+                  "pUsages": 1,
+                  "rate": 0,
+                  "usagesObj": {
+                      "subUsage": 3,
+                      "mainUsage": 1,
+                      "mainUnit": "PCS#2#floor",
+                      "subUnit": "PCS#3#floor"
+                  },
+                  "id": 797,
+                  "usages": 3,
+                  "seq": 2,
+                  "matName": "铝扣板005 | 888005",
+                  "issueMaterialsCtr": 0,
+                  "bomId": 143,
+                  "creator": "1331848333144129537",
+                  "isDelete": 0,
+                  "updateTime": "2023-02-20T17:56:35",
+                  "warehouse": 3345,
+                  "matType": "3",
+                  "unit": "PCS#3#floor",
+                  "creatorNames": "谈文",
+                  "updatorNames": "谈文",
+                  "createTime": "2023-02-13T10:55:57",
+                  "matId": 254,
+                  "updator": "1331848333144129537",
+                  "warehouseNames": "安徽仓库",
+                  "matCode": "888005",
+                  "status": 0
+              }
+          ],
+          "sourceList": [],
+          "singleWeightStandard": 0,
+          "meter": {
+              "unit": "PCS",
+              "Num": "18",
+              "time": "分钟",
+              "cycle": "分钟"
+          },
+          "isDelete": 0,
+          "prefixName": "1/1",
+          "pieceRate": {
+              "unit": "PCS",
+              "money": "13.25",
+              "moneyUnit": "元"
+          },
+          "thirdPlan": {
+              "planIds": [
+                  "411"
+              ],
+              "plandIdsStr": "411",
+              "planNames": [
+                  "888014首件检验"
+              ],
+              "control": "0"
+          },
+          "updateTime": "2023-05-29 18:23:12",
+          "outLabel": 797,
+          "workCenter": [
+              "564"
+          ],
+          "singleWeightUnit": "",
+          "fourPlan": {
+              "planIds": [
+                  "456"
+              ],
+              "plandIdsStr": "456",
+              "planNames": [
+                  "ZJ202208240031 铝扣件类别制程检验"
+              ]
+          },
+          "isSingleWeight": 0,
+          "piecePrice": {
+              "unit": "PCS",
+              "money": "13.25",
+              "moneyUnit": "元"
+          },
+          "linkSeqMode": 0,
+          "creatorNames": "谈文",
+          "updatorNames": "谈文",
+          "createTime": "2023-02-16 09:55:56",
+          "jobFileNames": [
+              "RDM65-CL-组装-目检.pdf"
+          ],
+          "defaultNum": 2,
+          "processCode": "777003",
+          "outSourceList": [
+              {
+                  "informationNames": "30110 玉环富诚金属表面处理有限公司",
+                  "information": "852",
+                  "utilization": "60",
+                  "resourceName": "玉环富诚金属表面处理有限公司",
+                  "id": 852,
+                  "workCenter": "535",
+                  "resourceType": "custom_form_company",
+                  "workCenterNames": "膛线分中心1"
+              },
+              {
+                  "informationNames": "30111 台州正越达克罗涂复有限公司",
+                  "information": "853",
+                  "utilization": "60",
+                  "resourceName": "台州正越达克罗涂复有限公司",
+                  "id": 853,
+                  "workCenter": "535",
+                  "resourceType": "custom_form_company",
+                  "workCenterNames": "膛线分中心1"
+              }
+          ],
+          "isChangeMatLabel_disabled": false,
+          "updator": "1331848333144129537",
+          "operationType": "自制",
+          "useful": "yes",
+          "status": 0,
+          "workCenterNames": [
+              "膛线分中心1"
+          ]
+      }
+  ],
+  "creator": "1331848333144129537",
+  "bomId": "143",
+  "routeFrom": 0,
+  "routeData": {
+      "lastTatuoNum": "",
+      "matId": 263,
+      "lastTatuo": 0,
+      "processSeq": [
+          {
+              "seq": 1,
+              "processName": "GP-12 外观检"
+          }
+      ],
+      "isPackage": 0,
+      "id": 405,
+      "matCode": "888014",
+      "version": "v919",
+      "packageNum": "",
+      "routeDeta": [
+          {
+              "showInventory": true,
+              "mid": 405,
+              "seqMatching": 0,
+              "qid": 1102,
+              "seqMatching_disabled": false,
+              "qualityTest": {
+                  "fourPlan": {
+                      "planIds": [
+                          "456"
+                      ],
+                      "plandIdsStr": "456",
+                      "planNames": [
+                          "ZJ202208240031 铝扣件类别制程检验"
+                      ]
+                  },
+                  "sevenPlan": {
+                      "planIds": [
+                          "425",
+                          "412",
+                          "460"
+                      ],
+                      "plandIdsStr": "425,412,460",
+                      "planNames": [
+                          "ZJ20220824002 888014完工检验",
+                          "ZJ20230011100001 888014完工检验2301110001",
+                          "ZJ202230411001 888014完工检验"
+                      ],
+                      "control": 0
+                  },
+                  "qaPlan": "3,7,4",
+                  "thirdPlan": {
+                      "planIds": [
+                          "411"
+                      ],
+                      "plandIdsStr": "411",
+                      "planNames": [
+                          "888014首件检验"
+                      ],
+                      "control": "0"
+                  }
+              },
+              "processName": "GP-12 外观检",
+              "sevenPlan": {
+                  "planIds": [
+                      "425",
+                      "412",
+                      "460"
+                  ],
+                  "plandIdsStr": "425,412,460",
+                  "planNames": [
+                      "ZJ20220824002 888014完工检验",
+                      "ZJ20230011100001 888014完工检验2301110001",
+                      "ZJ202230411001 888014完工检验"
+                  ],
+                  "control": 0
+              },
+              "plineOption": [
+                  {
+                      "itemName": "上序结束后才可开始",
+                      "itemValue": "0"
+                  },
+                  {
+                      "itemName": "上序开始后就可开始",
+                      "itemValue": "1"
+                  }
+              ],
+              "id": 1102,
+              "processType": 1,
+              "finishedDisabled": false,
+              "jobFile": [
+                  1115
+              ],
+              "hzq": {
+                  "unit": "minute",
+                  "time": "6"
+              },
+              "seq": 1,
+              "isChangeMatLabel": "1",
+              "fixedUsages": 10,
+              "creator": "1331848333144129537",
+              "inventorys": [
+                  {
+                      "detaId": 1102,
+                      "pUnit": "PCS#2#floor",
+                      "pUsages": 1,
+                      "rate": 0,
+                      "usagesObj": {
+                          "subUsage": 3,
+                          "mainUsage": 1,
+                          "mainUnit": "PCS#2#floor",
+                          "subUnit": "PCS#3#floor"
+                      },
+                      "id": 797,
+                      "usages": 3,
+                      "seq": 2,
+                      "matName": "铝扣板005 | 888005",
+                      "issueMaterialsCtr": 0,
+                      "bomId": 143,
+                      "creator": "1331848333144129537",
+                      "isDelete": 0,
+                      "updateTime": "2023-02-20T17:56:35",
+                      "warehouse": 3345,
+                      "matType": "3",
+                      "unit": "PCS#3#floor",
+                      "creatorNames": "谈文",
+                      "updatorNames": "谈文",
+                      "createTime": "2023-02-13T10:55:57",
+                      "matId": 254,
+                      "updator": "1331848333144129537",
+                      "warehouseNames": "安徽仓库",
+                      "matCode": "888005",
+                      "status": 0
+                  }
+              ],
+              "sourceList": [],
+              "singleWeightStandard": 0,
+              "meter": {
+                  "unit": "PCS",
+                  "Num": "18",
+                  "time": "分钟",
+                  "cycle": "分钟"
+              },
+              "isDelete": 0,
+              "prefixName": "1/1",
+              "pieceRate": {
+                  "unit": "PCS",
+                  "money": "13.25",
+                  "moneyUnit": "元"
+              },
+              "thirdPlan": {
+                  "planIds": [
+                      "411"
+                  ],
+                  "plandIdsStr": "411",
+                  "planNames": [
+                      "888014首件检验"
+                  ],
+                  "control": "0"
+              },
+              "updateTime": "2023-05-29 18:23:12",
+              "outLabel": 797,
+              "workCenter": [
+                  "564"
+              ],
+              "singleWeightUnit": "",
+              "fourPlan": {
+                  "planIds": [
+                      "456"
+                  ],
+                  "plandIdsStr": "456",
+                  "planNames": [
+                      "ZJ202208240031 铝扣件类别制程检验"
+                  ]
+              },
+              "isSingleWeight": 0,
+              "piecePrice": {
+                  "unit": "PCS",
+                  "money": "13.25",
+                  "moneyUnit": "元"
+              },
+              "linkSeqMode": 0,
+              "creatorNames": "谈文",
+              "updatorNames": "谈文",
+              "createTime": "2023-02-16 09:55:56",
+              "jobFileNames": [
+                  "RDM65-CL-组装-目检.pdf"
+              ],
+              "defaultNum": 2,
+              "processCode": "777003",
+              "outSourceList": [
+                  {
+                      "informationNames": "30110 玉环富诚金属表面处理有限公司",
+                      "information": "852",
+                      "utilization": "60",
+                      "resourceName": "玉环富诚金属表面处理有限公司",
+                      "id": 852,
+                      "workCenter": "535",
+                      "resourceType": "custom_form_company",
+                      "workCenterNames": "膛线分中心1"
+                  },
+                  {
+                      "informationNames": "30111 台州正越达克罗涂复有限公司",
+                      "information": "853",
+                      "utilization": "60",
+                      "resourceName": "台州正越达克罗涂复有限公司",
+                      "id": 853,
+                      "workCenter": "535",
+                      "resourceType": "custom_form_company",
+                      "workCenterNames": "膛线分中心1"
+                  }
+              ],
+              "isChangeMatLabel_disabled": false,
+              "updator": "1331848333144129537",
+              "operationType": "自制",
+              "useful": "yes",
+              "status": 0,
+              "workCenterNames": [
+                  "膛线分中心1"
+              ]
+          }
+      ]
+  },
+  "flowCardMode": 1,
+  "updateTime": "2023-06-28 10:36:57",
+  "materialCode": "888014",
+  "subUnits": "",
+  "selectRouteNames": "v919",
+  "createTime": "2023-06-25 16:28:46",
+  "needCount": "800",
+  "warehouseNum": 310,
+  "materialUnit": "PCS#2#floor",
+  "materialData": {
+      "overageStoreType": 0,
+      "subUnit": {
+          "subUnit": "组#2#round",
+          "hanghao": 1,
+          "ratio": "5:1"
+      },
+      "materialNo": "888014",
+      "isOpenFurnaceNumber": false,
+      "leadTime": 120,
+      "overageStore": 10,
+      "specs": "190*120 | 1.258889999 | M4 | L20",
+      "batchPropertySet": [
+          "1560155671364747266",
+          "1560155219139084289",
+          "1560155414140665858",
+          "1560156012856590338"
+      ],
+      "stockTop": 30000,
+      "property": "1",
+      "canChangeCode": true,
+      "hasRel": 0,
+      "id": 263,
+      "mainUnit": "PCS#2#floor",
+      "fifo": false,
+      "mrpType": 0,
+      "inCheck": false,
+      "stockLimit": 3000,
+      "batch": true,
+      "extProperty1": "190*120",
+      "stockWarn": 1,
+      "extProperty3": "M4",
+      "extProperty2": "1.258889999",
+      "matType": 1,
+      "productBulk": 3600,
+      "productDepId": "1335116383406522369",
+      "extProperty4": "L20",
+      "singleWeightUnit": "11",
+      "modeTypes": 3268,
+      "outCheck": true,
+      "name": "铝扣板014（这就是以恶搞查急急急急急急急急急急急急急急急急急急哈哈哈哈哈哈哈哈哈哈哈哈啊哈啊啊啊啊啊啊啊啊啊啊）",
+      "dataTitle": "铝扣板014（这就是以恶搞查急急急急急急急急急急急急急急急急急急哈哈哈哈哈哈哈哈哈哈哈哈啊哈啊啊啊啊啊啊啊啊啊啊） | 888014",
+      "validity": 360,
+      "controlWarehouse": 3334,
+      "ratio": "5:1",
+      "status": 0
+  },
+  "materialName": "铝扣板014（这就是以恶搞查急急急急急急急急急急急急急急急急急急哈哈哈哈哈哈哈哈哈哈哈哈啊哈啊啊啊啊啊啊啊啊啊啊）",
+  "selectRoute": "405",
+  "routeId": 405,
+  "isDelete": 0,
+  "dispatchTime": "2023-06-25 16:28:57",
+  "updator": "1331848333144129537",
+  "orderCode": "SC2306250006",
+  "planningPersonnelIdNames": "谈文",
+  "matId": 263,
+  "from": "orderEdit",
+  "mouldCode": "custom_form_order_unstart",
+  "packageNum": "",
+  "lastTatuoNum": "",
+  "fullDir": "",
+  "subRadio": null,
+  "subOrderList": [],
+  "subOutOrderList": [],
+  "subBuyOrderList": []
+}
