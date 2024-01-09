@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Rectangles with Connecting Lines</title>
+</head>
+<body>
+
+<svg id="mySvg" width="1920" height="500"></svg>
+<button onclick="addRectangle()">添加矩形</button>
+<button onclick="insertRectangle()">插入矩形</button>
+
+
+<script>
+  // 创建SVG元素
+  const svg = document.getElementById('mySvg');
+
+  // 定义矩形的宽度和高度
+  const rectWidth = 50;
+  const rectHeight = 50;
+
+  // 定义矩形之间的间隔
+  const rectSpacing = 100;
+  // 初始化矩形数量
+  let rectCount = 5;
+
+  // 创建5个矩形并添加到SVG中
+  for (let i = 0; i < 5; i++) {
+    const rect = createRectangle(i * (rectWidth + rectSpacing), 100, rectWidth, rectHeight);
+    svg.appendChild(rect);
+
+    // 创建连接线并添加到SVG中
+    if (i < 4) {
+      const line = createLine((i * (rectWidth + rectSpacing)) + rectWidth, 125, ((i + 1) * (rectWidth + rectSpacing)), 125);
+      svg.appendChild(line);
+    }
+  }
+
+  // 创建矩形元素
+  function createRectangle(x, y, width, height, fill = getRandomColor()) {
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
+    rect.setAttribute('x', x);
+    rect.setAttribute('y', y);
+    rect.setAttribute('width', width);
+    rect.setAttribute('height', height);
+    rect.setAttribute('fill', fill);
+    return rect;
+  }
+
+  // 创建线条元素
+  function createLine(x1, y1, x2, y2, stroke = 'black') {
+    const line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+    line.setAttribute('x1', x1);
+    line.setAttribute('y1', y1);
+    line.setAttribute('x2', x2);
+    line.setAttribute('y2', y2);
+    line.setAttribute('stroke', stroke);
+    return line;
+  }
+
+  // 获取随机颜色
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  // 添加新矩形的函数
+  function addRectangle() {
+    const newX = rectCount * (rectWidth + rectSpacing);
+    const newRect = createRectangle(newX, 100, rectWidth, rectHeight, getRandomColor());
+    svg.appendChild(newRect);
+
+    if (rectCount > 0) {
+      const line = createLine((rectCount - 1) * (rectWidth + rectSpacing) + rectWidth, 125, newX, 125);
+      svg.appendChild(line);
+    }
+
+    rectCount++;
+  }
+
+// 插入新矩形的函数
+function insertRectangle() {
+    const newX = Math.random() * (rectCount * (rectWidth + rectSpacing));
+
+    // 插入新的矩形
+    const newRect = createRectangle(newX, 100, rectWidth, rectHeight, getRandomColor());
+    svg.appendChild(newRect);
+
+    // 插入新矩形后，调整后续矩形和连接线的位置
+    for (let i = rectCount - 1; i > 0; i--) {
+      const currentRect = svg.children[i];
+      const prevRect = svg.children[i - 1];
+
+      currentRect.setAttribute('x', parseFloat(currentRect.getAttribute('x')) + rectWidth + rectSpacing);
+      prevRect.nextSibling.setAttribute('x1', parseFloat(prevRect.nextSibling.getAttribute('x1')) + rectWidth + rectSpacing);
+      prevRect.nextSibling.setAttribute('x2', parseFloat(prevRect.nextSibling.getAttribute('x2')) + rectWidth + rectSpacing);
+    }
+
+    // 连接新矩形与前一个矩形
+    if (rectCount > 1) {
+      const line = createLine(newX, 125, (rectCount * (rectWidth + rectSpacing)), 125);
+      svg.appendChild(line);
+    }
+
+    rectCount++;
+  }
+
+
+</script>
+
+</body>
+</html>

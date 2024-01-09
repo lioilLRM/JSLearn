@@ -79,7 +79,7 @@ class DeveloperObserver extends Observer {
   work() {
     const prd = this.prdState
 
-    console.log(`${this.name}开始干活~`, prd)
+    console.log(`${this.name}开始干活~`, prd.orderFn)
   }
 }
 

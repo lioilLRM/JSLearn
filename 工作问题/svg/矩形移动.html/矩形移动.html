@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Drawing</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="gridCanvas"></canvas>
+
+<script>
+  const canvas = document.getElementById('gridCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // 设置画布大小为整个视口
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const gridSize = 10;
+  const cellSize = Math.min(canvas.width / gridSize, canvas.height / gridSize);
+
+  function drawGrid() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 绘制水平线
+    for (let i = 0; i <= gridSize; i++) {
+      const y = i * cellSize;
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(canvas.width, y);
+      ctx.stroke();
+    }
+
+    // 绘制垂直线
+    for (let j = 0; j <= gridSize; j++) {
+      const x = j * cellSize;
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, canvas.height);
+      ctx.stroke();
+    }
+  }
+
+  // 监听窗口大小变化，重新设置画布大小并重新绘制网格
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    drawGrid();
+  });
+
+  // 初始化绘制网格
+  drawGrid();
+</script>
+
+</body>
+</html>

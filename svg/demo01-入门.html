@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一个简单的示例</title>
+  <style>
+    body{
+      height: 100vh;
+      width: 100vw;
+      border: 1px solid red;
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  
+  <svg  version="1.1"
+  baseProfile="full"
+  width="1920" height="1080"
+  stroke="black"
+  stroke-width="1"
+  fill="transparent"
+  xmlns="http://www.w3.org/2000/svg">
+    <!-- <circle cx="100" cy="100" r="80" fill="red" /> -->
+
+   
+
+    <!-- <rect x="0" y="0" width="200" height="200" /> -->
+
+    <!-- <rect x="60" y="0"  width="50" height="50" stroke="pink" fill="transparent" stroke-width="4"/> -->
+    
+    <!-- <circle cx="200" cy="205" r="50" stroke="red" fill="transparent" stroke-width="5"/>
+      <ellipse cx="75" cy="75" rx="25" ry="25" stroke="blue" fill="transparent" stroke-width="1"/> -->
+      <rect  id="nodeA" x="50" y="50" width="100" height="100" stroke="black" fill="transparent" stroke-width="1"/>
+
+      <polyline points="150,95 300,95"
+      style="fill:white;stroke:#68f;stroke-width:2"/>
+
+      <rect id="nodeB" x="300" y="50" width="100" height="100" stroke="black" fill="transparent" stroke-width="1"/>
+      <polygon display="none" points="50, 160 55, 180 70, 180 60, 190 65, 205 50, 195 35, 205 40, 190 30, 180 45, 180"/>
+
+      <path display="none" d="M150,95 Q40,205 50,230 T90,230" fill="none" stroke="blue" stroke-width="5"/>
+
+      <path  display="none" d="M10,10 H90  V90 H10 L10 10"></path>
+
+      <rect display="none" x="10" y="10" width="100" height="100" stroke="yellow" fill="pink"
+      fill-opacity="0.5" stroke-opacity="0.8"/>
+      <text display="none" x="210" y="210" text-anchor="end " stroke="none" font-size="20" fill="pink">Hello World!</text>
+      <text display="none">
+        <tspan x="10" y="210"  font-weight="bold" fill="red">This is bold and red</tspan>
+      </text>
+      
+
+      <path display="none"  id="my_path" d="M 20,20 C 40,40 80,40 100,20" fill="transparent" />
+
+      
+      <text display="none">
+        <textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#my_path">
+          This text follows a curve.
+        </textPath>
+      </text>
+
+
+      <g fill="red" display="none">
+        <rect x="200" y="200" width="110" height="110" transform="translate(30,40)"  />
+        <rect x="320" y="300" width="110" height="110" />
+      </g>
+    
+
+      <image
+    x="290"
+    y="-300"
+    width="128"
+    height="146"
+    transform="rotate(45)"
+    xlink:href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/image/mdn_logo_only_color.png" />
+
+  </svg>
+
+ 
+
+
+  <div id="info">鼠标坐标：none</div>
+
+
+  <script>
+
+    let nodeA = document.getElementById('nodeA');
+    let nodeABBox  = nodeA.getBBox();
+
+    let nodeB = document.getElementById('nodeB');
+
+    console.log(`nodeA, nodeB`, nodeA, nodeABBox, nodeB)
+    
+    function getDistance(nodeA, nodeB) {
+      const distance = Math.sqrt(Math.pow(nodeB.x - nodeA.x, 2) + Math.pow(nodeB.y - nodeA.y, 2));
+      console.log(distance);
+      return distance;
+    }
+
+    function calculateSquareNodes(node) {
+        const halfWidth = node.x + (node.width / 2);
+        const halfHeight = node.y + (node.height / 2);
+        const res = {
+          top: { x: halfWidth, y: node.y },
+          bottom: { x: halfWidth, y: halfHeight },
+          left: { x: 0, y: halfHeight },
+          right: { x: halfWidth, y: halfHeight }
+        };
+        console.log("🚀  ~ res:", res)
+        
+        return res;
+      }
+    // let nodeA = {
+    //   x: 50,
+    //   y: 50,
+    //   width: 100,
+    //   height: 100,
+    // }
+
+    // let nodeB = {
+    //   x: 300,
+    //   y: 50,
+    //   width: 100,
+    //   height: 100,
+    // }
+
+    getDistance(nodeA, nodeB);
+    calculateSquareNodes(nodeA);
+    calculateSquareNodes(nodeB);
+
+
+
+    // window.addEventListener('mousemove', function(event) {
+    //         var info = document.getElementById('info');
+    //         info.innerHTML = '鼠标坐标：(' + event.clientX + ', ' + event.clientY + ')';
+    //     });
+
+        var startX, startY;
+
+nodeA.addEventListener('mousedown', function(event) {
+  startX = event.clientX;
+  startY = event.clientY;
+});
+
+nodeA.addEventListener('mousemove', function(event) {
+  if (startX !== undefined) {
+    var dx = event.clientX - startX;
+    var dy = event.clientY - startY;
+    nodeA.setAttribute('transform', 'translate(' + dx + ',' + dy + ')');
+  }
+});
+
+nodeA.addEventListener('mouseup', function(event) {
+  nodeA.setAttribute('transform', 'translate(' + nodeABBox.x + ',' + nodeABBox.y + ')');
+  startX = undefined;
+  startY = undefined;
+});
+
+  </script>
+
+
+</body>
+</html>

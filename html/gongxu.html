@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic SVG Rectangles with Connecting Lines</title>
+</head>
+<body>
+
+<svg id="mySvg" width="800" height="100"></svg>
+
+<script>
+  // 创建SVG元素
+  const svg = document.getElementById('mySvg');
+
+  // 定义矩形的宽度和高度
+  const rectWidth = 50;
+  const rectHeight = 50;
+
+  // 定义矩形之间的间隔
+  const rectSpacing = 100;
+
+  // 创建5个矩形并添加到SVG中
+  for (let i = 0; i < 5; i++) {
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
+    rect.setAttribute('x', i * (rectWidth + rectSpacing));
+    rect.setAttribute('y', 20);
+    rect.setAttribute('width', rectWidth);
+    rect.setAttribute('height', rectHeight);
+    rect.setAttribute('fill', getRandomColor()); // 使用随机颜色，您可以根据需要更改
+    svg.appendChild(rect);
+  }
+
+  // 创建连接线并添加到SVG中
+  for (let i = 0; i < 4; i++) {
+    const line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+    line.setAttribute('x1', (i) * (rectWidth + rectSpacing) + rectWidth);
+    line.setAttribute('y1', 45);
+    line.setAttribute('x2', (i + 1) * (rectWidth + rectSpacing));
+    line.setAttribute('y2', 45);
+    line.setAttribute('stroke', 'black');
+    svg.appendChild(line);
+  }
+
+  // 获取随机颜色
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+</script>
+
+</body>
+</html>
