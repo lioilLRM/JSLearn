@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drag Demo</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: white;
+      }
+      .temp {
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: white;
+        /* background: red; */
+        border: 1px solid red;
+      }
+    </style>
+    <script>
+      // 存放拖拽的元素
+      let dragElement = null
+      function onDragStart(e) {
+        // 获取当前拖拽元素
+        dragElement = e.currentTarget
+      }
+      function onDragOver(e) {
+        // console.log("🚀 ~ file: 拖拽div替换排序.html:27 ~ onDragOver ~ e:", e.currentTarget)
+        // 默认的当你dragover的时候会阻止你做drop的操作，所以需要取消这个默认
+        e.preventDefault()
+      }
+      function onDrop(e) {
+        console.log("🚀 ~   ~ onDrop ~ e:", e.currentTarget)
+        // 当拖动结束的时候，给拖动div所在的位置下面的div做drop事件
+        let dropElement = e.currentTarget
+        if (dragElement != null && dragElement != dropElement) {
+          let wrapper = document.querySelector('.wrapper1')
+          // 临时 div 用于存储 box
+          let temp = document.createElement('div')
+          temp.className = 'temp'
+          // 添加 temp 到父元素 wrapper 中
+          wrapper.appendChild(temp)
+          // 交换
+          wrapper.replaceChild(temp, dropElement)
+          wrapper.replaceChild(dropElement, dragElement)
+          wrapper.replaceChild(dragElement, temp)
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="wrapper1" style="display: flex">
+      <div  class="box"  style="background: green"  draggable="true"  ondragstart="onDragStart(event)"  ondragover="onDragOver(event)"  ondrop="onDrop(event)">
+        box1
+      </div>
+      <div   class="box"   style="background: orange"   draggable="true"   ondragstart="onDragStart(event)"   ondragover="onDragOver(event)"   ondrop="onDrop(event)" >
+        box2
+      </div>
+      <div    class="box"    style="background: cyan"    draggable="true"    ondragstart="onDragStart(event)"    ondragover="onDragOver(event)"    ondrop="onDrop(event)"  >
+        box3
+      </div>
+
+      <div  class="box"  style="background: red"  draggable="true"  ondragstart="onDragStart(event)"  ondragover="onDragOver(event)"  ondrop="onDrop(event)">
+        box4
+      </div>
+      <div   class="box"   style="background: rgb(255, 60, 0)"   draggable="true"   ondragstart="onDragStart(event)"   ondragover="onDragOver(event)"   ondrop="onDrop(event)" >
+        box6
+      </div>
+      <div    class="box"    style="background: rgb(195, 224, 224)"    draggable="true"    ondragstart="onDragStart(event)"    ondragover="onDragOver(event)"    ondrop="onDrop(event)"  >
+        box5
+      </div>
+
+      <!-- <div class="wrapper2" style="display: flex">
+        
+      </div> -->
+    </div>
+
+  
+  </body>
+</html>
