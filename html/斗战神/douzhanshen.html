@@ -1,0 +1,731 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta name="robots" content="all" />
+  <meta name="author" content="Tencent-CP" />
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+  <!-- 设计：cp | 重构：cp | 创建：2014/04/11 | 更新：| 团队博客：http://tgideas.qq.com/ -->
+  <meta name="Description"
+    content="腾讯旗舰自研大作《斗战神》是量子工作室历时五年潜心打造的3DMMORPG精品之作。游戏以其“世界架构师”今何在先生代表作《悟空传》为蓝本，通过成人的视角重读西游，重塑西游。" />
+  <meta name="Keywords"
+    content=" 斗战神,灵猴,牛魔,神将,龙女,玉狐,罗刹,昆仑山,南天门,五庄观,西游记,孙悟空,猪八戒,沙僧,牛魔王,如来佛,玉皇大帝,最好玩的网游,大作,自研,腾讯,量子工作室,次世代网游,dzs,asura,热血,开放式战斗2.0网游" />
+  <title>英雄传-斗战神官方网站-腾讯游戏</title>
+  <!--[if IE 6]>
+      <script
+        type="text/javascript"
+        src="http://huoying.qq.com/web201303/js/DD_belatedPNG.js"></script>
+      <script type="text/javascript">
+        DD_belatedPNG.fix(".png24");
+      </script>
+    <![endif]-->
+  <style type="text/css">
+    <!--
+    /* Global Style Start */
+    body,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    form,
+    img,
+    ul,
+    ol,
+    li,
+    dl,
+    dt,
+    dd,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a img {
+      border: 0;
+    }
+
+    .c {
+      zoom: 1;
+    }
+
+    .c:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+
+    p {
+      line-height: 22px;
+    }
+
+    a {
+      color: #f7bf62;
+      text-decoration: none;
+      outline: none;
+    }
+
+    a:hover {
+      color: #f7bf62;
+      text-decoration: underline;
+    }
+
+    .l {
+      float: left;
+    }
+
+    .tar {
+      text-align: right;
+    }
+
+    h1,
+    h2,
+    .hide {
+      width: 0px;
+      height: 0px;
+      display: block;
+      text-indent: -9999px;
+      overflow: hidden;
+    }
+
+    /* Global Style End */
+
+    /* Frame Style Start */
+    body {
+      background: #000000 url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/bg-body.jpg) no-repeat 50% 1042px;
+      color: #fdb29b;
+      font: 12px/1.5 tahoma, '\5b8b\4f53', sans-serif;
+      min-width: 1000px;
+      padding-top: 42px;
+    }
+
+    .wrapper {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/bg-wrap.jpg) no-repeat 50% 0;
+    }
+
+    .maina {
+      width: 1000px;
+      margin: 0 auto;
+    }
+
+    .maina {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/bg-maina.jpg) no-repeat center 0;
+      height: 1200px;
+    }
+
+    .mainb {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/bg-mainb.jpg) no-repeat center 400px;
+      height: 1200px;
+    }
+
+    .mainc {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/bg-mainc.jpg) no-repeat center 800px;
+      height: 1200px;
+      position: relative;
+    }
+
+    /* Frame Style End */
+
+    /* Footer Style Start */
+    #footer_ied {
+      background: none;
+      height: 80px;
+      color: #757b88;
+      text-align: center;
+      min-width: 1000px;
+      line-height: 19px;
+      font-family: Tahoma;
+      font-size: 12px;
+      padding-top: 35px;
+      overflow: hidden;
+    }
+
+    #footer_ied .wrap_ied {
+      width: 1000px;
+      margin: 0 auto;
+      padding: 30px auto;
+    }
+
+    #footer_ied p.e {
+      font-size: 10px;
+      line-height: 12px;
+    }
+
+    #footer_ied a {
+      color: #757b88;
+      text-decoration: none;
+    }
+
+    #footer_ied a:hover {
+      color: #757b88;
+      text-decoration: underline;
+    }
+
+    /* Footer Style End */
+
+    /*Box01*/
+    .logo,
+    .lnk {
+      display: block;
+      overflow: hidden;
+      text-indent: -9999px;
+      position: absolute;
+    }
+
+    .logo {
+      width: 300px;
+      height: 192px;
+      top: 50px;
+      left: 325px;
+    }
+
+    .lnk:hover {
+      z-index: 100;
+    }
+
+    .lnk-yuhu {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/lnk-yuhu.png) no-repeat 0 -9999px;
+      width: 443px;
+      height: 471px;
+      top: 244px;
+      left: -168px;
+    }
+
+    .lnk-yuhu:hover {
+      background-position: 0 0;
+    }
+
+    .lnk-longnv {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/lnk-longnv.png) no-repeat 0 -9999px;
+      width: 376px;
+      height: 614px;
+      top: 223px;
+      left: 208px;
+    }
+
+    .lnk-longnv:hover {
+      background-position: 0 0;
+    }
+
+    .lnk-niumo {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/lnk-niumo.png) no-repeat 0 -9999px;
+      width: 522px;
+      height: 480px;
+      top: 271px;
+      left: 383px;
+    }
+
+    .lnk-niumo:hover {
+      background-position: 0 0;
+    }
+
+    .lnk-luocha {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/lnk-luocha.png) no-repeat 0 -9999px;
+      width: 610px;
+      height: 820px;
+      top: 83px;
+      left: 603px;
+    }
+
+    .lnk-luocha:hover {
+      background-position: 0 0;
+    }
+
+    .lnk-shenjiang {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/lnk-shenjiang.png) no-repeat 0 -9999px;
+      width: 960px;
+      height: 700px;
+      top: 545px;
+      left: -500px;
+      z-index: 101;
+    }
+
+    .lnk-shenjiang:hover {
+      background-position: 0 0;
+    }
+
+    .lnk-shengseng {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/lnk-shengseng.png) no-repeat 0 -9999px;
+      width: 1035px;
+      height: 820px;
+      top: 588px;
+      left: -51px;
+    }
+
+    .lnk-shengseng:hover {
+      background-position: 0 0;
+    }
+
+    .lnk-linghou {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/lnk-linghou.png) no-repeat 0 -9999px;
+      width: 742px;
+      height: 650px;
+      top: 568px;
+      left: 523px;
+      z-index: 101;
+    }
+
+    .lnk-linghou:hover {
+      background-position: 0 0;
+    }
+
+    .pop,
+    .popclose {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/pop.png) no-repeat 0 -9999px;
+    }
+
+    .pop {
+      background-position: 0 0;
+      width: 796px;
+      height: 754px;
+      display: block;
+      padding: 33px 12px 9px 10px;
+      position: relative;
+      display: none;
+    }
+
+    .popclose {
+      background-position: -818px -20px;
+      width: 51px;
+      height: 48px;
+      display: block;
+      overflow: hidden;
+      text-indent: -9999px;
+      position: absolute;
+      top: 20px;
+      right: -51px;
+    }
+
+    .popc {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/popc.jpg) no-repeat;
+      width: 796px;
+      height: 754px;
+      display: block;
+      overflow: hidden;
+    }
+
+    .poptit {
+      background: url(http://ossweb-img.qq.com/images/chanpin/dzs/public/20140613yxz/poptit.jpg) no-repeat 0 -9999px;
+      width: 752px;
+      height: 95px;
+      display: block;
+      overflow: hidden;
+      text-indent: -9999px;
+      margin: 0 auto;
+    }
+
+    .poptit-yuhu {
+      background-position: 0 0;
+    }
+
+    .poptit-longnv {
+      background-position: 0 -95px;
+    }
+
+    .poptit-niumo {
+      background-position: 0 -190px;
+    }
+
+    .poptit-luocha {
+      background-position: 0 -285px;
+    }
+
+    .poptit-shenjiang {
+      background-position: 0 -380px;
+    }
+
+    .poptit-shengseng {
+      background-position: 0 -475px;
+    }
+
+    .poptit-linghou {
+      background-position: 0 -570px;
+    }
+
+    .popvideo {
+      width: 776px;
+      height: 440px;
+      padding: 10px 10px 0 10px;
+    }
+
+    .poptxt {
+      line-height: 20px;
+      color: #fdb29b;
+      font-size: 12px;
+      font-family: "Microsoft YaHei";
+      font-weight: normal;
+      padding: 0 20px;
+    }
+
+    .poptxt p {
+      padding-top: 8px;
+    }
+
+    .poptxt p.tar {
+      padding-top: 0;
+    }
+
+    .poptxt a {
+      font-size: 14px;
+    }
+    -->
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="maina">
+      <div class="mainb">
+        <div class="mainc">
+          <h1>英雄传</h1>
+          <a href="http://dzs.qq.com/" class="logo" target="_blank" title="斗战神">斗战神</a>
+          <a href="javascript:TGDialogS('dialog1');" class="png24 lnk lnk-yuhu" title="灵狐">灵狐</a>
+          <a href="javascript:TGDialogS('dialog2');" class="png24 lnk lnk-longnv" title="龙女">龙女</a>
+          <a href="javascript:TGDialogS('dialog3');" class="png24 lnk lnk-niumo" title="牛魔">牛魔</a>
+          <a href="javascript:TGDialogS('dialog4');" class="png24 lnk lnk-luocha" title="罗刹">罗刹</a>
+          <a href="javascript:TGDialogS('dialog5');" class="png24 lnk lnk-shenjiang" title="神将">神将</a>
+          <a href="javascript:TGDialogS('dialog6');" class="png24 lnk lnk-shengseng" title="圣僧">圣僧</a>
+          <a href="javascript:TGDialogS('dialog7');" class="png24 lnk lnk-linghou" title="灵猴">灵猴</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 弹出层-灵狐 Start-->
+  <div class="png24 pop" id="dialog1">
+    <a class="png24 popclose" href="javascript:showDialog.hide()" title="关闭">×</a>
+    <div class="popc">
+      <div class="popvideo">
+        <object width="776" height="440" align="middle"
+          codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab#version=10,0,0,0"
+          classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="flashPlayer">
+          <param
+            value="vid=o0114g8cwrb&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            name="FlashVars" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Movie" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Src" />
+          <param value="Opaque" name="WMode" />
+          <param value="High" name="Quality" />
+          <param value="always" name="AllowScriptAccess" />
+          <param value="all" name="AllowNetworking" />
+          <param value="true" name="AllowFullScreen" />
+          <embed width="776" height="440" align="middle" wmode="Opaque"
+            flashvars="vid=o0114g8cwrb&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            src="http://static.video.qq.com/TencentPlayer.swf" quality="high" name="flashPlayer" id="flashPlayer"
+            bgcolor="#000000" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash"
+            pluginspage="http://www.macromedia.com/go/getflashplayer" />
+        </object>
+      </div>
+      <h2 class="poptit poptit-yuhu">玉狐</h2>
+      <div class="poptxt">
+        <p>
+          聪明机巧小狐狸，幻化出姣美可爱的少女面容，捧着雪白绒毛的大尾巴，谁见了会不喜欢，谁能违心说不爱？天生丽质难自弃，人家就是漂亮，有谁不服，拎出来踩死。
+        </p>
+        <p>
+          她是山林中的精灵，百兽都愿与她为伴。老虎为坐骑，狮子当先锋，她就是万千宠爱在一身的公主。她古灵精怪、机关陷阱无不精通，谁敢欺负本姑娘，让他鼻青脸肿。再加上无双射术，百步穿杨，再狡猾的猎手也斗不过咱好狐狸。
+        </p>
+        <p>
+          来到世间，就是为寻找快乐。要美丽、要幸福、要美男。什么正邪不两立？什么礼法尊卑？统统不管不管。我要的就是我的，我不要的谁也不准捡。什么神魔大战，什么无上真经，看你们打得头破血流，本姑娘只有一条道理：逍遥一生就是硬道理。
+        </p>
+        <p class="tar">
+          <a href="http://dzs.qq.com/webplat/info/news_version3/394/3871/4846/4847/m3352/201211/179055.shtml"
+            target="_blank" title="英雄技能">英雄技能&gt;&gt;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 弹出层-灵狐 End-->
+  <!-- 弹出层-龙女 Start-->
+  <div class="png24 pop" id="dialog2">
+    <a class="png24 popclose" href="javascript:showDialog.hide()" title="关闭">×</a>
+    <div class="popc">
+      <div class="popvideo">
+        <object width="776" height="440" align="middle"
+          codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab#version=10,0,0,0"
+          classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="flashPlayer">
+          <param
+            value="vid=a0012dzvr34&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            name="FlashVars" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Movie" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Src" />
+          <param value="Opaque" name="WMode" />
+          <param value="High" name="Quality" />
+          <param value="always" name="AllowScriptAccess" />
+          <param value="all" name="AllowNetworking" />
+          <param value="true" name="AllowFullScreen" />
+          <embed width="776" height="440" align="middle" wmode="Opaque"
+            flashvars="vid=a0012dzvr34&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            src="http://static.video.qq.com/TencentPlayer.swf" quality="high" name="flashPlayer" id="flashPlayer"
+            bgcolor="#000000" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash"
+            pluginspage="http://www.macromedia.com/go/getflashplayer" />
+        </object>
+      </div>
+      <h2 class="poptit poptit-longnv">龙女</h2>
+      <div class="poptxt">
+        <p>
+          拥有蔚蓝无尽的海洋，她的心情也如海洋般难以琢磨。高贵的血统使她远离俗世，一颗一尘不染的心，也最容易被触动。
+        </p>
+        <p>
+          她是高傲龙族，扬袖风生、抬步云起。悲时雨落，怒时雷鸣。轻动身形，远在千里，笑摇纤指，电光石火。无数人倾慕她的容颜，连天神也羡叹她的血统。
+        </p>
+        <p>
+          不想在深海孤独一生，为了自由的生活，她离开了龙宫。当她在尘世中看见他的第一刻起，她就知道：自己这一生，再也回不去了。为了一生所爱，她宁愿抛弃一切，默默与他相伴。无论多苦她也无怨无悔，因为她知道一生能找到一个所爱的人是多么的难。能有一份感情为之付出一生，已经是无上的幸福。
+        </p>
+        <p class="tar">
+          <a href="http://dzs.qq.com/webplat/info/news_version3/394/3871/4846/4847/m3352/201211/179052.shtml"
+            target="_blank" title="英雄技能">英雄技能&gt;&gt;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 弹出层-龙女 End-->
+  <!-- 弹出层-牛魔 Start-->
+  <div class="png24 pop" id="dialog3">
+    <a class="png24 popclose" href="javascript:showDialog.hide()" title="关闭">×</a>
+    <div class="popc">
+      <div class="popvideo">
+        <object width="776" height="440" align="middle"
+          codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab#version=10,0,0,0"
+          classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="flashPlayer">
+          <param
+            value="vid=m0115ygk6sp&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            name="FlashVars" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Movie" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Src" />
+          <param value="Opaque" name="WMode" />
+          <param value="High" name="Quality" />
+          <param value="always" name="AllowScriptAccess" />
+          <param value="all" name="AllowNetworking" />
+          <param value="true" name="AllowFullScreen" />
+          <embed width="776" height="440" align="middle" wmode="Opaque"
+            flashvars="vid=m0115ygk6sp&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            src="http://static.video.qq.com/TencentPlayer.swf" quality="high" name="flashPlayer" id="flashPlayer"
+            bgcolor="#000000" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash"
+            pluginspage="http://www.macromedia.com/go/getflashplayer" />
+        </object>
+      </div>
+      <h2 class="poptit poptit-niumo">牛魔</h2>
+      <div class="poptxt">
+        <p>
+          喜欢快活安逸的生活，本无意与天地争锋。此生最大的心愿是守护着自己的家园，与亲人安乐度过一生。但神与魔的战争烽火燃遍了天地，处处是焦土与哀鸣，谁也无法在乱世中独存。看到家园被毁，同族流难，再憨厚老实的人也无法忍耐。他终于对着漫天神灵发出了愤怒的吼声。
+        </p>
+        <p>
+          生性温和但狂怒起来却无人可挡，挥舞起战斧的时候，众神都要退避，仰天长啸时，群山也会震动。
+        </p>
+        <p>
+          重大义轻生死，除了老婆，世上没有什么比兄弟更重要！他不想成为天下的霸主，但天下霸主也休妄想踏足他的土地。为了保卫所爱的家园，他会奋战到死，哪怕孤身一人。因为牛魔族的坚韧与执着，在孙悟空也被压在五行山后，火焰山的烈焰却仍熊熊不息，“平天大圣”的旗帜高高飘扬，守护着即使是孙悟空也开始怀疑的信仰。
+        </p>
+        <p class="tar">
+          <a href="http://dzs.qq.com/webplat/info/news_version3/394/3871/4846/4847/m3352/201211/179050.shtml"
+            target="_blank" title="英雄技能">英雄技能&gt;&gt;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 弹出层-牛魔 End-->
+  <!-- 弹出层-罗刹 Start-->
+  <div class="png24 pop" id="dialog4">
+    <a class="png24 popclose" href="javascript:showDialog.hide()" title="关闭">×</a>
+    <div class="popc">
+      <div class="popvideo">
+        <object width="776" height="440" align="middle"
+          codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab#version=10,0,0,0"
+          classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="flashPlayer">
+          <param
+            value="vid=c0115scauzd&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            name="FlashVars" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Movie" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Src" />
+          <param value="Opaque" name="WMode" />
+          <param value="High" name="Quality" />
+          <param value="always" name="AllowScriptAccess" />
+          <param value="all" name="AllowNetworking" />
+          <param value="true" name="AllowFullScreen" />
+          <embed width="776" height="440" align="middle" wmode="Opaque"
+            flashvars="vid=c0115scauzd&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            src="http://static.video.qq.com/TencentPlayer.swf" quality="high" name="flashPlayer" id="flashPlayer"
+            bgcolor="#000000" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash"
+            pluginspage="http://www.macromedia.com/go/getflashplayer" />
+        </object>
+      </div>
+      <h2 class="poptit poptit-luocha">罗刹</h2>
+      <div class="poptxt">
+        <p>
+          她有着绝美的容颜，却被认为是好杀的恶魔。其实她只是不想容忍任何冒犯与亵渎，也不想掩饰自己任何的的喜恨悲忧。爱便爱的惊天动地，恨就恨的刻骨铭心。她此生没有什么宏愿理想，只想寻一个真爱的人，过快意恩仇的一生。
+        </p>
+        <p>
+          她是运用灵力的天才，各系法术无不精通，左手扬起风行雷动，右手扬起冰霜暴风，哪怕是违背天地法则的异术，众神想都不敢想的，她却手到功成。
+        </p>
+        <p>
+          罗刹族背负着天生的恶名，只因为我行我素，从不遵守规则。但她心中有着自己的信条，一旦认定，付出一生，就决不后悔。神魔战争之中，罗刹族跟随孙悟空挑战天神，视孙悟空为魔族的英雄，愿为他出生入死。但五百年后，孙悟空戴上紧箍，忘却了当年的自己。罗刹族感到被欺骗了。对他景仰顿时化为了深深的仇恨。不惜一切也要杀死孙悟空，成为他成佛的一天，世上将没有任何希望！
+        </p>
+        <p class="tar">
+          <a href="http://dzs.qq.com/webplat/info/news_version3/394/3871/4846/4847/m3352/201211/179053.shtml"
+            target="_blank" title="英雄技能">英雄技能&gt;&gt;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 弹出层-罗刹 End-->
+  <!-- 弹出层-神将 Start-->
+  <div class="png24 pop" id="dialog5">
+    <a class="png24 popclose" href="javascript:showDialog.hide()" title="关闭">×</a>
+    <div class="popc">
+      <div class="popvideo">
+        <object width="776" height="440" align="middle"
+          codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab#version=10,0,0,0"
+          classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="flashPlayer">
+          <param
+            value="vid=k0114gv6wri&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            name="FlashVars" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Movie" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Src" />
+          <param value="Opaque" name="WMode" />
+          <param value="High" name="Quality" />
+          <param value="always" name="AllowScriptAccess" />
+          <param value="all" name="AllowNetworking" />
+          <param value="true" name="AllowFullScreen" />
+          <embed width="776" height="440" align="middle" wmode="Opaque"
+            flashvars="vid=k0114gv6wri&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            src="http://static.video.qq.com/TencentPlayer.swf" quality="high" name="flashPlayer" id="flashPlayer"
+            bgcolor="#000000" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash"
+            pluginspage="http://www.macromedia.com/go/getflashplayer" />
+        </object>
+      </div>
+      <h2 class="poptit poptit-shenjiang">神将</h2>
+      <div class="poptxt">
+        <p>
+          生来注定不是凡人，额头上多出的一只眼早注定了他的命运。拥着天神的血统，却总与凡世有不解之缘。他是天庭秩序和众神尊严的守护者。没有他，众神早被七魔王赶下天庭。他所得的威名，全是靠他自己奋战得来，战神之名，当之无愧。
+        </p>
+        <p>
+          挥舞三尖两刃刀，百万军中如入无人之境。擎苍鹰、唤神犬、金弹弓下、少有妖魔能够逃落。天生异相，额头立目怒瞪，金光劲射、敌手灰飞烟灭。
+        </p>
+        <p>
+          从不被天庭所认可的无名少年，到独战魔王人人景仰的勇武战神，他走过了太长艰辛忍耐的道路。在无名之时，众神从不以正眼相看，威名远扬之后，却人人奉迎。不被认可时，他痛恨森严的礼法等级，但成功之后，却又成为这种不可动摇的“神威”的捍卫者。
+        </p>
+        <p class="tar">
+          <a href="http://dzs.qq.com/webplat/info/news_version3/394/3871/4846/4847/m3352/201211/179049.shtml"
+            target="_blank" title="英雄技能">英雄技能&gt;&gt;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 弹出层-神将 End-->
+  <!-- 弹出层-圣僧 Start-->
+  <div class="png24 pop" id="dialog6">
+    <a class="png24 popclose" href="javascript:showDialog.hide()" title="关闭">×</a>
+    <div class="popc">
+      <div class="popvideo">
+        <object width="776" height="440" align="middle"
+          codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab#version=10,0,0,0"
+          classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="flashPlayer">
+          <param
+            value="vid=f013081p8ki&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            name="FlashVars" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Movie" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Src" />
+          <param value="Opaque" name="WMode" />
+          <param value="High" name="Quality" />
+          <param value="always" name="AllowScriptAccess" />
+          <param value="all" name="AllowNetworking" />
+          <param value="true" name="AllowFullScreen" />
+          <embed width="776" height="440" align="middle" wmode="Opaque"
+            flashvars="vid=f013081p8ki&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            src="http://static.video.qq.com/TencentPlayer.swf" quality="high" name="flashPlayer" id="flashPlayer"
+            bgcolor="#000000" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash"
+            pluginspage="http://www.macromedia.com/go/getflashplayer" />
+        </object>
+      </div>
+      <h2 class="poptit poptit-shengseng">圣僧</h2>
+      <div class="poptxt">
+        <p>
+          谁说凡人注定受神的主宰，他不畏艰辛苦，只为一个答案。谁说人间福祸皆由天定，他早立下宏愿，偏要解救苍生。一双眼看尽红尘沧桑，一双脚踏遍万水千山。笑骂由人、风雨无惧，苦苦求索。只待有一天恍然顿悟，天地动，鬼神惊。
+        </p>
+        <p>
+          他天纵奇才，宛如元圣转世。若修习道家，着道袍，挎拂尘，则神形皆似仙风道骨太上君。若皈归佛门，披袈裟，持禅杖，活脱脱便是一大唐法师唐三藏。
+        </p>
+        <p>
+          从小尝尽世上冷暖，看尽爱恨痴嗔。他目睹了太多人间的困苦，百思不得其解为何神灵能移天换海，却不肯给众生减轻一点点的灾祸。究竟是没有普渡众生之法，还是神灵要用痛苦来统治苍生？带着这个问题，他踏上了寻求真理之路。
+        </p>
+        <p class="tar">
+          <a href="http://dzs.qq.com/act/20140602mars/index.shtml" target="_blank" title="英雄技能">英雄技能&gt;&gt;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 弹出层-圣僧 End-->
+  <!-- 弹出层-灵猴 Start-->
+  <div class="png24 pop" id="dialog7">
+    <a class="png24 popclose" href="javascript:showDialog.hide()" title="关闭">×</a>
+    <div class="popc">
+      <div class="popvideo">
+        <object width="776" height="440" align="middle"
+          codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab#version=10,0,0,0"
+          classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="flashPlayer">
+          <param
+            value="vid=j0012wva8ry&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            name="FlashVars" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Movie" />
+          <param value="http://static.video.qq.com/TencentPlayer.swf" name="Src" />
+          <param value="Opaque" name="WMode" />
+          <param value="High" name="Quality" />
+          <param value="always" name="AllowScriptAccess" />
+          <param value="all" name="AllowNetworking" />
+          <param value="true" name="AllowFullScreen" />
+          <embed width="776" height="440" align="middle" wmode="Opaque"
+            flashvars="vid=j0012wva8ry&amp;loadingswf=http://imgcache.qq.com/minivideo_v1/vd/res/skins/web_small_loading.swf&amp;skin=http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;pic=&amp;outhost=http://dzs.qq.com/&amp;autoplay=1"
+            src="http://static.video.qq.com/TencentPlayer.swf" quality="high" name="flashPlayer" id="flashPlayer"
+            bgcolor="#000000" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash"
+            pluginspage="http://www.macromedia.com/go/getflashplayer" />
+        </object>
+      </div>
+      <h2 class="poptit poptit-linghou">灵猴</h2>
+      <div class="poptxt">
+        <p>
+          天地化育而生，生性无拘无束，只想与朋友们呼啸自山林之中，醉忘于山海之间。但为何偏世间有生死轮回，命运却要神灵主宰？目睹身边生命的逝去，他踏上了寻求自由长生之路。
+        </p>
+        <p>
+          一身天生灵动翻腾的好手段、七十二变幻化无穷、更有那藐视天神的傲然意志。他游龙宫、闯地府、闹天宫、勾销生死，凌驾九霄。
+        </p>
+        <p>
+          不信这世上有不能踏足之地，不信这世上有无力改变的宿命。强者为尊应让我，英雄只此敢争先。战天斗地、笑指满天神佛。终有一天，他会赢回那个本就该属于他的名字：齐天大圣！
+        </p>
+        <p class="tar">
+          <a href="http://dzs.qq.com/webplat/info/news_version3/394/3871/4846/4847/m3352/201211/179048.shtml"
+            target="_blank" title="英雄技能">英雄技能&gt;&gt;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 弹出层-灵猴 End-->
+  <script type="text/javascript" src="http://ossweb-img.qq.com/images/js/title.js"></script>
+  <script type="text/javascript" src="http://ossweb-img.qq.com/images/js/foot.js"></script>
+  <!-- 图片滚动 -->
+  <script type="text/javascript" src="http://ossweb-img.qq.com/images/js/milo/milo-min.js"></script>
+  <script type="text/javascript">
+    function TGDialogS(e) {
+      need("biz.dialog-min", function (Dialog) {
+        Dialog.show({
+          id: e,
+          bgcolor: "#000", //弹出“遮罩”的颜色，格式为"#FF6600"，可修改，默认为"#fff"
+          opacity: 50, //弹出“遮罩”的透明度，格式为｛10-100｝，可选
+        });
+      });
+    }
+    function closeDialog() {
+      need("biz.dialog-min", function (Dialog) {
+        Dialog.hide();
+      });
+    }
+  </script>
+</body>
+
+</html>
+<!--[if !IE]>|xGv00|2e9a4cb34fc083e3092c44cda6507ce2<![endif]-->

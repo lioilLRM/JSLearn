@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math.js Example</title>
+  <!-- 引入 math.js CDN -->
+  <script src="https://unpkg.com/a-calc@latest/browser/index.js"></script> <!-- cdn链接 -->
+</head>
+<body>
+  <h1>Math.js Calculation Example</h1>
+  <div id="result"></div>
+
+  <script>
+    const {calc, fmt} = a_calc
+
+   
+const res =  calc('0.1 + 0.2')
+
+
+    // 在页面中显示结果
+    document.getElementById('result').textContent = `Result: ${String(res)}`;
+  </script>
+</body>
+</html>

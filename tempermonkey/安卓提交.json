@@ -1,0 +1,237 @@
+{
+  "type": 4,
+  "qaPlanId": 464,
+  "scrap": "0",
+  "qualityStatus": "0",
+  "processId": "1104",
+  "processJobId": 40703,
+  "processName": "切削R1",
+  "recordDetail": [
+    {
+      "isRelLabel": 0,
+      "result": "0",
+      "materialId": "263",
+      "productionTaskId": 9028,
+      "qualityNum": 3,
+      "unit": "PCS#0#ceil",
+      "checkQualifiedNum": 1,
+      "checkDefectNum": 2,
+      "inspectionQualifiedNum": 0,
+      "inspectionConcessionNum": 0,
+      "recordItemDetail": [
+        {
+          "unit": "",
+          "requiredNames": "是",
+          "name": "光滑度检测（这个是一个从超级长的 哈哈哈哈哈哈哈哈哈哈哈1111哈哈哈）",
+          "typeCommon": "add",
+          "numJudgment": "0",
+          "qid": 1661323412196,
+          "seq": 1,
+          "required": "1",
+          "digit": "",
+          "isRequired": true,
+          "isNumJudgment": false,
+          "checkRange": "",
+          "itemName": "光滑度检测（这个是一个从超级长的 哈哈哈哈哈哈哈哈哈哈哈1111哈哈哈）",
+          "itemSeq": 1,
+          "result": 2,
+          "itemId": 1661323412196
+        },
+        {
+          "downLimit": "80",
+          "standardValue": "100",
+          "qid": 1661323425486,
+          "required": "0",
+          "digitNames": "",
+          "unit": "次数",
+          "requiredNames": "否",
+          "name": "耐用性检测",
+          "upLimit": "120",
+          "typeCommon": "add",
+          "numJudgment": "1",
+          "seq": 2,
+          "digit": "0",
+          "isRequired": false,
+          "isNumJudgment": true,
+          "checkRange": "100（80~120）",
+          "checkRangeExpression": {
+            "type": "between",
+            "value": [
+              "80",
+              "120"
+            ]
+          },
+          "actualValue": "1",
+          "lowerValue": "80",
+          "upperValue": "120",
+          "itemName": "耐用性检测",
+          "itemSeq": 2,
+          "result": 2,
+          "itemId": 1661323425486
+        }
+      ],
+      "recordItemDetails": [
+        [
+          {
+            "unit": "",
+            "requiredNames": "是",
+            "name": "光滑度检测（这个是一个从超级长的 哈哈哈哈哈哈哈哈哈哈哈1111哈哈哈）",
+            "typeCommon": "add",
+            "numJudgment": "0",
+            "qid": 1661323412196,
+            "seq": 1,
+            "required": "1",
+            "digit": "",
+            "isRequired": true,
+            "isNumJudgment": false,
+            "checkRange": "",
+            "itemName": "光滑度检测（这个是一个从超级长的 哈哈哈哈哈哈哈哈哈哈哈1111哈哈哈）",
+            "itemSeq": 1,
+            "result": 2,
+            "itemId": 1661323412196
+          },
+          {
+            "downLimit": "80",
+            "standardValue": "100",
+            "qid": 1661323425486,
+            "required": "0",
+            "digitNames": "",
+            "unit": "次数",
+            "requiredNames": "否",
+            "name": "耐用性检测",
+            "upLimit": "120",
+            "typeCommon": "add",
+            "numJudgment": "1",
+            "seq": 2,
+            "digit": "0",
+            "isRequired": false,
+            "isNumJudgment": true,
+            "checkRange": "100（80~120）",
+            "checkRangeExpression": {
+              "type": "between",
+              "value": [
+                "80",
+                "120"
+              ]
+            },
+            "actualValue": "1",
+            "lowerValue": "80",
+            "upperValue": "120",
+            "itemName": "耐用性检测",
+            "itemSeq": 2,
+            "result": 2,
+            "itemId": 1661323425486
+          }
+        ],
+        [
+          {
+            "unit": "",
+            "requiredNames": "是",
+            "name": "光滑度检测（这个是一个从超级长的 哈哈哈哈哈哈哈哈哈哈哈1111哈哈哈）",
+            "typeCommon": "add",
+            "numJudgment": "0",
+            "qid": 1661323412196,
+            "seq": 1,
+            "required": "1",
+            "digit": "",
+            "isRequired": true,
+            "isNumJudgment": false,
+            "checkRange": "",
+            "itemName": "光滑度检测（这个是一个从超级长的 哈哈哈哈哈哈哈哈哈哈哈1111哈哈哈）",
+            "itemSeq": 1,
+            "result": 2,
+            "itemId": 1661323412196
+          },
+          {
+            "downLimit": "80",
+            "standardValue": "100",
+            "qid": 1661323425486,
+            "required": "0",
+            "digitNames": "",
+            "unit": "次数",
+            "requiredNames": "否",
+            "name": "耐用性检测",
+            "upLimit": "120",
+            "typeCommon": "add",
+            "numJudgment": "1",
+            "seq": 2,
+            "digit": "0",
+            "isRequired": false,
+            "isNumJudgment": true,
+            "checkRange": "100（80~120）",
+            "checkRangeExpression": {
+              "type": "between",
+              "value": [
+                "80",
+                "120"
+              ]
+            },
+            "actualValue": "2",
+            "lowerValue": "80",
+            "upperValue": "120",
+            "itemName": "耐用性检测",
+            "itemSeq": 2,
+            "result": 2,
+            "itemId": 1661323425486
+          }
+        ],
+        [
+          {
+            "unit": "",
+            "requiredNames": "是",
+            "name": "光滑度检测（这个是一个从超级长的 哈哈哈哈哈哈哈哈哈哈哈1111哈哈哈）",
+            "typeCommon": "add",
+            "numJudgment": "0",
+            "qid": 1661323412196,
+            "seq": 1,
+            "required": "1",
+            "digit": "",
+            "isRequired": true,
+            "isNumJudgment": false,
+            "checkRange": "",
+            "itemName": "光滑度检测（这个是一个从超级长的 哈哈哈哈哈哈哈哈哈哈哈1111哈哈哈）",
+            "itemSeq": 1,
+            "result": 1,
+            "itemId": 1661323412196
+          },
+          {
+            "downLimit": "80",
+            "standardValue": "100",
+            "qid": 1661323425486,
+            "required": "0",
+            "digitNames": "",
+            "unit": "次数",
+            "requiredNames": "否",
+            "name": "耐用性检测",
+            "upLimit": "120",
+            "typeCommon": "add",
+            "numJudgment": "1",
+            "seq": 2,
+            "digit": "0",
+            "isRequired": false,
+            "isNumJudgment": true,
+            "checkRange": "100（80~120）",
+            "checkRangeExpression": {
+              "type": "between",
+              "value": [
+                "80",
+                "120"
+              ]
+            },
+            "actualValue": "111",
+            "lowerValue": "80",
+            "upperValue": "120",
+            "itemName": "耐用性检测",
+            "itemSeq": 2,
+            "result": 1,
+            "itemId": 1661323425486
+          }
+        ]
+      ]
+    }
+  ],
+  "depId": "1723990399527186434",
+  "depNames": "物料配数组",
+  "equipmentId": "3046",
+  "equipmentIdNames": "膛线DNF0006"
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <svg width="800px" height="600px" color-interpolation-filters="sRGB">
+    <defs>
+      
+      <g id="colormask">
+        <rect  x="0" y="0" height="600" width="50" fill="red"   stroke="none" />
+        <rect  x="50" y="0" height="600" width="20" fill="blue"  stroke="none"   />
+        <rect  x="70" y="0" height="600" width="50" fill="green"    stroke="none" />
+         
+      </g>
+        
+      <filter id="colorline" x="0" y="0" width="800" height="600" filterUnits="userSpaceOnUse">
+       <feImage xlink:href="#colormask" result="mask1"/>
+        <feComposite in2="SourceGraphic" in="mask1" operator="in" />
+      </filter>
+    </defs>
+    
+    <path filter="url(#colorline)" d="M0 50 l50,30 20,-15 50,-40 30,20 15,40 50,30 20,-15 50,-40 30,20 15,40 50,30 20,-15 50,-40 30,20 15,40 50,30 20,-15 50,-40 30,20 15,40 50,30 20,-15 50,-40 30,20 15,40 " fill="none " stroke="black" stroke-width="3"/>
+  </svg>
+</body>
+</html>

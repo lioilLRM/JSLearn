@@ -84,3 +84,22 @@ const data = [
 const searchValue = '长球'
 const res = data.filter((item) => deepFilter(item, searchValue))
 console.log('🚀 ~ file: testTreeChild.js:86 ~ res:', res)
+
+const codes = [
+  { id: 1, context: '@' },
+  { id: 1, context: '@' },
+  { id: 1, context: '@' },
+  { id: 1, context: '@' },
+  { id: 1, context: '@' }
+]
+
+// 将上面的内容变成123456
+// 使用插件
+
+const codes2 = [
+  { id: 0, context: 'Occaecat commodo id do excepteur magna.' },
+  { id: 1, context: 'Fugiat in aliquip in officia enim aliqua aliquip ad aliquip nisi sit do.' },
+  { id: 2, context: 'Enim in in culpa reprehenderit nisi ut pariatur commodo.' },
+  { id: 3, context: 'Laboris nulla ipsum deserunt duis aliqua enim cupidatat eu Lorem consectetur duis Lorem dolor.' },
+  { id: 4, context: 'Exercitation mollit mollit qui ullamco ad labore ut velit tempor.' }
+]

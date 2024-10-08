@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生成上下标</title>
+</head>
+<body>
+  <h2>1/4 vs ¹⁄₁₄</h2>
+   <div>
+     数据比较：<h1></h1>
+  </div>
+    
+
+  <script>
+
+    const unicodeUpMap = {
+      0: '⁰',
+      1: '¹',
+      2: '²',
+      3: '³',
+      4: '⁴',
+      5: '⁵',
+      6: '⁶',
+      7: '⁷',
+      8: '⁸',
+      9: '⁹',
+      '+': '⁺',
+      '-': '⁻',
+      "/":  '⁄',
+    }
+
+    const unicodeDownMap = {
+      0: '₀',
+      1: '₁',
+      2: '₂',
+     3: '₃',
+      4: '₄',
+      5: '₅',
+      6: '₆',
+      7: '₇',
+      8: '₈',
+      9: '₉',
+      '+': '⁺',
+      '-': '⁻',
+      "/":  '⁄',
+    }
+
+    function createSub(str, spliter) {
+      const splitNumber = (num)=> {
+        return num.toString().split('').map(Number);
+      }
+      const transformToUnicode = (arr, unicodeMap) => {
+          let result = ''
+          arr.forEach(item => {
+            result += unicodeMap[item]
+          })
+          return result
+      }
+      
+      const arr = str.split(spliter);
+      arr.splice(arr.length - 1, 0, spliter)
+      console.log("🚀 ~ createSub ~ arr:", arr)
+      let result = ''
+
+      const upArr = splitNumber(arr[0])
+      const downArr = splitNumber(arr[2]) 
+      const upStr = transformToUnicode(upArr, unicodeUpMap)
+      const downStr = transformToUnicode(downArr, unicodeDownMap)
+      const spliterStr = unicodeUpMap[arr[1]]
+      result = upStr + spliterStr + downStr
+
+      // for (let i = 0; i < arr.length; i++) {
+      //   let item = arr[i]
+      //   if (unicodeMap[item]) {
+      //     result += unicodeMap[item]
+      //   }
+      // }
+
+      return result
+    }
+
+ let result =    createSub('1/4', '/')
+ console.log("🚀 ~ result:", result)
+
+    // 将结果插入到html h1标签中
+    const h1 = document.querySelector('h1')
+    h1.innerHTML = createSub('1/14', '/')
+
+
+
+    function createUp() {
+
+    }
+
+  </script>
+</body>
+</html>

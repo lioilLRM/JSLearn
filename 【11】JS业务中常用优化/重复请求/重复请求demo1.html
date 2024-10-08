@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02多请求cache-then</title>
+</head>
+<body>
+  <script>
+    let cache = null;
+
+    function getData() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('进入请求接口')
+          // resolve({msg: '请求成功', data: [1,2,3,4]})
+          reject({msg: '请求失败'})
+        }, 100)
+      })
+    }
+
+    async function initialRequest(msg) {
+      console.log(msg)
+        if (cache) { return cache; }
+   
+        if(!cache) {
+            // 是第 1 个就去请求
+            // （这个示例代码没做容错，自己加）
+            try {
+              cache = await getData()
+               /*
+                  不使用await
+                  cache = getData()
+                  缺点：请求失败的不好处理，每一个调用initialRequest函数，都需要.catch,代码冗余
+                
+                  使用 await
+                  cache = await getData()
+                  代码逻辑错误：每一次 initialRequest 函数都会执行，都会产生自己的 getData 函数
+                */
+            } catch(error) {
+              cache = null
+              initialRequest('报错请求')
+            }
+        }
+        console.log('使用async，if判断之外的也不会执行')
+        return cache;
+    }
+
+    initialRequest('第一请求').then((res) => {
+      console.log('一请求--res', res)
+    })
+    initialRequest('第二请求').then((res) => {
+      console.log('二请求--res', res)
+    })
+    
+  </script>
+</body>
+</html>

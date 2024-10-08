@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermark Example</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas1" width="3072" height="4096"></canvas>
+    <canvas id="canvas2" width="327" height="721"></canvas>
+
+    <script>
+        // function addWatermark(canvasId, imageSrc, logoSrc) {
+        //     const canvas = document.getElementById(canvasId);
+        //     const ctx = canvas.getContext('2d');
+
+        //     const image = new Image();
+        //     const logo = new Image();
+
+        //     image.src = imageSrc;
+        //     logo.src = logoSrc;
+
+        //     image.onload = function() {
+        //         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        //         logo.onload = function() {
+        //             const scale = Math.min(canvas.width / logo.width, canvas.height / logo.height) / 5;
+        //             const logoWidth = logo.width * scale;
+        //             const logoHeight = logo.height * scale;
+        //             ctx.globalAlpha = 0.5;
+        //             ctx.drawImage(logo, canvas.width - logoWidth - 20, canvas.height - logoHeight - 20, logoWidth, logoHeight);
+        //         }
+        //     }
+        // }
+
+        // function addWatermark(canvasId, imageSrc, logoSrc) {
+        //     const canvas = document.getElementById(canvasId);
+        //     const ctx = canvas.getContext('2d');
+
+        //     const image = new Image();
+        //     const logo = new Image();
+
+        //     image.src = imageSrc;
+        //     logo.src = logoSrc;
+
+        //     image.onload = function() {
+        //         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        //         logo.onload = function() {
+        //             const scale = Math.min(canvas.width / logo.width, canvas.height / logo.height) / 5;
+        //             const logoWidth = logo.width * scale;
+        //             const logoHeight = logo.height * scale;
+        //             ctx.globalAlpha = 0.5;
+        //             ctx.drawImage(logo, canvas.width - logoWidth - 20, canvas.height - logoHeight - 20, logoWidth, logoHeight);
+        //         };
+        //         logo.src = logoSrc;  // Ensure the logo src is set after onload
+        //     };
+        // }
+
+        // function addWatermark(canvasId, imageSrc, logoSrc) {
+        //     const canvas = document.getElementById(canvasId);
+        //     const ctx = canvas.getContext('2d');
+
+        //     const image = new Image();
+        //     const logo = new Image();
+
+        //     image.src = imageSrc;
+        //     logo.src = logoSrc;
+
+        //     image.onload = function() {
+        //         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        //         logo.onload = function() {
+        //             const scale = Math.min(canvas.width / logo.width, canvas.height / logo.height) / 5;
+        //             const logoWidth = logo.width * scale;
+        //             const logoHeight = logo.height * scale;
+        //             const padding = 20;
+
+        //             ctx.globalAlpha = 1;
+        //             ctx.drawImage(logo, canvas.width - logoWidth - padding, canvas.height - logoHeight - padding, logoWidth, logoHeight);
+
+        //             const date = new Date();
+        //             const timeText = date.toLocaleTimeString();
+        //             const dateText = date.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        //             ctx.globalAlpha = 1.0;
+        //             ctx.font = `${Math.floor(logoHeight / 3)}px Arial`;
+        //             ctx.fillStyle = 'white';
+        //             ctx.textBaseline = 'top';
+
+        //             ctx.fillText(timeText, canvas.width - logoWidth - padding + logoWidth + padding / 2, canvas.height - logoHeight - padding);
+        //             ctx.fillText(dateText, canvas.width - logoWidth - padding, canvas.height - padding / 2);
+        //         };
+        //         logo.src = logoSrc;  // Ensure the logo src is set after onload
+        //     };
+        // }
+
+        // function addWatermark(canvasId, imageSrc, logoSrc) {
+        //     const canvas = document.getElementById(canvasId);
+        //     const ctx = canvas.getContext('2d');
+
+        //     const image = new Image();
+        //     const logo = new Image();
+
+        //     image.src = imageSrc;
+        //     logo.src = logoSrc;
+
+        //     image.onload = function() {
+        //         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        //         logo.onload = function() {
+        //             const scale = Math.min(canvas.width / logo.width, canvas.height / logo.height) / 5;
+        //             const logoWidth = logo.width * scale;
+        //             const logoHeight = logo.height * scale;
+        //             const padding = 20;
+
+        //             ctx.globalAlpha = 0.5;
+        //             ctx.drawImage(logo, padding, canvas.height - logoHeight - padding, logoWidth, logoHeight);
+
+        //             const date = new Date();
+        //             const timeText = date.toLocaleTimeString();
+        //             const dateText = date.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        //             ctx.globalAlpha = 1.0;
+        //             ctx.font = `${Math.floor(logoHeight / 3)}px Arial`;
+        //             ctx.fillStyle = 'white';
+        //             ctx.textBaseline = 'top';
+
+        //             ctx.fillText(timeText, padding + logoWidth + padding, canvas.height - logoHeight - padding);
+        //             ctx.fillText(dateText, padding, canvas.height - padding / 2);
+        //         };
+        //         logo.src = logoSrc;  // Ensure the logo src is set after onload
+        //     };
+        // }
+
+        // function addWatermark(canvasId, imageSrc, logoSrc) {
+        //     const canvas = document.getElementById(canvasId);
+        //     const ctx = canvas.getContext('2d');
+
+        //     const image = new Image();
+        //     const logo = new Image();
+
+        //     image.src = imageSrc;
+        //     logo.src = logoSrc;
+
+        //     image.onload = function() {
+        //         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        //         console.log("🚀 ~ addWatermark ~ canvas.width, canvas.height:", canvas.width, canvas.height)
+        //         logo.onload = function() {
+        //             const scale = Math.min(canvas.width / logo.width, canvas.height / logo.height) / 5;
+        //             const logoWidth = logo.width * scale;
+        //             const logoHeight = logo.height * scale;
+        //             const padding = 20;
+        //             console.log("🚀 ~ addWatermark ~ scale:", scale,logo.width, logo.height, logoWidth, logoHeight)
+
+        //             ctx.globalAlpha = 0.5;
+        //             ctx.drawImage(logo, padding, canvas.height - logoHeight - padding, logoWidth, logoHeight);
+
+        //             const date = new Date();
+        //             const timeText = date.toLocaleTimeString();
+        //             const dateText = date.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        //             ctx.globalAlpha = 1.0;
+        //             ctx.font = `${Math.floor(logoHeight / 3)}px Arial`;
+        //             ctx.fillStyle = 'white';
+        //             ctx.textBaseline = 'top';
+        //             console.log("🚀 ~ addWatermark ~  ctx.font:",  ctx.font)
+
+        //             ctx.fillText(timeText, padding + logoWidth + padding, canvas.height - logoHeight - padding);
+        //             ctx.fillText(dateText, padding, canvas.height - logoHeight - padding / 3);
+        //         };
+        //         logo.src = logoSrc;  // Ensure the logo src is set after onload
+        //     };
+        // }
+
+        function addWatermark(canvasId, imageSrc, logoSrc) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+
+    const image = new Image();
+    const logo = new Image();
+
+    image.src = imageSrc;
+    logo.src = logoSrc;
+
+    image.onload = function() {
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        logo.onload = function() {
+            const scale = Math.min(canvas.width / logo.width, canvas.height / logo.height) / 5;
+            const logoWidth = logo.width * scale;
+            const logoHeight = logo.height * scale;
+            const padding = 20;
+
+            // 绘制圆角矩形背景
+            ctx.beginPath();
+            ctx.fillStyle = 'white';
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            roundRect(ctx, padding, canvas.height - logoHeight - padding, logoWidth + padding * 2, logoHeight + padding * 2, 10, true, true);
+
+            // 绘制 logo
+            ctx.globalAlpha = 0.5;
+            ctx.drawImage(logo, padding, canvas.height - logoHeight - padding, logoWidth, logoHeight);
+
+            // 获取当前时间文本
+            const date = new Date();
+            const timeText = date.toLocaleTimeString();
+            const dateText = date.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            // 绘制圆角矩形背景
+            const textWidth = ctx.measureText(timeText).width + ctx.measureText(dateText).width + padding * 4;
+            roundRect(ctx, padding + logoWidth + padding, canvas.height - logoHeight - padding, textWidth, logoHeight / 2 + padding, 10, true, true);
+
+            // 绘制时间文本
+            ctx.globalAlpha = 1.0;
+            ctx.font = `${Math.floor(logoHeight / 3)}px Arial`;
+            ctx.fillStyle = 'black';
+            ctx.textBaseline = 'top';
+            ctx.fillText(timeText, padding + logoWidth + padding * 2, canvas.height - logoHeight - padding + padding / 2);
+            
+            // 绘制日期文本
+            ctx.fillText(dateText, padding + logoWidth + padding * 2, canvas.height - logoHeight - padding + padding / 2 + logoHeight / 3);
+        };
+        logo.src = logoSrc;  // 确保在 onload 之后设置 logo 的 src
+    };
+
+    // 绘制圆角矩形函数
+    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.arcTo(x + width, y, x + width, y + height, radius);
+        ctx.arcTo(x + width, y + height, x, y + height, radius);
+        ctx.arcTo(x, y + height, x, y, radius);
+        ctx.arcTo(x, y, x + width, y, radius);
+        ctx.closePath();
+        if (fill) {
+            ctx.fill();
+        }
+        if (stroke) {
+            ctx.stroke();
+        }
+    }
+}
+
+addWatermark('canvas1', 'path/to/your/large/image.jpg', 'path/to/your/logo.png');
+addWatermark('canvas2', 'path/to/your/small/image.jpg', 'path/to/your/logo.png');
+
+
+        addWatermark('canvas1', './imgs/big.jpg', './imgs/logoCycle.png');
+        addWatermark('canvas2', './imgs/demo.jpg', './imgs/logoCycle.png');
+    </script>
+</body>
+</html>

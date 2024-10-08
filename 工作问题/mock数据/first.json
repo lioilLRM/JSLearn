@@ -1,0 +1,1759 @@
+{
+  "orderType": "0",
+  "defectNum": 0,
+  "feedStatus": 0,
+  "sentCount": "380",
+  "routeIdNames": "Rev.01",
+  "needTime": "2024-01-26 00:00:00",
+  "id": 66425,
+  "depIdNames": "器件车间注塑组",
+  "distributorId": "1569875239230275585",
+  "bomData": {
+    "produceBomDetaList": [
+      {
+        "pUnit": "PCS#0#ceil",
+        "mid": 11110,
+        "pUsages": 1000,
+        "matUseMode": 1,
+        "rate": 0,
+        "depCodes": "P1307239998869344258P1569592430104182786",
+        "id": 16639,
+        "usages": 15.4,
+        "seq": "0",
+        "matName": "30303.0.00130 | 塑料粒子 | PC-550K | 颗粒状\\白色\\25千克/袋\\符合RoHS要求(RoHS+) | 0.000000000",
+        "issueMaterialsCtr": 0,
+        "creator": "1570602058464161794",
+        "isDelete": 0,
+        "updateTime": "2023-05-18 19:40:20",
+        "warehouse": "7999",
+        "matType": "3",
+        "unit": "千克#2#round",
+        "updatorNames": "詹进周",
+        "creatorNames": "詹进周",
+        "createTime": "2022-10-08 13:25:09",
+        "matId": 14695,
+        "hasChild": false,
+        "updator": "1570602058464161794",
+        "warehouseNames": "注塑原材料仓",
+        "matCode": "30303.0.00130",
+        "status": 0,
+        "usagesObj": {
+          "mainUnit": "PCS#0#ceil",
+          "mainUsage": 1000,
+          "subUnit": "千克#2#round",
+          "subUsage": 15.4
+        }
+      },
+      {
+        "pUnit": "PCS#0#ceil",
+        "mid": 11110,
+        "pUsages": 1000,
+        "matUseMode": 1,
+        "rate": 0,
+        "depCodes": "P1307239998869344258P1569592430104182786",
+        "id": 16640,
+        "usages": 0.339,
+        "seq": "1",
+        "matName": "30303.0.00004 | 色母粒 | 黑色\\ABS\\PC等通用\\符合RoHS要求(RoHS+) | 0.000000000",
+        "issueMaterialsCtr": 0,
+        "creator": "1570602058464161794",
+        "isDelete": 0,
+        "updateTime": "2022-10-08 13:25:09",
+        "warehouse": "7999",
+        "matType": "3",
+        "unit": "千克#2#round",
+        "updatorNames": "詹进周",
+        "creatorNames": "詹进周",
+        "createTime": "2022-10-08 13:25:09",
+        "matId": 35647,
+        "hasChild": false,
+        "updator": "1570602058464161794",
+        "warehouseNames": "注塑原材料仓",
+        "matCode": "30303.0.00004",
+        "status": 0,
+        "usagesObj": {
+          "mainUnit": "PCS#0#ceil",
+          "mainUsage": 1000,
+          "subUnit": "千克#2#round",
+          "subUsage": 0.339
+        }
+      }
+    ],
+    "specs": "KDLD4LC3/DAT1 | D60013 | 黑色PC+ABS | 0.000000000",
+    "matIdNames": "20409.0.00015 | 适配器面板 | D60013 | KDLD4LC3/DAT1 | 黑色PC+ABS | 0.000000000",
+    "id": 11110,
+    "matUnit": "PCS#0#ceil",
+    "matName": "适配器面板",
+    "u9Id": "1002101190253591",
+    "version": "Rev.01",
+    "isDefault": 0,
+    "matId": 10917,
+    "matCode": "20409.0.00015",
+    "produceBomAppendList": [],
+    "status": 0
+  },
+  "materialId": "10917",
+  "completedCount": "0",
+  "mergeFlag": 0,
+  "creatorNames": "U9_Admin",
+  "updatorNames": "测试账号",
+  "refusedNum": 0,
+  "depId": "1590503689456500737",
+  "status": 5,
+  "planningPersonnelId": "1572767201620951041",
+  "onTimePlanDeliverNum": 0,
+  "onTimeFeedNum": 0,
+  "remWarehouseNum": 0,
+  "priorityLevel": 2,
+  "materialIdNames": "20409.0.00015 | 适配器面板 | D60013 | KDLD4LC3/DAT1 | 黑色PC+ABS | 0.000000000",
+  "issueMaterialsCtr": 0,
+  "bomIdNames": "Rev.01",
+  "routeDeta": [
+    {
+      "mid": 101488,
+      "seqMatching": 0,
+      "processName": "注塑",
+      "sevenPlan": {
+        "control": 1
+      },
+      "depCodes": "P1307239998869344258P1569592430104182786",
+      "id": 260197,
+      "processType": "1",
+      "jobFile": [
+        "33594"
+      ],
+      "seq": 1,
+      "hzq": {
+        "unit": "minute",
+        "time": "10"
+      },
+      "isChangeMatLabel": 0,
+      "fixedUsages": 20,
+      "creator": "1570602058464161794",
+      "sourceList": [],
+      "inventorys": [
+        {
+          "detaId": 260197,
+          "pUnit": "PCS#0#ceil",
+          "pUsages": 1000,
+          "rate": 0,
+          "depCodes": "P1307239998869344258P1572748374224961538",
+          "id": 646320,
+          "usages": 15.4,
+          "seq": 0,
+          "issueMaterialsCtr": 0,
+          "matName": "30303.0.00130 | 塑料粒子 | PC-550K | 颗粒状\\白色\\25千克/袋\\符合RoHS要求(RoHS+) | 0.000000000",
+          "bomDetaId": 16639,
+          "bomId": 11110,
+          "creator": "1570602058464161794",
+          "isDelete": 0,
+          "updateTime": "2023-05-18T19:40:20",
+          "warehouse": 7999,
+          "matType": 3,
+          "unit": "千克#2#round",
+          "creatorNames": "詹进周",
+          "updatorNames": "詹进周",
+          "createTime": "2022-10-08T13:25:09",
+          "matId": 14695,
+          "updator": "1570602058464161794",
+          "warehouseNames": "注塑原材料仓",
+          "matCode": "30303.0.00130",
+          "status": 0,
+          "usagesObj": {
+            "subUsage": 15.4,
+            "mainUsage": 1000,
+            "mainUnit": "PCS#0#ceil",
+            "subUnit": "千克#2#round"
+          }
+        },
+        {
+          "detaId": 260197,
+          "pUnit": "PCS#0#ceil",
+          "pUsages": 1000,
+          "rate": 0,
+          "depCodes": "P1307239998869344258P1572748374224961538",
+          "id": 646321,
+          "usages": 0.339,
+          "seq": 1,
+          "issueMaterialsCtr": 0,
+          "matName": "30303.0.00004 | 色母粒 | 黑色\\ABS\\PC等通用\\符合RoHS要求(RoHS+) | 0.000000000",
+          "bomDetaId": 16640,
+          "bomId": 11110,
+          "creator": "1570602058464161794",
+          "isDelete": 0,
+          "updateTime": "2022-10-08T13:25:09",
+          "warehouse": 7999,
+          "matType": 3,
+          "unit": "千克#2#round",
+          "creatorNames": "詹进周",
+          "updatorNames": "詹进周",
+          "createTime": "2022-10-08T13:25:09",
+          "matId": 35647,
+          "updator": "1570602058464161794",
+          "warehouseNames": "注塑原材料仓",
+          "matCode": "30303.0.00004",
+          "status": 0,
+          "usagesObj": {
+            "subUsage": 0.339,
+            "mainUsage": 1000,
+            "mainUnit": "PCS#0#ceil",
+            "subUnit": "千克#2#round"
+          }
+        }
+      ],
+      "isDelete": 0,
+      "meter": {
+        "unit": "PCS",
+        "Num": "18",
+        "time": "秒",
+        "cycle": "秒"
+      },
+      "prefixName": "1/1",
+      "updateTime": "2023-11-28 11:01:49",
+      "thirdPlan": {
+        "planIds": [
+          "34368"
+        ],
+        "plandIdsStr": "34368",
+        "planNames": [
+          "注塑首件检验"
+        ],
+        "control": "1"
+      },
+      "workCenter": [
+        580
+      ],
+      "fourPlan": {
+        "planIds": [
+          "34367"
+        ],
+        "plandIdsStr": "34367",
+        "planNames": [
+          "注塑制程检验"
+        ]
+      },
+      "updatorNames": "詹进周",
+      "creatorNames": "詹进周",
+      "piecePrice": {
+        "unit": "PCS",
+        "money": "0.085",
+        "moneyUnit": "元"
+      },
+      "createTime": "2023-03-26 15:52:14",
+      "jobFileNames": [
+        "D60013 KDLD4LC3-DSC3-DAT1 适配器面板.pdf"
+      ],
+      "defaultNum": 1,
+      "processCode": "GX04000",
+      "outSourceList": [],
+      "updator": "1570602058464161794",
+      "reportRatio": 1,
+      "workCenterNames": [
+        "注塑工作中心"
+      ],
+      "status": 0,
+      "operationType": "自制",
+      "qualityTest": {
+        "thirdPlan": {
+          "planIds": [
+            "34368"
+          ],
+          "plandIdsStr": "34368",
+          "planNames": [
+            "注塑首件检验"
+          ],
+          "control": "1"
+        },
+        "fourPlan": {
+          "planIds": [
+            "34367"
+          ],
+          "plandIdsStr": "34367",
+          "planNames": [
+            "注塑制程检验"
+          ]
+        },
+        "sevenPlan": {
+          "control": 1
+        }
+      },
+      "isChangeMatLabel_disabled": false,
+      "qid": 260197,
+      "useful": "yes",
+      "isSingleWeight": 0,
+      "singleWeightStandard": 0,
+      "seqMatching_disabled": false,
+      "pieceRate": {
+        "unit": "PCS",
+        "money": "0.085",
+        "moneyUnit": "元"
+      },
+      "singleWeightUnit": ""
+    }
+  ],
+  "backFlushReturnNum": 0,
+  "creator": "1572767201620951041",
+  "bomId": 11110,
+  "routeFrom": 0,
+  "routeData": {
+    "specs": "KDLD4LC3/DAT1 | D60013 | 黑色PC+ABS | 0.000000000",
+    "matIdNames": "20409.0.00015 | 适配器面板 | D60013 | KDLD4LC3/DAT1 | 黑色PC+ABS | 0.000000000",
+    "lastTatuo": 0,
+    "depCodes": "P1307239998869344258P1569592430104182786",
+    "id": 101488,
+    "matName": "适配器面板",
+    "creator": "1570602058464161794",
+    "bomId": 11110,
+    "types": 0,
+    "produceBom35VO": {
+      "produceBomDetaList": [
+        {
+          "pUnit": "PCS#0#ceil",
+          "mid": 11110,
+          "pUsages": 1000,
+          "matUseMode": 1,
+          "rate": 0,
+          "depCodes": "P1307239998869344258P1569592430104182786",
+          "id": 16639,
+          "usages": 15.4,
+          "seq": "0",
+          "matName": "30303.0.00130 | 塑料粒子 | PC-550K | 颗粒状\\白色\\25千克/袋\\符合RoHS要求(RoHS+) | 0.000000000",
+          "issueMaterialsCtr": 0,
+          "creator": "1570602058464161794",
+          "isDelete": 0,
+          "updateTime": "2023-05-18 19:40:20",
+          "warehouse": "7999",
+          "matType": "3",
+          "unit": "千克#2#round",
+          "updatorNames": "詹进周",
+          "creatorNames": "詹进周",
+          "createTime": "2022-10-08 13:25:09",
+          "matId": 14695,
+          "hasChild": false,
+          "updator": "1570602058464161794",
+          "warehouseNames": "注塑原材料仓",
+          "matCode": "30303.0.00130",
+          "status": 0
+        },
+        {
+          "pUnit": "PCS#0#ceil",
+          "mid": 11110,
+          "pUsages": 1000,
+          "matUseMode": 1,
+          "rate": 0,
+          "depCodes": "P1307239998869344258P1569592430104182786",
+          "id": 16640,
+          "usages": 0.339,
+          "seq": "1",
+          "matName": "30303.0.00004 | 色母粒 | 黑色\\ABS\\PC等通用\\符合RoHS要求(RoHS+) | 0.000000000",
+          "issueMaterialsCtr": 0,
+          "creator": "1570602058464161794",
+          "isDelete": 0,
+          "updateTime": "2022-10-08 13:25:09",
+          "warehouse": "7999",
+          "matType": "3",
+          "unit": "千克#2#round",
+          "updatorNames": "詹进周",
+          "creatorNames": "詹进周",
+          "createTime": "2022-10-08 13:25:09",
+          "matId": 35647,
+          "hasChild": false,
+          "updator": "1570602058464161794",
+          "warehouseNames": "注塑原材料仓",
+          "matCode": "30303.0.00004",
+          "status": 0
+        }
+      ],
+      "specs": "KDLD4LC3/DAT1 | D60013 | 黑色PC+ABS | 0.000000000",
+      "matIdNames": "20409.0.00015 | 适配器面板 | D60013 | KDLD4LC3/DAT1 | 黑色PC+ABS | 0.000000000",
+      "id": 11110,
+      "matUnit": "PCS#0#ceil",
+      "matName": "适配器面板",
+      "u9Id": "1002101190253591",
+      "version": "Rev.01",
+      "isDefault": 0,
+      "matId": 10917,
+      "matCode": "20409.0.00015",
+      "produceBomAppendList": [],
+      "status": 0
+    },
+    "flowCardMode": 1,
+    "isDelete": 0,
+    "updateTime": "2023-11-28 11:01:54",
+    "isPackage": 0,
+    "version": "Rev.01",
+    "modeTypes": 7975,
+    "routeDeta35VOList": [
+      {
+        "mid": 101488,
+        "seqMatching": 0,
+        "processName": "注塑",
+        "sevenPlan": {
+          "control": 1
+        },
+        "depCodes": "P1307239998869344258P1569592430104182786",
+        "id": 260197,
+        "processType": "1",
+        "jobFile": [
+          "33594"
+        ],
+        "seq": 1,
+        "hzq": {
+          "unit": "minute",
+          "time": "10"
+        },
+        "isChangeMatLabel": 0,
+        "fixedUsages": 20,
+        "creator": "1570602058464161794",
+        "sourceList": [],
+        "inventorys": [
+          {
+            "detaId": 260197,
+            "pUnit": "PCS#0#ceil",
+            "pUsages": 1000,
+            "rate": 0,
+            "depCodes": "P1307239998869344258P1572748374224961538",
+            "id": 646320,
+            "usages": 15.4,
+            "seq": 0,
+            "issueMaterialsCtr": 0,
+            "matName": "30303.0.00130 | 塑料粒子 | PC-550K | 颗粒状\\白色\\25千克/袋\\符合RoHS要求(RoHS+) | 0.000000000",
+            "bomDetaId": 16639,
+            "bomId": 11110,
+            "creator": "1570602058464161794",
+            "isDelete": 0,
+            "updateTime": "2023-05-18T19:40:20",
+            "warehouse": 7999,
+            "matType": 3,
+            "unit": "千克#2#round",
+            "creatorNames": "詹进周",
+            "updatorNames": "詹进周",
+            "createTime": "2022-10-08T13:25:09",
+            "matId": 14695,
+            "updator": "1570602058464161794",
+            "warehouseNames": "注塑原材料仓",
+            "matCode": "30303.0.00130",
+            "status": 0,
+            "usagesObj": {
+              "subUsage": 15.4,
+              "mainUsage": 1000,
+              "mainUnit": "PCS#0#ceil",
+              "subUnit": "千克#2#round"
+            }
+          },
+          {
+            "detaId": 260197,
+            "pUnit": "PCS#0#ceil",
+            "pUsages": 1000,
+            "rate": 0,
+            "depCodes": "P1307239998869344258P1572748374224961538",
+            "id": 646321,
+            "usages": 0.339,
+            "seq": 1,
+            "issueMaterialsCtr": 0,
+            "matName": "30303.0.00004 | 色母粒 | 黑色\\ABS\\PC等通用\\符合RoHS要求(RoHS+) | 0.000000000",
+            "bomDetaId": 16640,
+            "bomId": 11110,
+            "creator": "1570602058464161794",
+            "isDelete": 0,
+            "updateTime": "2022-10-08T13:25:09",
+            "warehouse": 7999,
+            "matType": 3,
+            "unit": "千克#2#round",
+            "creatorNames": "詹进周",
+            "updatorNames": "詹进周",
+            "createTime": "2022-10-08T13:25:09",
+            "matId": 35647,
+            "updator": "1570602058464161794",
+            "warehouseNames": "注塑原材料仓",
+            "matCode": "30303.0.00004",
+            "status": 0,
+            "usagesObj": {
+              "subUsage": 0.339,
+              "mainUsage": 1000,
+              "mainUnit": "PCS#0#ceil",
+              "subUnit": "千克#2#round"
+            }
+          }
+        ],
+        "isDelete": 0,
+        "meter": {
+          "unit": "PCS",
+          "Num": "18",
+          "time": "秒",
+          "cycle": "秒"
+        },
+        "prefixName": "1/1",
+        "updateTime": "2023-11-28 11:01:49",
+        "thirdPlan": {
+          "planIds": [
+            "34368"
+          ],
+          "plandIdsStr": "34368",
+          "planNames": [
+            "注塑首件检验"
+          ],
+          "control": "1"
+        },
+        "workCenter": [
+          580
+        ],
+        "fourPlan": {
+          "planIds": [
+            "34367"
+          ],
+          "plandIdsStr": "34367",
+          "planNames": [
+            "注塑制程检验"
+          ]
+        },
+        "updatorNames": "詹进周",
+        "creatorNames": "詹进周",
+        "piecePrice": {
+          "unit": "PCS",
+          "money": "0.085",
+          "moneyUnit": "元"
+        },
+        "createTime": "2023-03-26 15:52:14",
+        "jobFileNames": [
+          "D60013 KDLD4LC3-DSC3-DAT1 适配器面板.pdf"
+        ],
+        "defaultNum": 1,
+        "processCode": "GX04000",
+        "outSourceList": [],
+        "updator": "1570602058464161794",
+        "reportRatio": 1,
+        "workCenterNames": [
+          "注塑工作中心"
+        ],
+        "status": 0,
+        "operationType": "自制",
+        "qualityTest": {
+          "thirdPlan": {
+            "planIds": [
+              "34368"
+            ],
+            "plandIdsStr": "34368",
+            "planNames": [
+              "注塑首件检验"
+            ],
+            "control": "1"
+          },
+          "fourPlan": {
+            "planIds": [
+              "34367"
+            ],
+            "plandIdsStr": "34367",
+            "planNames": [
+              "注塑制程检验"
+            ]
+          },
+          "sevenPlan": {
+            "control": 1
+          }
+        },
+        "isChangeMatLabel_disabled": false,
+        "qid": 260197,
+        "useful": "yes",
+        "isSingleWeight": 0,
+        "singleWeightStandard": "",
+        "seqMatching_disabled": false,
+        "pieceRate": {
+          "unit": "PCS",
+          "money": "0.085",
+          "moneyUnit": "元"
+        }
+      }
+    ],
+    "isDefault": 0,
+    "updatorNames": "李改琴",
+    "creatorNames": "詹进周",
+    "createTime": "2023-03-26 15:52:06",
+    "matId": 10917,
+    "updator": "1570602058464161794",
+    "dataTitle": "",
+    "matCode": "20409.0.00015",
+    "status": 0,
+    "routeDeta": [
+      {
+        "mid": 101488,
+        "seqMatching": 0,
+        "processName": "注塑",
+        "sevenPlan": {
+          "control": 1
+        },
+        "depCodes": "P1307239998869344258P1569592430104182786",
+        "id": 260197,
+        "processType": "1",
+        "jobFile": [
+          "33594"
+        ],
+        "seq": 1,
+        "hzq": {
+          "unit": "minute",
+          "time": "10"
+        },
+        "isChangeMatLabel": 0,
+        "fixedUsages": 20,
+        "creator": "1570602058464161794",
+        "sourceList": [],
+        "inventorys": [
+          {
+            "detaId": 260197,
+            "pUnit": "PCS#0#ceil",
+            "pUsages": 1000,
+            "rate": 0,
+            "depCodes": "P1307239998869344258P1572748374224961538",
+            "id": 646320,
+            "usages": 15.4,
+            "seq": 0,
+            "issueMaterialsCtr": 0,
+            "matName": "30303.0.00130 | 塑料粒子 | PC-550K | 颗粒状\\白色\\25千克/袋\\符合RoHS要求(RoHS+) | 0.000000000",
+            "bomDetaId": 16639,
+            "bomId": 11110,
+            "creator": "1570602058464161794",
+            "isDelete": 0,
+            "updateTime": "2023-05-18T19:40:20",
+            "warehouse": 7999,
+            "matType": 3,
+            "unit": "千克#2#round",
+            "creatorNames": "詹进周",
+            "updatorNames": "詹进周",
+            "createTime": "2022-10-08T13:25:09",
+            "matId": 14695,
+            "updator": "1570602058464161794",
+            "warehouseNames": "注塑原材料仓",
+            "matCode": "30303.0.00130",
+            "status": 0,
+            "usagesObj": {
+              "subUsage": 15.4,
+              "mainUsage": 1000,
+              "mainUnit": "PCS#0#ceil",
+              "subUnit": "千克#2#round"
+            }
+          },
+          {
+            "detaId": 260197,
+            "pUnit": "PCS#0#ceil",
+            "pUsages": 1000,
+            "rate": 0,
+            "depCodes": "P1307239998869344258P1572748374224961538",
+            "id": 646321,
+            "usages": 0.339,
+            "seq": 1,
+            "issueMaterialsCtr": 0,
+            "matName": "30303.0.00004 | 色母粒 | 黑色\\ABS\\PC等通用\\符合RoHS要求(RoHS+) | 0.000000000",
+            "bomDetaId": 16640,
+            "bomId": 11110,
+            "creator": "1570602058464161794",
+            "isDelete": 0,
+            "updateTime": "2022-10-08T13:25:09",
+            "warehouse": 7999,
+            "matType": 3,
+            "unit": "千克#2#round",
+            "creatorNames": "詹进周",
+            "updatorNames": "詹进周",
+            "createTime": "2022-10-08T13:25:09",
+            "matId": 35647,
+            "updator": "1570602058464161794",
+            "warehouseNames": "注塑原材料仓",
+            "matCode": "30303.0.00004",
+            "status": 0,
+            "usagesObj": {
+              "subUsage": 0.339,
+              "mainUsage": 1000,
+              "mainUnit": "PCS#0#ceil",
+              "subUnit": "千克#2#round"
+            }
+          }
+        ],
+        "isDelete": 0,
+        "meter": {
+          "unit": "PCS",
+          "Num": "18",
+          "time": "秒",
+          "cycle": "秒"
+        },
+        "prefixName": "1/1",
+        "updateTime": "2023-11-28 11:01:49",
+        "thirdPlan": {
+          "planIds": [
+            "34368"
+          ],
+          "plandIdsStr": "34368",
+          "planNames": [
+            "注塑首件检验"
+          ],
+          "control": "1"
+        },
+        "workCenter": [
+          580
+        ],
+        "fourPlan": {
+          "planIds": [
+            "34367"
+          ],
+          "plandIdsStr": "34367",
+          "planNames": [
+            "注塑制程检验"
+          ]
+        },
+        "updatorNames": "詹进周",
+        "creatorNames": "詹进周",
+        "piecePrice": {
+          "unit": "PCS",
+          "money": "0.085",
+          "moneyUnit": "元"
+        },
+        "createTime": "2023-03-26 15:52:14",
+        "jobFileNames": [
+          "D60013 KDLD4LC3-DSC3-DAT1 适配器面板.pdf"
+        ],
+        "defaultNum": 1,
+        "processCode": "GX04000",
+        "outSourceList": [],
+        "updator": "1570602058464161794",
+        "reportRatio": 1,
+        "workCenterNames": [
+          "注塑工作中心"
+        ],
+        "status": 0,
+        "operationType": "自制",
+        "qualityTest": {
+          "thirdPlan": {
+            "planIds": [
+              "34368"
+            ],
+            "plandIdsStr": "34368",
+            "planNames": [
+              "注塑首件检验"
+            ],
+            "control": "1"
+          },
+          "fourPlan": {
+            "planIds": [
+              "34367"
+            ],
+            "plandIdsStr": "34367",
+            "planNames": [
+              "注塑制程检验"
+            ]
+          },
+          "sevenPlan": {
+            "control": 1
+          }
+        },
+        "isChangeMatLabel_disabled": false,
+        "qid": 260197,
+        "useful": "yes",
+        "isSingleWeight": 0,
+        "singleWeightStandard": 0,
+        "seqMatching_disabled": false,
+        "pieceRate": {
+          "unit": "PCS",
+          "money": "0.085",
+          "moneyUnit": "元"
+        },
+        "singleWeightUnit": ""
+      }
+    ],
+    "packageNum": "",
+    "lastTatuoNum": "",
+    "processSeq": [
+      {
+        "seq": 1,
+        "processName": "注塑"
+      }
+    ]
+  },
+  "flowCardMode": 1,
+  "updateTime": "2024-01-23 16:42:01",
+  "materialCode": "20409.0.00015",
+  "selectRouteNames": "Rev.01",
+  "createTime": "2024-01-23 16:13:13",
+  "onTimeDeliverNum": 0,
+  "returnedNum": 0,
+  "needCount": "380",
+  "overOrderStorage": 0,
+  "materialList": [
+    {
+      "pusages": 1000,
+      "resourceId": "",
+      "orderId": 66425,
+      "needCount": "5.85200000",
+      "belongDepartmentId": "",
+      "dispatchCode": "69c64e47-e450-470a-9e90-36617224bd20",
+      "jobCode": "4042024012300247",
+      "sentCount": "0E-8",
+      "distributionFinishFlg": false,
+      "processName": "注塑",
+      "workCenterId": "580",
+      "id": 397141,
+      "usedCount": "0E-8",
+      "prepareWarehouse": 7999,
+      "prepareFlag": 1,
+      "resourceName": "",
+      "materialId": 14695,
+      "materialUnit": "千克#2#round",
+      "processJobId": 162489,
+      "materialData": {
+        "define2": "",
+        "define1": "",
+        "subUnit": {
+          "subUnit": "千克",
+          "qid": 1692585779113,
+          "seq": 1,
+          "ratio": "1:0E-9"
+        },
+        "overageStoreType": 0,
+        "materialNo": "30303.0.00130",
+        "isOpenFurnaceNumber": false,
+        "leadTime": 0,
+        "define5": "",
+        "define4": "",
+        "define3": "",
+        "overageStore": 0,
+        "specs": "PC-550K |  | 颗粒状\\白色\\25千克/袋\\符合RoHS要求(RoHS+) | 0.000000000",
+        "property": "2",
+        "canChangeCode": true,
+        "id": 14695,
+        "hasRel": 0,
+        "mainUnit": "千克#2#round",
+        "fifo": false,
+        "mrpType": 0,
+        "inCheck": true,
+        "batch": false,
+        "stockWarn": 0,
+        "extProperty1": "PC-550K",
+        "extProperty3": "颗粒状\\白色\\25千克/袋\\符合RoHS要求(RoHS+)",
+        "matType": 1,
+        "extProperty2": "",
+        "extProperty4": "0.000000000",
+        "singleWeightUnit": "11",
+        "modeTypes": 7706,
+        "outCheck": true,
+        "name": "塑料粒子",
+        "dataTitle": "30303.0.00130 | 塑料粒子 | PC-550K | 颗粒状\\白色\\25千克/袋\\符合RoHS要求(RoHS+) | 0.000000000",
+        "status": 0,
+        "controlWarehouse": 7999
+      },
+      "materialName": "塑料粒子",
+      "creatorNames": "测试账号",
+      "updatorNames": "测试账号",
+      "status": 0,
+      "salesOrderName": "",
+      "dispatchCtr": 0,
+      "workCenterIdNames": "注塑工作中心",
+      "matUseMode": 1,
+      "materialIdNames": "30303.0.00130 | 塑料粒子 | PC-550K | 颗粒状\\白色\\25千克/袋\\符合RoHS要求(RoHS+) | 0.000000000",
+      "usages": 15.4,
+      "prepareWarehouseNames": "注塑原材料仓",
+      "salesOrderNo": "",
+      "issueMaterialsCtr": 0,
+      "creator": "1569875239230275585",
+      "belongDepartmentName": "",
+      "isDelete": 0,
+      "processJobCode": "4032024012300172",
+      "updateTime": "2024-01-23 16:42:01",
+      "materialCode": "30303.0.00130",
+      "erpItemId": "1002401232133135",
+      "createTime": "2024-01-23 16:42:01",
+      "processCode": "260197",
+      "feedType": 1,
+      "updator": "1569875239230275585",
+      "orderCode": "MO240123064",
+      "resourceType": ""
+    },
+    {
+      "pusages": 1000,
+      "resourceId": "",
+      "orderId": 66425,
+      "needCount": "0.12882000",
+      "belongDepartmentId": "",
+      "dispatchCode": "69c64e47-e450-470a-9e90-36617224bd20",
+      "jobCode": "4042024012300248",
+      "sentCount": "0E-8",
+      "distributionFinishFlg": false,
+      "processName": "注塑",
+      "workCenterId": "580",
+      "id": 397142,
+      "usedCount": "0E-8",
+      "prepareWarehouse": 7999,
+      "prepareFlag": 1,
+      "resourceName": "",
+      "materialId": 35647,
+      "materialUnit": "千克#2#round",
+      "processJobId": 162489,
+      "materialData": {
+        "define2": "",
+        "define1": "",
+        "subUnit": {
+          "subUnit": "千克",
+          "qid": 1703925678373,
+          "seq": 1,
+          "ratio": "1:0E-9"
+        },
+        "overageStoreType": 0,
+        "materialNo": "30303.0.00004",
+        "isOpenFurnaceNumber": false,
+        "leadTime": 0,
+        "define5": "",
+        "define4": "",
+        "define3": "",
+        "overageStore": 0,
+        "specs": "",
+        "property": "2",
+        "canChangeCode": true,
+        "id": 35647,
+        "hasRel": 1,
+        "mainUnit": "千克#2#round",
+        "mrpType": 0,
+        "inCheck": true,
+        "stockLimit": 0,
+        "batch": false,
+        "stockWarn": 0,
+        "extProperty1": "",
+        "extProperty3": "黑色\\ABS\\PC等通用\\符合RoHS要求(RoHS+)",
+        "matType": 1,
+        "extProperty2": "",
+        "extProperty5": "",
+        "extProperty4": "0.000000000",
+        "singleWeightUnit": "11",
+        "modeTypes": 7706,
+        "outCheck": true,
+        "name": "色母粒",
+        "dataTitle": "30303.0.00004 | 色母粒 | 黑色\\ABS\\PC等通用\\符合RoHS要求(RoHS+) | 0.000000000",
+        "status": 0,
+        "controlWarehouse": 7999
+      },
+      "materialName": "色母粒",
+      "creatorNames": "测试账号",
+      "updatorNames": "测试账号",
+      "status": 0,
+      "salesOrderName": "",
+      "dispatchCtr": 0,
+      "workCenterIdNames": "注塑工作中心",
+      "matUseMode": 1,
+      "materialIdNames": "30303.0.00004 | 色母粒 | 黑色\\ABS\\PC等通用\\符合RoHS要求(RoHS+) | 0.000000000",
+      "usages": 0.339,
+      "prepareWarehouseNames": "注塑原材料仓",
+      "salesOrderNo": "",
+      "issueMaterialsCtr": 0,
+      "creator": "1569875239230275585",
+      "belongDepartmentName": "",
+      "isDelete": 0,
+      "processJobCode": "4032024012300172",
+      "updateTime": "2024-01-23 16:42:01",
+      "materialCode": "30303.0.00004",
+      "erpItemId": "1002401232133136",
+      "createTime": "2024-01-23 16:42:01",
+      "processCode": "260197",
+      "feedType": 1,
+      "updator": "1569875239230275585",
+      "orderCode": "MO240123064",
+      "resourceType": ""
+    }
+  ],
+  "routeName": "",
+  "issueControlStatus": 0,
+  "processList": [
+    {
+      "inProcessNum": 0,
+      "resourceId": "",
+      "orderId": 66425,
+      "defectNum": 0,
+      "departmentId": "1590503689456500737",
+      "belongDepartmentId": "",
+      "dispatchCode": "69c64e47-e450-470a-9e90-36617224bd20",
+      "jobCode": "4032024012300172",
+      "processName": "注塑",
+      "workCenterId": "580",
+      "id": "162489",
+      "jobCompletedCount": "0",
+      "prefixName": "1/1",
+      "received": false,
+      "materialId": "10917",
+      "materialData": {
+        "define2": "",
+        "define1": "",
+        "subUnit": {
+          "subUnit": "千克",
+          "qid": 1692200266337,
+          "seq": 1,
+          "ratio": "1:0E-9"
+        },
+        "materialNo": "20409.0.00015",
+        "isOpenFurnaceNumber": false,
+        "leadTime": 0,
+        "define5": "",
+        "define4": "",
+        "define3": "",
+        "specs": "KDLD4LC3/DAT1 | D60013 | 黑色PC+ABS | 0.000000000",
+        "property": "1",
+        "depCodes": "P1307239998869344258P1569592430104182786",
+        "canChangeCode": true,
+        "id": 10917,
+        "hasRel": 0,
+        "creator": "1570602058464161794",
+        "mainUnit": "PCS#0#ceil",
+        "mrpType": 0,
+        "isDelete": 0,
+        "inCheck": false,
+        "stockLimit": 0,
+        "batch": true,
+        "stockWarn": false,
+        "updateTime": "2024-01-23T11:36:34",
+        "extProperty1": "KDLD4LC3/DAT1",
+        "extProperty3": "黑色PC+ABS",
+        "matType": 1,
+        "extProperty2": "D60013",
+        "extProperty4": "0.000000000",
+        "singleWeightUnit": "11",
+        "modeTypes": 7975,
+        "isSingleWeight": 0,
+        "creatorNames": "詹进周",
+        "outCheck": true,
+        "createTime": "2023-05-16T14:44:22",
+        "isSingle": false,
+        "name": "适配器面板",
+        "updator": "1570602058464161794",
+        "dataTitle": "20409.0.00015 | 适配器面板 | D60013 | KDLD4LC3/DAT1 | 黑色PC+ABS | 0.000000000",
+        "status": 0,
+        "controlWarehouse": 7986
+      },
+      "processData": {
+        "mid": 101488,
+        "qstatus": 2,
+        "processName": "注塑",
+        "sevenPlan": {
+          "control": 1
+        },
+        "depCodes": "P1307239998869344258P1569592430104182786",
+        "id": 260197,
+        "processType": 1,
+        "seq": 1,
+        "resourceList": [
+          {
+            "informationNames": "EQ2020100900040 | 120T注塑机-001",
+            "hanghao": 11,
+            "information": 3367,
+            "utilization": "100",
+            "resourceName": "120T注塑机-001",
+            "id": "3367",
+            "qid": 1669956933683,
+            "seq": 1,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900041 | 120T注塑机-002",
+            "hanghao": 11,
+            "information": 3368,
+            "utilization": "100",
+            "resourceName": "120T注塑机-002",
+            "id": "3368",
+            "qid": 1669957098332,
+            "seq": 2,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900042 | 120T注塑机-003",
+            "hanghao": 11,
+            "information": 3369,
+            "utilization": "100",
+            "resourceName": "120T注塑机-003",
+            "id": "3369",
+            "qid": 1669957149041,
+            "seq": 3,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900043 | 160T注塑机-001",
+            "hanghao": 11,
+            "information": 3370,
+            "utilization": "100",
+            "resourceName": "160T注塑机-001",
+            "id": "3370",
+            "qid": 1669957185004,
+            "seq": 4,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900044 | 160T注塑机-002",
+            "hanghao": 10,
+            "information": 3371,
+            "utilization": "100",
+            "resourceName": "160T注塑机-002",
+            "id": "3371",
+            "qid": 1669957215289,
+            "seq": 5,
+            "orderHanghao": 10,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900045 | 160T注塑机-003",
+            "hanghao": 11,
+            "information": 3372,
+            "utilization": "100",
+            "resourceName": "160T注塑机-003",
+            "id": "3372",
+            "qid": 1669957229908,
+            "seq": 6,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900046 | 50T注塑机-001",
+            "hanghao": 10,
+            "information": 3373,
+            "utilization": "100",
+            "resourceName": "50T注塑机-001",
+            "id": "3373",
+            "qid": 1669957256533,
+            "seq": 7,
+            "orderHanghao": 10,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900047 | 50T注塑机-002",
+            "hanghao": 11,
+            "information": 3374,
+            "utilization": "100",
+            "resourceName": "50T注塑机-002",
+            "id": "3374",
+            "qid": 1669957266253,
+            "seq": 8,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900048 | 250T注塑机-001",
+            "hanghao": 9,
+            "information": 3375,
+            "utilization": "100",
+            "resourceName": "250T注塑机-001",
+            "id": "3375",
+            "qid": 1669957305733,
+            "seq": 9,
+            "orderHanghao": 9,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2021080400000 | 100T-注塑机-001",
+            "hanghao": 10,
+            "information": 3175,
+            "utilization": "100",
+            "resourceName": "100T-注塑机-001",
+            "id": "3175",
+            "qid": 1669957306063,
+            "seq": 10,
+            "orderHanghao": 10,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2021080400001 | 100T-注塑机-002",
+            "hanghao": 11,
+            "information": 3174,
+            "utilization": "100",
+            "resourceName": "100T-注塑机-002",
+            "id": "3174",
+            "qid": 1669957307263,
+            "seq": 11,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          }
+        ],
+        "isChangeMatLabel": 0,
+        "fixedUsages": 20,
+        "creator": "1570602058464161794",
+        "inventorys": [
+          {
+            "fixedUsages": "0",
+            "pUnit": "PCS#0#ceil",
+            "idNames": "30303.0.00130 | 塑料粒子 | PC-550K | 颗粒状\\白色\\25千克/袋\\符合RoHS要求(RoHS+) | 0.000000000",
+            "lossRate": "0.000000000",
+            "pUsages": "1000.000000000",
+            "warehouse": 7999,
+            "matType": "1",
+            "unit": "千克#2#round",
+            "erpItemId": "1002401232133135",
+            "wareOptions": [
+              {
+                "itemName": "注塑原材料仓",
+                "itemValue": 7999
+              }
+            ],
+            "matUseMode": "1",
+            "rate": "0.000000000",
+            "matId": 14695,
+            "id": 14695,
+            "usages": "15.400000000",
+            "warehouseNames": "注塑原材料仓",
+            "matCode": "30303.0.00130",
+            "createTask": true,
+            "matName": "塑料粒子",
+            "issueMaterialsCtr": "0.000000000"
+          },
+          {
+            "fixedUsages": "0",
+            "pUnit": "PCS#0#ceil",
+            "idNames": "30303.0.00004 | 色母粒 | 黑色\\ABS\\PC等通用\\符合RoHS要求(RoHS+) | 0.000000000",
+            "lossRate": "0.000000000",
+            "pUsages": "1000.000000000",
+            "warehouse": 7999,
+            "matType": "1",
+            "unit": "千克#2#round",
+            "erpItemId": "1002401232133136",
+            "wareOptions": [
+              {
+                "itemName": "注塑原材料仓",
+                "itemValue": 7999
+              }
+            ],
+            "matUseMode": "1",
+            "rate": "0.000000000",
+            "matId": 35647,
+            "id": 35647,
+            "usages": "0.339000000",
+            "warehouseNames": "注塑原材料仓",
+            "matCode": "30303.0.00004",
+            "createTask": true,
+            "matName": "色母粒",
+            "issueMaterialsCtr": "0.000000000"
+          }
+        ],
+        "sourceList": [],
+        "transferTime": 0,
+        "meter": {
+          "unit": "PCS",
+          "Num": "18",
+          "time": "秒",
+          "cycle": "秒"
+        },
+        "isDelete": 0,
+        "prefixName": "1/1",
+        "thirdPlan": {
+          "planIds": [
+            "34368"
+          ],
+          "plandIdsStr": "34368",
+          "planNames": [
+            "注塑首件检验"
+          ],
+          "control": "1"
+        },
+        "updateTime": "2023-11-28T11:01:49",
+        "utilization": "100",
+        "workCenter": [
+          580
+        ],
+        "fourPlan": {
+          "planIds": [
+            "34367"
+          ],
+          "plandIdsStr": "34367",
+          "planNames": [
+            "注塑制程检验"
+          ]
+        },
+        "piecePrice": {
+          "unit": "PCS",
+          "money": "0.085",
+          "moneyUnit": "元"
+        },
+        "creatorNames": "詹进周",
+        "createTime": "2023-03-26T15:52:14",
+        "defaultNum": 1,
+        "processCode": "GX04000",
+        "outSourceList": [],
+        "updator": "1570602058464161794",
+        "reportRatio": 1,
+        "orderCode": "MO240123064",
+        "operationType": "自制",
+        "ratio": 1,
+        "status": 0,
+        "workCenterNames": [
+          "注塑工作中心"
+        ]
+      },
+      "workCenterData": {
+        "workcenterLines": [],
+        "workcenterBelongNames": "注塑组",
+        "resources": [
+          {
+            "informationNames": "EQ2020100900040 | 120T注塑机-001",
+            "hanghao": 11,
+            "information": 3367,
+            "utilization": "100",
+            "resourceName": "120T注塑机-001",
+            "id": "3367",
+            "qid": 1669956933683,
+            "seq": 1,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900041 | 120T注塑机-002",
+            "hanghao": 11,
+            "information": 3368,
+            "utilization": "100",
+            "resourceName": "120T注塑机-002",
+            "id": "3368",
+            "qid": 1669957098332,
+            "seq": 2,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900042 | 120T注塑机-003",
+            "hanghao": 11,
+            "information": 3369,
+            "utilization": "100",
+            "resourceName": "120T注塑机-003",
+            "id": "3369",
+            "qid": 1669957149041,
+            "seq": 3,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900043 | 160T注塑机-001",
+            "hanghao": 11,
+            "information": 3370,
+            "utilization": "100",
+            "resourceName": "160T注塑机-001",
+            "id": "3370",
+            "qid": 1669957185004,
+            "seq": 4,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900044 | 160T注塑机-002",
+            "hanghao": 10,
+            "information": 3371,
+            "utilization": "100",
+            "resourceName": "160T注塑机-002",
+            "id": "3371",
+            "qid": 1669957215289,
+            "seq": 5,
+            "orderHanghao": 10,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900045 | 160T注塑机-003",
+            "hanghao": 11,
+            "information": 3372,
+            "utilization": "100",
+            "resourceName": "160T注塑机-003",
+            "id": "3372",
+            "qid": 1669957229908,
+            "seq": 6,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900046 | 50T注塑机-001",
+            "hanghao": 10,
+            "information": 3373,
+            "utilization": "100",
+            "resourceName": "50T注塑机-001",
+            "id": "3373",
+            "qid": 1669957256533,
+            "seq": 7,
+            "orderHanghao": 10,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900047 | 50T注塑机-002",
+            "hanghao": 11,
+            "information": 3374,
+            "utilization": "100",
+            "resourceName": "50T注塑机-002",
+            "id": "3374",
+            "qid": 1669957266253,
+            "seq": 8,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900048 | 250T注塑机-001",
+            "hanghao": 9,
+            "information": 3375,
+            "utilization": "100",
+            "resourceName": "250T注塑机-001",
+            "id": "3375",
+            "qid": 1669957305733,
+            "seq": 9,
+            "orderHanghao": 9,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2021080400000 | 100T-注塑机-001",
+            "hanghao": 10,
+            "information": 3175,
+            "utilization": "100",
+            "resourceName": "100T-注塑机-001",
+            "id": "3175",
+            "qid": 1669957306063,
+            "seq": 10,
+            "orderHanghao": 10,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2021080400001 | 100T-注塑机-002",
+            "hanghao": 11,
+            "information": 3174,
+            "utilization": "100",
+            "resourceName": "100T-注塑机-002",
+            "id": "3174",
+            "qid": 1669957307263,
+            "seq": 11,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          }
+        ],
+        "utilization": "100",
+        "wcType": "0",
+        "lineNo": 205,
+        "wcTypeName": "生产设备",
+        "workcenterBelong": "1590503689456500737",
+        "resourceCode": "JGSB-19-001",
+        "rate": 1,
+        "fullDir": "/",
+        "dataTitle": "注塑工作中心",
+        "typeCommon": "edit",
+        "rfId": "WC2022092300027",
+        "wcCode": "JG-04-0001",
+        "id": 580,
+        "isLine": 0,
+        "resourceRate": 1,
+        "status": 0,
+        "wcName": "注塑工作中心",
+        "resourceList": [
+          {
+            "informationNames": "EQ2020100900040 | 120T注塑机-001",
+            "hanghao": 11,
+            "information": 3367,
+            "utilization": "100",
+            "resourceName": "120T注塑机-001",
+            "id": "3367",
+            "qid": 1669956933683,
+            "seq": 1,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900041 | 120T注塑机-002",
+            "hanghao": 11,
+            "information": 3368,
+            "utilization": "100",
+            "resourceName": "120T注塑机-002",
+            "id": "3368",
+            "qid": 1669957098332,
+            "seq": 2,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900042 | 120T注塑机-003",
+            "hanghao": 11,
+            "information": 3369,
+            "utilization": "100",
+            "resourceName": "120T注塑机-003",
+            "id": "3369",
+            "qid": 1669957149041,
+            "seq": 3,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900043 | 160T注塑机-001",
+            "hanghao": 11,
+            "information": 3370,
+            "utilization": "100",
+            "resourceName": "160T注塑机-001",
+            "id": "3370",
+            "qid": 1669957185004,
+            "seq": 4,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900044 | 160T注塑机-002",
+            "hanghao": 10,
+            "information": 3371,
+            "utilization": "100",
+            "resourceName": "160T注塑机-002",
+            "id": "3371",
+            "qid": 1669957215289,
+            "seq": 5,
+            "orderHanghao": 10,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900045 | 160T注塑机-003",
+            "hanghao": 11,
+            "information": 3372,
+            "utilization": "100",
+            "resourceName": "160T注塑机-003",
+            "id": "3372",
+            "qid": 1669957229908,
+            "seq": 6,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900046 | 50T注塑机-001",
+            "hanghao": 10,
+            "information": 3373,
+            "utilization": "100",
+            "resourceName": "50T注塑机-001",
+            "id": "3373",
+            "qid": 1669957256533,
+            "seq": 7,
+            "orderHanghao": 10,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900047 | 50T注塑机-002",
+            "hanghao": 11,
+            "information": 3374,
+            "utilization": "100",
+            "resourceName": "50T注塑机-002",
+            "id": "3374",
+            "qid": 1669957266253,
+            "seq": 8,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2020100900048 | 250T注塑机-001",
+            "hanghao": 9,
+            "information": 3375,
+            "utilization": "100",
+            "resourceName": "250T注塑机-001",
+            "id": "3375",
+            "qid": 1669957305733,
+            "seq": 9,
+            "orderHanghao": 9,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2021080400000 | 100T-注塑机-001",
+            "hanghao": 10,
+            "information": 3175,
+            "utilization": "100",
+            "resourceName": "100T-注塑机-001",
+            "id": "3175",
+            "qid": 1669957306063,
+            "seq": 10,
+            "orderHanghao": 10,
+            "resourceType": "custom_form_equipment"
+          },
+          {
+            "informationNames": "EQ2021080400001 | 100T-注塑机-002",
+            "hanghao": 11,
+            "information": 3174,
+            "utilization": "100",
+            "resourceName": "100T-注塑机-002",
+            "id": "3174",
+            "qid": 1669957307263,
+            "seq": 11,
+            "orderHanghao": 11,
+            "resourceType": "custom_form_equipment"
+          }
+        ]
+      },
+      "status": 0,
+      "jobDurationTime": "",
+      "workCenterIdNames": "注塑工作中心",
+      "processId": "260197",
+      "materialIdNames": "20409.0.00015 | 适配器面板 | D60013 | KDLD4LC3/DAT1 | 黑色PC+ABS | 0.000000000",
+      "processType": 1,
+      "feedNum": 0,
+      "workCenterName": "注塑工作中心",
+      "departmentIdNames": "注塑组",
+      "workCenterCode": "JG-04-0001",
+      "createTime": "2024-01-23 16:42:01",
+      "jobDurationRealTime": "",
+      "processLabel": 1,
+      "orderCode": "MO240123064",
+      "jobCount": "380",
+      "resourceType": ""
+    }
+  ],
+  "distributorIdNames": "测试账号",
+  "warehouseNum": 0,
+  "materialUnit": "PCS#0#ceil",
+  "materialData": {
+    "define2": "",
+    "define1": "",
+    "overageStoreType": 0,
+    "subUnit": {
+      "subUnit": "千克",
+      "qid": 1692200266337,
+      "seq": 1,
+      "ratio": "1:0E-9"
+    },
+    "materialNo": "20409.0.00015",
+    "isOpenFurnaceNumber": false,
+    "leadTime": 0,
+    "define5": "",
+    "define4": "",
+    "define3": "",
+    "overageStore": 0,
+    "specs": "KDLD4LC3/DAT1 | D60013 | 黑色PC+ABS | 0.000000000",
+    "property": "1",
+    "canChangeCode": true,
+    "hasRel": 0,
+    "id": 10917,
+    "mainUnit": "PCS#0#ceil",
+    "mrpType": 0,
+    "inCheck": false,
+    "stockLimit": 0,
+    "batch": true,
+    "extProperty1": "KDLD4LC3/DAT1",
+    "stockWarn": 0,
+    "extProperty3": "黑色PC+ABS",
+    "extProperty2": "D60013",
+    "matType": 1,
+    "extProperty4": "0.000000000",
+    "singleWeightUnit": "11",
+    "modeTypes": 7975,
+    "outCheck": true,
+    "name": "适配器面板",
+    "dataTitle": "20409.0.00015 | 适配器面板 | D60013 | KDLD4LC3/DAT1 | 黑色PC+ABS | 0.000000000",
+    "controlWarehouse": 7986,
+    "status": 0
+  },
+  "materialName": "适配器面板",
+  "mergeCode": "",
+  "orderFromId": 56820,
+  "bomLevel": 1,
+  "settleNum": 0,
+  "salesOrderName": "",
+  "parentOrderCode": "MO240123064",
+  "scrapQtNum": 0,
+  "defectWarehouseNum": 0,
+  "arrivalNumber": 0,
+  "feedNum": 0,
+  "salesOrderNo": "",
+  "orderSource": "U9",
+  "printNum": 0,
+  "planningPersonnelData": {
+    "creator": "1570602058464161794",
+    "salt": "7ab68fbf210ab35091e888c42260a81a",
+    "isDelete": 0,
+    "templateData": {
+      "roles": "1736573978915835906,1736574225993895937",
+      "templateData": {
+        "roles": "1572761754998439937,1572760890959233026",
+        "type": 2,
+        "enabled": 0,
+        "onJob": 0,
+        "password": "f2eafe72db901d3d2e08a9d6c2082bce",
+        "onJobNames": "在职",
+        "jobNo": "1009",
+        "typeCommon": "edit",
+        "id": "1572767201620951041",
+        "departments": "1572748374224961538",
+        "rolesNames": [
+          "计划员",
+          "精工仓库主管"
+        ],
+        "creator": "1570602058464161794",
+        "departmentsNames": [
+          "器件车间"
+        ],
+        "salt": "7ab68fbf210ab35091e888c42260a81a",
+        "isDelete": 0,
+        "updateTime": "2023-08-22 09:40:51",
+        "dueTime": "2023-06-12T10:00:54",
+        "isSystem": 1,
+        "companyId": "1372419454356545537",
+        "phone": "15968882770",
+        "createTime": "2022-09-22 09:58:16",
+        "name": "俞海平",
+        "updator": "1570602058464161794",
+        "dataTitle": "俞海平",
+        "status": 0,
+        "username": "229"
+      },
+      "type": 2,
+      "enabled": 0,
+      "data_title": "俞海平",
+      "onJob": 0,
+      "password": "f2eafe72db901d3d2e08a9d6c2082bce",
+      "jobNo": "1009",
+      "typeCommon": "edit",
+      "id": "1572767201620951041",
+      "departments": "1572748374224961538",
+      "rolesNames": [
+        "QJ器件仓库主管",
+        "QJ器件计划员"
+      ],
+      "creator": "1570602058464161794",
+      "departmentsNames": [
+        "器件车间"
+      ],
+      "salt": "7ab68fbf210ab35091e888c42260a81a",
+      "isDelete": 0,
+      "updateTime": "2023-12-18 11:00:48",
+      "dueTime": "2023-06-12T10:00:54",
+      "isSystem": 1,
+      "companyId": "1372419454356545537",
+      "phone": "15968882770",
+      "createTime": "2022-09-22 09:58:16",
+      "name": "俞海平",
+      "updator": "1719550281432563713",
+      "dataTitle": "俞海平",
+      "status": 0,
+      "username": "229"
+    },
+    "updateTime": "2023-12-18T19:44:19",
+    "type": 2,
+    "dueTime": "2023-12-27T10:20:08",
+    "onJob": 0,
+    "password": "f2eafe72db901d3d2e08a9d6c2082bce",
+    "companyId": "1372419454356545537",
+    "phone": "15968882770",
+    "createTime": "2022-09-22T09:58:16",
+    "jobNo": "1009",
+    "name": "俞海平",
+    "updator": "1572767195287552001",
+    "dataTitle": "俞海平",
+    "id": "1572767201620951041",
+    "status": 0,
+    "username": "229"
+  },
+  "batchCreateSub": 0,
+  "isDelete": 0,
+  "differenceNum": 0,
+  "qualifiedNum": 0,
+  "dispatchTime": "2024-01-23 16:42:01",
+  "updator": "1569875239230275585",
+  "orderCode": "MO240123064",
+  "planningPersonnelIdNames": "俞海平",
+  "mouldCode": "custom_form_order_started",
+  "processDisbaled": false,
+  "type": "edit",
+  "selectRoute": "101488",
+  "matId": 10917,
+  "from": "orderEdit",
+  "orderprocess": "orderprocess",
+  "selectDisabled": false,
+  "workOrderProcessSonDisabled": true,
+  "dispatchStatus": "0",
+  "define1": "否",
+  "subUnits": "",
+  "subRadio": null,
+  "currentUnit": "PCS",
+  "packageNum": "",
+  "lastTatuoNum": "",
+  "sysConfig_isOpenBOM": true,
+  "routeId": 101488
+}

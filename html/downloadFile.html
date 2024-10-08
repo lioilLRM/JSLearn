@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="downFile()">下载</button>  
+  --  注意 此处button 只是一个触发下载文件的时机，可根据具体业务需求修改
+<script>
+
+      //文件下载
+      function  downFile() {
+      // let fileUrl = "http://192.168.3.102:9000/group1/M00/00/40/wKgDZmX4D2iANATiAAF9Se5IIHk248.jpg";  //服务器文件地址
+      // let fileUrl = 'https://p1.itc.cn/images01/20230923/3c762b38c58241099909aa1c1f81ded0.jpeg'
+      let fileUrl = 'https://s1.juimg.top/uploads/2024/03/d12bc89e51007b2-scaled.jpg'
+      getBlob(fileUrl).then(blob => {
+        console.log("🚀 ~ getBlob ~ blob:", blob)
+        
+        // saveAs(blob, '信用权证使用导入模板件名.xlsx')
+      })
+    }
+
+      //通过文件下载url拿到对应的blob对象
+      function getBlob(url) {
+      return new Promise(resolve => {
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', url, true)
+        xhr.responseType = 'blob'
+        xhr.send()
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            console.log("🚀 ~ getBlob ~ xhr.response:", xhr.response)
+            resolve(xhr.response)
+          }
+        }
+
+      })
+    }
+
+        //下载文件 　　js模拟点击a标签进行下载
+    function  saveAs(blob, filename) {
+      var link = document.createElement('a')
+      link.href = window.URL.createObjectURL(blob)
+      link.download = filename
+      link.click()
+    }
+
+
+  //下载文件
+// function downFile(){
+//   console.log('开始下载')
+//     // var url="http://192.168.3.102:9000/group1/M00/00/40/wKgDZmX4D2iANATiAAF9Se5IIHk248.jpg";
+//     var url="https://csdnimg.cn/medal/fenxiangdaren@240.png";
+
+//     var xhr=new XMLHttpRequest();
+//     xhr.open("GET",url,true);
+//     xhr.responseType='blob';
+//     xhr.onload=function(e){
+//         console.log("🚀 ~ downFile ~ e:", e)
+//         if (xhr.status === 200) {
+//             var fileName=getFileName(url);//获取文件名
+//             saveFile(xhr.response,fileName);
+//         }
+//     }
+// }
+// //保存文件
+// function saveFile(data,fileName){
+//     var export_blob=new Blob([data]);
+//     var save_link=document.createElement('a');
+//     document.body.appendChild(save_link);
+//     save_link.style.display='none';
+//     var urlObject=window.URL.createObjectURL(export_blob);
+//     save_link.href=urlObject;
+//     save_link.download=fileName;
+//     save_link.click();
+//     document.body.removeChild(save_link);
+// }
+// //根据url获取文件名
+// function getFileName(url){
+//     var num=url.lastIndexOf("/")+1;
+//     var fileName=url.substring(num);
+//     fileName=decodeURI(fileName.split("?")[0]);
+//     return fileName;
+// }
+</script>
+</body>
+</html>
